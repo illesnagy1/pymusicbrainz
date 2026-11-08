@@ -6,7 +6,6 @@ readme = "README.md"
 requires-python = ">=3.15"
 dependencies = [
     "httpx2>=2.16.0",
-    "loguru>=0.7.3",
     "pydantic>=2.14.3",
     "rich>=15.0.0",
     "typer>=0.28.0",
@@ -28,4 +27,16 @@ dev = [
     "ruff>=0.17.4",
     "ty>=0.0.99",
     "zensical>=0.1.0",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["musicbrainz"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_also = [
+    'raise AssertionError\("unreachable"\)',
+    'if __name__ == "__main__":',
 ]

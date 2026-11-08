@@ -1,9 +1,12 @@
+import logging
 import xml.etree.ElementTree as ET
-from urllib.parse import parse_qs, unquote
+from collections.abc import Callable
+from urllib.parse import unquote
 
 import anyio
 import httpx2
 import pytest
+from _support import ARTIST, COLL, RELEASE, Recorder, make, ok, present
 from httpx2 import codes
 
 from musicbrainz import (
@@ -15,6 +18,7 @@ from musicbrainz import (
     MusicBrainz,
     NetworkError,
     NotFoundError,
+    RateLimiter,
     RateLimitError,
     ValidationError,
     build_query,
@@ -26,71 +30,6 @@ from musicbrainz._core import (
     normalize_iswc,
     xml_error_texts,
 )
-
-ARTIST = "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
-RELEASE = "a4864e94-6d75-4ade-bc93-0dabf3521453"
-COLL = "f4784850-3844-11e0-9e42-0800200c9a66"
-
-
-class Recorder:
-    """MockTransport handler recording requests.
-
-    Replies are taken from a queue; the last one repeats forever.
-    """
-
-    def __init__(self, *replies: httpx2.Response | Exception) -> None:
-        self.replies = list(replies)
-        self.requests: list[httpx2.Request] = []
-
-    def __call__(self, request: httpx2.Request) -> httpx2.Response:
-        self.requests.append(request)
-        reply = self.replies.pop(0) if len(self.replies) > 1 else self.replies[0]
-        if isinstance(reply, Exception):
-            raise reply
-        return reply
-
-    @property
-    def last(self) -> httpx2.Request:
-        return self.requests[-1]
-
-    def params(self, i: int = -1) -> dict[str, list[str]]:
-        return parse_qs(self.requests[i].url.query.decode())
-
-
-def present[T](value: T | None) -> T:
-    """Narrow an Optional for the type checker, failing the test if it is None."""
-    assert value is not None
-    return value
-
-
-def make(
-    handler: Recorder,
-    *,
-    rate_limit: float | None = None,
-    max_retries: int = 3,
-    validate: bool = True,
-    username: str | None = None,
-    password: str | None = None,
-    oauth_token: str | None = None,
-) -> MusicBrainz:
-    return MusicBrainz(
-        "TestApp",
-        "1.0",
-        "test@example.com",
-        transport=httpx2.MockTransport(handler),
-        rate_limit=rate_limit,
-        max_retries=max_retries,
-        backoff_factor=0,
-        validate=validate,
-        username=username,
-        password=password,
-        oauth_token=oauth_token,
-    )
-
-
-def ok(data: object) -> httpx2.Response:
-    return httpx2.Response(codes.OK, json=data)
-
 
 # ------------------------------------------------------------------ lookups
 
@@ -755,3 +694,117 @@ def test_hostile_xml_error_body_falls_back_to_reason(body: str) -> None:
     with make(rec) as mb, pytest.raises(BadRequestError) as e:
         mb.artists.get(ARTIST)
     assert e.value.message == "Bad Request"
+
+
+# ------------------------------------------------------------------ logging
+
+
+def test_requests_logged_at_debug(caplog: pytest.LogCaptureFixture) -> None:
+    rec = Recorder(ok({"id": ARTIST}))
+    with caplog.at_level(logging.DEBUG, logger="musicbrainz"), make(rec) as mb:
+        mb.artists.get(ARTIST, inc="aliases")
+    (record,) = [r for r in caplog.records if r.name == "musicbrainz.client"]
+    assert record.levelno == logging.DEBUG
+    assert f"GET https://musicbrainz.org/ws/2/artist/{ARTIST}?inc=aliases" in (
+        record.getMessage()
+    )
+    assert "-> 200 OK" in record.getMessage()
+
+
+def test_retries_logged_as_warnings(caplog: pytest.LogCaptureFixture) -> None:
+    rec = Recorder(
+        httpx2.Response(codes.SERVICE_UNAVAILABLE),
+        httpx2.ReadTimeout("slow"),
+        ok({"id": ARTIST}),
+    )
+    with caplog.at_level(logging.WARNING, logger="musicbrainz"), make(rec) as mb:
+        mb.artists.get(ARTIST)
+    messages = [r.getMessage() for r in caplog.records]
+    assert len(messages) == 2
+    assert "failed (HTTP 503); retry 1/3" in messages[0]
+    assert "failed (ReadTimeout('slow')); retry 2/3" in messages[1]
+
+
+def test_credentials_never_logged(caplog: pytest.LogCaptureFixture) -> None:
+    rec = Recorder(httpx2.Response(codes.OK, text="<metadata/>"))
+    with (
+        caplog.at_level(logging.DEBUG, logger="musicbrainz"),
+        make(rec, oauth_token="s3cret-token") as mb,
+    ):
+        mb.submit_ratings("artist", {ARTIST: 80})
+    assert caplog.records
+    assert "s3cret-token" not in caplog.text
+
+
+def test_library_is_silent_by_default(capfd: pytest.CaptureFixture[str]) -> None:
+    rec = Recorder(httpx2.Response(codes.SERVICE_UNAVAILABLE), ok({"id": ARTIST}))
+    with make(rec) as mb:
+        mb.artists.get(ARTIST)
+    assert capfd.readouterr().err == ""
+
+
+def test_rate_limit_wait_logged(caplog: pytest.LogCaptureFixture) -> None:
+    limiter = RateLimiter(requests_per_second=20)
+    with caplog.at_level(logging.DEBUG, logger="musicbrainz"):
+        limiter.acquire()
+        limiter.acquire()
+    assert any("rate limit: waiting" in r.getMessage() for r in caplog.records)
+
+
+# ------------------------------------------------------------------ client plumbing
+
+
+@pytest.mark.parametrize(
+    ("build", "match"),
+    [
+        (lambda: MusicBrainz("", "1"), "app and version are required"),
+        (lambda: MusicBrainz("A", "1", password="p", oauth_token="t"), "only one of"),
+        (lambda: MusicBrainz("A", "1", password="p"), "username is required"),
+    ],
+)
+def test_client_config_validation(build: Callable[[], MusicBrainz], match: str) -> None:
+    with pytest.raises(ValidationError, match=match):
+        build()
+
+
+def test_custom_auth_and_base_url() -> None:
+    rec = Recorder(ok({"id": ARTIST}))
+    mb = MusicBrainz(
+        "A",
+        "1",
+        auth=httpx2.BasicAuth("u", "p"),
+        base_url="https://mirror.example/ws/2",  # trailing slash added
+        transport=httpx2.MockTransport(rec),
+        rate_limit=None,
+    )
+    with mb:
+        mb.artists.get(ARTIST)
+    assert str(rec.last.url).startswith(f"https://mirror.example/ws/2/artist/{ARTIST}")
+    assert rec.last.headers["Authorization"].startswith("Basic ")
+    assert mb.user_agent.startswith("A/1 python-musicbrainz/")  # no contact part
+
+
+def test_resource_lookup_and_repr() -> None:
+    with make(Recorder(ok({}))) as mb:
+        assert mb.resource("release-group") is mb.release_groups
+        assert mb.resource("works") is mb.works
+        assert repr(mb.artists) == "<EntityResource artist>"
+        with pytest.raises(ValidationError, match="unknown entity"):
+            mb.resource("tag")  # search-only, not a full resource
+
+
+def test_sync_resource_extras() -> None:
+    rec = Recorder(
+        ok({"genre-count": 1, "genre-offset": 0, "genres": [{"name": "rock"}]}),
+        ok({"id": COLL, "name": "Mine"}),
+        ok({"work-count": 1, "work-offset": 0, "works": [{"id": ARTIST}]}),
+        httpx2.Response(codes.NOT_FOUND, json={"error": "Not Found"}),
+    )
+    with make(rec) as mb:
+        assert [g.name for g in mb.genres.iter_all()] == ["rock"]
+        assert mb.collections.summary(COLL, "work").name == "Mine"
+        assert len(list(mb.collections.iter_items(COLL, "work"))) == 1
+        with pytest.raises(NotFoundError):  # multi-URL batch 404 is an error
+            mb.urls.by_resources(["https://a", "https://b"])
+    assert rec.requests[1].url.path == f"/ws/2/collection/{COLL}/works"
+    assert rec.params(2)["collection"] == [COLL]

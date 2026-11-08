@@ -1,5 +1,4 @@
 import json
-from typing import get_args
 from urllib.parse import parse_qs
 
 import httpx2
@@ -56,10 +55,10 @@ def invoke(*args: str) -> tuple[int, str]:
     return result.exit_code, result.output
 
 
-def test_entity_choices_match_constants() -> None:
-    assert set(get_args(cli.LookupEntity)) == {*consts.CORE_ENTITIES, "collection"}
-    assert set(get_args(cli.SearchEntity)) == set(consts.SEARCH_ENTITIES)
-    assert set(get_args(cli.BrowseEntity)) == set(consts.BROWSE_LINKS)
+def test_entity_constants_are_consistent() -> None:
+    # Every lookup-able entity must also be browsable (one shared CLI choice).
+    assert set(consts.BROWSE_LINKS) == set(consts.ENTITIES)
+    assert set(consts.LOOKUP_INCLUDES) >= set(consts.ENTITIES)
 
 
 def test_browse_link_options_cover_all_links() -> None:
@@ -166,3 +165,20 @@ def test_version_and_env(server: FakeServer, monkeypatch: pytest.MonkeyPatch) ->
     server.response = httpx2.Response(codes.OK, text="")
     invoke("genres")
     assert server.requests[-1].url.host == "mirror.example"
+
+
+def test_verbose_logs_to_stderr_only(server: FakeServer) -> None:
+    server.response = httpx2.Response(codes.OK, json={"id": ARTIST})
+    result = runner.invoke(cli.app, ["-vv", "lookup", "artist", ARTIST])
+    assert result.exit_code == 0, result.output
+    assert json.loads(result.stdout) == {"id": ARTIST}  # stdout stays pure JSON
+    assert f"/ws/2/artist/{ARTIST}" in result.stderr
+    assert "200 OK" in result.stderr
+
+
+def test_quiet_by_default(server: FakeServer) -> None:
+    server.response = httpx2.Response(codes.OK, json={"id": ARTIST})
+    runner.invoke(cli.app, ["-vv", "lookup", "artist", ARTIST])
+    result = runner.invoke(cli.app, ["lookup", "artist", ARTIST])
+    assert result.exit_code == 0
+    assert result.stderr == ""

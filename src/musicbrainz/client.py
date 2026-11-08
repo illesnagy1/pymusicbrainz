@@ -1,5 +1,6 @@
 """Synchronous and asynchronous MusicBrainz clients."""
 
+import logging
 import time
 from collections.abc import AsyncIterator, Callable, Iterable, Iterator, Mapping
 from typing import Any, Literal, Self, TypedDict, Unpack
@@ -29,6 +30,8 @@ from .errors import (
 )
 
 Vote = Literal["upvote", "downvote", "withdraw"]
+
+logger = logging.getLogger(__name__)
 
 
 class BrowseOptions(TypedDict, total=False, closed=True):
@@ -115,6 +118,31 @@ def _retryable_exc(method: str, exc: Exception) -> bool:
     return isinstance(exc, (httpx2.ConnectError, httpx2.ConnectTimeout))
 
 
+def _log_response(call: Call[Any], resp: httpx2.Response, started: float) -> None:
+    logger.debug(
+        "%s %s -> %d %s (%.0f ms)",
+        call.method,
+        resp.url,
+        resp.status_code,
+        resp.reason_phrase,
+        (time.perf_counter() - started) * 1000,
+    )
+
+
+def _log_retry(
+    call: Call[Any], reason: str, attempt: int, max_retries: int, delay: float
+) -> None:
+    logger.warning(
+        "%s %s failed (%s); retry %d/%d in %.1fs",
+        call.method,
+        call.path,
+        reason,
+        attempt + 1,
+        max_retries,
+        delay,
+    )
+
+
 def _chunks(items: list[str], size: int) -> Iterator[list[str]]:
     for i in range(0, len(items), size):
         yield items[i : i + size]
@@ -160,6 +188,7 @@ class _Session:
         for attempt in range(cfg.max_retries + 1):
             if self.limiter:
                 self.limiter.acquire()
+            started = time.perf_counter()
             try:
                 resp = self.http.request(
                     call.method,
@@ -170,9 +199,12 @@ class _Session:
                 )
             except httpx2.TransportError as exc:
                 if attempt < cfg.max_retries and _retryable_exc(call.method, exc):
-                    time.sleep(cfg.backoff_factor * 2**attempt)
+                    delay = cfg.backoff_factor * 2**attempt
+                    _log_retry(call, repr(exc), attempt, cfg.max_retries, delay)
+                    time.sleep(delay)
                     continue
                 raise NetworkError(str(exc) or type(exc).__name__) from exc
+            _log_response(call, resp, started)
             if attempt < cfg.max_retries:
                 delay = retry_delay(
                     resp.status_code,
@@ -181,6 +213,8 @@ class _Session:
                     cfg.backoff_factor,
                 )
                 if delay is not None:
+                    reason = f"HTTP {resp.status_code}"
+                    _log_retry(call, reason, attempt, cfg.max_retries, delay)
                     time.sleep(delay)
                     continue
             raise_for_response(
@@ -650,6 +684,7 @@ class _AsyncSession:
         for attempt in range(cfg.max_retries + 1):
             if self.limiter:
                 await self.limiter.acquire()
+            started = time.perf_counter()
             try:
                 resp = await self.http.request(
                     call.method,
@@ -660,9 +695,12 @@ class _AsyncSession:
                 )
             except httpx2.TransportError as exc:
                 if attempt < cfg.max_retries and _retryable_exc(call.method, exc):
-                    await anyio.sleep(cfg.backoff_factor * 2**attempt)
+                    delay = cfg.backoff_factor * 2**attempt
+                    _log_retry(call, repr(exc), attempt, cfg.max_retries, delay)
+                    await anyio.sleep(delay)
                     continue
                 raise NetworkError(str(exc) or type(exc).__name__) from exc
+            _log_response(call, resp, started)
             if attempt < cfg.max_retries:
                 delay = retry_delay(
                     resp.status_code,
@@ -671,6 +709,8 @@ class _AsyncSession:
                     cfg.backoff_factor,
                 )
                 if delay is not None:
+                    reason = f"HTTP {resp.status_code}"
+                    _log_retry(call, reason, attempt, cfg.max_retries, delay)
                     await anyio.sleep(delay)
                     continue
             raise_for_response(

@@ -3,10 +3,21 @@
 MusicBrainz allows about one request per second per client.
 """
 
+import logging
 import threading
 import time
 
 import anyio
+
+logger = logging.getLogger(__name__)
+
+#: Waits shorter than this are not worth a log line.
+_LOG_WAIT_THRESHOLD = 0.01
+
+
+def _log_wait(wait: float) -> None:
+    if wait >= _LOG_WAIT_THRESHOLD:
+        logger.debug("rate limit: waiting %.2fs", wait)
 
 
 class RateLimiter:
@@ -26,6 +37,7 @@ class RateLimiter:
         with self._lock:
             now = time.monotonic()
             if (wait := self._next - now) > 0:
+                _log_wait(wait)
                 time.sleep(wait)
                 now = time.monotonic()
             self._next = now + self.interval
@@ -47,6 +59,7 @@ class AsyncRateLimiter:
         async with self._lock:
             now = time.monotonic()
             if (wait := self._next - now) > 0:
+                _log_wait(wait)
                 await anyio.sleep(wait)
                 now = time.monotonic()
             self._next = now + self.interval

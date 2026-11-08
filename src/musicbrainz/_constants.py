@@ -3,11 +3,13 @@
 Entities, includes, browse links and filter values.
 """
 
+from typing import Literal, get_args
+
 DEFAULT_BASE_URL = "https://musicbrainz.org/ws/2/"
 MMD_NAMESPACE = "http://musicbrainz.org/ns/mmd-2.0#"
 
-#: Core entities that support lookups by MBID.
-CORE_ENTITIES: tuple[str, ...] = (
+#: Core entities: lookups by MBID, browsing (except genre/url quirks below).
+CoreEntity = Literal[
     "area",
     "artist",
     "event",
@@ -21,10 +23,11 @@ CORE_ENTITIES: tuple[str, ...] = (
     "series",
     "work",
     "url",
-)
-
+]
+#: Everything that can be looked up by MBID or browsed.
+Entity = Literal[CoreEntity, "collection"]
 #: Entities with a search index.
-SEARCH_ENTITIES: tuple[str, ...] = (
+SearchEntity = Literal[
     "annotation",
     "area",
     "artist",
@@ -40,7 +43,12 @@ SEARCH_ENTITIES: tuple[str, ...] = (
     "tag",
     "work",
     "url",
-)
+]
+
+# Runtime views of the Literal types above (single source of truth).
+CORE_ENTITIES: tuple[CoreEntity, ...] = get_args(CoreEntity)
+ENTITIES: tuple[Entity, ...] = get_args(Entity)
+SEARCH_ENTITIES: tuple[SearchEntity, ...] = get_args(SearchEntity)
 
 #: JSON list key for each entity type.
 PLURALS: dict[str, str] = {
@@ -64,7 +72,7 @@ PLURALS: dict[str, str] = {
 }
 
 #: For each browsable entity, the linked entities it can be browsed by.
-BROWSE_LINKS: dict[str, frozenset[str]] = {
+BROWSE_LINKS: dict[Entity, frozenset[str]] = {
     "area": frozenset({"collection"}),
     "artist": frozenset(
         {"area", "collection", "recording", "release", "release-group", "work"}

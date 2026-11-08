@@ -11,74 +11,25 @@ Examples::
 """
 
 import json
+import logging
 import sys
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any
 
 import typer
 from pydantic import BaseModel
 from rich.console import Console
+from rich.logging import RichHandler
 from typer.models import OptionInfo
 
 from . import _constants as consts
+from ._constants import Entity, SearchEntity
 from ._core import JSON
 from ._version import __version__
 from .client import MusicBrainz
 from .errors import MusicBrainzError
 from .models import Page
-
-# Literal types give typed choices in --help; tests/test_cli.py keeps them in
-# sync with _constants.
-LookupEntity = Literal[
-    "area",
-    "artist",
-    "collection",
-    "event",
-    "genre",
-    "instrument",
-    "label",
-    "place",
-    "recording",
-    "release",
-    "release-group",
-    "series",
-    "url",
-    "work",
-]
-SearchEntity = Literal[
-    "annotation",
-    "area",
-    "artist",
-    "cdstub",
-    "event",
-    "instrument",
-    "label",
-    "place",
-    "recording",
-    "release",
-    "release-group",
-    "series",
-    "tag",
-    "url",
-    "work",
-]
-BrowseEntity = Literal[
-    "area",
-    "artist",
-    "collection",
-    "event",
-    "genre",
-    "instrument",
-    "label",
-    "place",
-    "recording",
-    "release",
-    "release-group",
-    "series",
-    "url",
-    "work",
-]
 
 app = typer.Typer(
     name="musicbrainz",
@@ -141,6 +92,35 @@ def _run(ctx: typer.Context, action: Callable[[MusicBrainz], object]) -> None:
     _emit(result)
 
 
+_CLI_HANDLER = "_musicbrainz_cli"
+
+
+def _setup_logging(verbosity: int) -> None:
+    """Send the library's log records to stderr (stdout stays pure JSON).
+
+    ``-v`` shows warnings (retries), ``-vv`` also shows every request.
+    """
+    log = logging.getLogger("musicbrainz")
+    for handler in [h for h in log.handlers if getattr(h, _CLI_HANDLER, False)]:
+        log.removeHandler(handler)  # repeated invocations in one process
+    if verbosity <= 0:
+        log.setLevel(logging.NOTSET)
+        return
+    handler: logging.Handler
+    if sys.stderr.isatty():
+        handler = RichHandler(
+            console=Console(stderr=True), show_path=False, markup=False
+        )
+    else:  # one unwrapped line per record, so log files stay greppable
+        handler = logging.StreamHandler(sys.stderr)
+        handler.setFormatter(
+            logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
+        )
+    setattr(handler, _CLI_HANDLER, True)
+    log.addHandler(handler)
+    log.setLevel(logging.WARNING if verbosity == 1 else logging.DEBUG)
+
+
 def _show_version(value: bool) -> None:
     if value:
         typer.echo(__version__)
@@ -200,6 +180,15 @@ def _main(
     base_url: Annotated[
         str, typer.Option(envvar="MUSICBRAINZ_URL", help="API root, e.g. a mirror")
     ] = consts.DEFAULT_BASE_URL,
+    verbose: Annotated[
+        int,
+        typer.Option(
+            "--verbose",
+            "-v",
+            count=True,
+            help="Log to stderr: -v retries/warnings, -vv every request.",
+        ),
+    ] = 0,
     _version: Annotated[
         bool,
         typer.Option(
@@ -210,13 +199,14 @@ def _main(
         ),
     ] = False,
 ) -> None:
+    _setup_logging(verbose)
     ctx.obj = _Settings(app=app_name, contact=contact, base_url=base_url)
 
 
 @app.command()
 def lookup(
     ctx: typer.Context,
-    entity: Annotated[LookupEntity, typer.Argument(help="Entity type")],
+    entity: Annotated[Entity, typer.Argument(help="Entity type")],
     mbid: Annotated[str, typer.Argument(help="MBID of the entity")],
     inc: Inc = None,
     release_type: ReleaseType = None,
@@ -255,7 +245,7 @@ def search(
 @app.command()
 def browse(
     ctx: typer.Context,
-    entity: Annotated[BrowseEntity, typer.Argument(help="Entity type to list")],
+    entity: Annotated[Entity, typer.Argument(help="Entity type to list")],
     area: Annotated[str | None, _link("area")] = None,
     artist: Annotated[str | None, _link("artist")] = None,
     collection: Annotated[str | None, _link("collection")] = None,

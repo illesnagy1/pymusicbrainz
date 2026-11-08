@@ -12,6 +12,8 @@ Quick start::
             print(rg.first_release_date, rg.title)
 """
 
+import logging
+
 from . import models, query
 from ._constants import (
     BROWSE_LINKS,
@@ -124,6 +126,11 @@ __all__ = [
     "models",
     "query",
 ]
+
+
+# Library convention: emit records, never configure output. Without this, Python's
+# last-resort handler would print our warnings in apps that set up no logging.
+logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 
 def main(argv: list[str] | None = None) -> None:
