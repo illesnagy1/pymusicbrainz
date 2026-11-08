@@ -15,8 +15,8 @@ if front:
     print(front.thumbnail(500))  # URL of the 500 px thumbnail
 ```
 
-A listing is a [`CoverArt`][musicbrainz.models.CoverArt] with a list of
-[`CoverArtImage`][musicbrainz.models.CoverArtImage]s. Each image has its
+A listing is a [`CoverArt`][pymusicbrainz.models.CoverArt] with a list of
+[`CoverArtImage`][pymusicbrainz.models.CoverArtImage]s. Each image has its
 `types` (`"Front"`, `"Back"`, `"Booklet"`, …), the `front`/`back` flags, an
 `approved` flag, a `comment`, and the URL of the original `image`.
 `thumbnail(size)` returns the URL of the 250, 500 or 1200 px version, or `None`
@@ -32,7 +32,7 @@ back = mb.cover_art.back(release_mbid)
 booklet = mb.cover_art.image(release_mbid, image="45224054828")  # by image ID
 ```
 
-Downloads return an [`ImageData`][musicbrainz.models.ImageData] with the bytes,
+Downloads return an [`ImageData`][pymusicbrainz.models.ImageData] with the bytes,
 the `content_type` and the final `url` after the redirect to archive.org.
 `size=` picks a thumbnail (250, 500 or 1200 px) instead of the original.
 
@@ -62,7 +62,7 @@ raises `ValidationError`.
 ## Errors and limits
 
 - A release or release group without cover art raises
-  [`NotFoundError`][musicbrainz.errors.NotFoundError], with the archive's
+  [`NotFoundError`][pymusicbrainz.errors.NotFoundError], with the archive's
   message ("No cover art found for release …").
 - The archive has no rate limit of its own, so these requests **don't wait**
   for the MusicBrainz rate limiter. Retries on 503 and network errors still

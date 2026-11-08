@@ -13,8 +13,8 @@ from typing import Any
 import pytest
 from pydantic import BaseModel
 
-from musicbrainz import CoverArt, Disc, Page
-from musicbrainz._core import Core
+from pymusicbrainz import CoverArt, Disc, Page
+from pymusicbrainz._core import Core
 
 FIXTURES = Path(__file__).parent / "fixtures"
 MANIFEST: dict[str, dict[str, Any]] = json.loads(

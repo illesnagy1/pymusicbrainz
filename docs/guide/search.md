@@ -40,7 +40,7 @@ mb.artists.search(artsit="Nirvana")
 ```
 
 The full lists are in
-[`SEARCH_FIELDS`][musicbrainz._constants.SEARCH_FIELDS], taken from the
+[`SEARCH_FIELDS`][pymusicbrainz._constants.SEARCH_FIELDS], taken from the
 [MusicBrainz search documentation](https://musicbrainz.org/doc/MusicBrainz_API/Search).
 If MusicBrainz adds a field before this library knows about it, create the
 client with `validate=False`, or put the term in the `query` string, which is
@@ -61,13 +61,13 @@ for text that contains special characters, escape it, or use the dismax
 parser, which treats the query as plain text:
 
 ```python
-from musicbrainz import escape
+from pymusicbrainz import escape
 
 mb.artists.search(escape("AC/DC"))
 mb.artists.search("AC/DC", dismax=True)
 ```
 
-`musicbrainz.query.build_query()` and `any_of()` build queries without
+`pymusicbrainz.query.build_query()` and `any_of()` build queries without
 sending them; see the [query reference](../reference/query.md).
 
 ## All results

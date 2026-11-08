@@ -11,7 +11,7 @@ import pytest
 from _support import ARTIST, COLL, RELEASE, Recorder, make, ok, present
 from httpx2 import codes
 
-from musicbrainz import (
+from pymusicbrainz import (
     AsyncMusicBrainz,
     AuthenticationRequiredError,
     BadRequestError,
@@ -26,7 +26,7 @@ from musicbrainz import (
     build_query,
     escape,
 )
-from musicbrainz._core import (
+from pymusicbrainz._core import (
     check_gtin,
     normalize_isrc,
     normalize_iswc,
@@ -66,7 +66,7 @@ def test_lookup_builds_url_and_parses() -> None:
     assert rec.last.url.path == f"/ws/2/artist/{ARTIST}"
     assert rec.params() == {"inc": ["aliases+url-rels+ratings"], "fmt": ["json"]}
     assert rec.last.headers["User-Agent"].startswith(
-        "TestApp/1.0 ( test@example.com ) python-musicbrainz/"
+        "TestApp/1.0 ( test@example.com ) pymusicbrainz/"
     )
     assert a.name == "Nirvana"
     assert a.sort_name == "Nirvana"
@@ -703,9 +703,9 @@ def test_hostile_xml_error_body_falls_back_to_reason(body: str) -> None:
 
 def test_requests_logged_at_debug(caplog: pytest.LogCaptureFixture) -> None:
     rec = Recorder(ok({"id": ARTIST}))
-    with caplog.at_level(logging.DEBUG, logger="musicbrainz"), make(rec) as mb:
+    with caplog.at_level(logging.DEBUG, logger="pymusicbrainz"), make(rec) as mb:
         mb.artists.get(ARTIST, inc="aliases")
-    (record,) = [r for r in caplog.records if r.name == "musicbrainz.client"]
+    (record,) = [r for r in caplog.records if r.name == "pymusicbrainz.client"]
     assert record.levelno == logging.DEBUG
     assert f"GET https://musicbrainz.org/ws/2/artist/{ARTIST}?inc=aliases" in (
         record.getMessage()
@@ -719,7 +719,7 @@ def test_retries_logged_as_warnings(caplog: pytest.LogCaptureFixture) -> None:
         httpx2.ReadTimeout("slow"),
         ok({"id": ARTIST}),
     )
-    with caplog.at_level(logging.WARNING, logger="musicbrainz"), make(rec) as mb:
+    with caplog.at_level(logging.WARNING, logger="pymusicbrainz"), make(rec) as mb:
         mb.artists.get(ARTIST)
     messages = [r.getMessage() for r in caplog.records]
     assert len(messages) == 2
@@ -730,7 +730,7 @@ def test_retries_logged_as_warnings(caplog: pytest.LogCaptureFixture) -> None:
 def test_credentials_never_logged(caplog: pytest.LogCaptureFixture) -> None:
     rec = Recorder(httpx2.Response(codes.OK, text="<metadata/>"))
     with (
-        caplog.at_level(logging.DEBUG, logger="musicbrainz"),
+        caplog.at_level(logging.DEBUG, logger="pymusicbrainz"),
         make(rec, oauth_token="s3cret-token") as mb,
     ):
         mb.submit_ratings("artist", {ARTIST: 80})
@@ -747,7 +747,7 @@ def test_library_is_silent_by_default(capfd: pytest.CaptureFixture[str]) -> None
 
 def test_rate_limit_wait_logged(caplog: pytest.LogCaptureFixture) -> None:
     limiter = RateLimiter(requests_per_second=20)
-    with caplog.at_level(logging.DEBUG, logger="musicbrainz"):
+    with caplog.at_level(logging.DEBUG, logger="pymusicbrainz"):
         limiter.acquire()
         limiter.acquire()
     assert any("rate limit: waiting" in r.getMessage() for r in caplog.records)
@@ -783,7 +783,7 @@ def test_custom_auth_and_base_url() -> None:
         mb.artists.get(ARTIST)
     assert str(rec.last.url).startswith(f"https://mirror.example/ws/2/artist/{ARTIST}")
     assert rec.last.headers["Authorization"].startswith("Basic ")
-    assert mb.user_agent.startswith("A/1 python-musicbrainz/")  # no contact part
+    assert mb.user_agent.startswith("A/1 pymusicbrainz/")  # no contact part
 
 
 def test_resource_lookup_and_repr() -> None:

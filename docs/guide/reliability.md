@@ -17,7 +17,7 @@ Each client has its own limiter. If one process uses several clients, give
 them a shared one so that together they stay within the limit:
 
 ```python
-from musicbrainz import RateLimiter
+from pymusicbrainz import RateLimiter
 
 limiter = RateLimiter(requests_per_second=1)
 a = MusicBrainz("MyApp", "1.0", rate_limiter=limiter)
@@ -25,7 +25,7 @@ b = MusicBrainz("MyApp", "1.0", rate_limiter=limiter)
 ```
 
 `RateLimiter` is thread-safe. Use
-[`AsyncRateLimiter`][musicbrainz.AsyncRateLimiter] for async clients.
+[`AsyncRateLimiter`][pymusicbrainz.AsyncRateLimiter] for async clients.
 
 ## Proxies
 
@@ -38,7 +38,7 @@ MusicBrainz("MyApp", "1.0", proxy="http://proxy.example.org:3128")
 MusicBrainz("MyApp", "1.0", proxy="socks5://localhost:1080")
 ```
 
-SOCKS proxies need the `socks` extra: `pip install 'musicbrainz[socks]'`.
+SOCKS proxies need the `socks` extra: `pip install 'pymusicbrainz[socks]'`.
 The proxy is used for every request, including Cover Art Archive downloads.
 For anything more involved, such as different proxies per host, pass your own
 `httpx2` transport as `transport=`.
@@ -65,7 +65,7 @@ default). Either way it is capped at 60 seconds.
 ## Errors
 
 Every exception derives from
-[`MusicBrainzError`][musicbrainz.errors.MusicBrainzError]:
+[`MusicBrainzError`][pymusicbrainz.errors.MusicBrainzError]:
 
 | Exception | Raised when |
 |---|---|
@@ -84,7 +84,7 @@ A `ResponseError` has `status_code`, the server's `message`, its `help` text
 if any, and the request `url`:
 
 ```python
-from musicbrainz import NotFoundError
+from pymusicbrainz import NotFoundError
 
 try:
     mb.artists.get(mbid)
@@ -95,14 +95,14 @@ except NotFoundError as exc:
 ## Logging
 
 The library logs through the standard `logging` module, under the
-`musicbrainz` logger. Nothing is printed unless your application configures
+`pymusicbrainz` logger. Nothing is printed unless your application configures
 logging.
 
 | Logger | Level | Message |
 |---|---|---|
-| `musicbrainz.client` | `DEBUG` | Every HTTP attempt: method, full URL, status and time taken. |
-| `musicbrainz.client` | `WARNING` | Every retry: what failed, the attempt number and the delay. |
-| `musicbrainz._ratelimit` | `DEBUG` | Rate-limiter waits of 10 ms or more. |
+| `pymusicbrainz.client` | `DEBUG` | Every HTTP attempt: method, full URL, status and time taken. |
+| `pymusicbrainz.client` | `WARNING` | Every retry: what failed, the attempt number and the delay. |
+| `pymusicbrainz._ratelimit` | `DEBUG` | Rate-limiter waits of 10 ms or more. |
 
 Headers (including `Authorization`) and response bodies are never logged.
 
@@ -110,7 +110,7 @@ Headers (including `Authorization`) and response bodies are never logged.
 import logging
 
 logging.basicConfig(level=logging.WARNING)  # see retries
-logging.getLogger("musicbrainz").setLevel(logging.DEBUG)  # see every request
+logging.getLogger("pymusicbrainz").setLevel(logging.DEBUG)  # see every request
 ```
 
 The [CLI](../cli.md) turns this on with `-v` and `-vv`.

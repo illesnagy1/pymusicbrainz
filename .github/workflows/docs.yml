@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/configure-pages@v6
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e  # v10.3.2 (no floating major tags)
       # Zensical advises against CI caches while its caching is revised, so
       # every build is clean.
       - run: uv run --locked --only-group docs zensical build --clean

@@ -12,7 +12,7 @@ import pytest
 from _support import ARTIST, COLL, RELEASE
 from httpx2 import codes
 
-from musicbrainz import (
+from pymusicbrainz import (
     AuthenticationError,
     BadRequestError,
     ForbiddenError,
@@ -22,8 +22,8 @@ from musicbrainz import (
     ServerError,
     ValidationError,
 )
-from musicbrainz import _constants as consts
-from musicbrainz._core import (
+from pymusicbrainz import _constants as consts
+from pymusicbrainz._core import (
     Call,
     Core,
     check_gtin,
@@ -32,7 +32,7 @@ from musicbrainz._core import (
     raise_for_response,
     retry_delay,
 )
-from musicbrainz.errors import error_for_status
+from pymusicbrainz.errors import error_for_status
 
 core = Core(client_id="App-1.0", has_auth=True)
 

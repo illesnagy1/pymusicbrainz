@@ -9,7 +9,7 @@ import pytest
 from _support import ARTIST, COLL, RELEASE, Recorder, make_async, ok
 from httpx2 import codes
 
-from musicbrainz import (
+from pymusicbrainz import (
     AsyncMusicBrainz,
     AuthenticationRequiredError,
     CDStub,
@@ -161,7 +161,7 @@ async def test_retries_and_logging(caplog: pytest.LogCaptureFixture) -> None:
         ok({"id": ARTIST}),
     )
     async with make_async(rec) as mb:
-        with caplog.at_level(logging.DEBUG, logger="musicbrainz"):
+        with caplog.at_level(logging.DEBUG, logger="pymusicbrainz"):
             await mb.artists.get(ARTIST)
     warnings = [r for r in caplog.records if r.levelno == logging.WARNING]
     assert len(warnings) == 2

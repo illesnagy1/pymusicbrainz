@@ -14,7 +14,7 @@ import sys
 
 import anyio
 
-from musicbrainz import AsyncMusicBrainz, MusicBrainzError
+from pymusicbrainz import AsyncMusicBrainz, MusicBrainzError
 
 
 async def lookup(mb: AsyncMusicBrainz, isrc: str, results: dict[str, str]) -> None:
@@ -33,7 +33,7 @@ async def run(isrcs: list[str]) -> None:
     results: dict[str, str] = {}
     async with (
         AsyncMusicBrainz(
-            "musicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
+            "pymusicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
         ) as mb,
         anyio.create_task_group() as tg,
     ):

@@ -1,6 +1,7 @@
 # Examples
 
-Runnable scripts in the repository's `examples/` folder. Each one is a
+Runnable scripts in the repository's
+[`examples/`](https://github.com/illesnagy1/pymusicbrainz/tree/main/examples) folder. Each one is a
 complete program with `--help`. Set `MUSICBRAINZ_CONTACT` to your e-mail
 address or URL so MusicBrainz can reach you if a script misbehaves.
 

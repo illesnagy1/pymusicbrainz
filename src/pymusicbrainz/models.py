@@ -320,7 +320,7 @@ class Disc(MBModel):
     """A disc ID and the releases it belongs to.
 
     Returned by
-    [`MusicBrainz.lookup_discid`][musicbrainz.client.MusicBrainz.lookup_discid].
+    [`MusicBrainz.lookup_discid`][pymusicbrainz.client.MusicBrainz.lookup_discid].
     """
 
     id: str | None = None

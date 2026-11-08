@@ -9,8 +9,8 @@ import pytest
 from httpx2 import codes
 from typer.testing import CliRunner
 
-from musicbrainz import MusicBrainz, cli
-from musicbrainz import _constants as consts
+from pymusicbrainz import MusicBrainz, cli
+from pymusicbrainz import _constants as consts
 
 ARTIST = "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
 runner = CliRunner()

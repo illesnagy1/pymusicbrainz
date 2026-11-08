@@ -13,8 +13,8 @@ import pytest
 from _support import ARTIST
 from rich.logging import RichHandler
 
-import musicbrainz
-from musicbrainz import (
+import pymusicbrainz
+from pymusicbrainz import (
     AsyncMusicBrainz,
     AsyncRateLimiter,
     Collection,
@@ -27,9 +27,9 @@ from musicbrainz import (
     _ratelimit,
     cli,
 )
-from musicbrainz import client as client_module
-from musicbrainz.models import ArtistCredit, credit_string
-from musicbrainz.query import any_of, build_query
+from pymusicbrainz import client as client_module
+from pymusicbrainz.models import ArtistCredit, credit_string
+from pymusicbrainz.query import any_of, build_query
 
 # ------------------------------------------------------------------ models
 
@@ -142,7 +142,7 @@ def test_emit_pretty_prints_on_a_tty(
 
 def test_logging_uses_rich_on_a_tty(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(sys.stderr, "isatty", lambda: True)
-    log = logging.getLogger("musicbrainz")
+    log = logging.getLogger("pymusicbrainz")
     try:
         cli._setup_logging(1)  # noqa: SLF001
         assert any(isinstance(h, RichHandler) for h in log.handlers)
@@ -155,13 +155,13 @@ def test_logging_uses_rich_on_a_tty(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_console_entry_point(capsys: pytest.CaptureFixture[str]) -> None:
     with pytest.raises(SystemExit) as exc:
-        musicbrainz.main(["--version"])
+        pymusicbrainz.main(["--version"])
     assert exc.value.code == 0
-    assert capsys.readouterr().out.strip() == musicbrainz.__version__
+    assert capsys.readouterr().out.strip() == pymusicbrainz.__version__
 
 
 def test_tiny_rate_limit_waits_not_logged(caplog: pytest.LogCaptureFixture) -> None:
-    with caplog.at_level(logging.DEBUG, logger="musicbrainz"):
+    with caplog.at_level(logging.DEBUG, logger="pymusicbrainz"):
         _ratelimit._log_wait(0.001)  # noqa: SLF001
         _ratelimit._log_wait(0.5)  # noqa: SLF001
     assert [r.getMessage() for r in caplog.records] == ["rate limit: waiting 0.50s"]
@@ -192,7 +192,7 @@ def test_proxy_passed_to_http_client(monkeypatch: pytest.MonkeyPatch) -> None:
 
 @pytest.mark.skipif(find_spec("socksio") is not None, reason="socks extra installed")
 def test_socks_without_extra_gives_our_hint() -> None:
-    with pytest.raises(ImportError, match=r"musicbrainz\[socks\]"):
+    with pytest.raises(ImportError, match=r"pymusicbrainz\[socks\]"):
         MusicBrainz("A", "1", proxy="socks5://proxy.example:1080")
 
 
@@ -206,9 +206,9 @@ def test_other_import_errors_propagate(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def test_console_script_without_cli_extra(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.delitem(sys.modules, "musicbrainz.cli")  # force a fresh import
+    monkeypatch.delitem(sys.modules, "pymusicbrainz.cli")  # force a fresh import
     monkeypatch.setitem(sys.modules, "typer", None)  # as if typer weren't installed
     with pytest.raises(SystemExit) as exc:
-        musicbrainz.main(["--version"])
-    assert "pip install 'musicbrainz[cli]'" in str(exc.value.code)
+        pymusicbrainz.main(["--version"])
+    assert "pip install 'pymusicbrainz[cli]'" in str(exc.value.code)
     assert "typer is missing" in str(exc.value.code)

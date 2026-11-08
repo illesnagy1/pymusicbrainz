@@ -13,7 +13,7 @@ import argparse
 import os
 import sys
 
-from musicbrainz import CDStub, MusicBrainz
+from pymusicbrainz import CDStub, MusicBrainz
 
 
 def read_drive(device: str | None) -> tuple[str, str | None]:
@@ -37,7 +37,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Disc ID: {disc_id}")
 
     with MusicBrainz(
-        "musicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
+        "pymusicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
     ) as mb:
         # With the TOC, MusicBrainz can also fuzzy-match discs whose exact ID
         # hasn't been submitted yet.

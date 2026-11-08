@@ -94,7 +94,7 @@ class _Config:
         self.user_agent = (
             f"{app}/{version}"
             + (f" ( {contact} )" if contact else "")
-            + f" python-musicbrainz/{__version__}"
+            + f" pymusicbrainz/{__version__}"
         )
         if sum(x is not None for x in (password, oauth_token, auth)) > 1:
             raise ValidationError(
@@ -150,7 +150,7 @@ def _http_client[C: (httpx2.Client, httpx2.AsyncClient)](factory: Callable[[], C
     except ImportError as exc:
         if "socksio" not in str(exc):
             raise
-        msg = "SOCKS proxies need the socks extra: pip install 'musicbrainz[socks]'"
+        msg = "SOCKS proxies need the socks extra: pip install 'pymusicbrainz[socks]'"
         raise ImportError(msg) from exc
 
 
@@ -598,7 +598,7 @@ class CoverArtResource:
     ) -> models.ImageData:
         """Download the main front cover.
 
-        See [`image`][musicbrainz.client.CoverArtResource.image].
+        See [`image`][pymusicbrainz.client.CoverArtResource.image].
         """
         return self.image(mbid, "front", size=size, release_group=release_group)
 
@@ -622,7 +622,7 @@ class MusicBrainz:
     """Synchronous MusicBrainz WS/2 client.
 
     Entity namespaces (`areas`, `artists`, `release_groups`, ...) are
-    [`EntityResource`][musicbrainz.client.EntityResource] instances; see the
+    [`EntityResource`][pymusicbrainz.client.EntityResource] instances; see the
     [API overview](../guide/lookups.md) for what they can do.
 
     Example:
@@ -672,7 +672,7 @@ class MusicBrainz:
             base_url: API root, e.g. a private mirror.
             caa_url: Cover Art Archive root.
             rate_limit: Maximum requests per second; `None` disables limiting.
-            rate_limiter: A [`RateLimiter`][musicbrainz.RateLimiter] shared with other
+            rate_limiter: A [`RateLimiter`][pymusicbrainz.RateLimiter] shared with other
                 clients; overrides `rate_limit`.
             max_retries: Retries on 429/502/503/504 responses and network
                 errors.
@@ -772,8 +772,8 @@ class MusicBrainz:
         """Releases for a disc ID.
 
         Pass ``toc`` for fuzzy matching (use ``discid="-"`` for TOC-only).
-        Returns a [`Disc`][musicbrainz.models.Disc] (with ``releases``) or,
-        if only a CD stub matches, a [`CDStub`][musicbrainz.models.CDStub].
+        Returns a [`Disc`][pymusicbrainz.models.Disc] (with ``releases``) or,
+        if only a CD stub matches, a [`CDStub`][pymusicbrainz.models.CDStub].
         """
         return self._session.run(
             self._core.lookup_discid(
@@ -928,7 +928,7 @@ class _AsyncSession:
 
 
 class AsyncEntityResource[T]:
-    """Async counterpart of [`EntityResource`][musicbrainz.client.EntityResource]."""
+    """Async counterpart of [`EntityResource`][pymusicbrainz.client.EntityResource]."""
 
     def __init__(self, session: _AsyncSession, entity: str) -> None:
         """Created by the client; not meant to be instantiated directly."""
@@ -950,7 +950,7 @@ class AsyncEntityResource[T]:
     ) -> T:
         """Look up one entity by MBID.
 
-        See [`EntityResource.get`][musicbrainz.client.EntityResource.get].
+        See [`EntityResource.get`][pymusicbrainz.client.EntityResource.get].
         """
         return await self._session.run(
             self._core.lookup(self.entity, mbid, inc, release_type, release_status)
@@ -970,7 +970,7 @@ class AsyncEntityResource[T]:
         """Browse linked entities.
 
         See
-        [`EntityResource.browse`][musicbrainz.client.EntityResource.browse].
+        [`EntityResource.browse`][pymusicbrainz.client.EntityResource.browse].
         """
         return await self._session.run(
             self._core.browse(
@@ -1023,7 +1023,7 @@ class AsyncEntityResource[T]:
         """Search an entity index.
 
         See
-        [`EntityResource.search`][musicbrainz.client.EntityResource.search].
+        [`EntityResource.search`][pymusicbrainz.client.EntityResource.search].
         """
         return await self._session.run(
             self._core.search(self.entity, query, fields, limit, offset, dismax)
@@ -1061,7 +1061,7 @@ class AsyncSearchOnlyResource[T]:
 
 
 class AsyncUrlResource(AsyncEntityResource[models.Url]):
-    """Async counterpart of [`UrlResource`][musicbrainz.client.UrlResource]."""
+    """Async counterpart of [`UrlResource`][pymusicbrainz.client.UrlResource]."""
 
     async def by_resource(self, url: str, *, inc: Includes = None) -> models.Url:
         """Look up a URL entity by its text.
@@ -1088,7 +1088,7 @@ class AsyncUrlResource(AsyncEntityResource[models.Url]):
 class AsyncGenreResource(AsyncEntityResource[models.Genre]):
     """Async genres namespace.
 
-    See [`GenreResource`][musicbrainz.client.GenreResource].
+    See [`GenreResource`][pymusicbrainz.client.GenreResource].
     """
 
     async def all(
@@ -1113,7 +1113,7 @@ class AsyncGenreResource(AsyncEntityResource[models.Genre]):
 class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
     """Async collections namespace.
 
-    See [`CollectionResource`][musicbrainz.client.CollectionResource].
+    See [`CollectionResource`][pymusicbrainz.client.CollectionResource].
     """
 
     async def of_editor(
@@ -1175,7 +1175,7 @@ class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
 class AsyncCoverArtResource:
     """Async Cover Art Archive namespace.
 
-    See [`CoverArtResource`][musicbrainz.client.CoverArtResource].
+    See [`CoverArtResource`][pymusicbrainz.client.CoverArtResource].
     """
 
     def __init__(self, session: _AsyncSession) -> None:
@@ -1203,7 +1203,7 @@ class AsyncCoverArtResource:
     ) -> models.ImageData:
         """Download an image.
 
-        See [`CoverArtResource.image`][musicbrainz.client.CoverArtResource.image].
+        See [`CoverArtResource.image`][pymusicbrainz.client.CoverArtResource.image].
         """
         return await self._session.run(
             self._core.cover_art_image(mbid, image, size, release_group=release_group)
@@ -1240,7 +1240,7 @@ class AsyncCoverArtResource:
 class AsyncMusicBrainz:
     """Asynchronous MusicBrainz WS/2 client (asyncio or trio).
 
-    The same API as [`MusicBrainz`][musicbrainz.client.MusicBrainz]: every
+    The same API as [`MusicBrainz`][pymusicbrainz.client.MusicBrainz]: every
     request method is awaited, and iterators are async iterators.
 
     Example:
@@ -1291,7 +1291,7 @@ class AsyncMusicBrainz:
             caa_url: Cover Art Archive root.
             rate_limit: Maximum requests per second; `None` disables limiting.
             rate_limiter: An
-                [`AsyncRateLimiter`][musicbrainz.AsyncRateLimiter] shared with
+                [`AsyncRateLimiter`][pymusicbrainz.AsyncRateLimiter] shared with
                 other clients; overrides `rate_limit`.
             max_retries: Retries on 429/502/503/504 responses and network
                 errors.
@@ -1389,7 +1389,7 @@ class AsyncMusicBrainz:
         """Releases for a disc ID.
 
         See
-        [`MusicBrainz.lookup_discid`][musicbrainz.client.MusicBrainz.lookup_discid].
+        [`MusicBrainz.lookup_discid`][pymusicbrainz.client.MusicBrainz.lookup_discid].
         """
         return await self._session.run(
             self._core.lookup_discid(
@@ -1424,7 +1424,7 @@ class AsyncMusicBrainz:
     ) -> None:
         """Tag entities.
 
-        See [`MusicBrainz.submit_tags`][musicbrainz.client.MusicBrainz.submit_tags].
+        See [`MusicBrainz.submit_tags`][pymusicbrainz.client.MusicBrainz.submit_tags].
         """
         await self._session.run(self._core.submit_tags(entity, tags, vote))
 

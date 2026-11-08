@@ -1,5 +1,5 @@
 # Query helpers
 
-::: musicbrainz.query
+::: pymusicbrainz.query
     options:
       show_root_heading: false

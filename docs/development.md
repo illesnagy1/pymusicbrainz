@@ -88,7 +88,7 @@ lets most logic be tested without a client at all (`tests/test_core.py`).
 These pages are built with [Zensical](https://zensical.org/) from `docs/`;
 the API reference is generated from docstrings by mkdocstrings. Docstrings
 use the Google style (`Args:`, `Returns:`, `Raises:`), and cross-references
-are written as `` [`Name`][musicbrainz.module.Name] ``. Ruff enforces both
+are written as `` [`Name`][pymusicbrainz.module.Name] ``. Ruff enforces both
 docstring presence and Google style (the `D` rules with
 `convention = "google"`); tests are exempt from needing docstrings.
 

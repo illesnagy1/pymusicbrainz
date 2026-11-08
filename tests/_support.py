@@ -7,7 +7,7 @@ from urllib.parse import parse_qs
 import httpx2
 from httpx2 import codes
 
-from musicbrainz import AsyncMusicBrainz, MusicBrainz
+from pymusicbrainz import AsyncMusicBrainz, MusicBrainz
 
 ARTIST = "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
 RELEASE = "a4864e94-6d75-4ade-bc93-0dabf3521453"

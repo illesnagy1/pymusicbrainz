@@ -1,4 +1,4 @@
-# musicbrainz
+# pymusicbrainz
 
 A typed Python client for the
 [MusicBrainz WS/2 API](https://musicbrainz.org/doc/MusicBrainz_API) and the
@@ -6,7 +6,7 @@ A typed Python client for the
 rate limiting and retries built in, and a JSON command-line tool.
 
 ```python
-from musicbrainz import MusicBrainz
+from pymusicbrainz import MusicBrainz
 
 with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
     nirvana = mb.artists.search(artist="Nirvana", country="US", limit=1)[0]
@@ -16,7 +16,7 @@ with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
 ```
 
 ```sh
-musicbrainz search artist "Daft Punk" --limit 3
+pymusicbrainz search artist "Daft Punk" --limit 3
 ```
 
 ## Installation
@@ -24,18 +24,18 @@ musicbrainz search artist "Daft Punk" --limit 3
 Requires Python 3.12 or later.
 
 ```sh
-uv add musicbrainz            # the library
-uv add 'musicbrainz[cli]'     # plus the musicbrainz command
+uv add pymusicbrainz            # the library
+uv add 'pymusicbrainz[cli]'     # plus the pymusicbrainz command
 ```
 
-Runnable scripts are in [`examples/`](examples/): an artist's discography,
+Runnable scripts are in [`examples/`](https://github.com/illesnagy1/pymusicbrainz/tree/main/examples): an artist's discography,
 cover art download, identifying a CD, concurrent ISRC lookups, and collection
 export.
 
 ## Documentation
 
-The full guide and API reference are in [`docs/`](docs/index.md). To browse
-them locally:
+The full guide and API reference are at
+<https://illesnagy1.github.io/pymusicbrainz/>. To browse them locally:
 
 ```sh
 uv run zensical serve
@@ -50,5 +50,5 @@ uv run ruff check .  # lint
 uv run ty check      # type check
 ```
 
-See [docs/development.md](docs/development.md) for the architecture and
+See the [development guide](https://illesnagy1.github.io/pymusicbrainz/development/) for the architecture and
 conventions.

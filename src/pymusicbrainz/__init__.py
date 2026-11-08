@@ -2,7 +2,7 @@
 
 Quick start::
 
-    from musicbrainz import MusicBrainz
+    from pymusicbrainz import MusicBrainz
 
     with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
         nirvana = mb.artists.search(artist="Nirvana", limit=1)[0]
@@ -152,7 +152,7 @@ def main(argv: list[str] | None = None) -> None:
         from .cli import main as _main
     except ImportError as exc:
         sys.exit(
-            f"The musicbrainz command needs the cli extra ({exc.name} is missing):\n"
-            "    pip install 'musicbrainz[cli]'"
+            f"The pymusicbrainz command needs the cli extra ({exc.name} is missing):\n"
+            "    pip install 'pymusicbrainz[cli]'"
         )
     _main(argv)

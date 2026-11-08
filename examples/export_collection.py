@@ -14,7 +14,7 @@ import csv
 import os
 import sys
 
-from musicbrainz import MusicBrainz
+from pymusicbrainz import MusicBrainz
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -26,7 +26,7 @@ def main(argv: list[str] | None = None) -> int:
 
     username = os.environ.get("MUSICBRAINZ_USERNAME") if args.private else None
     with MusicBrainz(
-        "musicbrainz-examples",
+        "pymusicbrainz-examples",
         "1",
         os.environ.get("MUSICBRAINZ_CONTACT"),
         username=username,

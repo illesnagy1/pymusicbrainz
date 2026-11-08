@@ -43,7 +43,7 @@ authentication.
     ```
 
 Pass only one of these. A submission or `user-*` include without credentials
-raises [`AuthenticationRequiredError`][musicbrainz.errors.AuthenticationRequiredError]
+raises [`AuthenticationRequiredError`][pymusicbrainz.errors.AuthenticationRequiredError]
 before anything is sent.
 
 !!! warning "Client version"

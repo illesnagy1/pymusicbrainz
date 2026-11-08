@@ -1,5 +1,9 @@
 [project]
-site_name = "musicbrainz"
+site_name = "pymusicbrainz"
+site_url = "https://illesnagy1.github.io/pymusicbrainz/"
+repo_url = "https://github.com/illesnagy1/pymusicbrainz"
+repo_name = "illesnagy1/pymusicbrainz"
+edit_uri = "edit/main/docs/"
 site_description = "A typed sync and async Python client for the MusicBrainz WS/2 API."
 docs_dir = "docs"
 nav = [

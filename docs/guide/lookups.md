@@ -7,9 +7,9 @@ artist = mb.artists.get("5b11f4ce-a62d-471e-81fc-a69a8278c7da")
 release = mb.releases.get(release_mbid)
 ```
 
-An invalid MBID raises [`ValidationError`][musicbrainz.errors.ValidationError]
+An invalid MBID raises [`ValidationError`][pymusicbrainz.errors.ValidationError]
 before any request is sent. An unknown one raises
-[`NotFoundError`][musicbrainz.errors.NotFoundError].
+[`NotFoundError`][pymusicbrainz.errors.NotFoundError].
 
 ## Includes
 
@@ -57,7 +57,7 @@ so on, one per entity type. Add `recording-level-rels`,
 nested entities as well.
 
 The complete per-entity list is in
-[`LOOKUP_INCLUDES`][musicbrainz._constants.LOOKUP_INCLUDES]. An include that
+[`LOOKUP_INCLUDES`][pymusicbrainz._constants.LOOKUP_INCLUDES]. An include that
 doesn't apply to the entity raises `ValidationError` and lists the allowed
 values. If MusicBrainz adds an include this library doesn't know about yet,
 create the client with `validate=False`.
@@ -108,7 +108,7 @@ accept a single value or a list.
 ## Relationships
 
 Relationship includes fill the `relations` list. Each
-[`Relation`][musicbrainz.models.Relation] has a `type`, a `target_type` and
+[`Relation`][pymusicbrainz.models.Relation] has a `type`, a `target_type` and
 the related entity in the attribute of that name:
 
 ```python

@@ -12,7 +12,7 @@ import os
 import sys
 from pathlib import Path
 
-from musicbrainz import MusicBrainz, NotFoundError
+from pymusicbrainz import MusicBrainz, NotFoundError
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -25,7 +25,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     with MusicBrainz(
-        "musicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
+        "pymusicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
     ) as mb:
         # Search release groups (albums), not releases: a release group's
         # cover is the one the community picked among all its editions.

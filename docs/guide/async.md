@@ -1,12 +1,12 @@
 # Async
 
-[`AsyncMusicBrainz`][musicbrainz.client.AsyncMusicBrainz] has the same
+[`AsyncMusicBrainz`][pymusicbrainz.client.AsyncMusicBrainz] has the same
 constructor and methods as `MusicBrainz`. Request methods are awaited, and the
 `iter_*` methods return async iterators:
 
 ```python
 import anyio
-from musicbrainz import AsyncMusicBrainz
+from pymusicbrainz import AsyncMusicBrainz
 
 
 async def main() -> None:
@@ -40,7 +40,7 @@ async with anyio.create_task_group() as tg:
 
 Against a private mirror, raise or disable the limit with `rate_limit=`. To
 share one budget between several async clients, create an
-[`AsyncRateLimiter`][musicbrainz.AsyncRateLimiter] and pass it as
+[`AsyncRateLimiter`][pymusicbrainz.AsyncRateLimiter] and pass it as
 `rate_limiter=` to each.
 
 ## Differences from the sync client

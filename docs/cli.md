@@ -1,26 +1,26 @@
 # Command line
 
-The `musicbrainz` command comes with the `cli` extra:
+The `pymusicbrainz` command comes with the `cli` extra:
 
 ```sh
-pip install 'musicbrainz[cli]'      # or: uv tool install 'musicbrainz[cli]'
+pip install 'pymusicbrainz[cli]'      # or: uv tool install 'pymusicbrainz[cli]'
 ```
 
 It prints results as JSON: pretty-printed in a terminal, plain when piped, for example into `jq`.
 
 ```sh
-musicbrainz search artist "Daft Punk" --limit 3
-musicbrainz lookup artist 5b11f4ce-a62d-471e-81fc-a69a8278c7da -i aliases,url-rels
-musicbrainz browse release-group --artist 5b11f4ce-a62d-471e-81fc-a69a8278c7da --type album --all
-musicbrainz isrc USGF19942501
-musicbrainz iswc T-070.243.691-6
-musicbrainz discid 2y0jFMwYQP7gb9iSUKagmoT6DIw-
-musicbrainz url https://www.discogs.com/artist/125246
-musicbrainz cover-art 0fb1bdd3-1443-4569-943f-fc69c6424f99 -o cover.jpg --size 500
-musicbrainz genres
+pymusicbrainz search artist "Daft Punk" --limit 3
+pymusicbrainz lookup artist 5b11f4ce-a62d-471e-81fc-a69a8278c7da -i aliases,url-rels
+pymusicbrainz browse release-group --artist 5b11f4ce-a62d-471e-81fc-a69a8278c7da --type album --all
+pymusicbrainz isrc USGF19942501
+pymusicbrainz iswc T-070.243.691-6
+pymusicbrainz discid 2y0jFMwYQP7gb9iSUKagmoT6DIw-
+pymusicbrainz url https://www.discogs.com/artist/125246
+pymusicbrainz cover-art 0fb1bdd3-1443-4569-943f-fc69c6424f99 -o cover.jpg --size 500
+pymusicbrainz genres
 ```
 
-`musicbrainz --help` and `musicbrainz <command> --help` list every option.
+`pymusicbrainz --help` and `pymusicbrainz <command> --help` list every option.
 
 ## Commands
 
@@ -42,12 +42,12 @@ Includes can be repeated (`-i aliases -i tags`) or comma-separated
 
 | Option | Environment variable | Default |
 |---|---|---|
-| `--app` | `MUSICBRAINZ_APP` | `musicbrainz-cli` |
+| `--app` | `MUSICBRAINZ_APP` | `pymusicbrainz-cli` |
 | `--contact` | `MUSICBRAINZ_CONTACT` | none |
 | `--base-url` | `MUSICBRAINZ_URL` | `https://musicbrainz.org/ws/2/` |
 | `-v`, `-vv` | | Log retries (`-v`) or every request (`-vv`) to stderr. |
 
-Global options go before the command: `musicbrainz -vv --contact me@example.com lookup …`.
+Global options go before the command: `pymusicbrainz -vv --contact me@example.com lookup …`.
 
 ## Exit codes
 
@@ -57,4 +57,4 @@ Global options go before the command: `musicbrainz -vv --contact me@example.com 
 | 1 | An API or validation error. The message goes to stderr. |
 | 2 | A usage error, such as an unknown command or entity. |
 
-Shell completion: `musicbrainz --install-completion`.
+Shell completion: `pymusicbrainz --install-completion`.

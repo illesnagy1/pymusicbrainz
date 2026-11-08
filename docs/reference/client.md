@@ -1,8 +1,8 @@
 # Clients
 
-::: musicbrainz.client.MusicBrainz
+::: pymusicbrainz.client.MusicBrainz
 
-::: musicbrainz.client.AsyncMusicBrainz
+::: pymusicbrainz.client.AsyncMusicBrainz
 
 ## Entity namespaces
 
@@ -10,28 +10,28 @@ The attributes of a client (`mb.artists`, `mb.releases`, …) are instances of
 these classes. The async client uses `Async`-prefixed twins with the same
 methods, awaited.
 
-::: musicbrainz.client.EntityResource
+::: pymusicbrainz.client.EntityResource
 
-::: musicbrainz.client.UrlResource
+::: pymusicbrainz.client.UrlResource
     options:
       inherited_members: false
 
-::: musicbrainz.client.GenreResource
+::: pymusicbrainz.client.GenreResource
     options:
       inherited_members: false
 
-::: musicbrainz.client.CollectionResource
+::: pymusicbrainz.client.CollectionResource
     options:
       inherited_members: false
 
-::: musicbrainz.client.CoverArtResource
+::: pymusicbrainz.client.CoverArtResource
 
-::: musicbrainz.client.SearchOnlyResource
+::: pymusicbrainz.client.SearchOnlyResource
     options:
       members: []
 
 ## Rate limiters
 
-::: musicbrainz.RateLimiter
+::: pymusicbrainz.RateLimiter
 
-::: musicbrainz.AsyncRateLimiter
+::: pymusicbrainz.AsyncRateLimiter

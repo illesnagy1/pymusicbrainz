@@ -45,7 +45,7 @@ bootlegs = mb.releases.browse(
 
 Includes work as in [lookups](lookups.md#includes), but the allowed set is
 different: see
-[`BROWSE_INCLUDES`][musicbrainz._constants.BROWSE_INCLUDES].
+[`BROWSE_INCLUDES`][pymusicbrainz._constants.BROWSE_INCLUDES].
 
 ## Paging
 

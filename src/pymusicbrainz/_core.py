@@ -1,6 +1,6 @@
 """Sans-IO core: builds request descriptions and parses responses.
 
-No networking happens here; the clients in `musicbrainz.client` execute the
+No networking happens here; the clients in `pymusicbrainz.client` execute the
 `Call` objects built by `Core`.
 """
 
@@ -709,7 +709,7 @@ def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> 
 
     Raises:
         ResponseError: A subclass chosen by status code; see
-            [`error_for_status`][musicbrainz.errors.error_for_status].
+            [`error_for_status`][pymusicbrainz.errors.error_for_status].
     """
     if codes.is_success(status):
         return

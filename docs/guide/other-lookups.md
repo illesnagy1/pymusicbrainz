@@ -8,7 +8,7 @@ A [disc ID](https://musicbrainz.org/doc/Disc_ID) identifies a CD by its table
 of contents:
 
 ```python
-from musicbrainz import CDStub, Disc
+from pymusicbrainz import CDStub, Disc
 
 result = mb.lookup_discid("2y0jFMwYQP7gb9iSUKagmoT6DIw-", inc="artist-credits")
 if isinstance(result, Disc):
@@ -18,8 +18,8 @@ elif isinstance(result, CDStub):
     print("only a CD stub:", result.title, "by", result.artist)
 ```
 
-The result is a [`Disc`][musicbrainz.models.Disc] with the matching releases,
-or a [`CDStub`][musicbrainz.models.CDStub] if only an unreviewed stub
+The result is a [`Disc`][pymusicbrainz.models.Disc] with the matching releases,
+or a [`CDStub`][pymusicbrainz.models.CDStub] if only an unreviewed stub
 matches. `inc` accepts the same values as a release lookup.
 
 | Argument | Effect |

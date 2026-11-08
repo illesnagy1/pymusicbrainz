@@ -10,7 +10,7 @@ import argparse
 import os
 import sys
 
-from musicbrainz import MusicBrainz
+from pymusicbrainz import MusicBrainz
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -21,7 +21,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     with MusicBrainz(
-        "musicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
+        "pymusicbrainz-examples", "1", os.environ.get("MUSICBRAINZ_CONTACT")
     ) as mb:
         # The best search match (results are sorted by score).
         hits = mb.artists.search(artist=args.artist, limit=1)

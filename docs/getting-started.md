@@ -3,7 +3,7 @@
 ## Create a client
 
 ```python
-from musicbrainz import MusicBrainz
+from pymusicbrainz import MusicBrainz
 
 mb = MusicBrainz("MyApp", "1.0", "me@example.com")
 ```
@@ -17,7 +17,7 @@ The three arguments build the `User-Agent` header, which
 | `version` | Your application's version. Avoid hyphens if you plan to submit data, because the API rejects client IDs whose version contains one. |
 | `contact` | Optional, but recommended: a URL or e-mail address where MusicBrainz admins can reach you. |
 
-The example above sends `MyApp/1.0 ( me@example.com ) python-musicbrainz/0.1.0`.
+The example above sends `MyApp/1.0 ( me@example.com ) pymusicbrainz/0.1.0`.
 
 Use the client as a context manager, or call `close()` when you're done, so
 the underlying HTTP connections are released:
@@ -79,7 +79,7 @@ artist.life_span.end  # '1994-04-05'
 Fields the models don't define are kept rather than dropped. They are
 available in `model.model_extra`.
 
-Browse and search return a [`Page`][musicbrainz.models.Page]: a list of
+Browse and search return a [`Page`][pymusicbrainz.models.Page]: a list of
 models plus the total `count`, the `offset` and a `has_more` flag.
 
 ## What next

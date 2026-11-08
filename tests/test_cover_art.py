@@ -10,7 +10,7 @@ import pytest
 from _support import RELEASE, Recorder, make, make_async, ok, present
 from httpx2 import codes
 
-from musicbrainz import CoverArt, MusicBrainz, NotFoundError, ValidationError
+from pymusicbrainz import CoverArt, MusicBrainz, NotFoundError, ValidationError
 
 RG = "1b022e01-4da6-387b-8658-8678046e4cef"
 CAA = f"https://coverartarchive.org/release/{RELEASE}"

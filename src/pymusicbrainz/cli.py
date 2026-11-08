@@ -2,12 +2,12 @@ r"""Command-line interface (Typer) printing JSON.
 
 Examples::
 
-    musicbrainz search artist "Daft Punk" --limit 3
-    musicbrainz lookup artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56 -i aliases
-    musicbrainz browse release-group --type album --all \
+    pymusicbrainz search artist "Daft Punk" --limit 3
+    pymusicbrainz lookup artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56 -i aliases
+    pymusicbrainz browse release-group --type album --all \
         --artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56
-    musicbrainz isrc GBAYE0601498
-    musicbrainz url https://www.discogs.com/artist/1289
+    pymusicbrainz isrc GBAYE0601498
+    pymusicbrainz url https://www.discogs.com/artist/1289
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ from .errors import MusicBrainzError
 from .models import Page
 
 app = typer.Typer(
-    name="musicbrainz",
+    name="pymusicbrainz",
     help="Query the MusicBrainz API. Results are printed as JSON.",
     no_args_is_help=True,
     rich_markup_mode="rich",
@@ -45,7 +45,7 @@ _stderr = Console(stderr=True)
 
 @dataclass(slots=True)
 class _Settings:
-    app: str = "musicbrainz-cli"
+    app: str = "pymusicbrainz-cli"
     contact: str | None = None
     base_url: str = consts.DEFAULT_BASE_URL
 
@@ -95,7 +95,7 @@ def _run(ctx: typer.Context, action: Callable[[MusicBrainz], object]) -> None:
     _emit(result)
 
 
-_CLI_HANDLER = "_musicbrainz_cli"
+_CLI_HANDLER = "_pymusicbrainz_cli"
 
 
 def _setup_logging(verbosity: int) -> None:
@@ -103,7 +103,7 @@ def _setup_logging(verbosity: int) -> None:
 
     ``-v`` shows warnings (retries), ``-vv`` also shows every request.
     """
-    log = logging.getLogger("musicbrainz")
+    log = logging.getLogger("pymusicbrainz")
     for handler in [h for h in log.handlers if getattr(h, _CLI_HANDLER, False)]:
         log.removeHandler(handler)  # repeated invocations in one process
     if verbosity <= 0:
@@ -173,7 +173,7 @@ def _main(
         typer.Option(
             "--app", envvar="MUSICBRAINZ_APP", help="Application name for User-Agent"
         ),
-    ] = "musicbrainz-cli",
+    ] = "pymusicbrainz-cli",
     contact: Annotated[
         str | None,
         typer.Option(
@@ -418,7 +418,7 @@ def genres(ctx: typer.Context) -> None:
 
 def main(argv: list[str] | None = None) -> None:
     """Console-script entry point."""
-    app(args=argv, prog_name="musicbrainz")
+    app(args=argv, prog_name="pymusicbrainz")
 
 
 if __name__ == "__main__":

@@ -86,7 +86,7 @@ def error_for_status(
 
     Returns:
         An instance of the most specific subclass, e.g.
-        [`NotFoundError`][musicbrainz.errors.NotFoundError] for 404.
+        [`NotFoundError`][pymusicbrainz.errors.NotFoundError] for 404.
     """
     cls: type[ResponseError]
     match status_code:

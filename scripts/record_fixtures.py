@@ -19,8 +19,8 @@ from typing import Any
 
 import httpx2
 
-from musicbrainz import MusicBrainz
-from musicbrainz._core import JSON, Core
+from pymusicbrainz import MusicBrainz
+from pymusicbrainz._core import JSON, Core
 
 FIXTURES = Path(__file__).resolve().parent.parent / "tests" / "fixtures"
 
@@ -108,7 +108,7 @@ def main() -> int:
     manifest: dict[str, dict[str, Any]] = {}
     with (
         MusicBrainz(
-            "musicbrainz-py-fixtures", "1", "https://github.com/", rate_limit=1
+            "pymusicbrainz-fixtures", "1", "https://github.com/", rate_limit=1
         ) as mb,
         httpx2.Client(follow_redirects=True, timeout=30) as caa,
     ):

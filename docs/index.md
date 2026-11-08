@@ -1,11 +1,11 @@
-# musicbrainz
+# pymusicbrainz
 
 A typed Python client for the
 [MusicBrainz WS/2 API](https://musicbrainz.org/doc/MusicBrainz_API), with a
 synchronous and an asynchronous client that share one implementation.
 
 ```python
-from musicbrainz import MusicBrainz
+from pymusicbrainz import MusicBrainz
 
 with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
     nirvana = mb.artists.search(artist="Nirvana", country="US", limit=1)[0]
@@ -76,7 +76,7 @@ with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
 
     ---
 
-    A `musicbrainz` command that prints JSON, for quick queries and shell
+    A `pymusicbrainz` command that prints JSON, for quick queries and shell
     scripts.
 
     [:octicons-arrow-right-24: CLI](cli.md)
@@ -90,20 +90,20 @@ The package requires Python 3.12 or later.
 === "uv"
 
     ```sh
-    uv add musicbrainz
+    uv add pymusicbrainz
     ```
 
 === "pip"
 
     ```sh
-    pip install musicbrainz
+    pip install pymusicbrainz
     ```
 
 Optional extras:
 
 | Extra | Adds |
 |---|---|
-| `musicbrainz[cli]` | The [`musicbrainz` command](cli.md) (Typer and Rich). |
-| `musicbrainz[socks]` | [SOCKS proxy](guide/reliability.md#proxies) support. |
+| `pymusicbrainz[cli]` | The [`pymusicbrainz` command](cli.md) (Typer and Rich). |
+| `pymusicbrainz[socks]` | [SOCKS proxy](guide/reliability.md#proxies) support. |
 
 Next: [Getting started](getting-started.md).
