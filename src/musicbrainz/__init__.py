@@ -12,6 +12,8 @@ Quick start::
             print(rg.first_release_date, rg.title)
 """
 
+from __future__ import annotations
+
 import logging
 
 from . import models, query
@@ -47,9 +49,12 @@ from .models import (
     ArtistCredit,
     CDStub,
     Collection,
+    CoverArt,
+    CoverArtImage,
     Disc,
     Event,
     Genre,
+    ImageData,
     Instrument,
     IsrcResult,
     Label,
@@ -89,10 +94,13 @@ __all__ = [
     "BadRequestError",
     "CDStub",
     "Collection",
+    "CoverArt",
+    "CoverArtImage",
     "Disc",
     "Event",
     "ForbiddenError",
     "Genre",
+    "ImageData",
     "Instrument",
     "IsrcResult",
     "Label",

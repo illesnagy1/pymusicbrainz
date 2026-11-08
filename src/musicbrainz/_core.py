@@ -4,6 +4,9 @@ No networking happens here; the clients in `musicbrainz.client` execute the
 `Call` objects built by `Core`.
 """
 
+from __future__ import annotations
+
+import html
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -30,6 +33,9 @@ _ISWC_RE = re.compile(r"^T-?\d{3}\.?\d{3}\.?\d{3}-?\d$")
 _DISCID_RE = re.compile(r"^[A-Za-z0-9._-]{28}$|^-$")
 _LIST_SEP_RE = re.compile(r"[+\s,|]+")
 _DTD_RE = re.compile(r"<!(DOCTYPE|ENTITY)", re.IGNORECASE)
+_HTML_P_RE = re.compile(r"<p>(.*?)</p>", re.IGNORECASE | re.DOTALL)
+_IMAGE_ID_RE = re.compile(r"^\d+(\.\w+)?$")
+CoverArtSize = Literal[250, 500, 1200]
 
 RETRY_STATUSES = frozenset(
     {
@@ -50,21 +56,25 @@ class Call[R]:
     params: list[tuple[str, str]]
     parse: Callable[[Any], R]
     content: bytes | None = None
-    accept: Literal["json", "xml", "text"] = "json"
+    accept: Literal["json", "xml", "text", "bytes"] = "json"
     requires_auth: bool = False
     headers: dict[str, str] = field(default_factory=dict)
+    #: Not a MusicBrainz WS/2 request (e.g. the Cover Art Archive): no ``fmt``
+    #: parameter, no MusicBrainz rate limit, and credentials are never sent.
+    external: bool = False
 
     def request_params(self) -> tuple[tuple[str, str], ...]:
-        fmt = {"json": [("fmt", "json")], "text": [("fmt", "txt")], "xml": []}[
-            self.accept
-        ]
-        return (*self.params, *fmt)
+        if self.external:
+            return tuple(self.params)
+        fmt = {"json": [("fmt", "json")], "text": [("fmt", "txt")]}
+        return (*self.params, *fmt.get(self.accept, []))
 
     def request_headers(self) -> dict[str, str]:
         accept = {
             "json": "application/json",
             "text": "text/plain",
             "xml": "application/xml",
+            "bytes": "image/*",
         }[self.accept]
         return {"Accept": accept, **self.headers}
 
@@ -124,6 +134,7 @@ class Core:
     client_id: str | None = None
     has_auth: bool = False
     validate: bool = True
+    caa_url: str = consts.DEFAULT_CAA_URL
 
     # ------------------------------------------------------------ shared pieces
 
@@ -381,11 +392,71 @@ class Core:
                 f"{entity} is not searchable. "
                 f"Searchable: {', '.join(consts.SEARCH_ENTITIES)}"
             )
-        q = build_query(query, dict(fields or {}))
+        fields = dict(fields or {})
+        if self.validate and (
+            bad := sorted(set(fields) - consts.SEARCH_FIELDS[entity])
+        ):
+            raise _fail(
+                f"invalid search field(s) for {entity}: {', '.join(bad)}. "
+                f"Allowed: {', '.join(sorted(consts.SEARCH_FIELDS[entity]))}"
+            )
+        q = build_query(query, fields)
         params = [("query", q), *self._paging(limit, offset)]
         if dismax:
             params.append(("dismax", "true"))
         return Call("GET", entity, params, _page_parser(entity))
+
+    # ------------------------------------------------------------ cover art
+
+    def _caa_base(self, mbid: str, release_group: bool) -> str:
+        kind = "release-group" if release_group else "release"
+        base = self.caa_url if self.caa_url.endswith("/") else self.caa_url + "/"
+        return f"{base}{kind}/{check_mbid(mbid)}"
+
+    def cover_art_list(
+        self, mbid: str, *, release_group: bool = False
+    ) -> Call[models.CoverArt]:
+        """Listing of the cover art of a release (or release group)."""
+        return Call(
+            "GET",
+            self._caa_base(mbid, release_group),
+            [],
+            models.CoverArt.model_validate,
+            external=True,
+        )
+
+    def cover_art_url(
+        self,
+        mbid: str,
+        image: str | int = "front",
+        size: CoverArtSize | None = None,
+        *,
+        release_group: bool = False,
+    ) -> str:
+        """URL of a cover art image (or thumbnail); no request is made."""
+        name = str(image)
+        if release_group and name != "front":
+            raise _fail("release groups only have a 'front' image")
+        if name not in ("front", "back") and not _IMAGE_ID_RE.match(name):
+            raise _fail(f"image must be 'front', 'back' or an image ID: {image!r}")
+        if size is not None:
+            if size not in consts.COVER_ART_SIZES:
+                raise _fail(f"size must be one of {consts.COVER_ART_SIZES}: {size!r}")
+            stem, dot, ext = name.partition(".")
+            name = f"{stem}-{size}{dot}{ext}"
+        return f"{self._caa_base(mbid, release_group)}/{name}"
+
+    def cover_art_image(
+        self,
+        mbid: str,
+        image: str | int = "front",
+        size: CoverArtSize | None = None,
+        *,
+        release_group: bool = False,
+    ) -> Call[models.ImageData]:
+        """Download a cover art image (or thumbnail)."""
+        url = self.cover_art_url(mbid, image, size, release_group=release_group)
+        return Call("GET", url, [], _image_data, accept="bytes", external=True)
 
     # ------------------------------------------------------------ collections
 
@@ -564,9 +635,29 @@ def _page_parser(entity: str) -> Callable[[dict[str, Any]], models.Page[Any]]:
     return parse
 
 
-def decode_body(call: Call[Any], body: bytes) -> JSON:
+@dataclass(frozen=True, slots=True)
+class Binary:
+    """A non-text response body, with what's needed to interpret it."""
+
+    data: bytes
+    content_type: str
+    url: str
+
+
+def _image_data(body: Binary) -> models.ImageData:
+    return models.ImageData(
+        data=body.data, content_type=body.content_type, url=body.url
+    )
+
+
+def decode_body(
+    call: Call[Any], body: bytes, content_type: str = "", url: str = ""
+) -> JSON | Binary:
+    """Decode a successful response body according to ``call.accept``."""
     if call.accept == "json":
         return json.loads(body) if body else {}
+    if call.accept == "bytes":
+        return Binary(body, content_type, url)
     return body.decode("utf-8", errors="replace")
 
 
@@ -607,6 +698,10 @@ def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> 
             message, help_ = data.get("error", message), data.get("help")
         except ValueError:
             pass
+    elif text[:20].lower().startswith(("<!doctype html", "<html")):
+        # HTML error pages (e.g. the Cover Art Archive): the message is in <p>.
+        if match := _HTML_P_RE.search(text):
+            message = html.unescape(re.sub(r"<[^>]+>", "", match.group(1))).strip()
     elif text.startswith("<"):
         texts = xml_error_texts(text)
         if texts:

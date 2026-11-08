@@ -1,5 +1,7 @@
 """AsyncMusicBrainz: the async twin of the sync client must behave identically."""
 
+from __future__ import annotations
+
 import logging
 
 import httpx2

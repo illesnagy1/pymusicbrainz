@@ -1,0 +1,610 @@
+{
+  "created": "2026-11-08T19:48:14.345Z",
+  "count": 449084,
+  "offset": 0,
+  "recordings": [
+    {
+      "id": "a71c683a-a4d2-4f03-84e2-63499ae64ed2",
+      "score": 100,
+      "artist-credit-id": "26c5271a-877c-3348-ac34-46c8bafd859c",
+      "title": "Smells Like Teen Spirit",
+      "length": 290106,
+      "video": null,
+      "artist-credit": [
+        {
+          "name": "The Flying Pickets",
+          "artist": {
+            "id": "9652d56e-ee75-4a19-a1db-6637a4f1bfbe",
+            "name": "The Flying Pickets",
+            "sort-name": "Flying Pickets, The",
+            "aliases": [
+              {
+                "sort-name": "The Flying Picketts",
+                "name": "The Flying Picketts",
+                "locale": null,
+                "type": null,
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              },
+              {
+                "sort-name": "Flying Pickets",
+                "name": "Flying Pickets",
+                "locale": null,
+                "type": null,
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              }
+            ]
+          }
+        }
+      ],
+      "first-release-date": "1994",
+      "releases": [
+        {
+          "id": "90dea4d4-db1d-4870-b7a8-70a944a2ace6",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "artist-credit-id": "26c5271a-877c-3348-ac34-46c8bafd859c",
+          "count": 1,
+          "title": "The Original Flying Pickets, Volume One",
+          "status": "Official",
+          "artist-credit": [
+            {
+              "name": "The Flying Pickets",
+              "artist": {
+                "id": "9652d56e-ee75-4a19-a1db-6637a4f1bfbe",
+                "name": "The Flying Pickets",
+                "sort-name": "Flying Pickets, The"
+              }
+            }
+          ],
+          "release-group": {
+            "id": "de09d0b3-5dad-37ec-b50c-e3c6fcd3e4bd",
+            "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "title": "The Original Flying Pickets, Volume One",
+            "primary-type": "Album"
+          },
+          "date": "1994",
+          "country": "DE",
+          "release-events": [
+            {
+              "date": "1994",
+              "area": {
+                "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+                "name": "Germany",
+                "sort-name": "Germany",
+                "iso-3166-1-codes": [
+                  "DE"
+                ]
+              }
+            }
+          ],
+          "track-count": 13,
+          "media": [
+            {
+              "id": "207fd323-f8d9-3da5-a5df-c37dd3fc383c",
+              "position": 1,
+              "format": "CD",
+              "track": [
+                {
+                  "id": "c19d9d76-3a9e-3333-9a61-33ba37e724f9",
+                  "number": "4",
+                  "title": "Smells Like Teen Spirit",
+                  "length": 290106
+                }
+              ],
+              "track-count": 13,
+              "track-offset": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "39783f59-be9c-4157-bcd4-13891679bd3e",
+      "score": 100,
+      "artist-credit-id": "9ab8a3a5-4386-4176-8ca6-54d1c0ae090a",
+      "title": "Smells Like Teen Spirit",
+      "length": 80160,
+      "disambiguation": "live",
+      "video": null,
+      "artist-credit": [
+        {
+          "name": "Scandal’us",
+          "artist": {
+            "id": "f52cc6f9-4404-4832-85fb-2397fed63b9f",
+            "name": "Scandal’us",
+            "sort-name": "Scandal’us"
+          }
+        }
+      ],
+      "first-release-date": "2001-11-04",
+      "releases": [
+        {
+          "id": "40348e64-7752-362a-ab20-b9f366b61362",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "artist-credit-id": "949a7fd5-fe73-3e8f-922e-01ff4ca958f7",
+          "count": 1,
+          "title": "The Andrew Denton Breakfast Show Musical Challenge, Volume 2: Even More Challenged",
+          "status": "Official",
+          "artist-credit": [
+            {
+              "name": "Various Artists",
+              "artist": {
+                "id": "89ad4ac3-39f7-470e-963a-56509c546377",
+                "name": "Various Artists",
+                "sort-name": "Various Artists",
+                "disambiguation": "add compilations to this artist"
+              }
+            }
+          ],
+          "release-group": {
+            "id": "d7b65b60-15bb-37e6-bf47-3ae130a2fd3d",
+            "type-id": "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0",
+            "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "title": "The Andrew Denton Breakfast Show Musical Challenge, Volume 2: Even More Challenged",
+            "primary-type": "Album",
+            "secondary-types": [
+              "Live"
+            ],
+            "secondary-type-ids": [
+              "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0"
+            ]
+          },
+          "date": "2001",
+          "country": "AU",
+          "release-events": [
+            {
+              "date": "2001",
+              "area": {
+                "id": "106e0bec-b638-3b37-b731-f53d507dc00e",
+                "name": "Australia",
+                "sort-name": "Australia",
+                "iso-3166-1-codes": [
+                  "AU"
+                ]
+              }
+            }
+          ],
+          "track-count": 29,
+          "media": [
+            {
+              "id": "44246af0-29ca-358b-b164-fabff0404ab4",
+              "position": 1,
+              "format": "CD",
+              "track": [
+                {
+                  "id": "5f14fa08-ed08-38ed-b8a4-7f6968c88be9",
+                  "number": "12",
+                  "title": "Smells Like Teen Spirit",
+                  "length": 80160
+                }
+              ],
+              "track-count": 29,
+              "track-offset": 11
+            }
+          ]
+        },
+        {
+          "id": "dd138681-d382-48e8-8f28-5966d684ca23",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "artist-credit-id": "949a7fd5-fe73-3e8f-922e-01ff4ca958f7",
+          "count": 1,
+          "title": "The Andrew Denton Breakfast Show Musical Challenge, Volume 2: Even More Challenged",
+          "status": "Official",
+          "artist-credit": [
+            {
+              "name": "Various Artists",
+              "artist": {
+                "id": "89ad4ac3-39f7-470e-963a-56509c546377",
+                "name": "Various Artists",
+                "sort-name": "Various Artists",
+                "disambiguation": "add compilations to this artist"
+              }
+            }
+          ],
+          "release-group": {
+            "id": "d7b65b60-15bb-37e6-bf47-3ae130a2fd3d",
+            "type-id": "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0",
+            "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "title": "The Andrew Denton Breakfast Show Musical Challenge, Volume 2: Even More Challenged",
+            "primary-type": "Album",
+            "secondary-types": [
+              "Live"
+            ],
+            "secondary-type-ids": [
+              "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0"
+            ]
+          },
+          "date": "2001-11-04",
+          "country": "AU",
+          "release-events": [
+            {
+              "date": "2001-11-04",
+              "area": {
+                "id": "106e0bec-b638-3b37-b731-f53d507dc00e",
+                "name": "Australia",
+                "sort-name": "Australia",
+                "iso-3166-1-codes": [
+                  "AU"
+                ]
+              }
+            }
+          ],
+          "track-count": 29,
+          "media": [
+            {
+              "id": "e3ab9e6e-e09f-321a-9248-91331c557a3f",
+              "position": 1,
+              "track": [
+                {
+                  "id": "a742f122-c183-396d-822a-95ab69d5ee66",
+                  "number": "12",
+                  "title": "Smells Like Teen Spirit",
+                  "length": 80160
+                }
+              ],
+              "track-count": 29,
+              "track-offset": 11
+            }
+          ]
+        },
+        {
+          "id": "9d799d65-f157-4bbf-a68c-2048cf8cf23d",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "artist-credit-id": "949a7fd5-fe73-3e8f-922e-01ff4ca958f7",
+          "count": 2,
+          "title": "Triple M Musical Challenge, Volume 3: Even More Challenged",
+          "status": "Official",
+          "artist-credit": [
+            {
+              "name": "Various Artists",
+              "artist": {
+                "id": "89ad4ac3-39f7-470e-963a-56509c546377",
+                "name": "Various Artists",
+                "sort-name": "Various Artists",
+                "disambiguation": "add compilations to this artist"
+              }
+            }
+          ],
+          "release-group": {
+            "id": "141a8580-8489-34ae-8ec5-6a72b3c98220",
+            "type-id": "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0",
+            "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "title": "Triple M Musical Challenge, Volume 3: Even More Challenged",
+            "primary-type": "Album",
+            "secondary-types": [
+              "Live"
+            ],
+            "secondary-type-ids": [
+              "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0"
+            ]
+          },
+          "date": "2002-11-18",
+          "country": "AU",
+          "release-events": [
+            {
+              "date": "2002-11-18",
+              "area": {
+                "id": "106e0bec-b638-3b37-b731-f53d507dc00e",
+                "name": "Australia",
+                "sort-name": "Australia",
+                "iso-3166-1-codes": [
+                  "AU"
+                ]
+              }
+            }
+          ],
+          "track-count": 44,
+          "media": [
+            {
+              "id": "1e4f45b8-148f-38ef-a43c-32d54c22447d",
+              "position": 2,
+              "format": "CD",
+              "track": [
+                {
+                  "id": "7456b0a2-76a1-3c0e-8ff1-faaf253a56bb",
+                  "number": "8",
+                  "title": "Smells Like Teen Spirit",
+                  "length": 80866
+                }
+              ],
+              "track-count": 21,
+              "track-offset": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "05e37140-32a7-4a5a-8221-291c7ec517be",
+      "score": 100,
+      "artist-credit-id": "0c879542-d126-3378-9f09-a2f90d262e33",
+      "title": "Smells Like Teen Spirit",
+      "length": 343093,
+      "video": null,
+      "artist-credit": [
+        {
+          "name": "The Bad Plus",
+          "artist": {
+            "id": "b9bede5d-89b6-4c43-9c45-ca3930cf4db8",
+            "name": "The Bad Plus",
+            "sort-name": "Bad Plus, The"
+          }
+        }
+      ],
+      "first-release-date": "2005-03-07",
+      "releases": [
+        {
+          "id": "84256fa7-b3a4-42d3-93c5-ae288382adb0",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "artist-credit-id": "949a7fd5-fe73-3e8f-922e-01ff4ca958f7",
+          "count": 1,
+          "title": "Rock the Jazzbar",
+          "status": "Official",
+          "artist-credit": [
+            {
+              "name": "Various Artists",
+              "artist": {
+                "id": "89ad4ac3-39f7-470e-963a-56509c546377",
+                "name": "Various Artists",
+                "sort-name": "Various Artists",
+                "disambiguation": "add compilations to this artist"
+              }
+            }
+          ],
+          "release-group": {
+            "id": "8c5bce65-309d-33b7-a0ee-7998a88592a7",
+            "type-id": "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1",
+            "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "title": "Rock the Jazzbar",
+            "primary-type": "Album",
+            "secondary-types": [
+              "Compilation"
+            ],
+            "secondary-type-ids": [
+              "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+            ]
+          },
+          "date": "2005-03-07",
+          "country": "GB",
+          "release-events": [
+            {
+              "date": "2005-03-07",
+              "area": {
+                "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+                "name": "United Kingdom",
+                "sort-name": "United Kingdom",
+                "iso-3166-1-codes": [
+                  "GB"
+                ]
+              }
+            }
+          ],
+          "track-count": 18,
+          "media": [
+            {
+              "id": "85ec5495-5252-3947-ba9b-55f1b1b22079",
+              "position": 1,
+              "format": "CD",
+              "track": [
+                {
+                  "id": "8e24b23d-249b-3ccd-9bc0-f3fe9c470c1e",
+                  "number": "6",
+                  "title": "Smells Like Teen Spirit",
+                  "length": 343093
+                }
+              ],
+              "track-count": 18,
+              "track-offset": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "70e1a7d4-24df-41d1-bc55-463517ed8952",
+      "score": 100,
+      "artist-credit-id": "4a3f4625-8b5b-3b7e-820e-7be177de5819",
+      "title": "Smells Like teen Spirit",
+      "length": 226253,
+      "video": null,
+      "artist-credit": [
+        {
+          "name": "Corvos",
+          "artist": {
+            "id": "f25a0e86-09b1-453c-a751-107cee79f411",
+            "name": "Corvos",
+            "sort-name": "Corvos"
+          }
+        }
+      ],
+      "first-release-date": "2001",
+      "releases": [
+        {
+          "id": "28001613-c861-46ae-bbfc-b76709b2b7fa",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "count": 1,
+          "title": "Post Scriptum",
+          "status": "Official",
+          "release-group": {
+            "id": "7ca32e2b-059a-30f3-912d-b15d2c7c0d4c",
+            "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "title": "Post Scriptum",
+            "primary-type": "Album"
+          },
+          "date": "2001",
+          "country": "PT",
+          "release-events": [
+            {
+              "date": "2001",
+              "area": {
+                "id": "781b0c54-3d54-362d-a941-8a617def4992",
+                "name": "Portugal",
+                "sort-name": "Portugal",
+                "iso-3166-1-codes": [
+                  "PT"
+                ]
+              }
+            }
+          ],
+          "track-count": 12,
+          "media": [
+            {
+              "id": "da086b1b-fd23-3092-ad80-4a7d7cfe9a3f",
+              "position": 1,
+              "format": "CD",
+              "track": [
+                {
+                  "id": "7acf2613-be5f-3123-a58e-a66cc11fc268",
+                  "number": "10",
+                  "title": "Smells Like teen Spirit",
+                  "length": 226253
+                }
+              ],
+              "track-count": 12,
+              "track-offset": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "22e3fc4c-7d0c-4386-96b3-08d90cec7d9f",
+      "score": 100,
+      "artist-credit-id": "6ed17dc3-e890-3047-985f-63b9bb8feac9",
+      "title": "Smells Like Teen Spirit",
+      "length": 259000,
+      "video": null,
+      "artist-credit": [
+        {
+          "name": "Scala & Kolacny Brothers",
+          "artist": {
+            "id": "1dd13698-ce0f-438e-85af-d97cdd967056",
+            "name": "Scala & Kolacny Brothers",
+            "sort-name": "Scala & Kolacny Brothers",
+            "aliases": [
+              {
+                "sort-name": "Scala Chor",
+                "type-id": "1937e404-b981-3cb7-8151-4c86ebfc8d8e",
+                "name": "Scala Chor",
+                "locale": null,
+                "type": "Search hint",
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              },
+              {
+                "sort-name": "Scala",
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "Scala",
+                "locale": null,
+                "type": "Artist name",
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              },
+              {
+                "sort-name": "Scala & Kolacny Brother",
+                "type-id": "1937e404-b981-3cb7-8151-4c86ebfc8d8e",
+                "name": "Scala & Kolacny Brother",
+                "locale": null,
+                "type": "Search hint",
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              }
+            ]
+          }
+        }
+      ],
+      "first-release-date": "2004",
+      "releases": [
+        {
+          "id": "93462d20-f4ba-46c6-aeee-523ebd100e63",
+          "artist-credit-id": "6ed17dc3-e890-3047-985f-63b9bb8feac9",
+          "count": 1,
+          "title": "Dream On",
+          "artist-credit": [
+            {
+              "name": "Scala & Kolacny Brothers",
+              "artist": {
+                "id": "1dd13698-ce0f-438e-85af-d97cdd967056",
+                "name": "Scala & Kolacny Brothers",
+                "sort-name": "Scala & Kolacny Brothers"
+              }
+            }
+          ],
+          "release-group": {
+            "id": "c085aeb3-43f8-3346-8cc2-c168d38f5674",
+            "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+            "title": "Dream On",
+            "primary-type": "Album"
+          },
+          "date": "2004",
+          "country": "DE",
+          "release-events": [
+            {
+              "date": "2004",
+              "area": {
+                "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+                "name": "Germany",
+                "sort-name": "Germany",
+                "iso-3166-1-codes": [
+                  "DE"
+                ]
+              }
+            }
+          ],
+          "track-count": 20,
+          "media": [
+            {
+              "id": "5ea9428c-cdf5-3a14-a093-12624c2ed317",
+              "position": 1,
+              "track": [
+                {
+                  "id": "f1e7ecca-db96-344d-98da-27366b0d3f2d",
+                  "number": "20",
+                  "title": "Smells Like Teen Spirit",
+                  "length": 259000
+                }
+              ],
+              "track-count": 20,
+              "track-offset": 19
+            }
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "electronic"
+        },
+        {
+          "count": 2,
+          "name": "classical"
+        },
+        {
+          "count": 1,
+          "name": "experimental"
+        },
+        {
+          "count": 1,
+          "name": "choral"
+        },
+        {
+          "count": 1,
+          "name": "modern classical"
+        },
+        {
+          "count": 1,
+          "name": "classical choral"
+        }
+      ]
+    }
+  ]
+}

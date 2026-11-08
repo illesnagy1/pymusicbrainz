@@ -3,6 +3,8 @@
 MusicBrainz allows about one request per second per client.
 """
 
+from __future__ import annotations
+
 import logging
 import threading
 import time
@@ -27,6 +29,15 @@ class RateLimiter:
     """
 
     def __init__(self, requests_per_second: float = 1.0) -> None:
+        """Allow at most ``requests_per_second`` request starts per second.
+
+        Args:
+            requests_per_second: The rate; may be fractional, e.g. ``0.5`` for
+                one request every two seconds.
+
+        Raises:
+            ValueError: If the rate is zero or negative.
+        """
         if requests_per_second <= 0:
             raise ValueError("requests_per_second must be positive")
         self.interval = 1.0 / requests_per_second
@@ -47,6 +58,15 @@ class AsyncRateLimiter:
     """Task-safe limiter for the async client (works under asyncio and trio)."""
 
     def __init__(self, requests_per_second: float = 1.0) -> None:
+        """Allow at most ``requests_per_second`` request starts per second.
+
+        Args:
+            requests_per_second: The rate; may be fractional, e.g. ``0.5`` for
+                one request every two seconds.
+
+        Raises:
+            ValueError: If the rate is zero or negative.
+        """
         if requests_per_second <= 0:
             raise ValueError("requests_per_second must be positive")
         self.interval = 1.0 / requests_per_second

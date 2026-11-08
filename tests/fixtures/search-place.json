@@ -1,0 +1,73 @@
+{
+  "created": "2026-11-08T19:48:19.903Z",
+  "count": 38432,
+  "offset": 0,
+  "places": [
+    {
+      "id": "3ac9ae50-29b4-4dbb-a20c-aee3c55f6a68",
+      "type": "Studio",
+      "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+      "score": 100,
+      "name": "Garden Rake Studios",
+      "area": {
+        "id": "e697234a-07cb-4bea-8f22-8419bdf5cf6b",
+        "type": "District",
+        "type-id": "84039871-5e47-38ca-a66a-45e512c8290f",
+        "name": "Studio City",
+        "sort-name": "Studio City",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "d84867dd-dde7-4460-8e45-f226a844ce9a",
+      "type": "Studio",
+      "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+      "score": 100,
+      "name": "The Nook",
+      "address": "12136 Ventura Blvd, Studio City, CA 91604",
+      "coordinates": {
+        "latitude": "34.143039",
+        "longitude": "-118.396361"
+      },
+      "area": {
+        "id": "e697234a-07cb-4bea-8f22-8419bdf5cf6b",
+        "type": "District",
+        "type-id": "84039871-5e47-38ca-a66a-45e512c8290f",
+        "name": "Studio City",
+        "sort-name": "Studio City",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "begin": "2006",
+        "ended": null
+      }
+    },
+    {
+      "id": "4433c1f9-a778-4504-b579-2de2f7be07b3",
+      "type": "Studio",
+      "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+      "score": 100,
+      "name": "Aus Studios",
+      "area": {
+        "id": "e697234a-07cb-4bea-8f22-8419bdf5cf6b",
+        "type": "District",
+        "type-id": "84039871-5e47-38ca-a66a-45e512c8290f",
+        "name": "Studio City",
+        "sort-name": "Studio City",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "ended": null
+      }
+    }
+  ]
+}

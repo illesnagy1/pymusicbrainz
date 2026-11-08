@@ -1,0 +1,385 @@
+{
+  "created": "2026-11-08T19:48:12.144Z",
+  "count": 111,
+  "offset": 0,
+  "releases": [
+    {
+      "id": "0fb1bdd3-1443-4569-943f-fc69c6424f99",
+      "score": 100,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "artist-credit-id": "21861ceb-db10-3e6e-bab7-47a6e8a5492f",
+      "count": 1,
+      "title": "Nevermind",
+      "status": "Official",
+      "packaging": "Cardboard/Paper Sleeve",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band"
+          }
+        }
+      ],
+      "release-group": {
+        "id": "1b022e01-4da6-387b-8658-8678046e4cef",
+        "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "title": "Nevermind",
+        "primary-type": "Album"
+      },
+      "date": "2009-11-03",
+      "country": "US",
+      "release-events": [
+        {
+          "date": "2009-11-03",
+          "area": {
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "name": "United States",
+            "sort-name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          }
+        }
+      ],
+      "barcode": "093624969556",
+      "label-info": [
+        {
+          "catalog-number": "B0012766-01",
+          "label": {
+            "id": "8aa8f64b-55a1-48db-b124-44fcba58836f",
+            "name": "Universal Music Special Markets"
+          }
+        },
+        {
+          "catalog-number": "ORG 032",
+          "label": {
+            "id": "e52bb6e2-a37c-4ac8-b004-8d152e85bba0",
+            "name": "Org Music"
+          }
+        }
+      ],
+      "track-count": 12,
+      "media": [
+        {
+          "id": "610d05d9-b636-39f4-9ae1-226ed884a68a",
+          "format": "12\" Vinyl",
+          "disc-count": 0,
+          "track-count": 12
+        }
+      ]
+    },
+    {
+      "id": "9dce399d-3ec7-34a4-97d0-b4bac54e5f08",
+      "score": 100,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "artist-credit-id": "21861ceb-db10-3e6e-bab7-47a6e8a5492f",
+      "count": 1,
+      "title": "Nevermind",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band"
+          }
+        }
+      ],
+      "release-group": {
+        "id": "1b022e01-4da6-387b-8658-8678046e4cef",
+        "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "title": "Nevermind",
+        "primary-type": "Album"
+      },
+      "date": "1996-03-12",
+      "country": "US",
+      "release-events": [
+        {
+          "date": "1996-03-12",
+          "area": {
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "name": "United States",
+            "sort-name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          }
+        }
+      ],
+      "barcode": "015775166622",
+      "asin": "B000000IV0",
+      "label-info": [
+        {
+          "catalog-number": "UDCD 666",
+          "label": {
+            "id": "edd54e2f-2eef-46b1-a9b5-bedfe5ed33be",
+            "name": "Mobile Fidelity Sound Lab"
+          }
+        }
+      ],
+      "track-count": 12,
+      "media": [
+        {
+          "id": "6d0d5c1e-745b-3f38-8302-b7899a0b581b",
+          "format": "CD",
+          "disc-count": 31,
+          "track-count": 12
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "nsfw cover art"
+        }
+      ]
+    },
+    {
+      "id": "f7930de3-081a-452a-bafe-f7285a2abb6d",
+      "score": 100,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "artist-credit-id": "21861ceb-db10-3e6e-bab7-47a6e8a5492f",
+      "count": 1,
+      "title": "Nevermind",
+      "status": "Official",
+      "disambiguation": "blue",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band"
+          }
+        }
+      ],
+      "release-group": {
+        "id": "1b022e01-4da6-387b-8658-8678046e4cef",
+        "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "title": "Nevermind",
+        "primary-type": "Album"
+      },
+      "date": "2009",
+      "country": "US",
+      "release-events": [
+        {
+          "date": "2009",
+          "area": {
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "name": "United States",
+            "sort-name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          }
+        }
+      ],
+      "label-info": [
+        {
+          "catalog-number": "ORG 032",
+          "label": {
+            "id": "09e4a634-831e-443f-b938-bf9ccba7a37e",
+            "name": "Original Recordings Group"
+          }
+        }
+      ],
+      "track-count": 12,
+      "media": [
+        {
+          "id": "c8bfbfe5-a1f9-3453-b15e-d44bb14fc409",
+          "format": "12\" Vinyl",
+          "disc-count": 0,
+          "track-count": 12
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "nsfw cover art"
+        }
+      ]
+    },
+    {
+      "id": "bcc627eb-1fc6-4b4c-a9d7-40161d3da800",
+      "score": 100,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "bb14bb17-e8ad-375f-a3c6-b1f82fd2bcc4",
+      "artist-credit-id": "21861ceb-db10-3e6e-bab7-47a6e8a5492f",
+      "count": 1,
+      "title": "Nevermind",
+      "status": "Official",
+      "packaging": "Keep Case",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band"
+          }
+        }
+      ],
+      "release-group": {
+        "id": "1b022e01-4da6-387b-8658-8678046e4cef",
+        "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "title": "Nevermind",
+        "primary-type": "Album"
+      },
+      "date": "2013",
+      "country": "US",
+      "release-events": [
+        {
+          "date": "2013",
+          "area": {
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "name": "United States",
+            "sort-name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          }
+        }
+      ],
+      "barcode": "600753423844",
+      "asin": "B00BSDTG94",
+      "label-info": [
+        {
+          "catalog-number": "600753423844",
+          "label": {
+            "id": "62abedcd-f510-4d6b-b2a1-6bb8bffbbe14",
+            "name": "Universal UMC"
+          }
+        }
+      ],
+      "track-count": 12,
+      "media": [
+        {
+          "id": "79410e9f-5335-3fc9-b7e9-d9ed6cbaa57e",
+          "format": "Blu-ray",
+          "disc-count": 0,
+          "track-count": 12
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "audio bluray"
+        },
+        {
+          "count": 1,
+          "name": "nsfw cover art"
+        }
+      ]
+    },
+    {
+      "id": "af67f638-b9ff-4b76-9135-f9588ccdd281",
+      "score": 100,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "e724a489-a7e8-30a1-a17c-30dfd6831202",
+      "artist-credit-id": "21861ceb-db10-3e6e-bab7-47a6e8a5492f",
+      "count": 2,
+      "title": "Nevermind",
+      "status": "Official",
+      "disambiguation": "30th Anniversary 2-CD Deluxe Edition",
+      "packaging": "Gatefold Cover",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band"
+          }
+        }
+      ],
+      "release-group": {
+        "id": "1b022e01-4da6-387b-8658-8678046e4cef",
+        "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+        "title": "Nevermind",
+        "primary-type": "Album"
+      },
+      "date": "2021",
+      "country": "XW",
+      "release-events": [
+        {
+          "date": "2021",
+          "area": {
+            "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+            "name": "[Worldwide]",
+            "sort-name": "[Worldwide]",
+            "iso-3166-1-codes": [
+              "XW"
+            ]
+          }
+        }
+      ],
+      "barcode": "602438625314",
+      "asin": "B09GWRC1QY",
+      "label-info": [
+        {
+          "catalog-number": "00602438625314",
+          "label": {
+            "id": "1391bdc7-a22c-48a4-a5fb-e7b8ef6ce143",
+            "name": "Universal"
+          }
+        }
+      ],
+      "track-count": 28,
+      "media": [
+        {
+          "id": "0fcd0252-120a-37fd-9469-ac4880dc7b7f",
+          "format": "CD",
+          "disc-count": 1,
+          "track-count": 12
+        },
+        {
+          "id": "9db9e27a-6123-3d69-b006-6fc85e0f083d",
+          "format": "CD",
+          "disc-count": 1,
+          "track-count": 16
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "nsfw cover art"
+        }
+      ]
+    }
+  ]
+}

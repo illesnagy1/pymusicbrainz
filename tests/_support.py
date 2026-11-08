@@ -1,5 +1,7 @@
 """Shared test helpers (imported by the test modules, not a test module itself)."""
 
+from __future__ import annotations
+
 from urllib.parse import parse_qs
 
 import httpx2

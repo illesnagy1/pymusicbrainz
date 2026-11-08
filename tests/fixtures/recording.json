@@ -1,0 +1,1586 @@
+{
+  "first-release-date": "1991-09-10",
+  "relations": [
+    {
+      "attributes": [
+        "assistant"
+      ],
+      "begin": null,
+      "target-type": "artist",
+      "attribute-ids": {
+        "assistant": "8c4196b1-7053-4b16-921a-f22b2898ed44"
+      },
+      "target-credit": "",
+      "source-credit": "",
+      "type": "engineer",
+      "attribute-values": {},
+      "artist": {
+        "sort-name": "Johnson, James",
+        "type": "Person",
+        "country": null,
+        "disambiguation": "engineer",
+        "name": "James Johnson",
+        "id": "221921a3-51fd-4a6e-8e24-f81510f43915",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+      },
+      "type-id": "5dcc52af-7064-4051-8d62-7d80f4c3c907",
+      "end": null,
+      "direction": "backward",
+      "ended": false
+    },
+    {
+      "attributes": [],
+      "artist": {
+        "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+        "name": "Nirvana",
+        "sort-name": "Nirvana",
+        "type": "Group",
+        "country": "US",
+        "disambiguation": "1980s–1990s US grunge band"
+      },
+      "type-id": "5dcc52af-7064-4051-8d62-7d80f4c3c907",
+      "direction": "backward",
+      "end": null,
+      "ended": false,
+      "attribute-values": {},
+      "target-credit": "",
+      "source-credit": "",
+      "type": "engineer",
+      "begin": null,
+      "target-type": "artist",
+      "attribute-ids": {}
+    },
+    {
+      "attributes": [
+        "assistant"
+      ],
+      "attribute-ids": {
+        "assistant": "8c4196b1-7053-4b16-921a-f22b2898ed44"
+      },
+      "target-type": "artist",
+      "begin": null,
+      "source-credit": "",
+      "type": "engineer",
+      "target-credit": "",
+      "attribute-values": {},
+      "type-id": "5dcc52af-7064-4051-8d62-7d80f4c3c907",
+      "direction": "backward",
+      "end": null,
+      "ended": false,
+      "artist": {
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "id": "f340fcdd-79f4-4e0a-82b4-acfc8b922f4e",
+        "name": "Jeff Sheehan",
+        "type": "Person",
+        "sort-name": "Sheehan, Jeff",
+        "disambiguation": "",
+        "country": "US"
+      }
+    },
+    {
+      "attributes": [],
+      "begin": null,
+      "target-type": "artist",
+      "attribute-ids": {},
+      "target-credit": "",
+      "type": "engineer",
+      "source-credit": "",
+      "attribute-values": {},
+      "artist": {
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "id": "ba30915c-4d33-43c5-8c37-ead0b8061517",
+        "name": "Butch Vig",
+        "disambiguation": "",
+        "country": "US",
+        "type": "Person",
+        "sort-name": "Vig, Butch"
+      },
+      "ended": false,
+      "end": null,
+      "type-id": "5dcc52af-7064-4051-8d62-7d80f4c3c907",
+      "direction": "backward"
+    },
+    {
+      "attributes": [
+        "guitar"
+      ],
+      "attribute-credits": {},
+      "target-credit": "",
+      "type": "instrument",
+      "source-credit": "",
+      "target-type": "artist",
+      "begin": "1991-05",
+      "attribute-ids": {
+        "guitar": "63021302-86cd-4aee-80df-2270d54f4978"
+      },
+      "artist": {
+        "id": "3c9b356d-d1db-4f4e-a7a3-2d00c1d70255",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "name": "Kurt Cobain",
+        "country": "US",
+        "disambiguation": "lead singer and guitarist for Nirvana",
+        "sort-name": "Cobain, Kurt",
+        "type": "Person"
+      },
+      "direction": "backward",
+      "end": "1991-05",
+      "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+      "ended": true,
+      "attribute-values": {}
+    },
+    {
+      "attribute-credits": {},
+      "attributes": [
+        "drums (drum set)"
+      ],
+      "source-credit": "",
+      "type": "instrument",
+      "target-credit": "David Grohl",
+      "attribute-ids": {
+        "drums (drum set)": "12092505-6ee1-46af-a15a-b5b468b6b155"
+      },
+      "target-type": "artist",
+      "begin": "1991-05",
+      "ended": true,
+      "direction": "backward",
+      "end": "1991-05",
+      "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+      "artist": {
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "id": "4d5f891d-9bce-45ae-ad86-912dd27252fa",
+        "country": "US",
+        "disambiguation": "",
+        "type": "Person",
+        "sort-name": "Grohl, Dave",
+        "name": "Dave Grohl"
+      },
+      "attribute-values": {}
+    },
+    {
+      "attributes": [
+        "bass guitar"
+      ],
+      "attribute-credits": {},
+      "artist": {
+        "disambiguation": "",
+        "country": "US",
+        "sort-name": "Novoselic, Krist",
+        "type": "Person",
+        "name": "Krist Novoselic",
+        "id": "ac05e29f-0561-4445-bb26-5562d2389531",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+      },
+      "ended": true,
+      "end": "1991-05",
+      "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+      "direction": "backward",
+      "attribute-values": {},
+      "target-credit": "Chris Novoselic",
+      "source-credit": "",
+      "type": "instrument",
+      "begin": "1991-05",
+      "target-type": "artist",
+      "attribute-ids": {
+        "bass guitar": "17f9f065-2312-4a24-8309-6f6dd63e2e33"
+      }
+    },
+    {
+      "attributes": [],
+      "artist": {
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "id": "05f87a3d-df77-42a0-b004-f1990b609dd5",
+        "name": "Andy Wallace",
+        "type": "Person",
+        "sort-name": "Wallace, Andy",
+        "disambiguation": "engineer",
+        "country": "US"
+      },
+      "ended": false,
+      "end": null,
+      "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+      "direction": "backward",
+      "attribute-values": {},
+      "target-credit": "",
+      "type": "mix",
+      "source-credit": "",
+      "target-type": "artist",
+      "begin": null,
+      "attribute-ids": {}
+    },
+    {
+      "attributes": [],
+      "ended": false,
+      "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+      "direction": "backward",
+      "end": null,
+      "artist": {
+        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+        "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+        "name": "Nirvana",
+        "type": "Group",
+        "sort-name": "Nirvana",
+        "disambiguation": "1980s–1990s US grunge band",
+        "country": "US"
+      },
+      "attribute-values": {},
+      "source-credit": "",
+      "type": "producer",
+      "target-credit": "",
+      "attribute-ids": {},
+      "begin": null,
+      "target-type": "artist"
+    },
+    {
+      "artist": {
+        "id": "ba30915c-4d33-43c5-8c37-ead0b8061517",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "name": "Butch Vig",
+        "disambiguation": "",
+        "country": "US",
+        "sort-name": "Vig, Butch",
+        "type": "Person"
+      },
+      "ended": false,
+      "end": null,
+      "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+      "direction": "backward",
+      "attribute-values": {},
+      "target-credit": "",
+      "type": "producer",
+      "source-credit": "",
+      "target-type": "artist",
+      "begin": null,
+      "attribute-ids": {},
+      "attributes": []
+    },
+    {
+      "target-credit": "",
+      "type": "vocal",
+      "source-credit": "",
+      "begin": "1991-05",
+      "target-type": "artist",
+      "attribute-ids": {
+        "lead vocals": "8e2a3255-87c2-4809-a174-98cb3704f1a5"
+      },
+      "artist": {
+        "id": "3c9b356d-d1db-4f4e-a7a3-2d00c1d70255",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "name": "Kurt Cobain",
+        "disambiguation": "lead singer and guitarist for Nirvana",
+        "country": "US",
+        "sort-name": "Cobain, Kurt",
+        "type": "Person"
+      },
+      "type-id": "0fdbe3c6-7700-4a31-ae54-b53f06ae1cfa",
+      "direction": "backward",
+      "end": "1991-05",
+      "ended": true,
+      "attribute-values": {},
+      "attributes": [
+        "lead vocals"
+      ],
+      "attribute-credits": {}
+    },
+    {
+      "target-credit": "David Grohl",
+      "source-credit": "",
+      "type": "vocal",
+      "begin": "1991-05",
+      "target-type": "artist",
+      "attribute-ids": {
+        "background vocals": "75052401-7340-4e5b-a71d-ea024a128849"
+      },
+      "artist": {
+        "country": "US",
+        "disambiguation": "",
+        "type": "Person",
+        "sort-name": "Grohl, Dave",
+        "name": "Dave Grohl",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "id": "4d5f891d-9bce-45ae-ad86-912dd27252fa"
+      },
+      "end": "1991-05",
+      "type-id": "0fdbe3c6-7700-4a31-ae54-b53f06ae1cfa",
+      "direction": "backward",
+      "ended": true,
+      "attribute-values": {},
+      "attributes": [
+        "background vocals"
+      ],
+      "attribute-credits": {}
+    },
+    {
+      "begin": "1991-05",
+      "target-type": "artist",
+      "attribute-ids": {
+        "background vocals": "75052401-7340-4e5b-a71d-ea024a128849"
+      },
+      "target-credit": "Chris Novoselic",
+      "type": "vocal",
+      "source-credit": "",
+      "attribute-values": {},
+      "artist": {
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "id": "ac05e29f-0561-4445-bb26-5562d2389531",
+        "type": "Person",
+        "sort-name": "Novoselic, Krist",
+        "disambiguation": "",
+        "country": "US",
+        "name": "Krist Novoselic"
+      },
+      "ended": true,
+      "direction": "backward",
+      "type-id": "0fdbe3c6-7700-4a31-ae54-b53f06ae1cfa",
+      "end": "1991-05",
+      "attributes": [
+        "background vocals"
+      ],
+      "attribute-credits": {}
+    },
+    {
+      "attribute-ids": {},
+      "begin": "1991-05",
+      "target-type": "work",
+      "type": "performance",
+      "source-credit": "",
+      "target-credit": "",
+      "attribute-values": {},
+      "direction": "forward",
+      "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+      "end": "1991-05",
+      "ended": true,
+      "attributes": [],
+      "work": {
+        "type": "Song",
+        "disambiguation": "",
+        "language": "eng",
+        "title": "Smells Like Teen Spirit",
+        "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+        "id": "9840e142-269d-3fa3-9805-041a9235c18a",
+        "iswcs": [
+          "T-070.243.691-6"
+        ],
+        "languages": [
+          "eng"
+        ],
+        "attributes": []
+      }
+    }
+  ],
+  "artist-credit": [
+    {
+      "joinphrase": "",
+      "artist": {
+        "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+        "name": "Nirvana",
+        "sort-name": "Nirvana",
+        "type": "Group",
+        "disambiguation": "1980s–1990s US grunge band",
+        "country": "US"
+      },
+      "name": "Nirvana"
+    }
+  ],
+  "id": "5fb524f1-8cc8-4c04-a921-e34c0a911ea7",
+  "length": 301133,
+  "video": false,
+  "isrcs": [
+    "USGF19942501"
+  ],
+  "title": "Smells Like Teen Spirit",
+  "releases": [
+    {
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "barcode": null,
+      "date": "1991-09-10",
+      "title": "Smells Like Teen Spirit",
+      "packaging-id": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null,
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "sort-name": "United States",
+            "type": null,
+            "disambiguation": "",
+            "name": "United States"
+          },
+          "date": "1991-09-10"
+        }
+      ],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "id": "e1c5d5fa-b1cb-388b-9027-055aa29a382b",
+      "packaging": null,
+      "status": "Official",
+      "country": "US",
+      "disambiguation": ""
+    },
+    {
+      "id": "f922ec87-4758-421d-a839-3193455345ff",
+      "disambiguation": "",
+      "country": "US",
+      "status": "Promotion",
+      "packaging": "Cardboard/Paper Sleeve",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          }
+        }
+      ],
+      "quality": "normal",
+      "barcode": "720642442517",
+      "status-id": "518ffc83-5cde-34df-8627-81bff5093d92",
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States",
+            "name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98"
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1991-09-24",
+      "title": "Nevermind"
+    },
+    {
+      "barcode": "720642442524",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "title": "Nevermind",
+      "date": "1991-09-24",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "type": null,
+            "sort-name": "United States",
+            "disambiguation": "",
+            "name": "United States",
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "id": "a146429a-cedc-3ab0-9e41-1aaf5f6cdc2d",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "disambiguation": "",
+      "country": "US"
+    },
+    {
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "barcode": "720642442517",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "name": "United States",
+            "type": null,
+            "sort-name": "United States",
+            "disambiguation": ""
+          }
+        }
+      ],
+      "packaging-id": null,
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "id": "006cb56d-6eff-4b7d-853f-ecd2db97f3b2",
+      "country": "US",
+      "disambiguation": "",
+      "status": "Official",
+      "packaging": null
+    },
+    {
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "disambiguation": "",
+      "country": "XE",
+      "id": "3c19711b-b9df-495b-a610-634b1fc48763",
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a",
+            "type-id": null,
+            "name": "Europe",
+            "disambiguation": "",
+            "sort-name": "Europe",
+            "type": null
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "barcode": "720642442524"
+    },
+    {
+      "id": "c12262e2-7185-4942-87ee-da27ddd45ddf",
+      "disambiguation": "First press error, no Endless Nameless",
+      "country": "US",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "barcode": "720642442524",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "name": "Nirvana"
+          }
+        }
+      ],
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null,
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "sort-name": "United States",
+            "type": null,
+            "disambiguation": "",
+            "name": "United States"
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "title": "Nevermind",
+      "date": "1991-09-24"
+    },
+    {
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type": null,
+            "sort-name": "United States",
+            "disambiguation": "",
+            "name": "United States"
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "name": "Nirvana",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "quality": "normal",
+      "barcode": "0720642442524",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "country": "US",
+      "disambiguation": "",
+      "id": "8e061dc4-790e-4587-ba53-011e7852f88d"
+    },
+    {
+      "id": "eccae410-7577-4daa-b602-92d305828331",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "country": "AU",
+      "disambiguation": "",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "barcode": "720642442524",
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "type-id": null,
+            "id": "106e0bec-b638-3b37-b731-f53d507dc00e",
+            "iso-3166-1-codes": [
+              "AU"
+            ],
+            "name": "Australia",
+            "type": null,
+            "sort-name": "Australia",
+            "disambiguation": ""
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      }
+    },
+    {
+      "title": "Nevermind (30th Anniversary Super Deluxe)",
+      "date": "1991-09-24",
+      "text-representation": {
+        "language": null,
+        "script": null
+      },
+      "packaging-id": null,
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": null
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "barcode": null,
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "name": "Nirvana",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "packaging": null,
+      "status": "Official",
+      "disambiguation": "",
+      "country": null,
+      "id": "a29d92bd-5691-4515-a0e2-9476d86cad40"
+    },
+    {
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "country": "JP",
+      "disambiguation": "",
+      "id": "f8cf1736-f25b-4fdc-bd6c-96ead7eb2f1d",
+      "date": "1991-11-07",
+      "title": "Nevermind",
+      "release-events": [
+        {
+          "date": "1991-11-07",
+          "area": {
+            "name": "Japan",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Japan",
+            "iso-3166-1-codes": [
+              "JP"
+            ],
+            "type-id": null,
+            "id": "2db42837-c832-3c27-b4a3-08198f75693c"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "artist-credit": [
+        {
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "barcode": "4988067002709"
+    },
+    {
+      "id": "52129eb2-0f6e-4cc2-b082-83da3a34cf82",
+      "disambiguation": "",
+      "country": "GB",
+      "status": "Official",
+      "packaging": null,
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          }
+        }
+      ],
+      "barcode": "5021509000563",
+      "packaging-id": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991-11-18",
+          "area": {
+            "type": null,
+            "sort-name": "United Kingdom",
+            "disambiguation": "",
+            "name": "United Kingdom",
+            "type-id": null,
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "iso-3166-1-codes": [
+              "GB"
+            ]
+          }
+        }
+      ],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1991-11-18",
+      "title": "Smells Like Teen Spirit"
+    },
+    {
+      "id": "1cf8a7f1-735a-4416-88ae-da9360b2871f",
+      "status": "Promotion",
+      "packaging": "Jewel Case",
+      "disambiguation": "",
+      "country": "US",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Various Artists",
+          "artist": {
+            "type-id": "ac897045-5043-3294-969b-187360e45d86",
+            "id": "89ad4ac3-39f7-470e-963a-56509c546377",
+            "type": "Other",
+            "sort-name": "Various Artists",
+            "disambiguation": "add compilations to this artist",
+            "country": null,
+            "name": "Various Artists"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "barcode": "",
+      "date": "1991",
+      "title": "Earphoria",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "status-id": "518ffc83-5cde-34df-8627-81bff5093d92",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null,
+            "name": "United States",
+            "disambiguation": "",
+            "sort-name": "United States",
+            "type": null
+          }
+        }
+      ],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      }
+    },
+    {
+      "title": "Nevermind",
+      "date": "1991",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "type-id": null,
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Europe",
+            "name": "Europe"
+          },
+          "date": "1991"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "barcode": "720642442524",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          }
+        }
+      ],
+      "quality": "normal",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "country": "XE",
+      "disambiguation": "First press error, no \"Endless, Nameless\"",
+      "id": "c4682a8e-0213-4173-a604-81b882f074e3"
+    },
+    {
+      "id": "9546f873-a3d1-4d37-8d32-5e6b6623fa26",
+      "country": "US",
+      "disambiguation": "",
+      "packaging": null,
+      "status": "Official",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "barcode": "720642442548",
+      "packaging-id": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "name": "United States",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States"
+          }
+        }
+      ],
+      "text-representation": {
+        "script": null,
+        "language": "eng"
+      },
+      "date": "1991",
+      "title": "Nevermind"
+    },
+    {
+      "id": "88b363cb-86b2-431f-84b4-525d4aa7aa62",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "",
+      "country": "DE",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          }
+        }
+      ],
+      "quality": "normal",
+      "barcode": "720642442524",
+      "date": "1991",
+      "title": "Nevermind",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "type-id": null,
+            "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+            "iso-3166-1-codes": [
+              "DE"
+            ],
+            "name": "Germany",
+            "type": null,
+            "sort-name": "Germany",
+            "disambiguation": ""
+          }
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      }
+    },
+    {
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Europe",
+            "name": "Europe",
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "type-id": null,
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1991",
+      "title": "Nevermind",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "name": "Nirvana",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          }
+        }
+      ],
+      "barcode": "720642442517",
+      "country": "XE",
+      "disambiguation": "",
+      "packaging": "Cardboard/Paper Sleeve",
+      "status": "Official",
+      "id": "704a8006-4ec5-424c-afe2-f4561c4dd79c"
+    },
+    {
+      "barcode": "",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "name": "Nirvana"
+          }
+        }
+      ],
+      "quality": "normal",
+      "title": "Nevermind",
+      "date": "1991",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null,
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "sort-name": "United States",
+            "type": null,
+            "disambiguation": "",
+            "name": "United States"
+          },
+          "date": "1991"
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "id": "347666eb-86f7-488a-a427-895f6f7ac203",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "country": "US",
+      "disambiguation": "club edition"
+    },
+    {
+      "title": "Nevermind",
+      "date": "1991",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "id": "71bbafaa-e825-3e15-8ca9-017dcad1748b",
+            "type-id": null,
+            "iso-3166-1-codes": [
+              "CA"
+            ],
+            "sort-name": "Canada",
+            "type": null,
+            "disambiguation": "",
+            "name": "Canada"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "barcode": "77749749200602",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "type": "Group",
+            "sort-name": "Nirvana"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "Club Edition",
+      "country": "CA",
+      "id": "350a8190-2c4b-4010-9bd2-437857325ac5"
+    },
+    {
+      "id": "3723c24b-a5a7-3295-b8ab-409a0650efac",
+      "status": "Official",
+      "packaging": null,
+      "disambiguation": "",
+      "country": "GB",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          }
+        }
+      ],
+      "quality": "normal",
+      "barcode": "0720642442517",
+      "date": "1991",
+      "title": "Nevermind",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "iso-3166-1-codes": [
+              "GB"
+            ],
+            "name": "United Kingdom",
+            "type": null,
+            "sort-name": "United Kingdom",
+            "disambiguation": ""
+          },
+          "date": "1991"
+        }
+      ],
+      "packaging-id": null,
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      }
+    },
+    {
+      "id": "4cbf7629-4695-3885-9aca-a639e62ba4ab",
+      "country": "CA",
+      "disambiguation": "columbia house edition",
+      "packaging": null,
+      "status": "Official",
+      "barcode": "777497492006",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "quality": "normal",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "iso-3166-1-codes": [
+              "CA"
+            ],
+            "type-id": null,
+            "id": "71bbafaa-e825-3e15-8ca9-017dcad1748b",
+            "name": "Canada",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Canada"
+          }
+        }
+      ],
+      "packaging-id": null,
+      "title": "Nevermind",
+      "date": "1991"
+    },
+    {
+      "artist-credit": [
+        {
+          "artist": {
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "name": "Nirvana",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "barcode": "720642442524",
+      "date": "1991",
+      "title": "Nevermind",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "disambiguation": "",
+            "sort-name": "Europe",
+            "type": null,
+            "name": "Europe",
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a",
+            "type-id": null
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "id": "474c4801-3b48-47dd-aee6-3163176b5f64",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "Sonopress Pressing - no DCS opposite the matrix code",
+      "country": "XE"
+    },
+    {
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "packaging-id": "c70b737a-0114-39a9-88f7-82843e54f906",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "id": "9705be0d-51fb-3990-8726-ec9f56c66ba0",
+            "iso-3166-1-codes": [
+              "SA"
+            ],
+            "type": null,
+            "sort-name": "Saudi Arabia",
+            "disambiguation": "",
+            "name": "Saudi Arabia"
+          },
+          "date": "1991"
+        }
+      ],
+      "title": "Nevermind",
+      "date": "1991",
+      "barcode": "720642442548",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "name": "Nirvana",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "disambiguation": "",
+      "country": "SA",
+      "packaging": "Cassette Case",
+      "status": "Official",
+      "id": "201d5e28-2de4-4e6f-830a-d55c98e57641"
+    },
+    {
+      "barcode": "5021509000501",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "name": "Nirvana"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "packaging-id": null,
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "sort-name": "United Kingdom",
+            "type": null,
+            "disambiguation": "",
+            "name": "United Kingdom",
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "type-id": null,
+            "iso-3166-1-codes": [
+              "GB"
+            ]
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "title": "Smells Like Teen Spirit",
+      "date": "1991",
+      "id": "cc7041b8-383f-3b4c-86df-7f27dda2778b",
+      "country": "GB",
+      "disambiguation": "",
+      "packaging": null,
+      "status": "Official"
+    },
+    {
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          }
+        }
+      ],
+      "barcode": null,
+      "date": "1991",
+      "title": "Smells Like Teen Spirit",
+      "packaging-id": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "NL"
+            ],
+            "type-id": null,
+            "id": "ef1b7cc0-cd26-36f4-8ea0-04d9623786c7",
+            "name": "Netherlands",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Netherlands"
+          },
+          "date": "1991"
+        }
+      ],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "id": "321cf134-6053-444a-82a1-9bc182c56df1",
+      "packaging": null,
+      "status": "Official",
+      "disambiguation": "",
+      "country": "NL"
+    },
+    {
+      "barcode": null,
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "name": "Nirvana",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "title": "Smells Like Teen Spirit",
+      "date": "1991",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "packaging-id": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "name": "United States",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98"
+          }
+        }
+      ],
+      "id": "3a5b8ac3-a20b-3e73-8eb6-de1bf97ef35e",
+      "status": "Official",
+      "packaging": null,
+      "country": "US",
+      "disambiguation": ""
+    }
+  ],
+  "disambiguation": ""
+}

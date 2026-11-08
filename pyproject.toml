@@ -3,12 +3,13 @@ name = "musicbrainz"
 version = "0.1.0"
 description = "Typed sync + async client for the MusicBrainz WS/2 API"
 readme = "README.md"
-requires-python = ">=3.15"
+requires-python = ">=3.12"
 dependencies = [
     "httpx2>=2.16.0",
     "pydantic>=2.14.3",
     "rich>=15.0.0",
     "typer>=0.28.0",
+    "typing-extensions>=4.13",
 ]
 
 [project.scripts]

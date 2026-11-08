@@ -1,0 +1,202 @@
+{
+  "created": "2026-11-08T19:48:18.579Z",
+  "count": 33912,
+  "offset": 0,
+  "events": [
+    {
+      "id": "bcf52ab4-2e10-4357-b088-941f5268b0c5",
+      "type": "Festival",
+      "score": 100,
+      "name": "Boomtown Fair",
+      "life-span": {
+        "begin": "2018-08-08",
+        "end": "2018-08-12"
+      },
+      "tags": [
+        {
+          "count": 1,
+          "name": "festival"
+        }
+      ],
+      "relations": [
+        {
+          "type": "held in",
+          "type-id": "542f8484-8bc7-3ce5-a022-747850b2b928",
+          "direction": "backward",
+          "area": {
+            "id": "0daeac0c-8db5-437c-8b7f-a4b0863e1564",
+            "name": "Winchester"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "329f95db-f02e-40bf-a5f7-0dea11529ce3",
+            "name": "Enter Shikari",
+            "sort-name": "Enter Shikari"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "8cf4e887-8088-4e29-a30f-169909971113",
+            "name": "Popes of Chillitown",
+            "sort-name": "Popes of Chillitown"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "83bde443-318c-4d4e-8f31-1ca159df14f4",
+            "name": "The Undercover Hippy",
+            "sort-name": "Undercover Hippy, The"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "45cdf9b5-d42b-4aa8-a8df-0dbaf4d34d97",
+            "name": "Regime",
+            "sort-name": "Regime",
+            "disambiguation": "UK based hip hop, reggae, rock band"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "af1d1b8b-6a34-4fc5-a65c-95084aa5b7a4",
+            "name": "Lightyear",
+            "sort-name": "Lightyear",
+            "disambiguation": "UK ska punk band"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "01147cdc-c05d-466c-9c4c-dde487ccdaa6",
+            "name": "[spunge]",
+            "sort-name": "Spunge"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "142b503e-7cf5-4a50-ac71-956fdf639a18",
+            "name": "Mad Apple Circus",
+            "sort-name": "Mad Apple Circus"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "1329faaf-799f-44e2-91f9-87fe52f17afd",
+            "name": "The Selecter",
+            "sort-name": "Selecter, The",
+            "disambiguation": "2 Tone ska group"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "7e07ffb5-c0f6-4891-a74d-a5e12a247785",
+            "name": "Die Antwoord",
+            "sort-name": "Antwoord, Die"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "8f9d6bb2-dba4-4cca-9967-cc02b9f4820c",
+            "name": "Limp Bizkit",
+            "sort-name": "Limp Bizkit"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "e21857d5-3256-4547-afb3-4b6ded592596",
+            "name": "Gorillaz",
+            "sort-name": "Gorillaz",
+            "disambiguation": "virtual band"
+          }
+        },
+        {
+          "type": "main performer",
+          "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+          "direction": "backward",
+          "artist": {
+            "id": "5cc7f9ee-b94d-4723-ab8b-6653955341f2",
+            "name": "Shoot The Moon",
+            "sort-name": "Shoot The Moon",
+            "disambiguation": "Bridgwater Ska Band"
+          }
+        }
+      ]
+    },
+    {
+      "id": "4e704ee9-1d1b-41f4-a5f6-8acaee07366d",
+      "type": "Festival",
+      "score": 98,
+      "name": "Movement Festival",
+      "life-span": {
+        "begin": "2016-05-28",
+        "end": "2016-05-28"
+      },
+      "relations": [
+        {
+          "type": "held at",
+          "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
+          "direction": "backward",
+          "place": {
+            "id": "d92bcfe5-3208-40ce-a789-f9b0c8f59a62",
+            "name": "Philip A. Hart Plaza"
+          }
+        }
+      ]
+    },
+    {
+      "id": "e2d21c47-a05c-49bb-9694-bba2fe0a5870",
+      "type": "Festival",
+      "score": 98,
+      "name": "Knebworth Festival",
+      "disambiguation": "1985",
+      "life-span": {
+        "begin": "1985-07-22",
+        "end": "1985-07-22"
+      },
+      "relations": [
+        {
+          "type": "held at",
+          "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
+          "direction": "backward",
+          "place": {
+            "id": "7c880382-ee61-467e-9a62-7f87696287a8",
+            "name": "Knebworth House"
+          }
+        }
+      ]
+    }
+  ]
+}

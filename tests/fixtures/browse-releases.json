@@ -1,0 +1,418 @@
+{
+  "release-offset": 0,
+  "releases": [
+    {
+      "barcode": "5018615200826",
+      "media": [
+        {
+          "format": "CD",
+          "position": 1,
+          "track-count": 4,
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "title": "",
+          "id": "289cfa88-b533-3a22-a222-bd4cd6dd6034"
+        }
+      ],
+      "country": "GB",
+      "title": "Blew",
+      "id": "180abab4-8480-4d1b-9a9c-db3d5e864390",
+      "date": "1989-12",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "quality": "normal",
+      "label-info": [
+        {
+          "catalog-number": "TUPCD 8",
+          "label": {
+            "name": "Tupelo Recording Company",
+            "sort-name": "Tupelo Recording Company",
+            "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+            "label-code": null,
+            "id": "8779e3b0-f222-47fa-a985-f3037c8de7a7",
+            "disambiguation": "",
+            "type": "Publisher"
+          }
+        }
+      ],
+      "status": "Official",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "country": "US",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "name": "Nirvana",
+            "sort-name": "Nirvana"
+          }
+        }
+      ],
+      "cover-art-archive": {
+        "darkened": false,
+        "front": true,
+        "back": true,
+        "count": 4,
+        "artwork": true
+      },
+      "disambiguation": "",
+      "packaging": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1989-12",
+          "area": {
+            "iso-3166-1-codes": [
+              "GB"
+            ],
+            "name": "United Kingdom",
+            "sort-name": "United Kingdom",
+            "disambiguation": "",
+            "type": null,
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "type-id": null
+          }
+        }
+      ],
+      "asin": "B000B6TRO8",
+      "packaging-id": null
+    },
+    {
+      "barcode": null,
+      "media": [
+        {
+          "format": "7\" Vinyl",
+          "position": 1,
+          "track-count": 2,
+          "title": "",
+          "format-id": "1d5a48e4-e94a-36dc-84e2-0c5f9f880aa7",
+          "id": "c296c892-36ef-30a0-97b5-05fc36b970b2"
+        }
+      ],
+      "id": "2c84c9b3-d1d4-48c0-a825-a360f26a5dde",
+      "date": "1988-11",
+      "title": "Love Buzz / Big Cheese",
+      "country": "US",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "quality": "normal",
+      "label-info": [
+        {
+          "catalog-number": "SP 23",
+          "label": {
+            "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+            "label-code": 8323,
+            "id": "38dc88de-7720-4100-9d5b-3cdc41b0c474",
+            "type": "Original Production",
+            "disambiguation": "",
+            "sort-name": "Sub Pop Records",
+            "name": "Sub Pop Records"
+          }
+        }
+      ],
+      "status": "Official",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "country": "US",
+            "sort-name": "Nirvana",
+            "name": "Nirvana"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "disambiguation": "",
+      "cover-art-archive": {
+        "artwork": true,
+        "count": 4,
+        "front": true,
+        "back": true,
+        "darkened": false
+      },
+      "packaging": null,
+      "release-events": [
+        {
+          "date": "1988-11",
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "sort-name": "United States",
+            "name": "United States",
+            "disambiguation": "",
+            "type": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "asin": null,
+      "packaging-id": null
+    },
+    {
+      "packaging": null,
+      "disambiguation": "",
+      "cover-art-archive": {
+        "count": 4,
+        "artwork": true,
+        "darkened": false,
+        "back": true,
+        "front": true
+      },
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1989-08",
+          "area": {
+            "sort-name": "United Kingdom",
+            "name": "United Kingdom",
+            "iso-3166-1-codes": [
+              "GB"
+            ],
+            "type-id": null,
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "type": null,
+            "disambiguation": ""
+          }
+        }
+      ],
+      "asin": "B000092DLJ",
+      "packaging-id": null,
+      "date": "1989-08",
+      "id": "581f7289-93cc-4629-97d6-4c1eae38db17",
+      "country": "GB",
+      "title": "Bleach",
+      "media": [
+        {
+          "track-count": 11,
+          "format": "CD",
+          "position": 1,
+          "id": "b69ca1e8-a70f-381e-87d7-64b0adcb08f7",
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "title": ""
+        }
+      ],
+      "barcode": "5018615200628",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "quality": "normal",
+      "label-info": [
+        {
+          "catalog-number": "TUP CD6",
+          "label": {
+            "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+            "label-code": null,
+            "id": "8779e3b0-f222-47fa-a985-f3037c8de7a7",
+            "disambiguation": "",
+            "type": "Publisher",
+            "sort-name": "Tupelo Recording Company",
+            "name": "Tupelo Recording Company"
+          }
+        },
+        {
+          "label": {
+            "sort-name": "Tupelo Recording Company",
+            "name": "Tupelo Recording Company",
+            "type": "Publisher",
+            "disambiguation": "",
+            "id": "8779e3b0-f222-47fa-a985-f3037c8de7a7",
+            "label-code": null,
+            "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c"
+          },
+          "catalog-number": "TUPCD6"
+        }
+      ],
+      "status": "Official",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "country": "US",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "disambiguation": "1980s–1990s US grunge band",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "name": "Nirvana"
+          },
+          "joinphrase": ""
+        }
+      ]
+    },
+    {
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "disambiguation": "1980s–1990s US grunge band",
+            "type": "Group",
+            "country": "US",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "name": "Nirvana",
+            "sort-name": "Nirvana"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "status": "Official",
+      "label-info": [
+        {
+          "catalog-number": "SP 34",
+          "label": {
+            "name": "Sub Pop Records",
+            "sort-name": "Sub Pop Records",
+            "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+            "label-code": 8323,
+            "disambiguation": "",
+            "type": "Original Production",
+            "id": "38dc88de-7720-4100-9d5b-3cdc41b0c474"
+          }
+        }
+      ],
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "quality": "normal",
+      "media": [
+        {
+          "title": "",
+          "format-id": "3e9080b0-5e6c-34ab-bd15-f526b6306a64",
+          "id": "62bcd59e-d04f-4d6e-958e-110f45eb5737",
+          "format": "12\" Vinyl",
+          "position": 1,
+          "track-count": 11
+        }
+      ],
+      "barcode": null,
+      "date": "1989-08-08",
+      "id": "a714af56-fb41-481c-9fdf-4f1b86effffa",
+      "title": "Bleach",
+      "country": "US",
+      "packaging-id": null,
+      "asin": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1989-08-08",
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "sort-name": "United States",
+            "name": "United States",
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "disambiguation": "",
+            "type": null,
+            "type-id": null
+          }
+        }
+      ],
+      "disambiguation": "",
+      "cover-art-archive": {
+        "count": 2,
+        "artwork": true,
+        "darkened": false,
+        "front": true,
+        "back": true
+      },
+      "packaging": null
+    },
+    {
+      "barcode": "5018615200611",
+      "media": [
+        {
+          "format-id": "3e9080b0-5e6c-34ab-bd15-f526b6306a64",
+          "title": "",
+          "id": "5b52a949-82be-3fed-9ac5-99b595082d07",
+          "position": 1,
+          "format": "12\" Vinyl",
+          "track-count": 11
+        }
+      ],
+      "title": "Bleach",
+      "country": "GB",
+      "id": "b7184186-6884-44cd-91ed-62370f880e5d",
+      "date": "1989-08",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "quality": "normal",
+      "label-info": [
+        {
+          "catalog-number": "TUPLP6",
+          "label": {
+            "disambiguation": "",
+            "type": "Publisher",
+            "id": "8779e3b0-f222-47fa-a985-f3037c8de7a7",
+            "label-code": null,
+            "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+            "sort-name": "Tupelo Recording Company",
+            "name": "Tupelo Recording Company"
+          }
+        }
+      ],
+      "status": "Official",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "sort-name": "Nirvana"
+          }
+        }
+      ],
+      "cover-art-archive": {
+        "darkened": false,
+        "back": true,
+        "front": true,
+        "count": 4,
+        "artwork": true
+      },
+      "disambiguation": "",
+      "packaging": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "GB"
+            ],
+            "sort-name": "United Kingdom",
+            "name": "United Kingdom",
+            "type": null,
+            "disambiguation": "",
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "type-id": null
+          },
+          "date": "1989-08"
+        }
+      ],
+      "asin": null,
+      "packaging-id": null
+    }
+  ],
+  "release-count": 1320
+}

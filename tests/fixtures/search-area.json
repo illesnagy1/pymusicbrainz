@@ -1,0 +1,54 @@
+{
+  "created": "2026-11-08T19:48:18.503Z",
+  "count": 1,
+  "offset": 0,
+  "areas": [
+    {
+      "id": "10adc6b5-63bf-4b4e-993e-ed83b05c22fc",
+      "type": "City",
+      "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+      "score": 100,
+      "name": "Seattle",
+      "sort-name": "Seattle",
+      "life-span": {
+        "ended": null
+      },
+      "relation-list": [
+        {
+          "relations": [
+            {
+              "type": "part of",
+              "type-id": "de7cc874-8b1b-3a05-8272-f3834c968fb7",
+              "target": "96ff978d-5ec8-4b52-9662-98ddd4243df1",
+              "direction": "backward",
+              "area": {
+                "id": "96ff978d-5ec8-4b52-9662-98ddd4243df1",
+                "type": "County",
+                "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
+                "name": "King County",
+                "sort-name": "King County",
+                "life-span": {
+                  "ended": null
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "city"
+        },
+        {
+          "count": 2,
+          "name": "contra"
+        },
+        {
+          "count": 2,
+          "name": "grunge"
+        }
+      ]
+    }
+  ]
+}

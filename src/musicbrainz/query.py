@@ -1,13 +1,15 @@
-"""Helpers for building Lucene search queries.
+r"""Helpers for building Lucene search queries.
 
 ```pycon
 >>> escape("AC/DC")
-'AC\\\\/DC'
+'AC\\/DC'
 >>> build_query(artist="Daft Punk", country="FR")
 'artist:"Daft Punk" AND country:"FR"'
 
 ```
 """
+
+from __future__ import annotations
 
 import re
 from collections.abc import Iterable, Mapping

@@ -1,0 +1,14 @@
+{
+  "id": "10adc6b5-63bf-4b4e-993e-ed83b05c22fc",
+  "life-span": {
+    "ended": false,
+    "begin": null,
+    "end": null
+  },
+  "type": "City",
+  "sort-name": "Seattle",
+  "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+  "disambiguation": "",
+  "aliases": [],
+  "name": "Seattle"
+}

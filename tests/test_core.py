@@ -3,6 +3,8 @@
 These tests exercise :class:`Core` directly: no transport, no client.
 """
 
+from __future__ import annotations
+
 from collections.abc import Callable
 from typing import Literal
 
@@ -20,6 +22,7 @@ from musicbrainz import (
     ServerError,
     ValidationError,
 )
+from musicbrainz import _constants as consts
 from musicbrainz._core import (
     Call,
     Core,
@@ -208,3 +211,23 @@ def test_decode_body() -> None:
     assert decode_body(_call("json"), b"") == {}
     assert decode_body(_call("json"), b'{"a": 1}') == {"a": 1}
     assert decode_body(_call("text"), "é".encode()) == "é"
+
+
+# ------------------------------------------------------------------ search fields
+
+
+def test_search_field_typo_rejected() -> None:
+    with pytest.raises(ValidationError, match=r"invalid search field.*artsit") as exc:
+        core.search("artist", fields={"artsit": "Nirvana"})
+    assert "Allowed: alias, area, arid" in str(exc.value)
+
+
+def test_search_fields_skip_validation_when_disabled() -> None:
+    call = Core(validate=False).search("artist", fields={"future_field": "x"})
+    assert ("query", 'future_field:"x"') in call.params
+
+
+def test_search_fields_cover_every_index() -> None:
+    assert set(consts.SEARCH_FIELDS) == set(consts.SEARCH_ENTITIES)
+    for entity, fields in consts.SEARCH_FIELDS.items():
+        assert "tag" in fields or entity in {"annotation", "cdstub", "place", "url"}

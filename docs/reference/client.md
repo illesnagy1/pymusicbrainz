@@ -24,6 +24,8 @@ methods, awaited.
     options:
       inherited_members: false
 
+::: musicbrainz.client.CoverArtResource
+
 ::: musicbrainz.client.SearchOnlyResource
     options:
       members: []

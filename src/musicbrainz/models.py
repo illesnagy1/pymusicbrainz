@@ -6,11 +6,13 @@ is lost, even if a field is not modelled here. Access them with
 Python attributes are snake_case (``sort_name``).
 """
 
+from __future__ import annotations
+
 from collections.abc import Iterator
 from dataclasses import dataclass, field
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, field_validator
 
 
 def _kebab(name: str) -> str:
@@ -298,6 +300,7 @@ class Recording(Entity):
 
     @property
     def artist_credit_phrase(self) -> str:
+        """The artist credit as one string, e.g. ``"Simon & Garfunkel"``."""
         return credit_string(self.artist_credit)
 
 
@@ -382,6 +385,7 @@ class Release(Entity):
 
     @property
     def artist_credit_phrase(self) -> str:
+        """The artist credit as one string, e.g. ``"Simon & Garfunkel"``."""
         return credit_string(self.artist_credit)
 
 
@@ -399,6 +403,7 @@ class ReleaseGroup(Entity):
 
     @property
     def artist_credit_phrase(self) -> str:
+        """The artist credit as one string, e.g. ``"Simon & Garfunkel"``."""
         return credit_string(self.artist_credit)
 
 
@@ -477,6 +482,59 @@ class IsrcResult(MBModel):
     recordings: list[Recording] = []
 
 
+# ------------------------------------------------------------------ cover art
+
+
+class CoverArtImage(MBModel):
+    """One image in a Cover Art Archive listing."""
+
+    id: str
+    image: str
+    thumbnails: dict[str, str] = {}
+    types: list[str] = []
+    front: bool = False
+    back: bool = False
+    approved: bool = False
+    comment: str = ""
+    edit: int | None = None
+
+    @field_validator("id", mode="before")
+    @classmethod
+    def _id_as_str(cls, value: object) -> object:
+        # Documented as a string, but the live API returns a number.
+        return str(value) if isinstance(value, int) else value
+
+    def thumbnail(self, size: int) -> str | None:
+        """URL of the ``size`` px (250, 500 or 1200) thumbnail, if there is one."""
+        return self.thumbnails.get(str(size))
+
+
+class CoverArt(MBModel):
+    """The Cover Art Archive listing for a release (or a release group)."""
+
+    images: list[CoverArtImage] = []
+    release: str | None = None
+
+    @property
+    def front(self) -> CoverArtImage | None:
+        """The image chosen as the main front cover, if any."""
+        return next((i for i in self.images if i.front), None)
+
+    @property
+    def back(self) -> CoverArtImage | None:
+        """The image chosen as the main back cover, if any."""
+        return next((i for i in self.images if i.back), None)
+
+
+@dataclass(frozen=True, slots=True)
+class ImageData:
+    """A downloaded image."""
+
+    data: bytes
+    content_type: str
+    url: str
+
+
 for _m in list(globals().values()):
     if isinstance(_m, type) and issubclass(_m, MBModel):
         _m.model_rebuild()
@@ -507,10 +565,12 @@ class Page[T]:
 
     @property
     def next_offset(self) -> int:
+        """Offset of the next page: this offset plus the items received."""
         return self.offset + len(self.items)
 
     @property
     def has_more(self) -> bool:
+        """Whether more items exist after this page."""
         return bool(self.items) and self.next_offset < self.count
 
 

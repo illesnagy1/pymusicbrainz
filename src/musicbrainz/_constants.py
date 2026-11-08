@@ -3,9 +3,13 @@
 Entities, includes, browse links and filter values.
 """
 
+from __future__ import annotations
+
 from typing import Literal, get_args
 
 DEFAULT_BASE_URL = "https://musicbrainz.org/ws/2/"
+DEFAULT_CAA_URL = "https://coverartarchive.org/"
+COVER_ART_SIZES = (250, 500, 1200)
 MMD_NAMESPACE = "http://musicbrainz.org/ns/mmd-2.0#"
 
 #: Core entities: lookups by MBID, browsing (except genre/url quirks below).
@@ -49,6 +53,263 @@ SearchEntity = Literal[
 CORE_ENTITIES: tuple[CoreEntity, ...] = get_args(CoreEntity)
 ENTITIES: tuple[Entity, ...] = get_args(Entity)
 SEARCH_ENTITIES: tuple[SearchEntity, ...] = get_args(SearchEntity)
+
+#: Searchable fields per index, from https://musicbrainz.org/doc/MusicBrainz_API/Search
+#: (plus ``orderingattribute`` for series, which the server also accepts).
+SEARCH_FIELDS: dict[SearchEntity, frozenset[str]] = {
+    "annotation": frozenset({"entity", "id", "name", "text", "type"}),
+    "area": frozenset(
+        {
+            "aid",
+            "alias",
+            "area",
+            "areaaccent",
+            "begin",
+            "comment",
+            "end",
+            "ended",
+            "iso",
+            "iso1",
+            "iso2",
+            "iso3",
+            "sortname",
+            "tag",
+            "type",
+        }
+    ),
+    "artist": frozenset(
+        {
+            "alias",
+            "area",
+            "arid",
+            "artist",
+            "artistaccent",
+            "begin",
+            "beginarea",
+            "comment",
+            "country",
+            "end",
+            "endarea",
+            "ended",
+            "gender",
+            "ipi",
+            "isni",
+            "primary_alias",
+            "sortname",
+            "tag",
+            "type",
+        }
+    ),
+    "cdstub": frozenset(
+        {"added", "artist", "barcode", "comment", "discid", "title", "tracks"}
+    ),
+    "event": frozenset(
+        {
+            "aid",
+            "alias",
+            "area",
+            "arid",
+            "artist",
+            "begin",
+            "comment",
+            "eid",
+            "end",
+            "ended",
+            "event",
+            "eventaccent",
+            "pid",
+            "place",
+            "tag",
+            "type",
+        }
+    ),
+    "instrument": frozenset(
+        {
+            "alias",
+            "comment",
+            "description",
+            "iid",
+            "instrument",
+            "instrumentaccent",
+            "tag",
+            "type",
+        }
+    ),
+    "label": frozenset(
+        {
+            "alias",
+            "area",
+            "begin",
+            "code",
+            "comment",
+            "country",
+            "end",
+            "ended",
+            "ipi",
+            "isni",
+            "label",
+            "labelaccent",
+            "laid",
+            "release_count",
+            "sortname",
+            "tag",
+            "type",
+        }
+    ),
+    "place": frozenset(
+        {
+            "address",
+            "alias",
+            "area",
+            "begin",
+            "comment",
+            "end",
+            "ended",
+            "lat",
+            "long",
+            "pid",
+            "place",
+            "placeaccent",
+            "type",
+        }
+    ),
+    "recording": frozenset(
+        {
+            "alias",
+            "arid",
+            "artist",
+            "artistname",
+            "comment",
+            "country",
+            "creditname",
+            "date",
+            "dur",
+            "firstreleasedate",
+            "format",
+            "isrc",
+            "number",
+            "position",
+            "primarytype",
+            "qdur",
+            "recording",
+            "recordingaccent",
+            "reid",
+            "release",
+            "rgid",
+            "rid",
+            "secondarytype",
+            "status",
+            "tag",
+            "tid",
+            "tnum",
+            "tracks",
+            "tracksrelease",
+            "type",
+            "video",
+        }
+    ),
+    "release": frozenset(
+        {
+            "alias",
+            "arid",
+            "artist",
+            "artistname",
+            "asin",
+            "barcode",
+            "catno",
+            "comment",
+            "country",
+            "creditname",
+            "date",
+            "discids",
+            "discidsmedium",
+            "format",
+            "label",
+            "laid",
+            "lang",
+            "mediumid",
+            "mediums",
+            "packaging",
+            "primarytype",
+            "quality",
+            "reid",
+            "release",
+            "releaseaccent",
+            "rgid",
+            "script",
+            "secondarytype",
+            "status",
+            "tag",
+            "tracks",
+            "tracksmedium",
+            "type",
+        }
+    ),
+    "release-group": frozenset(
+        {
+            "alias",
+            "arid",
+            "artist",
+            "artistname",
+            "comment",
+            "creditname",
+            "firstreleasedate",
+            "primarytype",
+            "reid",
+            "release",
+            "releasegroup",
+            "releasegroupaccent",
+            "releases",
+            "rgid",
+            "secondarytype",
+            "status",
+            "tag",
+            "type",
+        }
+    ),
+    "series": frozenset(
+        {
+            "alias",
+            "comment",
+            "orderingattribute",
+            "series",
+            "seriesaccent",
+            "sid",
+            "tag",
+            "type",
+        }
+    ),
+    "tag": frozenset({"tag"}),
+    "work": frozenset(
+        {
+            "alias",
+            "arid",
+            "artist",
+            "comment",
+            "iswc",
+            "lang",
+            "recording",
+            "recording_count",
+            "rid",
+            "tag",
+            "type",
+            "wid",
+            "work",
+            "workaccent",
+        }
+    ),
+    "url": frozenset(
+        {
+            "relationtype",
+            "targetid",
+            "targettype",
+            "uid",
+            "url",
+            "url_ancestor",
+            "url_descendent",
+        }
+    ),
+}
 
 #: JSON list key for each entity type.
 PLURALS: dict[str, str] = {

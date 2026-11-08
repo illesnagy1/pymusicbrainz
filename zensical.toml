@@ -10,6 +10,7 @@ nav = [
     { "Browse & pagination" = "guide/browse.md" },
     { "Search" = "guide/search.md" },
     { "Other lookups" = "guide/other-lookups.md" },
+    { "Cover art" = "guide/cover-art.md" },
     { "Collections & submissions" = "guide/collections-submissions.md" },
     { "Async" = "guide/async.md" },
     { "Rate limiting, errors & logging" = "guide/reliability.md" },

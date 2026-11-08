@@ -1,0 +1,42 @@
+{
+  "collection-offset": 0,
+  "collection-count": 4,
+  "collections": [
+    {
+      "id": "005b5c07-cd88-32a4-805e-1d358ef1cfa3",
+      "type": "Attending",
+      "type-id": "de6aedf5-73c2-3f7c-88f8-e128c189a205",
+      "entity-type": "event",
+      "event-count": 0,
+      "editor": "rob",
+      "name": "Attending"
+    },
+    {
+      "name": "LB Radio Test",
+      "editor": "rob",
+      "recording-count": 3,
+      "entity-type": "recording",
+      "type-id": "dda5c90e-4b0b-3482-a6a9-090844e0860e",
+      "type": "Recording collection",
+      "id": "49b40907-e078-4f15-801f-13167971f567"
+    },
+    {
+      "type": "Recording collection",
+      "id": "927b919d-672e-42b3-96d5-4b968fa1eaa4",
+      "editor": "rob",
+      "recording-count": 0,
+      "name": "Empty collection",
+      "type-id": "dda5c90e-4b0b-3482-a6a9-090844e0860e",
+      "entity-type": "recording"
+    },
+    {
+      "event-count": 0,
+      "editor": "rob",
+      "name": "Maybe attending",
+      "type-id": "ca023ecf-a230-39f4-a252-a8d3b4d59c24",
+      "entity-type": "event",
+      "type": "Maybe attending",
+      "id": "edf6a281-6155-312d-8c26-2521a0fe71bb"
+    }
+  ]
+}

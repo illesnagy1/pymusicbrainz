@@ -11,6 +11,7 @@ musicbrainz isrc USGF19942501
 musicbrainz iswc T-070.243.691-6
 musicbrainz discid 2y0jFMwYQP7gb9iSUKagmoT6DIw-
 musicbrainz url https://www.discogs.com/artist/125246
+musicbrainz cover-art 0fb1bdd3-1443-4569-943f-fc69c6424f99 -o cover.jpg --size 500
 musicbrainz genres
 ```
 
@@ -26,6 +27,7 @@ musicbrainz genres
 | `isrc CODE`, `iswc CODE` | Recordings with an ISRC, works with an ISWC. |
 | `discid DISCID` | Releases for a disc ID. Accepts `--toc`, `--no-cdstubs` and `--all-formats`. |
 | `url URL...` | URL entities for one or more URLs. |
+| `cover-art MBID` | A release's cover art listing (`--release-group` for a release group). With `-o FILE`, downloads one image instead; pick it with `--image front\|back\|ID` and `--size 250\|500\|1200`. |
 | `genres` | All genre names. |
 
 Includes can be repeated (`-i aliases -i tags`) or comma-separated

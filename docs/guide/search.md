@@ -31,9 +31,20 @@ mb.releases.search("nevermind", country="US", format="CD")
 | a number or bool | a bare term: `dur:1000`, `video:false` |
 | `None` | nothing; the field is skipped |
 
-The available fields differ per entity; the
-[MusicBrainz search documentation](https://musicbrainz.org/doc/MusicBrainz_API/Search)
-lists them. A few common ones:
+The available fields differ per entity. Field names are checked before the
+request is sent, so a typo fails loudly instead of silently matching nothing:
+
+```python
+mb.artists.search(artsit="Nirvana")
+# ValidationError: invalid search field(s) for artist: artsit. Allowed: alias, area, ...
+```
+
+The full lists are in
+[`SEARCH_FIELDS`][musicbrainz._constants.SEARCH_FIELDS], taken from the
+[MusicBrainz search documentation](https://musicbrainz.org/doc/MusicBrainz_API/Search).
+If MusicBrainz adds a field before this library knows about it, create the
+client with `validate=False`, or put the term in the `query` string, which is
+never checked. A few common fields:
 
 | Entity | Fields |
 |---|---|
@@ -41,7 +52,7 @@ lists them. A few common ones:
 | release | `release`, `artist`, `label`, `barcode`, `catno`, `country`, `date`, `format`, `status` |
 | release-group | `releasegroup`, `artist`, `primarytype`, `secondarytype`, `firstreleasedate` |
 | recording | `recording`, `artist`, `release`, `isrc`, `dur`, `video` |
-| work | `work`, `artist`, `iswc`, `lyricslanguage` |
+| work | `work`, `artist`, `iswc`, `lang` |
 
 ## Escaping
 

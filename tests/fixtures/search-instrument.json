@@ -1,0 +1,1281 @@
+{
+  "created": "2026-11-08T19:48:20.555Z",
+  "count": 64,
+  "offset": 0,
+  "instruments": [
+    {
+      "id": "63021302-86cd-4aee-80df-2270d54f4978",
+      "type": "String instrument",
+      "type-id": "cc00f97f-cf3d-3ae2-9163-041cb1a0d726",
+      "score": 100,
+      "name": "guitar",
+      "aliases": [
+        {
+          "sort-name": "gtr",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "gtr",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gt",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "gt",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "🎸",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "🎸",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gitarlar",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "gitarlar",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "kitarrid",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "kitarrid",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitarras",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "guitarras",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "κιθάρες",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "κιθάρες",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gitaren",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "gitaren",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "kitarat",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "kitarat",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitarras",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "guitarras",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Gitarren",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "Gitarren",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitares",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "guitares",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Gitaroj",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "Gitaroj",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gitary",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "gitary",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitars",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "guitars",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gitaar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "gitaar",
+          "locale": "nl",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Gitarre",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Gitarre",
+          "locale": "de",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "ギター",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "ギター",
+          "locale": "ja",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "kitarr",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "kitarr",
+          "locale": "et",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitare",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitare",
+          "locale": "fr",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitar",
+          "locale": "en",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitarra",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitarra",
+          "locale": "es",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "κιθάρα",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "κιθάρα",
+          "locale": "el",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Gitaro",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Gitaro",
+          "locale": "eo",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "kitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "kitara",
+          "locale": "fi",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "gitara",
+          "locale": "pl",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "gitar",
+          "locale": "tr",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        {
+          "count": 2,
+          "name": "rock"
+        },
+        {
+          "count": 1,
+          "name": "pop"
+        },
+        {
+          "count": 0,
+          "name": "fixme"
+        },
+        {
+          "count": 1,
+          "name": "jazz"
+        },
+        {
+          "count": 1,
+          "name": "industrial metal"
+        },
+        {
+          "count": 1,
+          "name": "punk"
+        },
+        {
+          "count": 1,
+          "name": "metal"
+        },
+        {
+          "count": 1,
+          "name": "metalcore"
+        },
+        {
+          "count": 0,
+          "name": "blues"
+        },
+        {
+          "count": 1,
+          "name": "strings"
+        },
+        {
+          "count": 1,
+          "name": "hard rock"
+        },
+        {
+          "count": 1,
+          "name": "country"
+        },
+        {
+          "count": 1,
+          "name": "power pop"
+        },
+        {
+          "count": 1,
+          "name": "folk rock"
+        },
+        {
+          "count": 1,
+          "name": "nu metal"
+        },
+        {
+          "count": 0,
+          "name": "country rock"
+        },
+        {
+          "count": 1,
+          "name": "hardcore punk"
+        },
+        {
+          "count": 0,
+          "name": "art rock"
+        },
+        {
+          "count": 1,
+          "name": "pop rock"
+        },
+        {
+          "count": 0,
+          "name": "arena rock"
+        },
+        {
+          "count": 1,
+          "name": "electric blues"
+        },
+        {
+          "count": 1,
+          "name": "mathcore"
+        },
+        {
+          "count": 0,
+          "name": "bach"
+        },
+        {
+          "count": 0,
+          "name": "contra"
+        },
+        {
+          "count": 0,
+          "name": "generic"
+        },
+        {
+          "count": 1,
+          "name": "quadrivium"
+        },
+        {
+          "count": 1,
+          "name": "plucked"
+        },
+        {
+          "count": 1,
+          "name": "wood"
+        },
+        {
+          "count": 0,
+          "name": "frets"
+        },
+        {
+          "count": 0,
+          "name": "emoji"
+        }
+      ]
+    },
+    {
+      "id": "43f378cf-b099-46da-8ec3-a39b6f5e5258",
+      "type": "String instrument",
+      "type-id": "cc00f97f-cf3d-3ae2-9163-041cb1a0d726",
+      "score": 82,
+      "name": "classical guitar",
+      "disambiguation": "Modern acoustic gut/nylon string guitar",
+      "description": "Also known as Spanish guitar, it is used in classical, folk and other styles, the strings are nylon or gut.",
+      "aliases": [
+        {
+          "sort-name": "nylon acoustic guitar",
+          "name": "nylon acoustic guitar",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitare classique",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitare classique",
+          "locale": "fr",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "ガットギター",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "ガットギター",
+          "locale": "ja",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gut guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "gut guitar",
+          "locale": "en",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "darmgitaar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "darmgitaar",
+          "locale": "nl",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "sooltest keeltega kitarr",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "sooltest keeltega kitarr",
+          "locale": "et",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "nailonkitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "nailonkitara",
+          "locale": "fi",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Nylon-Gitarre",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Nylon-Gitarre",
+          "locale": "de",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "nailonkeeltega kitarr",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "nailonkeeltega kitarr",
+          "locale": "et",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "nylon guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "nylon guitar",
+          "locale": "en",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "nylongitaar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "nylongitaar",
+          "locale": "nl",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitare à cordes en nylon",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitare à cordes en nylon",
+          "locale": "fr",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Guitarra de nylon",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Guitarra de nylon",
+          "locale": "es",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Ισπανική ακουστική κιθάρα",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Ισπανική ακουστική κιθάρα",
+          "locale": "el",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Chitarra acustica spagnola",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Chitarra acustica spagnola",
+          "locale": "it",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "espanjalainen akustinen kitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "espanjalainen akustinen kitara",
+          "locale": "fi",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Španjolska akustična gitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Španjolska akustična gitara",
+          "locale": "hr",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitarra (acústica) española",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitarra (acústica) española",
+          "locale": "es",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "spanische Akustikgitarre",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "spanische Akustikgitarre",
+          "locale": "de",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Guitare acoustique espagnole",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Guitare acoustique espagnole",
+          "locale": "fr",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Spaanse akoestische gitaar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Spaanse akoestische gitaar",
+          "locale": "nl",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "hispaania akustiline kitarr",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "hispaania akustiline kitarr",
+          "locale": "et",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Spanish acoustic guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Spanish acoustic guitar",
+          "locale": "en",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitarras",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "guitarras",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "klassiche Gitarre",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "klassiche Gitarre",
+          "locale": "de",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "κλασική κιθάρα",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "κλασική κιθάρα",
+          "locale": "el",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "クラシック・ギター",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "クラシック・ギター",
+          "locale": "ja",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "klassinen kitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "klassinen kitara",
+          "locale": "fi",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "classical guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "classical guitar",
+          "locale": "en",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "klassikaline kitarr",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "klassikaline kitarr",
+          "locale": "et",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "klassisk guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "klassisk guitar",
+          "locale": "da",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitarra clásica",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitarra clásica",
+          "locale": "es",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "klassieke gitaar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "klassieke gitaar",
+          "locale": "nl",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitare classique",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitare classique",
+          "locale": "fr",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "klasična gitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "klasična gitara",
+          "locale": "hr",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "violão clássico",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "violão clássico",
+          "locale": "pt_BR",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Chitarra classica",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "Chitarra classica",
+          "locale": "it",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "chitară clasică",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "chitară clasică",
+          "locale": "ro",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "klasik gitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "klasik gitar",
+          "locale": "tr",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        {
+          "count": 2,
+          "name": "classical"
+        },
+        {
+          "count": 1,
+          "name": "strings"
+        },
+        {
+          "count": 1,
+          "name": "guitar"
+        },
+        {
+          "count": 1,
+          "name": "lute"
+        },
+        {
+          "count": 1,
+          "name": "wood"
+        },
+        {
+          "count": 1,
+          "name": "nylon"
+        },
+        {
+          "count": 1,
+          "name": "gut"
+        },
+        {
+          "count": 0,
+          "name": "the newman & oltman guitar duo"
+        }
+      ]
+    },
+    {
+      "id": "7ee8ebf5-3aed-4fc8-8004-49f4a8c45a87",
+      "type": "String instrument",
+      "type-id": "cc00f97f-cf3d-3ae2-9163-041cb1a0d726",
+      "score": 80,
+      "name": "electric guitar",
+      "aliases": [
+        {
+          "sort-name": "E-Gitarre",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "E-Gitarre",
+          "locale": "de",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "E guitar",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "E guitar",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "diàn jié tā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "電結他",
+          "locale": "yue",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "chán jítā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "蝉吉他",
+          "locale": "zh",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "電吉它",
+          "type-id": "7d5ef40f-4856-3000-8667-aa13b9db547d",
+          "name": "電吉它",
+          "locale": null,
+          "type": "Search hint",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitare électrique",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitare électrique",
+          "locale": "fr",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "diàn jítā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "電吉他",
+          "locale": "zh_Hant_TW",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "electric guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "electric guitar",
+          "locale": "en",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "diàn jítā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "電吉他",
+          "locale": "zh_Hant",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "diàn jítā (wu chinese)",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "电吉他",
+          "locale": null,
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "guitarra eléctrica",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "guitarra eléctrica",
+          "locale": "es",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "el-guitar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "el-guitar",
+          "locale": "da",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "diàn jítā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "电吉它",
+          "locale": "zh",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "elektrikitarr",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "elektrikitarr",
+          "locale": "et",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "sähkökitara",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "sähkökitara",
+          "locale": "fi",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "diànzǐ jítā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "电子吉他",
+          "locale": "zh",
+          "type": "Instrument name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "erekutorikku gitā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "エレクトリック・ギター",
+          "locale": "ja",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "ilektrikí kithára",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "ηλεκτρική κιθάρα",
+          "locale": "el",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "elektrische gitaar",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "elektrische gitaar",
+          "locale": "nl",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "gitara elekryczna",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "gitara elekryczna",
+          "locale": "pl",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "chitară electrică",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "chitară electrică",
+          "locale": "ro",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "diàn jítā",
+          "type-id": "2322fc94-fbf3-3c09-b23c-aa5ec8d14fcd",
+          "name": "电吉他",
+          "locale": "zh_Hans",
+          "type": "Instrument name",
+          "primary": true,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "bitcore"
+        },
+        {
+          "count": 1,
+          "name": "metalcore"
+        },
+        {
+          "count": 1,
+          "name": "neon pop punk"
+        },
+        {
+          "count": 1,
+          "name": "post-hardcore"
+        },
+        {
+          "count": 1,
+          "name": "chiptune"
+        },
+        {
+          "count": 1,
+          "name": "dance-punk"
+        },
+        {
+          "count": 1,
+          "name": "bitpunk"
+        },
+        {
+          "count": 1,
+          "name": "indie chiptune"
+        },
+        {
+          "count": 1,
+          "name": "bitgrind"
+        },
+        {
+          "count": 1,
+          "name": "indietronica"
+        },
+        {
+          "count": 1,
+          "name": "dark cabaret"
+        },
+        {
+          "count": 1,
+          "name": "folk punk"
+        },
+        {
+          "count": 1,
+          "name": "electropunk"
+        },
+        {
+          "count": 1,
+          "name": "electronic rock"
+        },
+        {
+          "count": 1,
+          "name": "cybergrind"
+        },
+        {
+          "count": 2,
+          "name": "metal"
+        },
+        {
+          "count": 1,
+          "name": "blues"
+        },
+        {
+          "count": 1,
+          "name": "rock and roll"
+        },
+        {
+          "count": 1,
+          "name": "comedy rock"
+        },
+        {
+          "count": 1,
+          "name": "blues rock"
+        },
+        {
+          "count": 1,
+          "name": "alternative rock"
+        },
+        {
+          "count": 1,
+          "name": "arena rock"
+        },
+        {
+          "count": 1,
+          "name": "hard rock"
+        },
+        {
+          "count": 2,
+          "name": "punk rock"
+        },
+        {
+          "count": 2,
+          "name": "indie rock"
+        },
+        {
+          "count": 1,
+          "name": "noise rock"
+        },
+        {
+          "count": 1,
+          "name": "christian rock"
+        },
+        {
+          "count": 1,
+          "name": "garage rock"
+        },
+        {
+          "count": 1,
+          "name": "classic rock"
+        },
+        {
+          "count": 1,
+          "name": "instrumental rock"
+        },
+        {
+          "count": 1,
+          "name": "progressive rock"
+        },
+        {
+          "count": 1,
+          "name": "pop rock"
+        },
+        {
+          "count": 1,
+          "name": "rap rock"
+        },
+        {
+          "count": 1,
+          "name": "surf rock"
+        },
+        {
+          "count": 1,
+          "name": "j-rock"
+        },
+        {
+          "count": 1,
+          "name": "psychedelic rock"
+        },
+        {
+          "count": 1,
+          "name": "rock"
+        },
+        {
+          "count": 1,
+          "name": "ska punk"
+        },
+        {
+          "count": 1,
+          "name": "skate punk"
+        },
+        {
+          "count": 1,
+          "name": "garage punk"
+        },
+        {
+          "count": 1,
+          "name": "thrash metal"
+        },
+        {
+          "count": 1,
+          "name": "pop metal"
+        },
+        {
+          "count": 1,
+          "name": "christian metal"
+        },
+        {
+          "count": 1,
+          "name": "old school death metal"
+        },
+        {
+          "count": 1,
+          "name": "nu metal"
+        },
+        {
+          "count": 1,
+          "name": "power metal"
+        },
+        {
+          "count": 1,
+          "name": "kawaii metal"
+        },
+        {
+          "count": 1,
+          "name": "glam metal"
+        },
+        {
+          "count": 3,
+          "name": "pop punk"
+        },
+        {
+          "count": 2,
+          "name": "heavy metal"
+        },
+        {
+          "count": 3,
+          "name": "punk"
+        },
+        {
+          "count": 2,
+          "name": "alternative metal"
+        }
+      ]
+    }
+  ]
+}

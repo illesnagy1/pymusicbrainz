@@ -54,6 +54,15 @@ with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
 
     [:octicons-arrow-right-24: Async](guide/async.md)
 
+-   :material-image: **Cover art**
+
+    ---
+
+    List and download release and release group images from the Cover Art
+    Archive, including 250/500/1200 px thumbnails.
+
+    [:octicons-arrow-right-24: Cover art](guide/cover-art.md)
+
 -   :material-pencil: **Submissions**
 
     ---
@@ -76,7 +85,7 @@ with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
 
 ## Installation
 
-The package requires Python 3.15 or later.
+The package requires Python 3.12 or later.
 
 === "uv"
 

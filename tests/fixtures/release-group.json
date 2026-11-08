@@ -1,0 +1,6117 @@
+{
+  "rating": {
+    "votes-count": 72,
+    "value": 4.45
+  },
+  "disambiguation": "",
+  "id": "1b022e01-4da6-387b-8658-8678046e4cef",
+  "secondary-types": [],
+  "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+  "primary-type": "Album",
+  "releases": [
+    {
+      "id": "eccae410-7577-4daa-b602-92d305828331",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "",
+      "country": "AU",
+      "aliases": [],
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "aliases": [
+              {
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "begin": null,
+                "name": "Nirvana",
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false,
+                "primary": true
+              },
+              {
+                "begin": null,
+                "name": "Nirvana US",
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "primary": null,
+                "type-id": null,
+                "end": null,
+                "ended": false
+              },
+              {
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc"
+              }
+            ],
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative metal",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "alternative pop"
+              },
+              {
+                "name": "alternative rock",
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1
+              },
+              {
+                "name": "conscious hip hop",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "electronic",
+                "count": 1,
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "disambiguation": ""
+              },
+              {
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "disambiguation": "",
+                "name": "experimental"
+              },
+              {
+                "disambiguation": "",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "name": "grunge"
+              },
+              {
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hard rock"
+              },
+              {
+                "name": "hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c"
+              },
+              {
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "name": "instrumental hip hop"
+              },
+              {
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "name": "noise rock",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "name": "pigfuck"
+              },
+              {
+                "name": "pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791"
+              },
+              {
+                "name": "post-hardcore",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "name": "psychedelic pop"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3"
+              },
+              {
+                "disambiguation": "",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "name": "punk rock"
+              },
+              {
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "disambiguation": "",
+                "name": "rock"
+              },
+              {
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "disambiguation": "",
+                "name": "sludge metal"
+              },
+              {
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "barcode": "720642442524",
+      "genres": [],
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "iso-3166-1-codes": [
+              "AU"
+            ],
+            "type-id": null,
+            "id": "106e0bec-b638-3b37-b731-f53d507dc00e",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Australia",
+            "name": "Australia"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      }
+    },
+    {
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "type-id": null,
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a",
+            "name": "Europe",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Europe"
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "aliases": [],
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "aliases": [
+              {
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "Nirvana",
+                "begin": null,
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "locale": "en"
+              },
+              {
+                "ended": false,
+                "type-id": null,
+                "end": null,
+                "primary": null,
+                "sort-name": "Nirvana US",
+                "type": null,
+                "locale": null,
+                "name": "Nirvana US",
+                "begin": null
+              },
+              {
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952"
+              },
+              {
+                "disambiguation": "",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "name": "alternative metal"
+              },
+              {
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "alternative pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "name": "alternative rock"
+              },
+              {
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1,
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "disambiguation": "",
+                "name": "conscious hip hop"
+              },
+              {
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "electronic"
+              },
+              {
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": "",
+                "name": "experimental"
+              },
+              {
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "disambiguation": "",
+                "name": "grunge"
+              },
+              {
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": "",
+                "name": "hard rock"
+              },
+              {
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "name": "noise rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "name": "pigfuck"
+              },
+              {
+                "name": "pop",
+                "disambiguation": "",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1
+              },
+              {
+                "name": "post-hardcore",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147"
+              },
+              {
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "name": "punk"
+              },
+              {
+                "name": "punk rock",
+                "disambiguation": "",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1
+              },
+              {
+                "name": "rock",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "disambiguation": ""
+              },
+              {
+                "name": "sludge metal",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "disambiguation": ""
+              },
+              {
+                "name": "underground hip hop",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": ""
+              }
+            ],
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band"
+          }
+        }
+      ],
+      "quality": "normal",
+      "genres": [
+        {
+          "count": 1,
+          "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+          "disambiguation": "",
+          "name": "grunge"
+        },
+        {
+          "name": "rock",
+          "count": 1,
+          "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+          "disambiguation": ""
+        }
+      ],
+      "barcode": "720642442524",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "disambiguation": "",
+      "country": "XE",
+      "id": "3c19711b-b9df-495b-a610-634b1fc48763"
+    },
+    {
+      "id": "8e061dc4-790e-4587-ba53-011e7852f88d",
+      "disambiguation": "",
+      "country": "US",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "genres": [
+        {
+          "disambiguation": "",
+          "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+          "count": 1,
+          "name": "alternative rock"
+        },
+        {
+          "name": "grunge",
+          "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+          "count": 3,
+          "disambiguation": ""
+        }
+      ],
+      "barcode": "0720642442524",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "aliases": [
+              {
+                "begin": null,
+                "name": "Nirvana",
+                "locale": "en",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "primary": true,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false
+              },
+              {
+                "locale": null,
+                "sort-name": "Nirvana US",
+                "type": null,
+                "name": "Nirvana US",
+                "begin": null,
+                "ended": false,
+                "end": null,
+                "type-id": null,
+                "primary": null
+              },
+              {
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "locale": "ja"
+              }
+            ],
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "name": "alternative metal"
+              },
+              {
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "alternative pop"
+              },
+              {
+                "disambiguation": "",
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "name": "alternative rock"
+              },
+              {
+                "name": "ambient",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "name": "conscious hip hop"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "name": "electronic"
+              },
+              {
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "disambiguation": "",
+                "name": "experimental"
+              },
+              {
+                "name": "grunge",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "name": "hard rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "name": "hip hop"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "noise rock",
+                "disambiguation": "",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12
+              },
+              {
+                "name": "pigfuck",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": ""
+              },
+              {
+                "name": "pop",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "post-hardcore",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147"
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "name": "punk rock"
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798"
+              },
+              {
+                "name": "sludge metal",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "quality": "normal",
+      "aliases": [],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "sort-name": "United States",
+            "type": null,
+            "disambiguation": "",
+            "name": "United States",
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null,
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          }
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "title": "Nevermind",
+      "date": "1991-09-24"
+    },
+    {
+      "country": "US",
+      "disambiguation": "",
+      "status": "Promotion",
+      "packaging": "Cardboard/Paper Sleeve",
+      "id": "f922ec87-4758-421d-a839-3193455345ff",
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "status-id": "518ffc83-5cde-34df-8627-81bff5093d92",
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "name": "United States",
+            "disambiguation": "",
+            "sort-name": "United States",
+            "type": null,
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null
+          }
+        }
+      ],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "aliases": [
+              {
+                "name": "Nirvana",
+                "begin": null,
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "locale": "en",
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc"
+              },
+              {
+                "end": null,
+                "type-id": null,
+                "ended": false,
+                "primary": null,
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "begin": null,
+                "name": "Nirvana US"
+              },
+              {
+                "locale": "ja",
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "primary": true
+              }
+            ],
+            "genres": [
+              {
+                "disambiguation": "",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "name": "acoustic rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "name": "alternative metal"
+              },
+              {
+                "name": "alternative pop",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "name": "alternative rock"
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1
+              },
+              {
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "disambiguation": "",
+                "name": "conscious hip hop"
+              },
+              {
+                "name": "electronic",
+                "disambiguation": "",
+                "count": 1,
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4"
+              },
+              {
+                "name": "experimental",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": ""
+              },
+              {
+                "name": "grunge",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "disambiguation": ""
+              },
+              {
+                "name": "hard rock",
+                "disambiguation": "",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "name": "hip hop"
+              },
+              {
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "name": "noise rock",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "disambiguation": ""
+              },
+              {
+                "name": "pigfuck",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "name": "post-hardcore",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "disambiguation": "",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1
+              },
+              {
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "disambiguation": "",
+                "name": "punk"
+              },
+              {
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "name": "rock"
+              },
+              {
+                "name": "sludge metal",
+                "disambiguation": "",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6"
+              },
+              {
+                "name": "underground hip hop",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": ""
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "barcode": "720642442517",
+      "genres": [],
+      "aliases": []
+    },
+    {
+      "status": "Official",
+      "packaging": null,
+      "disambiguation": "",
+      "country": "US",
+      "id": "006cb56d-6eff-4b7d-853f-ecd2db97f3b2",
+      "title": "Nevermind",
+      "date": "1991-09-24",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "packaging-id": null,
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States",
+            "name": "United States"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "aliases": [],
+      "barcode": "720642442517",
+      "genres": [],
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "aliases": [
+              {
+                "begin": null,
+                "name": "Nirvana",
+                "locale": "en",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "primary": true,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false
+              },
+              {
+                "name": "Nirvana US",
+                "begin": null,
+                "locale": null,
+                "sort-name": "Nirvana US",
+                "type": null,
+                "primary": null,
+                "ended": false,
+                "type-id": null,
+                "end": null
+              },
+              {
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "primary": true
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": "",
+                "name": "acoustic rock"
+              },
+              {
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "disambiguation": "",
+                "name": "alternative metal"
+              },
+              {
+                "name": "alternative pop",
+                "disambiguation": "",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1
+              },
+              {
+                "name": "alternative rock",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "disambiguation": ""
+              },
+              {
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1,
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "name": "conscious hip hop",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "disambiguation": ""
+              },
+              {
+                "name": "electronic",
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1
+              },
+              {
+                "name": "experimental",
+                "disambiguation": "",
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1
+              },
+              {
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "disambiguation": "",
+                "name": "grunge"
+              },
+              {
+                "name": "hard rock",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": ""
+              },
+              {
+                "name": "hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "name": "instrumental hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "name": "new age"
+              },
+              {
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "disambiguation": "",
+                "name": "noise rock"
+              },
+              {
+                "name": "pigfuck",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": ""
+              },
+              {
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "name": "post-hardcore"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "name": "psychedelic pop"
+              },
+              {
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "disambiguation": "",
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "name": "punk rock"
+              },
+              {
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "disambiguation": "",
+                "name": "rock"
+              },
+              {
+                "name": "sludge metal",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "disambiguation": ""
+              },
+              {
+                "name": "underground hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd"
+              }
+            ]
+          },
+          "name": "Nirvana"
+        }
+      ]
+    },
+    {
+      "date": "1991-09-24",
+      "title": "Nevermind",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "type": null,
+            "sort-name": "United States",
+            "disambiguation": "",
+            "name": "United States",
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "aliases": [],
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "aliases": [
+              {
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "begin": null,
+                "name": "Nirvana",
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "primary": true
+              },
+              {
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null,
+                "begin": null,
+                "name": "Nirvana US",
+                "type-id": null,
+                "end": null,
+                "ended": false,
+                "primary": null
+              },
+              {
+                "primary": true,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false,
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "locale": "ja",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative metal",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative pop",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative rock",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "name": "conscious hip hop"
+              },
+              {
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "electronic"
+              },
+              {
+                "name": "experimental",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": ""
+              },
+              {
+                "name": "grunge",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "disambiguation": ""
+              },
+              {
+                "name": "hard rock",
+                "disambiguation": "",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab"
+              },
+              {
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "disambiguation": "",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "name": "noise rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "name": "pigfuck"
+              },
+              {
+                "name": "pop",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "post-hardcore",
+                "disambiguation": "",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1
+              },
+              {
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "disambiguation": "",
+                "name": "psychedelic pop"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2,
+                "disambiguation": ""
+              },
+              {
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "name": "rock",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "name": "sludge metal"
+              },
+              {
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "barcode": "720642442524",
+      "genres": [
+        {
+          "disambiguation": "",
+          "count": 1,
+          "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+          "name": "grunge"
+        }
+      ],
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "First press error, no Endless Nameless",
+      "country": "US",
+      "id": "c12262e2-7185-4942-87ee-da27ddd45ddf"
+    },
+    {
+      "title": "Nevermind",
+      "date": "1991-09-24",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null,
+            "disambiguation": "",
+            "sort-name": "United States",
+            "type": null,
+            "name": "United States"
+          }
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "aliases": [],
+      "genres": [
+        {
+          "name": "grunge",
+          "disambiguation": "",
+          "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+          "count": 1
+        },
+        {
+          "name": "rock",
+          "disambiguation": "",
+          "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+          "count": 1
+        }
+      ],
+      "barcode": "720642442524",
+      "artist-credit": [
+        {
+          "artist": {
+            "aliases": [
+              {
+                "begin": null,
+                "name": "Nirvana",
+                "locale": "en",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false
+              },
+              {
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "begin": null,
+                "name": "Nirvana US",
+                "type-id": null,
+                "end": null,
+                "ended": false,
+                "primary": null
+              },
+              {
+                "primary": true,
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "locale": "ja",
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name"
+              }
+            ],
+            "genres": [
+              {
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "name": "acoustic rock"
+              },
+              {
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "disambiguation": "",
+                "name": "alternative metal"
+              },
+              {
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "disambiguation": "",
+                "name": "alternative pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "name": "alternative rock"
+              },
+              {
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1,
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "disambiguation": "",
+                "name": "conscious hip hop"
+              },
+              {
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "electronic"
+              },
+              {
+                "name": "experimental",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": ""
+              },
+              {
+                "name": "grunge",
+                "disambiguation": "",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68
+              },
+              {
+                "name": "hard rock",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "name": "hip hop"
+              },
+              {
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "noise rock",
+                "disambiguation": "",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519"
+              },
+              {
+                "name": "pigfuck",
+                "disambiguation": "",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1
+              },
+              {
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "name": "post-hardcore"
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1
+              },
+              {
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "disambiguation": "",
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2,
+                "disambiguation": ""
+              },
+              {
+                "name": "punk rock",
+                "disambiguation": "",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962"
+              },
+              {
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "disambiguation": "",
+                "name": "rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "name": "sludge metal"
+              },
+              {
+                "name": "underground hip hop",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "disambiguation": ""
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "type": "Group",
+            "sort-name": "Nirvana"
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "country": "US",
+      "disambiguation": "",
+      "id": "a146429a-cedc-3ab0-9e41-1aaf5f6cdc2d"
+    },
+    {
+      "date": "1991-09-24",
+      "title": "Nevermind (30th Anniversary Super Deluxe)",
+      "packaging-id": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": null,
+          "date": "1991-09-24"
+        }
+      ],
+      "text-representation": {
+        "script": null,
+        "language": null
+      },
+      "aliases": [],
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "aliases": [
+              {
+                "begin": null,
+                "name": "Nirvana",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false
+              },
+              {
+                "sort-name": "Nirvana US",
+                "type": null,
+                "locale": null,
+                "name": "Nirvana US",
+                "begin": null,
+                "ended": false,
+                "end": null,
+                "type-id": null,
+                "primary": null
+              },
+              {
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "locale": "ja",
+                "primary": true,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false
+              }
+            ],
+            "genres": [
+              {
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": "",
+                "name": "acoustic rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "name": "alternative metal"
+              },
+              {
+                "disambiguation": "",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "name": "alternative pop"
+              },
+              {
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "disambiguation": "",
+                "name": "alternative rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "name": "ambient"
+              },
+              {
+                "name": "conscious hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3"
+              },
+              {
+                "name": "electronic",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "experimental",
+                "disambiguation": "",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99"
+              },
+              {
+                "name": "grunge",
+                "disambiguation": "",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2"
+              },
+              {
+                "name": "hard rock",
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "name": "hip hop"
+              },
+              {
+                "name": "instrumental hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4"
+              },
+              {
+                "name": "new age",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "noise rock",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "disambiguation": ""
+              },
+              {
+                "name": "pigfuck",
+                "disambiguation": "",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1
+              },
+              {
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "name": "post-hardcore"
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58"
+              },
+              {
+                "name": "psytrance",
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147"
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2
+              },
+              {
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "name": "rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "name": "sludge metal"
+              },
+              {
+                "name": "underground hip hop",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "disambiguation": ""
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "sort-name": "Nirvana",
+            "type": "Group"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "barcode": null,
+      "genres": [],
+      "packaging": null,
+      "status": "Official",
+      "disambiguation": "",
+      "country": null,
+      "id": "a29d92bd-5691-4515-a0e2-9476d86cad40"
+    },
+    {
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "name": "acoustic rock"
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79"
+              },
+              {
+                "name": "alternative pop",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "name": "alternative rock"
+              },
+              {
+                "name": "ambient",
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "conscious hip hop",
+                "disambiguation": "",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1
+              },
+              {
+                "name": "electronic",
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1
+              },
+              {
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": "",
+                "name": "experimental"
+              },
+              {
+                "name": "grunge",
+                "disambiguation": "",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68
+              },
+              {
+                "name": "hard rock",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": ""
+              },
+              {
+                "name": "hip hop",
+                "disambiguation": "",
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "noise rock",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "name": "pigfuck"
+              },
+              {
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": "",
+                "name": "post-hardcore"
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58"
+              },
+              {
+                "name": "psytrance",
+                "disambiguation": "",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1
+              },
+              {
+                "name": "punk",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "name": "punk rock"
+              },
+              {
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "disambiguation": "",
+                "name": "rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "name": "sludge metal"
+              },
+              {
+                "name": "underground hip hop",
+                "disambiguation": "",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1
+              }
+            ],
+            "aliases": [
+              {
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "primary": true,
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "locale": "en",
+                "name": "Nirvana",
+                "begin": null
+              },
+              {
+                "primary": null,
+                "ended": false,
+                "end": null,
+                "type-id": null,
+                "name": "Nirvana US",
+                "begin": null,
+                "locale": null,
+                "sort-name": "Nirvana US",
+                "type": null
+              },
+              {
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "locale": "ja",
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name"
+              }
+            ],
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "name": "Nirvana"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "genres": [],
+      "barcode": "4988067002709",
+      "aliases": [],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "name": "Japan",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Japan",
+            "iso-3166-1-codes": [
+              "JP"
+            ],
+            "type-id": null,
+            "id": "2db42837-c832-3c27-b4a3-08198f75693c"
+          },
+          "date": "1991-11-07"
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1991-11-07",
+      "title": "Nevermind",
+      "id": "f8cf1736-f25b-4fdc-bd6c-96ead7eb2f1d",
+      "disambiguation": "",
+      "country": "JP",
+      "packaging": "Jewel Case",
+      "status": "Official"
+    },
+    {
+      "id": "7fb7f5b1-1b4a-4179-a14a-27af0ad53ca7",
+      "country": "CA",
+      "disambiguation": "",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "genres": [],
+      "barcode": "720642442524",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "name": "alternative metal"
+              },
+              {
+                "name": "alternative pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6"
+              },
+              {
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "disambiguation": "",
+                "name": "alternative rock"
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699"
+              },
+              {
+                "name": "conscious hip hop",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "disambiguation": ""
+              },
+              {
+                "name": "electronic",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "experimental",
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "grunge",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "name": "hard rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "name": "hip hop"
+              },
+              {
+                "name": "instrumental hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4"
+              },
+              {
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "disambiguation": "",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "name": "noise rock"
+              },
+              {
+                "name": "pigfuck",
+                "disambiguation": "",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "name": "pop"
+              },
+              {
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "disambiguation": "",
+                "name": "post-hardcore"
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2
+              },
+              {
+                "name": "punk rock",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": ""
+              },
+              {
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "disambiguation": "",
+                "name": "rock"
+              },
+              {
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "disambiguation": "",
+                "name": "sludge metal"
+              },
+              {
+                "name": "underground hip hop",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "disambiguation": ""
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "aliases": [
+              {
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "Nirvana",
+                "begin": null,
+                "locale": "en",
+                "sort-name": "Nirvana",
+                "type": "Artist name"
+              },
+              {
+                "locale": null,
+                "sort-name": "Nirvana US",
+                "type": null,
+                "name": "Nirvana US",
+                "begin": null,
+                "ended": false,
+                "end": null,
+                "type-id": null,
+                "primary": null
+              },
+              {
+                "locale": "ja",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false,
+                "primary": true
+              }
+            ],
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "name": "Nirvana"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "aliases": [],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "CA"
+            ],
+            "type-id": null,
+            "id": "71bbafaa-e825-3e15-8ca9-017dcad1748b",
+            "name": "Canada",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Canada"
+          },
+          "date": "1991"
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "title": "Nevermind",
+      "date": "1991"
+    },
+    {
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana",
+            "genres": [
+              {
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "name": "acoustic rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "name": "alternative metal"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "name": "alternative pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "name": "alternative rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "name": "ambient"
+              },
+              {
+                "name": "conscious hip hop",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "electronic"
+              },
+              {
+                "disambiguation": "",
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "name": "experimental"
+              },
+              {
+                "name": "grunge",
+                "disambiguation": "",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68
+              },
+              {
+                "name": "hard rock",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "name": "hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "name": "instrumental hip hop"
+              },
+              {
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "disambiguation": "",
+                "name": "noise rock"
+              },
+              {
+                "name": "pigfuck",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": ""
+              },
+              {
+                "name": "pop",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "name": "post-hardcore"
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58"
+              },
+              {
+                "name": "psytrance",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "disambiguation": ""
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2
+              },
+              {
+                "disambiguation": "",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "name": "punk rock"
+              },
+              {
+                "name": "rock",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "disambiguation": ""
+              },
+              {
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "disambiguation": "",
+                "name": "sludge metal"
+              },
+              {
+                "name": "underground hip hop",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "disambiguation": ""
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "aliases": [
+              {
+                "begin": null,
+                "name": "Nirvana",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false
+              },
+              {
+                "primary": null,
+                "type-id": null,
+                "end": null,
+                "ended": false,
+                "begin": null,
+                "name": "Nirvana US",
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null
+              },
+              {
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc"
+              }
+            ]
+          }
+        }
+      ],
+      "barcode": "777497492006",
+      "genres": [],
+      "aliases": [],
+      "packaging-id": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "CA"
+            ],
+            "id": "71bbafaa-e825-3e15-8ca9-017dcad1748b",
+            "type-id": null,
+            "name": "Canada",
+            "disambiguation": "",
+            "sort-name": "Canada",
+            "type": null
+          },
+          "date": "1991"
+        }
+      ],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1991",
+      "title": "Nevermind",
+      "id": "4cbf7629-4695-3885-9aca-a639e62ba4ab",
+      "country": "CA",
+      "disambiguation": "columbia house edition",
+      "status": "Official",
+      "packaging": null
+    },
+    {
+      "id": "350a8190-2c4b-4010-9bd2-437857325ac5",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "Club Edition",
+      "country": "CA",
+      "aliases": [],
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "name": "Nirvana",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "aliases": [
+              {
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "primary": true,
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "locale": "en",
+                "name": "Nirvana",
+                "begin": null
+              },
+              {
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null,
+                "begin": null,
+                "name": "Nirvana US",
+                "type-id": null,
+                "end": null,
+                "ended": false,
+                "primary": null
+              },
+              {
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "primary": true
+              }
+            ],
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "disambiguation": "",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8
+              },
+              {
+                "name": "alternative metal",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative pop",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "disambiguation": "",
+                "name": "alternative rock"
+              },
+              {
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1,
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "disambiguation": "",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "name": "conscious hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "name": "electronic"
+              },
+              {
+                "name": "experimental",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "name": "grunge"
+              },
+              {
+                "name": "hard rock",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": ""
+              },
+              {
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "name": "instrumental hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "name": "new age"
+              },
+              {
+                "disambiguation": "",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "name": "noise rock"
+              },
+              {
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pigfuck"
+              },
+              {
+                "name": "pop",
+                "disambiguation": "",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1
+              },
+              {
+                "name": "post-hardcore",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "name": "psychedelic pop"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "name": "psytrance"
+              },
+              {
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2,
+                "name": "punk"
+              },
+              {
+                "name": "punk rock",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": ""
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798"
+              },
+              {
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "name": "sludge metal"
+              },
+              {
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "quality": "normal",
+      "genres": [],
+      "barcode": "77749749200602",
+      "date": "1991",
+      "title": "Nevermind",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "CA"
+            ],
+            "id": "71bbafaa-e825-3e15-8ca9-017dcad1748b",
+            "type-id": null,
+            "name": "Canada",
+            "disambiguation": "",
+            "sort-name": "Canada",
+            "type": null
+          },
+          "date": "1991"
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      }
+    },
+    {
+      "disambiguation": "",
+      "country": "XE",
+      "status": "Official",
+      "packaging": "Cardboard/Paper Sleeve",
+      "id": "704a8006-4ec5-424c-afe2-f4561c4dd79c",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a",
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "type": null,
+            "sort-name": "Europe",
+            "disambiguation": "",
+            "name": "Europe"
+          },
+          "date": "1991"
+        }
+      ],
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "title": "Nevermind",
+      "date": "1991",
+      "genres": [],
+      "barcode": "720642442517",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "aliases": [
+              {
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "begin": null,
+                "name": "Nirvana",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en"
+              },
+              {
+                "begin": null,
+                "name": "Nirvana US",
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null,
+                "primary": null,
+                "end": null,
+                "type-id": null,
+                "ended": false
+              },
+              {
+                "locale": "ja",
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "primary": true
+              }
+            ],
+            "genres": [
+              {
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": "",
+                "name": "acoustic rock"
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1
+              },
+              {
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "disambiguation": "",
+                "name": "alternative pop"
+              },
+              {
+                "name": "alternative rock",
+                "disambiguation": "",
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18"
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699"
+              },
+              {
+                "disambiguation": "",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "name": "conscious hip hop"
+              },
+              {
+                "name": "electronic",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "name": "experimental"
+              },
+              {
+                "disambiguation": "",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "name": "grunge"
+              },
+              {
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": "",
+                "name": "hard rock"
+              },
+              {
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "disambiguation": "",
+                "name": "noise rock"
+              },
+              {
+                "name": "pigfuck",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "name": "pop"
+              },
+              {
+                "name": "post-hardcore",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "disambiguation": ""
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1
+              },
+              {
+                "name": "psytrance",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3"
+              },
+              {
+                "name": "punk rock",
+                "disambiguation": "",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798"
+              },
+              {
+                "name": "sludge metal",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "aliases": []
+    },
+    {
+      "id": "474c4801-3b48-47dd-aee6-3163176b5f64",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "disambiguation": "Sonopress Pressing - no DCS opposite the matrix code",
+      "country": "XE",
+      "aliases": [],
+      "barcode": "720642442524",
+      "genres": [],
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "name": "Nirvana",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "aliases": [
+              {
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "begin": null,
+                "name": "Nirvana",
+                "locale": "en",
+                "type": "Artist name",
+                "sort-name": "Nirvana"
+              },
+              {
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "begin": null,
+                "name": "Nirvana US",
+                "type-id": null,
+                "end": null,
+                "ended": false,
+                "primary": null
+              },
+              {
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "primary": true,
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "name": "ニルヴァーナ",
+                "begin": null
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "disambiguation": "",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8
+              },
+              {
+                "name": "alternative metal",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative pop",
+                "disambiguation": "",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1
+              },
+              {
+                "name": "alternative rock",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "disambiguation": "",
+                "name": "conscious hip hop"
+              },
+              {
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "electronic"
+              },
+              {
+                "name": "experimental",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "name": "grunge"
+              },
+              {
+                "name": "hard rock",
+                "disambiguation": "",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab"
+              },
+              {
+                "disambiguation": "",
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "name": "hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "name": "instrumental hip hop"
+              },
+              {
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "name": "noise rock",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "disambiguation": ""
+              },
+              {
+                "name": "pigfuck",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "name": "pop"
+              },
+              {
+                "name": "post-hardcore",
+                "disambiguation": "",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "disambiguation": "",
+                "name": "punk"
+              },
+              {
+                "name": "punk rock",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": ""
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26
+              },
+              {
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "disambiguation": "",
+                "name": "sludge metal"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "name": "underground hip hop"
+              }
+            ]
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "title": "Nevermind",
+      "date": "1991",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "sort-name": "Europe",
+            "type": null,
+            "name": "Europe",
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a",
+            "type-id": null
+          },
+          "date": "1991"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe"
+    },
+    {
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "name": "Europe",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Europe",
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "type-id": null,
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a"
+          }
+        }
+      ],
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1991",
+      "title": "Nevermind",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "disambiguation": "",
+                "name": "alternative metal"
+              },
+              {
+                "name": "alternative pop",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative rock",
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699"
+              },
+              {
+                "name": "conscious hip hop",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "electronic",
+                "count": 1,
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "disambiguation": ""
+              },
+              {
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "disambiguation": "",
+                "name": "experimental"
+              },
+              {
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "disambiguation": "",
+                "name": "grunge"
+              },
+              {
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hard rock"
+              },
+              {
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "name": "instrumental hip hop"
+              },
+              {
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "disambiguation": "",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "name": "noise rock"
+              },
+              {
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pigfuck"
+              },
+              {
+                "name": "pop",
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": ""
+              },
+              {
+                "name": "post-hardcore",
+                "disambiguation": "",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e"
+              },
+              {
+                "name": "psychedelic pop",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "disambiguation": "",
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2,
+                "disambiguation": ""
+              },
+              {
+                "name": "punk rock",
+                "disambiguation": "",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1
+              },
+              {
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "disambiguation": "",
+                "name": "rock"
+              },
+              {
+                "name": "sludge metal",
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3
+              },
+              {
+                "name": "underground hip hop",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": ""
+              }
+            ],
+            "aliases": [
+              {
+                "name": "Nirvana",
+                "begin": null,
+                "locale": "en",
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc"
+              },
+              {
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "begin": null,
+                "name": "Nirvana US",
+                "end": null,
+                "type-id": null,
+                "ended": false,
+                "primary": null
+              },
+              {
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "primary": true,
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "locale": "ja",
+                "begin": null,
+                "name": "ニルヴァーナ"
+              }
+            ],
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "name": "Nirvana"
+          }
+        }
+      ],
+      "barcode": "720642442524",
+      "genres": [],
+      "aliases": [],
+      "disambiguation": "First press error, no \"Endless, Nameless\"",
+      "country": "XE",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "id": "c4682a8e-0213-4173-a604-81b882f074e3"
+    },
+    {
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "",
+      "country": "DE",
+      "id": "88b363cb-86b2-431f-84b4-525d4aa7aa62",
+      "date": "1991",
+      "title": "Nevermind",
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "type-id": null,
+            "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+            "iso-3166-1-codes": [
+              "DE"
+            ],
+            "type": null,
+            "sort-name": "Germany",
+            "disambiguation": "",
+            "name": "Germany"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "aliases": [],
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "name": "acoustic rock"
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79"
+              },
+              {
+                "name": "alternative pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6"
+              },
+              {
+                "name": "alternative rock",
+                "disambiguation": "",
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18"
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1
+              },
+              {
+                "name": "conscious hip hop",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "electronic",
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "name": "experimental"
+              },
+              {
+                "disambiguation": "",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "name": "grunge"
+              },
+              {
+                "name": "hard rock",
+                "disambiguation": "",
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1
+              },
+              {
+                "name": "hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c"
+              },
+              {
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "name": "new age"
+              },
+              {
+                "name": "noise rock",
+                "disambiguation": "",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519"
+              },
+              {
+                "name": "pigfuck",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791"
+              },
+              {
+                "name": "post-hardcore",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "disambiguation": "",
+                "name": "psychedelic pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "name": "psytrance"
+              },
+              {
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "name": "punk"
+              },
+              {
+                "name": "punk rock",
+                "disambiguation": "",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962"
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26
+              },
+              {
+                "name": "sludge metal",
+                "disambiguation": "",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6"
+              },
+              {
+                "name": "underground hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd"
+              }
+            ],
+            "aliases": [
+              {
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "locale": "en",
+                "name": "Nirvana",
+                "begin": null,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "primary": true
+              },
+              {
+                "type-id": null,
+                "end": null,
+                "ended": false,
+                "primary": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null,
+                "begin": null,
+                "name": "Nirvana US"
+              },
+              {
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "primary": true,
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null
+              }
+            ],
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "name": "Nirvana"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "quality": "normal",
+      "genres": [],
+      "barcode": "720642442524"
+    },
+    {
+      "id": "201d5e28-2de4-4e6f-830a-d55c98e57641",
+      "country": "SA",
+      "disambiguation": "",
+      "status": "Official",
+      "packaging": "Cassette Case",
+      "artist-credit": [
+        {
+          "artist": {
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "name": "Nirvana",
+            "genres": [
+              {
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "name": "acoustic rock"
+              },
+              {
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "disambiguation": "",
+                "name": "alternative metal"
+              },
+              {
+                "disambiguation": "",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "name": "alternative pop"
+              },
+              {
+                "name": "alternative rock",
+                "disambiguation": "",
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18"
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1
+              },
+              {
+                "name": "conscious hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3"
+              },
+              {
+                "name": "electronic",
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1
+              },
+              {
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "disambiguation": "",
+                "name": "experimental"
+              },
+              {
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "disambiguation": "",
+                "name": "grunge"
+              },
+              {
+                "name": "hard rock",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": ""
+              },
+              {
+                "name": "hip hop",
+                "disambiguation": "",
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1
+              },
+              {
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "disambiguation": ""
+              },
+              {
+                "name": "noise rock",
+                "disambiguation": "",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12
+              },
+              {
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": "",
+                "name": "pigfuck"
+              },
+              {
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "name": "post-hardcore",
+                "disambiguation": "",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1
+              },
+              {
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "disambiguation": "",
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "punk",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798"
+              },
+              {
+                "name": "sludge metal",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "name": "underground hip hop"
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "aliases": [
+              {
+                "locale": "en",
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "name": "Nirvana",
+                "begin": null,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "primary": true
+              },
+              {
+                "primary": null,
+                "end": null,
+                "type-id": null,
+                "ended": false,
+                "begin": null,
+                "name": "Nirvana US",
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null
+              },
+              {
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "primary": true,
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "name": "ニルヴァーナ",
+                "begin": null
+              }
+            ]
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "genres": [],
+      "barcode": "720642442548",
+      "aliases": [],
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "id": "9705be0d-51fb-3990-8726-ec9f56c66ba0",
+            "iso-3166-1-codes": [
+              "SA"
+            ],
+            "name": "Saudi Arabia",
+            "type": null,
+            "sort-name": "Saudi Arabia",
+            "disambiguation": ""
+          },
+          "date": "1991"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "c70b737a-0114-39a9-88f7-82843e54f906",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1991",
+      "title": "Nevermind"
+    },
+    {
+      "genres": [],
+      "barcode": "0720642442517",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "name": "Nirvana",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "aliases": [
+              {
+                "begin": null,
+                "name": "Nirvana",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false
+              },
+              {
+                "end": null,
+                "type-id": null,
+                "ended": false,
+                "primary": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null,
+                "begin": null,
+                "name": "Nirvana US"
+              },
+              {
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "locale": "ja",
+                "primary": true,
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "genres": [
+              {
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": "",
+                "name": "acoustic rock"
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "name": "alternative pop"
+              },
+              {
+                "name": "alternative rock",
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "disambiguation": ""
+              },
+              {
+                "name": "ambient",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "disambiguation": ""
+              },
+              {
+                "name": "conscious hip hop",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "name": "electronic"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "name": "experimental"
+              },
+              {
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68,
+                "disambiguation": "",
+                "name": "grunge"
+              },
+              {
+                "name": "hard rock",
+                "disambiguation": "",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab"
+              },
+              {
+                "disambiguation": "",
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "name": "hip hop"
+              },
+              {
+                "name": "instrumental hip hop",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "new age",
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "name": "noise rock"
+              },
+              {
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pigfuck"
+              },
+              {
+                "name": "pop",
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "name": "post-hardcore"
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1
+              },
+              {
+                "name": "psytrance",
+                "disambiguation": "",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3"
+              },
+              {
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "disambiguation": "",
+                "name": "rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "name": "sludge metal"
+              },
+              {
+                "disambiguation": "",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "name": "underground hip hop"
+              }
+            ]
+          },
+          "joinphrase": ""
+        }
+      ],
+      "quality": "normal",
+      "aliases": [],
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "disambiguation": "",
+            "sort-name": "United Kingdom",
+            "type": null,
+            "name": "United Kingdom",
+            "iso-3166-1-codes": [
+              "GB"
+            ],
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "type-id": null
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": null,
+      "title": "Nevermind",
+      "date": "1991",
+      "id": "3723c24b-a5a7-3295-b8ab-409a0650efac",
+      "disambiguation": "",
+      "country": "GB",
+      "packaging": null,
+      "status": "Official"
+    },
+    {
+      "aliases": [],
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "joinphrase": "",
+          "artist": {
+            "aliases": [
+              {
+                "ended": false,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "primary": true,
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "locale": "en",
+                "name": "Nirvana",
+                "begin": null
+              },
+              {
+                "name": "Nirvana US",
+                "begin": null,
+                "sort-name": "Nirvana US",
+                "type": null,
+                "locale": null,
+                "primary": null,
+                "ended": false,
+                "type-id": null,
+                "end": null
+              },
+              {
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "primary": true,
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "locale": "ja",
+                "begin": null,
+                "name": "ニルヴァーナ"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "name": "acoustic rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "name": "alternative metal"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "name": "alternative pop"
+              },
+              {
+                "name": "alternative rock",
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30
+              },
+              {
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "name": "conscious hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3"
+              },
+              {
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "electronic"
+              },
+              {
+                "name": "experimental",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": ""
+              },
+              {
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "disambiguation": "",
+                "name": "grunge"
+              },
+              {
+                "disambiguation": "",
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1,
+                "name": "hard rock"
+              },
+              {
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "name": "instrumental hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "name": "new age"
+              },
+              {
+                "name": "noise rock",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "name": "pigfuck"
+              },
+              {
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": "",
+                "name": "post-hardcore"
+              },
+              {
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "name": "psychedelic pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3"
+              },
+              {
+                "disambiguation": "",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "name": "punk rock"
+              },
+              {
+                "name": "rock",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "disambiguation": ""
+              },
+              {
+                "name": "sludge metal",
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3
+              },
+              {
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US"
+          }
+        }
+      ],
+      "barcode": "",
+      "genres": [],
+      "date": "1991",
+      "title": "Nevermind",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States",
+            "name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98"
+          },
+          "date": "1991"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "id": "347666eb-86f7-488a-a427-895f6f7ac203",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "country": "US",
+      "disambiguation": "club edition"
+    },
+    {
+      "id": "9546f873-a3d1-4d37-8d32-5e6b6623fa26",
+      "country": "US",
+      "disambiguation": "",
+      "packaging": null,
+      "status": "Official",
+      "genres": [],
+      "barcode": "720642442548",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "name": "Nirvana",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952"
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79"
+              },
+              {
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "disambiguation": "",
+                "name": "alternative pop"
+              },
+              {
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "disambiguation": "",
+                "name": "alternative rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1,
+                "name": "ambient"
+              },
+              {
+                "name": "conscious hip hop",
+                "disambiguation": "",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "name": "electronic"
+              },
+              {
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "disambiguation": "",
+                "name": "experimental"
+              },
+              {
+                "name": "grunge",
+                "disambiguation": "",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2"
+              },
+              {
+                "name": "hard rock",
+                "disambiguation": "",
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1
+              },
+              {
+                "name": "hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "disambiguation": "",
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6"
+              },
+              {
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "disambiguation": "",
+                "name": "noise rock"
+              },
+              {
+                "name": "pigfuck",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "pop",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "post-hardcore",
+                "disambiguation": "",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "disambiguation": ""
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3"
+              },
+              {
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "name": "rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "name": "sludge metal"
+              },
+              {
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "aliases": [
+              {
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "Nirvana",
+                "begin": null,
+                "sort-name": "Nirvana",
+                "type": "Artist name",
+                "locale": "en"
+              },
+              {
+                "sort-name": "Nirvana US",
+                "type": null,
+                "locale": null,
+                "name": "Nirvana US",
+                "begin": null,
+                "ended": false,
+                "end": null,
+                "type-id": null,
+                "primary": null
+              },
+              {
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "locale": "ja",
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name",
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc"
+              }
+            ]
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "aliases": [],
+      "text-representation": {
+        "script": null,
+        "language": "eng"
+      },
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States",
+            "name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98"
+          },
+          "date": "1991"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": null,
+      "title": "Nevermind",
+      "date": "1991"
+    },
+    {
+      "title": "Nevermind",
+      "date": "1992",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "id": "471c46a7-afc5-31c4-923c-d0444f5053a4",
+            "iso-3166-1-codes": [
+              "ES"
+            ],
+            "name": "Spain",
+            "type": null,
+            "sort-name": "Spain",
+            "disambiguation": ""
+          },
+          "date": "1992"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "aliases": [],
+      "barcode": "720642442524",
+      "genres": [],
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "artist": {
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "disambiguation": "",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79"
+              },
+              {
+                "name": "alternative pop",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative rock",
+                "disambiguation": "",
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "name": "ambient"
+              },
+              {
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1,
+                "disambiguation": "",
+                "name": "conscious hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "name": "electronic"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "name": "experimental"
+              },
+              {
+                "name": "grunge",
+                "disambiguation": "",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2"
+              },
+              {
+                "name": "hard rock",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "name": "hip hop"
+              },
+              {
+                "name": "instrumental hip hop",
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1
+              },
+              {
+                "name": "new age",
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "disambiguation": ""
+              },
+              {
+                "name": "noise rock",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": "",
+                "name": "pigfuck"
+              },
+              {
+                "name": "pop",
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": ""
+              },
+              {
+                "name": "post-hardcore",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "psychedelic pop",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "psytrance",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2
+              },
+              {
+                "name": "punk rock",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "name": "rock"
+              },
+              {
+                "name": "sludge metal",
+                "disambiguation": "",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6"
+              },
+              {
+                "name": "underground hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "aliases": [
+              {
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "begin": null,
+                "name": "Nirvana",
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "primary": true
+              },
+              {
+                "begin": null,
+                "name": "Nirvana US",
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "primary": null,
+                "type-id": null,
+                "end": null,
+                "ended": false
+              },
+              {
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "locale": "ja",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false
+              }
+            ]
+          },
+          "joinphrase": "",
+          "name": "Nirvana"
+        }
+      ],
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "country": "ES",
+      "disambiguation": "",
+      "id": "b03ae882-7616-485a-a4c6-2da96cf7932c"
+    },
+    {
+      "genres": [],
+      "barcode": "015775166622",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "aliases": [
+              {
+                "locale": "en",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "begin": null,
+                "name": "Nirvana",
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false,
+                "primary": true
+              },
+              {
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US",
+                "begin": null,
+                "name": "Nirvana US",
+                "end": null,
+                "type-id": null,
+                "ended": false,
+                "primary": null
+              },
+              {
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false,
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "locale": "ja"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952"
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79"
+              },
+              {
+                "name": "alternative pop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6"
+              },
+              {
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "disambiguation": "",
+                "name": "alternative rock"
+              },
+              {
+                "name": "ambient",
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "conscious hip hop",
+                "disambiguation": "",
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "count": 1
+              },
+              {
+                "name": "electronic",
+                "disambiguation": "",
+                "count": 1,
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4"
+              },
+              {
+                "disambiguation": "",
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1,
+                "name": "experimental"
+              },
+              {
+                "disambiguation": "",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "name": "grunge"
+              },
+              {
+                "name": "hard rock",
+                "disambiguation": "",
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "name": "hip hop"
+              },
+              {
+                "disambiguation": "",
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "name": "instrumental hip hop"
+              },
+              {
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": "",
+                "name": "new age"
+              },
+              {
+                "name": "noise rock",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "disambiguation": ""
+              },
+              {
+                "name": "pigfuck",
+                "disambiguation": "",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1
+              },
+              {
+                "count": 1,
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "name": "post-hardcore"
+              },
+              {
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "disambiguation": "",
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "name": "punk rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 26,
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "name": "rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "name": "sludge metal"
+              },
+              {
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "name": "Nirvana",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "aliases": [],
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "release-events": [
+        {
+          "date": "1996-03-12",
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States",
+            "name": "United States"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "title": "Nevermind",
+      "date": "1996-03-12",
+      "id": "9dce399d-3ec7-34a4-97d0-b4bac54e5f08",
+      "disambiguation": "",
+      "country": "US",
+      "status": "Official",
+      "packaging": "Jewel Case"
+    },
+    {
+      "title": "Nevermind",
+      "date": "1996-04",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "release-events": [
+        {
+          "area": {
+            "name": "United States",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type-id": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98"
+          },
+          "date": "1996-04"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "e724a489-a7e8-30a1-a17c-30dfd6831202",
+      "aliases": [],
+      "genres": [
+        {
+          "disambiguation": "",
+          "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+          "count": 1,
+          "name": "alternative rock"
+        },
+        {
+          "disambiguation": "",
+          "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+          "count": 1,
+          "name": "grunge"
+        },
+        {
+          "name": "rock",
+          "disambiguation": "",
+          "count": 1,
+          "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798"
+        }
+      ],
+      "barcode": "015775125810",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "genres": [
+              {
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "disambiguation": "",
+                "name": "acoustic rock"
+              },
+              {
+                "name": "alternative metal",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative pop",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "disambiguation": "",
+                "name": "alternative rock"
+              },
+              {
+                "name": "ambient",
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699"
+              },
+              {
+                "name": "conscious hip hop",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "disambiguation": ""
+              },
+              {
+                "name": "electronic",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "experimental",
+                "disambiguation": "",
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "count": 1
+              },
+              {
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "disambiguation": "",
+                "name": "grunge"
+              },
+              {
+                "count": 1,
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "disambiguation": "",
+                "name": "hard rock"
+              },
+              {
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "name": "instrumental hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4"
+              },
+              {
+                "name": "new age",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "name": "noise rock"
+              },
+              {
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": "",
+                "name": "pigfuck"
+              },
+              {
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "name": "post-hardcore",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1,
+                "name": "psychedelic pop"
+              },
+              {
+                "name": "psytrance",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "disambiguation": ""
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2
+              },
+              {
+                "count": 1,
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26,
+                "name": "rock"
+              },
+              {
+                "name": "sludge metal",
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "disambiguation": "",
+                "name": "underground hip hop"
+              }
+            ],
+            "aliases": [
+              {
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false,
+                "primary": true,
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "begin": null,
+                "name": "Nirvana"
+              },
+              {
+                "name": "Nirvana US",
+                "begin": null,
+                "sort-name": "Nirvana US",
+                "type": null,
+                "locale": null,
+                "primary": null,
+                "ended": false,
+                "type-id": null,
+                "end": null
+              },
+              {
+                "primary": true,
+                "ended": false,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "ニルヴァーナ",
+                "begin": null,
+                "locale": "ja",
+                "sort-name": "ニルヴァーナ",
+                "type": "Artist name"
+              }
+            ],
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "name": "Nirvana"
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "packaging": "Gatefold Cover",
+      "status": "Official",
+      "disambiguation": "200 gram, remastered",
+      "country": "US",
+      "id": "7fcef9db-4772-4960-8bd3-cbad0d5432ca"
+    },
+    {
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "release-events": [
+        {
+          "date": "1996",
+          "area": {
+            "iso-3166-1-codes": [
+              "JP"
+            ],
+            "type-id": null,
+            "id": "2db42837-c832-3c27-b4a3-08198f75693c",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Japan",
+            "name": "Japan"
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging-id": "e724a489-a7e8-30a1-a17c-30dfd6831202",
+      "title": "Nevermind",
+      "date": "1996",
+      "genres": [
+        {
+          "name": "alternative rock",
+          "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+          "count": 1,
+          "disambiguation": ""
+        },
+        {
+          "name": "grunge",
+          "disambiguation": "",
+          "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+          "count": 1
+        },
+        {
+          "name": "rock",
+          "count": 1,
+          "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+          "disambiguation": ""
+        }
+      ],
+      "barcode": "015775125810",
+      "artist-credit": [
+        {
+          "joinphrase": "",
+          "artist": {
+            "name": "Nirvana",
+            "type": "Group",
+            "sort-name": "Nirvana",
+            "disambiguation": "1980s–1990s US grunge band",
+            "country": "US",
+            "aliases": [
+              {
+                "begin": null,
+                "name": "Nirvana",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "locale": "en",
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false
+              },
+              {
+                "primary": null,
+                "end": null,
+                "type-id": null,
+                "ended": false,
+                "begin": null,
+                "name": "Nirvana US",
+                "locale": null,
+                "type": null,
+                "sort-name": "Nirvana US"
+              },
+              {
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "locale": "ja",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "primary": true,
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false
+              }
+            ],
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "genres": [
+              {
+                "name": "acoustic rock",
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "count": 8,
+                "disambiguation": ""
+              },
+              {
+                "name": "alternative metal",
+                "disambiguation": "",
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "count": 1
+              },
+              {
+                "name": "alternative pop",
+                "count": 1,
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "count": 30,
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "name": "alternative rock"
+              },
+              {
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "disambiguation": "",
+                "name": "ambient"
+              },
+              {
+                "name": "conscious hip hop",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+                "disambiguation": ""
+              },
+              {
+                "name": "electronic",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "experimental",
+                "disambiguation": "",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99"
+              },
+              {
+                "name": "grunge",
+                "disambiguation": "",
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "count": 68
+              },
+              {
+                "name": "hard rock",
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "hip hop",
+                "count": 1,
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "disambiguation": ""
+              },
+              {
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "count": 1,
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "disambiguation": "",
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "count": 1
+              },
+              {
+                "name": "noise rock",
+                "count": 12,
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "disambiguation": ""
+              },
+              {
+                "name": "pigfuck",
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "disambiguation": "",
+                "name": "pop"
+              },
+              {
+                "name": "post-hardcore",
+                "disambiguation": "",
+                "count": 1,
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e"
+              },
+              {
+                "name": "psychedelic pop",
+                "disambiguation": "",
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "count": 1
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "name": "psytrance"
+              },
+              {
+                "name": "punk",
+                "disambiguation": "",
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "count": 2
+              },
+              {
+                "name": "punk rock",
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "disambiguation": ""
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26
+              },
+              {
+                "name": "sludge metal",
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "count": 3,
+                "disambiguation": ""
+              },
+              {
+                "disambiguation": "",
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+                "count": 1,
+                "name": "underground hip hop"
+              }
+            ]
+          },
+          "name": "Nirvana"
+        }
+      ],
+      "quality": "normal",
+      "aliases": [],
+      "disambiguation": "200 gram, remastered",
+      "country": "JP",
+      "packaging": "Gatefold Cover",
+      "status": "Official",
+      "id": "0436a889-bd7f-49ce-a899-6df9d61d3ca0"
+    },
+    {
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "name": "Saudi Arabia",
+            "disambiguation": "",
+            "type": null,
+            "sort-name": "Saudi Arabia",
+            "iso-3166-1-codes": [
+              "SA"
+            ],
+            "type-id": null,
+            "id": "9705be0d-51fb-3990-8726-ec9f56c66ba0"
+          },
+          "date": "1997"
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1997",
+      "title": "Nevermind",
+      "quality": "normal",
+      "artist-credit": [
+        {
+          "name": "Nirvana",
+          "artist": {
+            "genres": [
+              {
+                "disambiguation": "",
+                "count": 8,
+                "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+                "name": "acoustic rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+                "name": "alternative metal"
+              },
+              {
+                "disambiguation": "",
+                "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+                "count": 1,
+                "name": "alternative pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18",
+                "count": 30,
+                "name": "alternative rock"
+              },
+              {
+                "disambiguation": "",
+                "count": 1,
+                "id": "608b0471-7531-4854-a348-e698c69cb699",
+                "name": "ambient"
+              },
+              {
+                "name": "conscious hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3"
+              },
+              {
+                "disambiguation": "",
+                "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+                "count": 1,
+                "name": "electronic"
+              },
+              {
+                "name": "experimental",
+                "count": 1,
+                "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+                "disambiguation": ""
+              },
+              {
+                "name": "grunge",
+                "count": 68,
+                "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+                "disambiguation": ""
+              },
+              {
+                "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hard rock"
+              },
+              {
+                "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c",
+                "count": 1,
+                "disambiguation": "",
+                "name": "hip hop"
+              },
+              {
+                "count": 1,
+                "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+                "disambiguation": "",
+                "name": "instrumental hip hop"
+              },
+              {
+                "name": "new age",
+                "count": 1,
+                "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+                "disambiguation": ""
+              },
+              {
+                "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519",
+                "count": 12,
+                "disambiguation": "",
+                "name": "noise rock"
+              },
+              {
+                "count": 1,
+                "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+                "disambiguation": "",
+                "name": "pigfuck"
+              },
+              {
+                "disambiguation": "",
+                "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+                "count": 1,
+                "name": "pop"
+              },
+              {
+                "disambiguation": "",
+                "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+                "count": 1,
+                "name": "post-hardcore"
+              },
+              {
+                "name": "psychedelic pop",
+                "count": 1,
+                "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+                "disambiguation": ""
+              },
+              {
+                "count": 1,
+                "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+                "disambiguation": "",
+                "name": "psytrance"
+              },
+              {
+                "disambiguation": "",
+                "count": 2,
+                "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+                "name": "punk"
+              },
+              {
+                "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+                "count": 1,
+                "disambiguation": "",
+                "name": "punk rock"
+              },
+              {
+                "name": "rock",
+                "disambiguation": "",
+                "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+                "count": 26
+              },
+              {
+                "count": 3,
+                "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+                "disambiguation": "",
+                "name": "sludge metal"
+              },
+              {
+                "name": "underground hip hop",
+                "disambiguation": "",
+                "count": 1,
+                "id": "03a8749c-93e6-4b71-8204-b33de116d8fd"
+              }
+            ],
+            "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "aliases": [
+              {
+                "locale": "en",
+                "type": "Artist name",
+                "sort-name": "Nirvana",
+                "begin": null,
+                "name": "Nirvana",
+                "end": null,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "ended": false,
+                "primary": true
+              },
+              {
+                "begin": null,
+                "name": "Nirvana US",
+                "type": null,
+                "sort-name": "Nirvana US",
+                "locale": null,
+                "primary": null,
+                "type-id": null,
+                "end": null,
+                "ended": false
+              },
+              {
+                "begin": null,
+                "name": "ニルヴァーナ",
+                "locale": "ja",
+                "type": "Artist name",
+                "sort-name": "ニルヴァーナ",
+                "primary": true,
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "end": null,
+                "ended": false
+              }
+            ],
+            "country": "US",
+            "disambiguation": "1980s–1990s US grunge band",
+            "sort-name": "Nirvana",
+            "type": "Group",
+            "name": "Nirvana"
+          },
+          "joinphrase": ""
+        }
+      ],
+      "barcode": "720642442524",
+      "genres": [],
+      "aliases": [],
+      "disambiguation": "",
+      "country": "SA",
+      "status": "Official",
+      "packaging": "Jewel Case",
+      "id": "84aed658-3a84-42d0-97f6-1eb3594a2175"
+    }
+  ],
+  "title": "Nevermind",
+  "artist-credit": [
+    {
+      "artist": {
+        "country": "US",
+        "disambiguation": "1980s–1990s US grunge band",
+        "sort-name": "Nirvana",
+        "type": "Group",
+        "name": "Nirvana",
+        "genres": [
+          {
+            "count": 8,
+            "id": "00055e8b-b951-46e2-af1e-58b5624e7952",
+            "disambiguation": "",
+            "name": "acoustic rock"
+          },
+          {
+            "name": "alternative metal",
+            "id": "7983ff25-ddf9-411e-a7f9-6cca238bff79",
+            "count": 1,
+            "disambiguation": ""
+          },
+          {
+            "name": "alternative pop",
+            "count": 1,
+            "id": "d3ebe947-7c03-43f5-b333-09379881b0f6",
+            "disambiguation": ""
+          },
+          {
+            "name": "alternative rock",
+            "disambiguation": "",
+            "count": 30,
+            "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18"
+          },
+          {
+            "count": 1,
+            "id": "608b0471-7531-4854-a348-e698c69cb699",
+            "disambiguation": "",
+            "name": "ambient"
+          },
+          {
+            "disambiguation": "",
+            "count": 1,
+            "id": "c0e73bb6-37a4-485e-aaea-11c63b40c9f3",
+            "name": "conscious hip hop"
+          },
+          {
+            "name": "electronic",
+            "id": "89255676-1f14-4dd8-bbad-fca839d6aff4",
+            "count": 1,
+            "disambiguation": ""
+          },
+          {
+            "id": "68c81274-5770-4e7b-a4bf-ab0d7d425d99",
+            "count": 1,
+            "disambiguation": "",
+            "name": "experimental"
+          },
+          {
+            "disambiguation": "",
+            "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+            "count": 68,
+            "name": "grunge"
+          },
+          {
+            "name": "hard rock",
+            "disambiguation": "",
+            "count": 1,
+            "id": "51cb9f91-e6a2-41bf-891f-e78e3f1e52ab"
+          },
+          {
+            "name": "hip hop",
+            "disambiguation": "",
+            "count": 1,
+            "id": "52faa157-6bad-4d86-a0ab-d4dec7d2513c"
+          },
+          {
+            "name": "instrumental hip hop",
+            "count": 1,
+            "id": "24695813-4a26-4872-bc95-b3378e0ae1b4",
+            "disambiguation": ""
+          },
+          {
+            "name": "new age",
+            "id": "6c76d9ec-0924-4fc9-bb22-91a695ca09d6",
+            "count": 1,
+            "disambiguation": ""
+          },
+          {
+            "name": "noise rock",
+            "disambiguation": "",
+            "count": 12,
+            "id": "8e5474b7-f445-49a7-866d-0f8e34b0a519"
+          },
+          {
+            "disambiguation": "",
+            "id": "4a3546b4-ec9f-431f-8532-55434f1038ea",
+            "count": 1,
+            "name": "pigfuck"
+          },
+          {
+            "disambiguation": "",
+            "id": "911c7bbb-172d-4df8-9478-dbff4296e791",
+            "count": 1,
+            "name": "pop"
+          },
+          {
+            "id": "aec382b7-b635-470c-9051-2f84e0b5ea1e",
+            "count": 1,
+            "disambiguation": "",
+            "name": "post-hardcore"
+          },
+          {
+            "id": "2aeb5340-c474-4677-b9a6-35ddac9b6a58",
+            "count": 1,
+            "disambiguation": "",
+            "name": "psychedelic pop"
+          },
+          {
+            "name": "psytrance",
+            "count": 1,
+            "id": "b3cccf71-e843-4546-87fa-728055ba3147",
+            "disambiguation": ""
+          },
+          {
+            "name": "punk",
+            "count": 2,
+            "id": "8cc9b280-230b-4a3a-b1e2-8acab0744dd3",
+            "disambiguation": ""
+          },
+          {
+            "name": "punk rock",
+            "disambiguation": "",
+            "count": 1,
+            "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962"
+          },
+          {
+            "name": "rock",
+            "count": 26,
+            "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+            "disambiguation": ""
+          },
+          {
+            "name": "sludge metal",
+            "disambiguation": "",
+            "id": "66544dbb-08a8-44c2-a21a-4d251481d2b6",
+            "count": 3
+          },
+          {
+            "name": "underground hip hop",
+            "disambiguation": "",
+            "id": "03a8749c-93e6-4b71-8204-b33de116d8fd",
+            "count": 1
+          }
+        ],
+        "id": "5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+        "aliases": [
+          {
+            "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+            "end": null,
+            "ended": false,
+            "primary": true,
+            "type": "Artist name",
+            "sort-name": "Nirvana",
+            "locale": "en",
+            "begin": null,
+            "name": "Nirvana"
+          },
+          {
+            "ended": false,
+            "type-id": null,
+            "end": null,
+            "primary": null,
+            "locale": null,
+            "sort-name": "Nirvana US",
+            "type": null,
+            "name": "Nirvana US",
+            "begin": null
+          },
+          {
+            "name": "ニルヴァーナ",
+            "begin": null,
+            "locale": "ja",
+            "sort-name": "ニルヴァーナ",
+            "type": "Artist name",
+            "primary": true,
+            "ended": false,
+            "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+            "end": null
+          }
+        ]
+      },
+      "joinphrase": "",
+      "name": "Nirvana"
+    }
+  ],
+  "genres": [
+    {
+      "name": "alternative rock",
+      "disambiguation": "",
+      "count": 21,
+      "id": "ceeaa283-5d7b-4202-8d1d-e25d116b2a18"
+    },
+    {
+      "count": 49,
+      "id": "3f08faa9-6c3e-4b6d-b4b8-08eea45954e2",
+      "disambiguation": "",
+      "name": "grunge"
+    },
+    {
+      "count": 1,
+      "id": "cc28f5aa-5e19-487c-88e1-e56b022f1fdd",
+      "disambiguation": "",
+      "name": "metal"
+    },
+    {
+      "count": 3,
+      "id": "bd7e1d40-43b1-4ba5-97b3-05b891466962",
+      "disambiguation": "",
+      "name": "punk rock"
+    },
+    {
+      "id": "0e3fc579-2d24-4f20-9dae-736e1ec78798",
+      "count": 5,
+      "disambiguation": "",
+      "name": "rock"
+    }
+  ],
+  "aliases": [
+    {
+      "locale": null,
+      "type": null,
+      "sort-name": "Nevermind (30th Anniversary Super Deluxe)",
+      "begin": null,
+      "name": "Nevermind (30th Anniversary Super Deluxe)",
+      "type-id": null,
+      "end": null,
+      "ended": false,
+      "primary": null
+    },
+    {
+      "begin": null,
+      "name": "Nevermind (Super Deluxe Edition)",
+      "locale": null,
+      "type": null,
+      "sort-name": "Nevermind (Super Deluxe Edition)",
+      "primary": null,
+      "type-id": null,
+      "end": null,
+      "ended": false
+    }
+  ],
+  "first-release-date": "1991-09-24",
+  "secondary-type-ids": []
+}

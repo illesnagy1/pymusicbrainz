@@ -1,0 +1,23 @@
+{
+  "area": {
+    "sort-name": "Studio City",
+    "type": null,
+    "id": "e697234a-07cb-4bea-8f22-8419bdf5cf6b",
+    "name": "Studio City",
+    "disambiguation": "",
+    "type-id": null
+  },
+  "type": "Studio",
+  "life-span": {
+    "ended": false,
+    "end": null,
+    "begin": null
+  },
+  "coordinates": null,
+  "id": "3ac9ae50-29b4-4dbb-a20c-aee3c55f6a68",
+  "name": "Garden Rake Studios",
+  "aliases": [],
+  "address": "",
+  "disambiguation": "",
+  "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38"
+}

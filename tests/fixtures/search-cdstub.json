@@ -1,0 +1,30 @@
+{
+  "created": "2026-11-08T19:48:23.602Z",
+  "count": 35,
+  "offset": 0,
+  "cdstubs": [
+    {
+      "id": "Uz2qNX7tmYz0pe5D.nQ.ommQPcI-",
+      "score": 100,
+      "count": 20,
+      "title": "Nirvana - Rough Tapes",
+      "artist": "Nirvana"
+    },
+    {
+      "id": "pD1.l8OcX5rDayFtDralEO4K.VY-",
+      "score": 100,
+      "count": 14,
+      "title": "Nirvana (The Best Of)",
+      "artist": "Nirvana"
+    },
+    {
+      "id": ".7sq.2u5Pyip1LhsVAmHuNePcgg-",
+      "score": 88,
+      "count": 9,
+      "title": "Nirvana",
+      "artist": "Mitra",
+      "barcode": "",
+      "disambiguation": "CD Baby id:mitra"
+    }
+  ]
+}

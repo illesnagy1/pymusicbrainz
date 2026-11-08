@@ -1,21 +1,24 @@
-"""Command-line interface (Typer) printing JSON.
+r"""Command-line interface (Typer) printing JSON.
 
 Examples::
 
     musicbrainz search artist "Daft Punk" --limit 3
     musicbrainz lookup artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56 -i aliases
-    musicbrainz browse release-group --type album --all \\
+    musicbrainz browse release-group --type album --all \
         --artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56
     musicbrainz isrc GBAYE0601498
     musicbrainz url https://www.discogs.com/artist/1289
 """
+
+from __future__ import annotations
 
 import json
 import logging
 import sys
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Annotated, Any
+from pathlib import Path
+from typing import Annotated, Any, cast
 
 import typer
 from pydantic import BaseModel
@@ -25,7 +28,7 @@ from typer.models import OptionInfo
 
 from . import _constants as consts
 from ._constants import Entity, SearchEntity
-from ._core import JSON
+from ._core import JSON, CoverArtSize
 from ._version import __version__
 from .client import MusicBrainz
 from .errors import MusicBrainzError
@@ -361,6 +364,50 @@ def url(
 ) -> None:
     """Look up URL entities by URL text (unknown URLs are skipped)."""
     _run(ctx, lambda mb: mb.urls.by_resources(urls, inc=inc))
+
+
+@app.command("cover-art")
+def cover_art(
+    ctx: typer.Context,
+    mbid: Annotated[str, typer.Argument(help="Release MBID (or release group)")],
+    release_group: Annotated[
+        bool, typer.Option("--release-group", help="MBID is a release group")
+    ] = False,
+    download: Annotated[
+        Path | None,
+        typer.Option(
+            "--download", "-o", help="Save an image to this file instead of listing"
+        ),
+    ] = None,
+    image: Annotated[
+        str, typer.Option(help="front, back, or an image ID (with --download)")
+    ] = "front",
+    size: Annotated[
+        int | None, typer.Option(help="Thumbnail size: 250, 500 or 1200")
+    ] = None,
+) -> None:
+    """List a release's cover art, or download one image."""
+
+    def action(mb: MusicBrainz) -> object:
+        if download is None:
+            if release_group:
+                return mb.cover_art.release_group(mbid)
+            return mb.cover_art.release(mbid)
+        img = mb.cover_art.image(
+            mbid,
+            image,
+            size=cast("CoverArtSize | None", size),  # validated by the core
+            release_group=release_group,
+        )
+        download.write_bytes(img.data)
+        return {
+            "path": str(download),
+            "bytes": len(img.data),
+            "content_type": img.content_type,
+            "url": img.url,
+        }
+
+    _run(ctx, action)
 
 
 @app.command()

@@ -1,5 +1,7 @@
 """Exception hierarchy."""
 
+from __future__ import annotations
+
 from httpx2 import codes
 
 
@@ -30,6 +32,14 @@ class ResponseError(MusicBrainzError):
         help_: str | None = None,
         url: str | None = None,
     ) -> None:
+        """Describe an error response.
+
+        Args:
+            status_code: The HTTP status code.
+            message: The server's error message (or the HTTP reason phrase).
+            help_: The server's help text, if any; stored as ``help``.
+            url: The request URL.
+        """
         self.status_code = status_code
         self.message = message
         self.help = help_
@@ -66,6 +76,18 @@ class ServerError(ResponseError):
 def error_for_status(
     status_code: int, message: str, *, help_: str | None = None, url: str | None = None
 ) -> ResponseError:
+    """Build the error for an HTTP status code.
+
+    Args:
+        status_code: The HTTP status code.
+        message: The error message, usually from the response body.
+        help_: The server's help text, if any.
+        url: The request URL.
+
+    Returns:
+        An instance of the most specific subclass, e.g.
+        [`NotFoundError`][musicbrainz.errors.NotFoundError] for 404.
+    """
     cls: type[ResponseError]
     match status_code:
         case codes.BAD_REQUEST:

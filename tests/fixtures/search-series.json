@@ -1,0 +1,41 @@
+{
+  "created": "2026-11-08T19:48:21.560Z",
+  "count": 755,
+  "offset": 0,
+  "series": [
+    {
+      "id": "3bf78452-92c5-4867-97f5-81cc091aa7fb",
+      "type": "Event series",
+      "type-id": "64640a2a-1c31-394d-b7b0-683a32ff9aff",
+      "score": 100,
+      "name": "Fryderyk Award"
+    },
+    {
+      "id": "8ef4e23f-079f-45c1-9662-0dbdb8564ca6",
+      "type": "Release series",
+      "type-id": "52b90f1e-ff62-3bd0-b254-5d91ced5d757",
+      "score": 100,
+      "name": "Gold Award"
+    },
+    {
+      "id": "c21ff9b1-6768-4959-8ddf-6cfd34abb144",
+      "type": "Artist award",
+      "type-id": "dca73eca-a855-3408-9094-f7d5d073cef0",
+      "score": 100,
+      "name": "Jazz&mo' Award",
+      "disambiguation": "Belgian jazz award, fka 'Jazzmozaïek Award'",
+      "aliases": [
+        {
+          "sort-name": "Jazzmozaïek Award",
+          "type-id": "0c615dbc-c7d6-39b3-b8da-bef465ce3046",
+          "name": "Jazzmozaïek Award",
+          "locale": null,
+          "type": "Series name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ]
+    }
+  ]
+}

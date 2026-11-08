@@ -1,0 +1,3250 @@
+{
+  "sectors": 267225,
+  "offsets": [
+    150,
+    22767,
+    41887,
+    58317,
+    72102,
+    91375,
+    104652,
+    115380,
+    132165,
+    143932,
+    159870,
+    174597
+  ],
+  "releases": [
+    {
+      "status": "Official",
+      "barcode": "0720642442524",
+      "disambiguation": "",
+      "date": "1991-09-24",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "id": "8e061dc4-790e-4587-ba53-011e7852f88d",
+      "quality": "normal",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "media": [
+        {
+          "title": "",
+          "track-count": 12,
+          "id": "c3e97a4e-ac8a-3ccf-aa52-000dedf9a34e",
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "discs": [
+            {
+              "offset-count": 12,
+              "id": "2y0jFMwYQP7gb9iSUKagmoT6DIw-",
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "sectors": 267225
+            },
+            {
+              "id": "3ItdW499StnL_XraYrBePHfP2S0-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22705,
+                41823,
+                58305,
+                72117,
+                91407,
+                104532,
+                115412,
+                132292,
+                144138,
+                160049,
+                174629
+              ],
+              "sectors": 267042
+            },
+            {
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "sectors": 267507,
+              "offset-count": 12,
+              "id": "4HygHMwFE8DplriX8TdvDdoyHWs-"
+            },
+            {
+              "offset-count": 12,
+              "id": "64e.YDM.N2tZJzmqrN48iWfJ9.4-",
+              "sectors": 267238,
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "7wJofg9FI0Y4mcRYJQxkVCnlqAM-",
+              "offsets": [
+                187,
+                22832,
+                41950,
+                58372,
+                72167,
+                91440,
+                104717,
+                115435,
+                132227,
+                143997,
+                159935,
+                174662
+              ],
+              "sectors": 267362
+            },
+            {
+              "sectors": 267357,
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "id": "A2sFNLDz0QFkD3G2ooUmhXeyqh8-",
+              "offset-count": 12
+            },
+            {
+              "id": "AsT3m__Kt0RhqxFvDrafhMnci1I-",
+              "offset-count": 12,
+              "sectors": 267225,
+              "offsets": [
+                150,
+                22768,
+                41888,
+                58318,
+                72103,
+                91375,
+                104653,
+                115380,
+                132165,
+                143933,
+                159870,
+                174598
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "BMKwOLLlihxLhDFnh60_8ONHCu4-",
+              "sectors": 267325,
+              "offsets": [
+                150,
+                22795,
+                41912,
+                58335,
+                72130,
+                91402,
+                104680,
+                115397,
+                132190,
+                143960,
+                159897,
+                174625
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "HOtHvphb0XtheJeYJS.6UUY3TSU-",
+              "sectors": 267258,
+              "offsets": [
+                183,
+                22800,
+                41920,
+                58350,
+                72135,
+                91408,
+                104685,
+                115413,
+                132198,
+                143965,
+                159903,
+                174630
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "Ht14QfK8Hqz7OFqFUz7aDImhpHI-",
+              "sectors": 267205,
+              "offsets": [
+                150,
+                22757,
+                41875,
+                58297,
+                72092,
+                91365,
+                104642,
+                115360,
+                132152,
+                143922,
+                159860,
+                174587
+              ]
+            },
+            {
+              "id": "I5l9cCSFccLKFEKS.7wqSZAorPU-",
+              "offset-count": 12,
+              "sectors": 267257,
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "JeF6n9BaVHVeDET4R9iUXpoF0bM-",
+              "sectors": 267237,
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ]
+            },
+            {
+              "offsets": [
+                150,
+                22737,
+                41850,
+                58275,
+                72050,
+                91337,
+                104625,
+                115337,
+                132112,
+                143900,
+                159850,
+                174562
+              ],
+              "sectors": 267400,
+              "id": "Lh2JvlGYfrRslj5hlEBfbUNWLaY-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267195,
+              "offsets": [
+                150,
+                22735,
+                41855,
+                58285,
+                72068,
+                91343,
+                104618,
+                115353,
+                132143,
+                143900,
+                159835,
+                174565
+              ],
+              "offset-count": 12,
+              "id": "MjIUJNF9_.RN9VyMo2pVnoiQCXQ-"
+            },
+            {
+              "offsets": [
+                182,
+                22765,
+                41882,
+                58312,
+                72100,
+                91372,
+                104650,
+                115375,
+                132167,
+                143930,
+                159867,
+                174595
+              ],
+              "sectors": 267232,
+              "id": "NJr9U1sKs4jfX0fSc5Hgea__b4k-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58273,
+                72068,
+                91340,
+                104618,
+                115348,
+                132128,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200,
+              "offset-count": 12,
+              "id": "NnVrDEGbm6fiAcn2RxXb.1SsVZM-"
+            },
+            {
+              "sectors": 267238,
+              "offsets": [
+                150,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "id": "OXXfcM7NxQBhSR7XOxR.HLOrDOg-",
+              "offset-count": 12
+            },
+            {
+              "id": "Owm_g8FxQE8z6sNKI.pZV7ia92w-",
+              "offset-count": 12,
+              "sectors": 267447,
+              "offsets": [
+                187,
+                22807,
+                41924,
+                58374,
+                72142,
+                91414,
+                104689,
+                115439,
+                132229,
+                143972,
+                159907,
+                174634
+              ]
+            },
+            {
+              "sectors": 267219,
+              "offsets": [
+                150,
+                22737,
+                41859,
+                58291,
+                72076,
+                91353,
+                104630,
+                115367,
+                132159,
+                143918,
+                159855,
+                174587
+              ],
+              "id": "QAMq9tguM.iN6lhqHpeCuxufY6M-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "UqexMfnVax2iSjBwg9TmOb5lnN8-",
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267388
+            },
+            {
+              "sectors": 267395,
+              "offsets": [
+                182,
+                22797,
+                41917,
+                58355,
+                72145,
+                91420,
+                104695,
+                115427,
+                132217,
+                143970,
+                159910,
+                174632
+              ],
+              "id": "WP4fx9yZR1HWttRLO_XBhmB9yR4-",
+              "offset-count": 12
+            },
+            {
+              "id": "WU1s6Q8gGevVArUfOJqsbbiOQCk-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58280,
+                72068,
+                91340,
+                104618,
+                115343,
+                132135,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200
+            },
+            {
+              "sectors": 267257,
+              "offsets": [
+                150,
+                22735,
+                41860,
+                58352,
+                72072,
+                91347,
+                104625,
+                115422,
+                132215,
+                143982,
+                159845,
+                174572
+              ],
+              "id": "XB1iaQGWlaYkJfcUX.SXtlEFSW8-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22735,
+                41855,
+                58285,
+                72067,
+                91342,
+                104542,
+                115277,
+                131992,
+                143750,
+                159610,
+                174265
+              ],
+              "sectors": 266895,
+              "id": "aJ0q68LpWI7X6LRW2VIlu.0BmF4-",
+              "offset-count": 12
+            },
+            {
+              "id": "bDCCdX8vZbnGiGD4tcN8aGNdkZc-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22717,
+                41837,
+                58273,
+                72053,
+                91327,
+                104601,
+                115341,
+                132131,
+                143885,
+                159823,
+                174551
+              ],
+              "sectors": 267125
+            },
+            {
+              "offsets": [
+                150,
+                22732,
+                41852,
+                58282,
+                72067,
+                91340,
+                104617,
+                115345,
+                132137,
+                143897,
+                159835,
+                174562
+              ],
+              "sectors": 267192,
+              "id": "c3qPQsVWGsSqoLDfhpscbSUE1Rg-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "eSYc6AlHqIoJuRcf47DZ9RQbxfQ-",
+              "offsets": [
+                192,
+                22777,
+                41897,
+                58327,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143942,
+                159877,
+                174607
+              ],
+              "sectors": 267237
+            },
+            {
+              "offsets": [
+                150,
+                22678,
+                41790,
+                58261,
+                72057,
+                91328,
+                104422,
+                115286,
+                132146,
+                143989,
+                159895,
+                174456
+              ],
+              "sectors": 266866,
+              "id": "h0DTNiCRBpsde_8EHLrVRn7Ivjs-",
+              "offset-count": 12
+            },
+            {
+              "id": "i7egWcRUZEWeaRITy0Gw07JuZuc-",
+              "offset-count": 12,
+              "sectors": 267257,
+              "offsets": [
+                182,
+                22800,
+                41920,
+                58350,
+                72135,
+                91407,
+                104685,
+                115412,
+                132197,
+                143965,
+                159902,
+                174630
+              ]
+            },
+            {
+              "sectors": 267225,
+              "offsets": [
+                150,
+                22732,
+                41850,
+                58297,
+                72067,
+                91340,
+                104617,
+                115360,
+                132152,
+                143902,
+                159835,
+                174562
+              ],
+              "id": "kbg76ZV00VdU5VKJTObxBoiojpg-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22764,
+                41875,
+                58322,
+                72063,
+                91317,
+                104405,
+                115154,
+                131943,
+                143667,
+                159563,
+                174172
+              ],
+              "sectors": 266904,
+              "id": "nZ8Sp2EEJ6CGyQ.Tct1_cCl8Ig4-",
+              "offset-count": 12
+            },
+            {
+              "id": "x31oxKTjImYK3BJhX9SxxustXLY-",
+              "offset-count": 12,
+              "sectors": 267225,
+              "offsets": [
+                182,
+                22765,
+                41885,
+                58315,
+                72100,
+                91372,
+                104650,
+                115377,
+                132170,
+                143930,
+                159867,
+                174595
+              ]
+            }
+          ],
+          "format": "CD",
+          "position": 1
+        }
+      ],
+      "country": "US",
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "sort-name": "United States",
+            "type-id": null,
+            "type": null,
+            "name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "id": "489ce91b-6658-3307-9877-795b68554c98"
+          },
+          "date": "1991-09-24"
+        }
+      ],
+      "cover-art-archive": {
+        "artwork": true,
+        "darkened": false,
+        "front": true,
+        "back": false,
+        "count": 1
+      },
+      "asin": "B000003TA4",
+      "packaging": "Jewel Case",
+      "title": "Nevermind"
+    },
+    {
+      "id": "9dce399d-3ec7-34a4-97d0-b4bac54e5f08",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "quality": "normal",
+      "barcode": "015775166622",
+      "status": "Official",
+      "date": "1996-03-12",
+      "disambiguation": "",
+      "asin": "B000000IV0",
+      "cover-art-archive": {
+        "darkened": false,
+        "back": true,
+        "front": true,
+        "count": 7,
+        "artwork": true
+      },
+      "title": "Nevermind",
+      "packaging": "Jewel Case",
+      "country": "US",
+      "media": [
+        {
+          "title": "",
+          "track-count": 12,
+          "id": "6d0d5c1e-745b-3f38-8302-b7899a0b581b",
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "discs": [
+            {
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "sectors": 267225,
+              "offset-count": 12,
+              "id": "2y0jFMwYQP7gb9iSUKagmoT6DIw-"
+            },
+            {
+              "offsets": [
+                150,
+                22705,
+                41823,
+                58305,
+                72117,
+                91407,
+                104532,
+                115412,
+                132292,
+                144138,
+                160049,
+                174629
+              ],
+              "sectors": 267042,
+              "offset-count": 12,
+              "id": "3ItdW499StnL_XraYrBePHfP2S0-"
+            },
+            {
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "sectors": 267507,
+              "offset-count": 12,
+              "id": "4HygHMwFE8DplriX8TdvDdoyHWs-"
+            },
+            {
+              "id": "64e.YDM.N2tZJzmqrN48iWfJ9.4-",
+              "offset-count": 12,
+              "sectors": 267238,
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "7wJofg9FI0Y4mcRYJQxkVCnlqAM-",
+              "offsets": [
+                187,
+                22832,
+                41950,
+                58372,
+                72167,
+                91440,
+                104717,
+                115435,
+                132227,
+                143997,
+                159935,
+                174662
+              ],
+              "sectors": 267362
+            },
+            {
+              "sectors": 267357,
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "id": "A2sFNLDz0QFkD3G2ooUmhXeyqh8-",
+              "offset-count": 12
+            },
+            {
+              "id": "AsT3m__Kt0RhqxFvDrafhMnci1I-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22768,
+                41888,
+                58318,
+                72103,
+                91375,
+                104653,
+                115380,
+                132165,
+                143933,
+                159870,
+                174598
+              ],
+              "sectors": 267225
+            },
+            {
+              "id": "BMKwOLLlihxLhDFnh60_8ONHCu4-",
+              "offset-count": 12,
+              "sectors": 267325,
+              "offsets": [
+                150,
+                22795,
+                41912,
+                58335,
+                72130,
+                91402,
+                104680,
+                115397,
+                132190,
+                143960,
+                159897,
+                174625
+              ]
+            },
+            {
+              "offsets": [
+                183,
+                22800,
+                41920,
+                58350,
+                72135,
+                91408,
+                104685,
+                115413,
+                132198,
+                143965,
+                159903,
+                174630
+              ],
+              "sectors": 267258,
+              "offset-count": 12,
+              "id": "HOtHvphb0XtheJeYJS.6UUY3TSU-"
+            },
+            {
+              "offset-count": 12,
+              "id": "Ht14QfK8Hqz7OFqFUz7aDImhpHI-",
+              "sectors": 267205,
+              "offsets": [
+                150,
+                22757,
+                41875,
+                58297,
+                72092,
+                91365,
+                104642,
+                115360,
+                132152,
+                143922,
+                159860,
+                174587
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "I5l9cCSFccLKFEKS.7wqSZAorPU-",
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "sectors": 267257
+            },
+            {
+              "id": "JeF6n9BaVHVeDET4R9iUXpoF0bM-",
+              "offset-count": 12,
+              "sectors": 267237,
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ]
+            },
+            {
+              "offsets": [
+                150,
+                22737,
+                41850,
+                58275,
+                72050,
+                91337,
+                104625,
+                115337,
+                132112,
+                143900,
+                159850,
+                174562
+              ],
+              "sectors": 267400,
+              "id": "Lh2JvlGYfrRslj5hlEBfbUNWLaY-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267195,
+              "offsets": [
+                150,
+                22735,
+                41855,
+                58285,
+                72068,
+                91343,
+                104618,
+                115353,
+                132143,
+                143900,
+                159835,
+                174565
+              ],
+              "id": "MjIUJNF9_.RN9VyMo2pVnoiQCXQ-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "NJr9U1sKs4jfX0fSc5Hgea__b4k-",
+              "offsets": [
+                182,
+                22765,
+                41882,
+                58312,
+                72100,
+                91372,
+                104650,
+                115375,
+                132167,
+                143930,
+                159867,
+                174595
+              ],
+              "sectors": 267232
+            },
+            {
+              "sectors": 267200,
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58273,
+                72068,
+                91340,
+                104618,
+                115348,
+                132128,
+                143898,
+                159835,
+                174563
+              ],
+              "offset-count": 12,
+              "id": "NnVrDEGbm6fiAcn2RxXb.1SsVZM-"
+            },
+            {
+              "offset-count": 12,
+              "id": "OXXfcM7NxQBhSR7XOxR.HLOrDOg-",
+              "sectors": 267238,
+              "offsets": [
+                150,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ]
+            },
+            {
+              "id": "Owm_g8FxQE8z6sNKI.pZV7ia92w-",
+              "offset-count": 12,
+              "sectors": 267447,
+              "offsets": [
+                187,
+                22807,
+                41924,
+                58374,
+                72142,
+                91414,
+                104689,
+                115439,
+                132229,
+                143972,
+                159907,
+                174634
+              ]
+            },
+            {
+              "id": "QAMq9tguM.iN6lhqHpeCuxufY6M-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22737,
+                41859,
+                58291,
+                72076,
+                91353,
+                104630,
+                115367,
+                132159,
+                143918,
+                159855,
+                174587
+              ],
+              "sectors": 267219
+            },
+            {
+              "sectors": 267388,
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "offset-count": 12,
+              "id": "UqexMfnVax2iSjBwg9TmOb5lnN8-"
+            },
+            {
+              "offset-count": 12,
+              "id": "WP4fx9yZR1HWttRLO_XBhmB9yR4-",
+              "sectors": 267395,
+              "offsets": [
+                182,
+                22797,
+                41917,
+                58355,
+                72145,
+                91420,
+                104695,
+                115427,
+                132217,
+                143970,
+                159910,
+                174632
+              ]
+            },
+            {
+              "id": "WU1s6Q8gGevVArUfOJqsbbiOQCk-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58280,
+                72068,
+                91340,
+                104618,
+                115343,
+                132135,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200
+            },
+            {
+              "sectors": 267257,
+              "offsets": [
+                150,
+                22735,
+                41860,
+                58352,
+                72072,
+                91347,
+                104625,
+                115422,
+                132215,
+                143982,
+                159845,
+                174572
+              ],
+              "offset-count": 12,
+              "id": "XB1iaQGWlaYkJfcUX.SXtlEFSW8-"
+            },
+            {
+              "offsets": [
+                150,
+                22717,
+                41837,
+                58273,
+                72053,
+                91327,
+                104601,
+                115341,
+                132131,
+                143885,
+                159823,
+                174551
+              ],
+              "sectors": 267125,
+              "id": "bDCCdX8vZbnGiGD4tcN8aGNdkZc-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22732,
+                41852,
+                58282,
+                72067,
+                91340,
+                104617,
+                115345,
+                132137,
+                143897,
+                159835,
+                174562
+              ],
+              "sectors": 267192,
+              "id": "c3qPQsVWGsSqoLDfhpscbSUE1Rg-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                192,
+                22777,
+                41897,
+                58327,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143942,
+                159877,
+                174607
+              ],
+              "sectors": 267237,
+              "offset-count": 12,
+              "id": "eSYc6AlHqIoJuRcf47DZ9RQbxfQ-"
+            },
+            {
+              "offsets": [
+                150,
+                22678,
+                41790,
+                58261,
+                72057,
+                91328,
+                104422,
+                115286,
+                132146,
+                143989,
+                159895,
+                174456
+              ],
+              "sectors": 266866,
+              "offset-count": 12,
+              "id": "h0DTNiCRBpsde_8EHLrVRn7Ivjs-"
+            },
+            {
+              "offset-count": 12,
+              "id": "i7egWcRUZEWeaRITy0Gw07JuZuc-",
+              "sectors": 267257,
+              "offsets": [
+                182,
+                22800,
+                41920,
+                58350,
+                72135,
+                91407,
+                104685,
+                115412,
+                132197,
+                143965,
+                159902,
+                174630
+              ]
+            },
+            {
+              "sectors": 267225,
+              "offsets": [
+                150,
+                22732,
+                41850,
+                58297,
+                72067,
+                91340,
+                104617,
+                115360,
+                132152,
+                143902,
+                159835,
+                174562
+              ],
+              "offset-count": 12,
+              "id": "kbg76ZV00VdU5VKJTObxBoiojpg-"
+            },
+            {
+              "offsets": [
+                150,
+                22764,
+                41875,
+                58322,
+                72063,
+                91317,
+                104405,
+                115154,
+                131943,
+                143667,
+                159563,
+                174172
+              ],
+              "sectors": 266904,
+              "offset-count": 12,
+              "id": "nZ8Sp2EEJ6CGyQ.Tct1_cCl8Ig4-"
+            },
+            {
+              "sectors": 267225,
+              "offsets": [
+                182,
+                22765,
+                41885,
+                58315,
+                72100,
+                91372,
+                104650,
+                115377,
+                132170,
+                143930,
+                159867,
+                174595
+              ],
+              "offset-count": 12,
+              "id": "x31oxKTjImYK3BJhX9SxxustXLY-"
+            }
+          ],
+          "format": "CD",
+          "position": 1
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "sort-name": "United States",
+            "type-id": null,
+            "type": null,
+            "disambiguation": "",
+            "name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "id": "489ce91b-6658-3307-9877-795b68554c98"
+          },
+          "date": "1996-03-12"
+        }
+      ]
+    },
+    {
+      "quality": "normal",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "id": "b52a8f31-b5ab-34e9-92f4-f5b7110220f0",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "date": "",
+      "disambiguation": "UNIVERSAL M & L",
+      "barcode": "720642442524",
+      "status": "Official",
+      "title": "Nevermind",
+      "packaging": "Jewel Case",
+      "asin": "B000003TA4",
+      "cover-art-archive": {
+        "artwork": true,
+        "darkened": false,
+        "front": true,
+        "back": true,
+        "count": 6
+      },
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "sort-name": "Europe",
+            "type": null,
+            "type-id": null,
+            "name": "Europe",
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a"
+          },
+          "date": ""
+        }
+      ],
+      "country": "XE",
+      "media": [
+        {
+          "track-count": 12,
+          "id": "8df86638-9ebb-372c-a0e8-313d7b505367",
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "title": "",
+          "position": 1,
+          "format": "CD",
+          "discs": [
+            {
+              "sectors": 267225,
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "offset-count": 12,
+              "id": "2y0jFMwYQP7gb9iSUKagmoT6DIw-"
+            },
+            {
+              "sectors": 267042,
+              "offsets": [
+                150,
+                22705,
+                41823,
+                58305,
+                72117,
+                91407,
+                104532,
+                115412,
+                132292,
+                144138,
+                160049,
+                174629
+              ],
+              "id": "3ItdW499StnL_XraYrBePHfP2S0-",
+              "offset-count": 12
+            },
+            {
+              "id": "4HygHMwFE8DplriX8TdvDdoyHWs-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "sectors": 267507
+            },
+            {
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267238,
+              "offset-count": 12,
+              "id": "64e.YDM.N2tZJzmqrN48iWfJ9.4-"
+            },
+            {
+              "id": "7wJofg9FI0Y4mcRYJQxkVCnlqAM-",
+              "offset-count": 12,
+              "offsets": [
+                187,
+                22832,
+                41950,
+                58372,
+                72167,
+                91440,
+                104717,
+                115435,
+                132227,
+                143997,
+                159935,
+                174662
+              ],
+              "sectors": 267362
+            },
+            {
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "sectors": 267357,
+              "id": "A2sFNLDz0QFkD3G2ooUmhXeyqh8-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22768,
+                41888,
+                58318,
+                72103,
+                91375,
+                104653,
+                115380,
+                132165,
+                143933,
+                159870,
+                174598
+              ],
+              "sectors": 267225,
+              "offset-count": 12,
+              "id": "AsT3m__Kt0RhqxFvDrafhMnci1I-"
+            },
+            {
+              "id": "BMKwOLLlihxLhDFnh60_8ONHCu4-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22795,
+                41912,
+                58335,
+                72130,
+                91402,
+                104680,
+                115397,
+                132190,
+                143960,
+                159897,
+                174625
+              ],
+              "sectors": 267325
+            },
+            {
+              "offset-count": 12,
+              "id": "HOtHvphb0XtheJeYJS.6UUY3TSU-",
+              "offsets": [
+                183,
+                22800,
+                41920,
+                58350,
+                72135,
+                91408,
+                104685,
+                115413,
+                132198,
+                143965,
+                159903,
+                174630
+              ],
+              "sectors": 267258
+            },
+            {
+              "offsets": [
+                150,
+                22757,
+                41875,
+                58297,
+                72092,
+                91365,
+                104642,
+                115360,
+                132152,
+                143922,
+                159860,
+                174587
+              ],
+              "sectors": 267205,
+              "id": "Ht14QfK8Hqz7OFqFUz7aDImhpHI-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "sectors": 267257,
+              "id": "I5l9cCSFccLKFEKS.7wqSZAorPU-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267237,
+              "id": "JeF6n9BaVHVeDET4R9iUXpoF0bM-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "Lh2JvlGYfrRslj5hlEBfbUNWLaY-",
+              "offsets": [
+                150,
+                22737,
+                41850,
+                58275,
+                72050,
+                91337,
+                104625,
+                115337,
+                132112,
+                143900,
+                159850,
+                174562
+              ],
+              "sectors": 267400
+            },
+            {
+              "offsets": [
+                150,
+                22735,
+                41855,
+                58285,
+                72068,
+                91343,
+                104618,
+                115353,
+                132143,
+                143900,
+                159835,
+                174565
+              ],
+              "sectors": 267195,
+              "id": "MjIUJNF9_.RN9VyMo2pVnoiQCXQ-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "NJr9U1sKs4jfX0fSc5Hgea__b4k-",
+              "sectors": 267232,
+              "offsets": [
+                182,
+                22765,
+                41882,
+                58312,
+                72100,
+                91372,
+                104650,
+                115375,
+                132167,
+                143930,
+                159867,
+                174595
+              ]
+            },
+            {
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58273,
+                72068,
+                91340,
+                104618,
+                115348,
+                132128,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200,
+              "id": "NnVrDEGbm6fiAcn2RxXb.1SsVZM-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267238,
+              "offset-count": 12,
+              "id": "OXXfcM7NxQBhSR7XOxR.HLOrDOg-"
+            },
+            {
+              "id": "Owm_g8FxQE8z6sNKI.pZV7ia92w-",
+              "offset-count": 12,
+              "offsets": [
+                187,
+                22807,
+                41924,
+                58374,
+                72142,
+                91414,
+                104689,
+                115439,
+                132229,
+                143972,
+                159907,
+                174634
+              ],
+              "sectors": 267447
+            },
+            {
+              "offsets": [
+                150,
+                22737,
+                41859,
+                58291,
+                72076,
+                91353,
+                104630,
+                115367,
+                132159,
+                143918,
+                159855,
+                174587
+              ],
+              "sectors": 267219,
+              "offset-count": 12,
+              "id": "QAMq9tguM.iN6lhqHpeCuxufY6M-"
+            },
+            {
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267388,
+              "id": "UqexMfnVax2iSjBwg9TmOb5lnN8-",
+              "offset-count": 12
+            },
+            {
+              "id": "WP4fx9yZR1HWttRLO_XBhmB9yR4-",
+              "offset-count": 12,
+              "offsets": [
+                182,
+                22797,
+                41917,
+                58355,
+                72145,
+                91420,
+                104695,
+                115427,
+                132217,
+                143970,
+                159910,
+                174632
+              ],
+              "sectors": 267395
+            },
+            {
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58280,
+                72068,
+                91340,
+                104618,
+                115343,
+                132135,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200,
+              "offset-count": 12,
+              "id": "WU1s6Q8gGevVArUfOJqsbbiOQCk-"
+            },
+            {
+              "offset-count": 12,
+              "id": "XB1iaQGWlaYkJfcUX.SXtlEFSW8-",
+              "sectors": 267257,
+              "offsets": [
+                150,
+                22735,
+                41860,
+                58352,
+                72072,
+                91347,
+                104625,
+                115422,
+                132215,
+                143982,
+                159845,
+                174572
+              ]
+            },
+            {
+              "id": "bDCCdX8vZbnGiGD4tcN8aGNdkZc-",
+              "offset-count": 12,
+              "sectors": 267125,
+              "offsets": [
+                150,
+                22717,
+                41837,
+                58273,
+                72053,
+                91327,
+                104601,
+                115341,
+                132131,
+                143885,
+                159823,
+                174551
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "c3qPQsVWGsSqoLDfhpscbSUE1Rg-",
+              "sectors": 267192,
+              "offsets": [
+                150,
+                22732,
+                41852,
+                58282,
+                72067,
+                91340,
+                104617,
+                115345,
+                132137,
+                143897,
+                159835,
+                174562
+              ]
+            },
+            {
+              "sectors": 267237,
+              "offsets": [
+                192,
+                22777,
+                41897,
+                58327,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143942,
+                159877,
+                174607
+              ],
+              "offset-count": 12,
+              "id": "eSYc6AlHqIoJuRcf47DZ9RQbxfQ-"
+            },
+            {
+              "id": "h0DTNiCRBpsde_8EHLrVRn7Ivjs-",
+              "offset-count": 12,
+              "sectors": 266866,
+              "offsets": [
+                150,
+                22678,
+                41790,
+                58261,
+                72057,
+                91328,
+                104422,
+                115286,
+                132146,
+                143989,
+                159895,
+                174456
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "i7egWcRUZEWeaRITy0Gw07JuZuc-",
+              "offsets": [
+                182,
+                22800,
+                41920,
+                58350,
+                72135,
+                91407,
+                104685,
+                115412,
+                132197,
+                143965,
+                159902,
+                174630
+              ],
+              "sectors": 267257
+            },
+            {
+              "offsets": [
+                150,
+                22732,
+                41850,
+                58297,
+                72067,
+                91340,
+                104617,
+                115360,
+                132152,
+                143902,
+                159835,
+                174562
+              ],
+              "sectors": 267225,
+              "offset-count": 12,
+              "id": "kbg76ZV00VdU5VKJTObxBoiojpg-"
+            },
+            {
+              "id": "nZ8Sp2EEJ6CGyQ.Tct1_cCl8Ig4-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22764,
+                41875,
+                58322,
+                72063,
+                91317,
+                104405,
+                115154,
+                131943,
+                143667,
+                159563,
+                174172
+              ],
+              "sectors": 266904
+            },
+            {
+              "id": "x31oxKTjImYK3BJhX9SxxustXLY-",
+              "offset-count": 12,
+              "offsets": [
+                182,
+                22765,
+                41885,
+                58315,
+                72100,
+                91372,
+                104650,
+                115377,
+                132170,
+                143930,
+                159867,
+                174595
+              ],
+              "sectors": 267225
+            }
+          ]
+        }
+      ],
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a"
+    },
+    {
+      "barcode": "777497492006",
+      "status": "Official",
+      "date": "1991",
+      "disambiguation": "columbia house edition",
+      "id": "4cbf7629-4695-3885-9aca-a639e62ba4ab",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "quality": "normal",
+      "country": "CA",
+      "media": [
+        {
+          "title": "",
+          "id": "163c842c-cc28-31a3-9ac5-453c6defa894",
+          "track-count": 12,
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "discs": [
+            {
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "sectors": 267225,
+              "id": "2y0jFMwYQP7gb9iSUKagmoT6DIw-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267042,
+              "offsets": [
+                150,
+                22705,
+                41823,
+                58305,
+                72117,
+                91407,
+                104532,
+                115412,
+                132292,
+                144138,
+                160049,
+                174629
+              ],
+              "id": "3ItdW499StnL_XraYrBePHfP2S0-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267507,
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "id": "4HygHMwFE8DplriX8TdvDdoyHWs-",
+              "offset-count": 12
+            },
+            {
+              "id": "64e.YDM.N2tZJzmqrN48iWfJ9.4-",
+              "offset-count": 12,
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267238
+            },
+            {
+              "offsets": [
+                187,
+                22832,
+                41950,
+                58372,
+                72167,
+                91440,
+                104717,
+                115435,
+                132227,
+                143997,
+                159935,
+                174662
+              ],
+              "sectors": 267362,
+              "id": "7wJofg9FI0Y4mcRYJQxkVCnlqAM-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "A2sFNLDz0QFkD3G2ooUmhXeyqh8-",
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "sectors": 267357
+            },
+            {
+              "offsets": [
+                150,
+                22768,
+                41888,
+                58318,
+                72103,
+                91375,
+                104653,
+                115380,
+                132165,
+                143933,
+                159870,
+                174598
+              ],
+              "sectors": 267225,
+              "id": "AsT3m__Kt0RhqxFvDrafhMnci1I-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267325,
+              "offsets": [
+                150,
+                22795,
+                41912,
+                58335,
+                72130,
+                91402,
+                104680,
+                115397,
+                132190,
+                143960,
+                159897,
+                174625
+              ],
+              "offset-count": 12,
+              "id": "BMKwOLLlihxLhDFnh60_8ONHCu4-"
+            },
+            {
+              "sectors": 267258,
+              "offsets": [
+                183,
+                22800,
+                41920,
+                58350,
+                72135,
+                91408,
+                104685,
+                115413,
+                132198,
+                143965,
+                159903,
+                174630
+              ],
+              "id": "HOtHvphb0XtheJeYJS.6UUY3TSU-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22757,
+                41875,
+                58297,
+                72092,
+                91365,
+                104642,
+                115360,
+                132152,
+                143922,
+                159860,
+                174587
+              ],
+              "sectors": 267205,
+              "id": "Ht14QfK8Hqz7OFqFUz7aDImhpHI-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "sectors": 267257,
+              "offset-count": 12,
+              "id": "I5l9cCSFccLKFEKS.7wqSZAorPU-"
+            },
+            {
+              "offset-count": 12,
+              "id": "JeF6n9BaVHVeDET4R9iUXpoF0bM-",
+              "sectors": 267237,
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "Lh2JvlGYfrRslj5hlEBfbUNWLaY-",
+              "offsets": [
+                150,
+                22737,
+                41850,
+                58275,
+                72050,
+                91337,
+                104625,
+                115337,
+                132112,
+                143900,
+                159850,
+                174562
+              ],
+              "sectors": 267400
+            },
+            {
+              "id": "MjIUJNF9_.RN9VyMo2pVnoiQCXQ-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22735,
+                41855,
+                58285,
+                72068,
+                91343,
+                104618,
+                115353,
+                132143,
+                143900,
+                159835,
+                174565
+              ],
+              "sectors": 267195
+            },
+            {
+              "id": "NJr9U1sKs4jfX0fSc5Hgea__b4k-",
+              "offset-count": 12,
+              "sectors": 267232,
+              "offsets": [
+                182,
+                22765,
+                41882,
+                58312,
+                72100,
+                91372,
+                104650,
+                115375,
+                132167,
+                143930,
+                159867,
+                174595
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "NnVrDEGbm6fiAcn2RxXb.1SsVZM-",
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58273,
+                72068,
+                91340,
+                104618,
+                115348,
+                132128,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200
+            },
+            {
+              "offsets": [
+                150,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267238,
+              "offset-count": 12,
+              "id": "OXXfcM7NxQBhSR7XOxR.HLOrDOg-"
+            },
+            {
+              "sectors": 267447,
+              "offsets": [
+                187,
+                22807,
+                41924,
+                58374,
+                72142,
+                91414,
+                104689,
+                115439,
+                132229,
+                143972,
+                159907,
+                174634
+              ],
+              "id": "Owm_g8FxQE8z6sNKI.pZV7ia92w-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267219,
+              "offsets": [
+                150,
+                22737,
+                41859,
+                58291,
+                72076,
+                91353,
+                104630,
+                115367,
+                132159,
+                143918,
+                159855,
+                174587
+              ],
+              "id": "QAMq9tguM.iN6lhqHpeCuxufY6M-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267388,
+              "id": "UqexMfnVax2iSjBwg9TmOb5lnN8-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                182,
+                22797,
+                41917,
+                58355,
+                72145,
+                91420,
+                104695,
+                115427,
+                132217,
+                143970,
+                159910,
+                174632
+              ],
+              "sectors": 267395,
+              "id": "WP4fx9yZR1HWttRLO_XBhmB9yR4-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58280,
+                72068,
+                91340,
+                104618,
+                115343,
+                132135,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200,
+              "offset-count": 12,
+              "id": "WU1s6Q8gGevVArUfOJqsbbiOQCk-"
+            },
+            {
+              "id": "XB1iaQGWlaYkJfcUX.SXtlEFSW8-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22735,
+                41860,
+                58352,
+                72072,
+                91347,
+                104625,
+                115422,
+                132215,
+                143982,
+                159845,
+                174572
+              ],
+              "sectors": 267257
+            },
+            {
+              "sectors": 267125,
+              "offsets": [
+                150,
+                22717,
+                41837,
+                58273,
+                72053,
+                91327,
+                104601,
+                115341,
+                132131,
+                143885,
+                159823,
+                174551
+              ],
+              "offset-count": 12,
+              "id": "bDCCdX8vZbnGiGD4tcN8aGNdkZc-"
+            },
+            {
+              "id": "c3qPQsVWGsSqoLDfhpscbSUE1Rg-",
+              "offset-count": 12,
+              "sectors": 267192,
+              "offsets": [
+                150,
+                22732,
+                41852,
+                58282,
+                72067,
+                91340,
+                104617,
+                115345,
+                132137,
+                143897,
+                159835,
+                174562
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "eSYc6AlHqIoJuRcf47DZ9RQbxfQ-",
+              "offsets": [
+                192,
+                22777,
+                41897,
+                58327,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143942,
+                159877,
+                174607
+              ],
+              "sectors": 267237
+            },
+            {
+              "sectors": 266866,
+              "offsets": [
+                150,
+                22678,
+                41790,
+                58261,
+                72057,
+                91328,
+                104422,
+                115286,
+                132146,
+                143989,
+                159895,
+                174456
+              ],
+              "id": "h0DTNiCRBpsde_8EHLrVRn7Ivjs-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                182,
+                22800,
+                41920,
+                58350,
+                72135,
+                91407,
+                104685,
+                115412,
+                132197,
+                143965,
+                159902,
+                174630
+              ],
+              "sectors": 267257,
+              "id": "i7egWcRUZEWeaRITy0Gw07JuZuc-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267225,
+              "offsets": [
+                150,
+                22732,
+                41850,
+                58297,
+                72067,
+                91340,
+                104617,
+                115360,
+                132152,
+                143902,
+                159835,
+                174562
+              ],
+              "offset-count": 12,
+              "id": "kbg76ZV00VdU5VKJTObxBoiojpg-"
+            },
+            {
+              "id": "nZ8Sp2EEJ6CGyQ.Tct1_cCl8Ig4-",
+              "offset-count": 12,
+              "sectors": 266904,
+              "offsets": [
+                150,
+                22764,
+                41875,
+                58322,
+                72063,
+                91317,
+                104405,
+                115154,
+                131943,
+                143667,
+                159563,
+                174172
+              ]
+            },
+            {
+              "sectors": 267225,
+              "offsets": [
+                182,
+                22765,
+                41885,
+                58315,
+                72100,
+                91372,
+                104650,
+                115377,
+                132170,
+                143930,
+                159867,
+                174595
+              ],
+              "id": "x31oxKTjImYK3BJhX9SxxustXLY-",
+              "offset-count": 12
+            }
+          ],
+          "format": "CD",
+          "position": 1
+        }
+      ],
+      "packaging-id": null,
+      "release-events": [
+        {
+          "date": "1991",
+          "area": {
+            "name": "Canada",
+            "iso-3166-1-codes": [
+              "CA"
+            ],
+            "id": "71bbafaa-e825-3e15-8ca9-017dcad1748b",
+            "sort-name": "Canada",
+            "type-id": null,
+            "type": null,
+            "disambiguation": ""
+          }
+        }
+      ],
+      "asin": null,
+      "cover-art-archive": {
+        "darkened": false,
+        "front": true,
+        "back": true,
+        "count": 3,
+        "artwork": true
+      },
+      "title": "Nevermind",
+      "packaging": null
+    },
+    {
+      "cover-art-archive": {
+        "count": 3,
+        "back": true,
+        "front": true,
+        "darkened": false,
+        "artwork": true
+      },
+      "asin": "B000003TA4",
+      "packaging": "Jewel Case",
+      "title": "Nevermind",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "country": "US",
+      "media": [
+        {
+          "track-count": 12,
+          "id": "ad05d769-9e34-3805-bc77-9b3c9226c727",
+          "format-id": "9712d52a-4509-3d4b-a1a2-67c88c643e31",
+          "title": "",
+          "format": "CD",
+          "position": 1,
+          "discs": [
+            {
+              "id": "2y0jFMwYQP7gb9iSUKagmoT6DIw-",
+              "offset-count": 12,
+              "sectors": 267225,
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ]
+            },
+            {
+              "id": "3ItdW499StnL_XraYrBePHfP2S0-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22705,
+                41823,
+                58305,
+                72117,
+                91407,
+                104532,
+                115412,
+                132292,
+                144138,
+                160049,
+                174629
+              ],
+              "sectors": 267042
+            },
+            {
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ],
+              "sectors": 267507,
+              "id": "4HygHMwFE8DplriX8TdvDdoyHWs-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "64e.YDM.N2tZJzmqrN48iWfJ9.4-",
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267238
+            },
+            {
+              "offset-count": 12,
+              "id": "7wJofg9FI0Y4mcRYJQxkVCnlqAM-",
+              "sectors": 267362,
+              "offsets": [
+                187,
+                22832,
+                41950,
+                58372,
+                72167,
+                91440,
+                104717,
+                115435,
+                132227,
+                143997,
+                159935,
+                174662
+              ]
+            },
+            {
+              "id": "A2sFNLDz0QFkD3G2ooUmhXeyqh8-",
+              "offset-count": 12,
+              "sectors": 267357,
+              "offsets": [
+                150,
+                22812,
+                41947,
+                58380,
+                72187,
+                91485,
+                104675,
+                115405,
+                132210,
+                143990,
+                159942,
+                174687
+              ]
+            },
+            {
+              "sectors": 267225,
+              "offsets": [
+                150,
+                22768,
+                41888,
+                58318,
+                72103,
+                91375,
+                104653,
+                115380,
+                132165,
+                143933,
+                159870,
+                174598
+              ],
+              "offset-count": 12,
+              "id": "AsT3m__Kt0RhqxFvDrafhMnci1I-"
+            },
+            {
+              "offset-count": 12,
+              "id": "BMKwOLLlihxLhDFnh60_8ONHCu4-",
+              "sectors": 267325,
+              "offsets": [
+                150,
+                22795,
+                41912,
+                58335,
+                72130,
+                91402,
+                104680,
+                115397,
+                132190,
+                143960,
+                159897,
+                174625
+              ]
+            },
+            {
+              "sectors": 267258,
+              "offsets": [
+                183,
+                22800,
+                41920,
+                58350,
+                72135,
+                91408,
+                104685,
+                115413,
+                132198,
+                143965,
+                159903,
+                174630
+              ],
+              "id": "HOtHvphb0XtheJeYJS.6UUY3TSU-",
+              "offset-count": 12
+            },
+            {
+              "offset-count": 12,
+              "id": "Ht14QfK8Hqz7OFqFUz7aDImhpHI-",
+              "offsets": [
+                150,
+                22757,
+                41875,
+                58297,
+                72092,
+                91365,
+                104642,
+                115360,
+                132152,
+                143922,
+                159860,
+                174587
+              ],
+              "sectors": 267205
+            },
+            {
+              "offsets": [
+                150,
+                22767,
+                41887,
+                58317,
+                72102,
+                91375,
+                104652,
+                115380,
+                132165,
+                143932,
+                159870,
+                174597
+              ],
+              "sectors": 267257,
+              "offset-count": 12,
+              "id": "I5l9cCSFccLKFEKS.7wqSZAorPU-"
+            },
+            {
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267237,
+              "id": "JeF6n9BaVHVeDET4R9iUXpoF0bM-",
+              "offset-count": 12
+            },
+            {
+              "id": "Lh2JvlGYfrRslj5hlEBfbUNWLaY-",
+              "offset-count": 12,
+              "sectors": 267400,
+              "offsets": [
+                150,
+                22737,
+                41850,
+                58275,
+                72050,
+                91337,
+                104625,
+                115337,
+                132112,
+                143900,
+                159850,
+                174562
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "MjIUJNF9_.RN9VyMo2pVnoiQCXQ-",
+              "sectors": 267195,
+              "offsets": [
+                150,
+                22735,
+                41855,
+                58285,
+                72068,
+                91343,
+                104618,
+                115353,
+                132143,
+                143900,
+                159835,
+                174565
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "NJr9U1sKs4jfX0fSc5Hgea__b4k-",
+              "sectors": 267232,
+              "offsets": [
+                182,
+                22765,
+                41882,
+                58312,
+                72100,
+                91372,
+                104650,
+                115375,
+                132167,
+                143930,
+                159867,
+                174595
+              ]
+            },
+            {
+              "sectors": 267200,
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58273,
+                72068,
+                91340,
+                104618,
+                115348,
+                132128,
+                143898,
+                159835,
+                174563
+              ],
+              "id": "NnVrDEGbm6fiAcn2RxXb.1SsVZM-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267238,
+              "offsets": [
+                150,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "offset-count": 12,
+              "id": "OXXfcM7NxQBhSR7XOxR.HLOrDOg-"
+            },
+            {
+              "id": "Owm_g8FxQE8z6sNKI.pZV7ia92w-",
+              "offset-count": 12,
+              "sectors": 267447,
+              "offsets": [
+                187,
+                22807,
+                41924,
+                58374,
+                72142,
+                91414,
+                104689,
+                115439,
+                132229,
+                143972,
+                159907,
+                174634
+              ]
+            },
+            {
+              "sectors": 267219,
+              "offsets": [
+                150,
+                22737,
+                41859,
+                58291,
+                72076,
+                91353,
+                104630,
+                115367,
+                132159,
+                143918,
+                159855,
+                174587
+              ],
+              "id": "QAMq9tguM.iN6lhqHpeCuxufY6M-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                193,
+                22778,
+                41898,
+                58328,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143943,
+                159878,
+                174608
+              ],
+              "sectors": 267388,
+              "offset-count": 12,
+              "id": "UqexMfnVax2iSjBwg9TmOb5lnN8-"
+            },
+            {
+              "offset-count": 12,
+              "id": "WP4fx9yZR1HWttRLO_XBhmB9yR4-",
+              "sectors": 267395,
+              "offsets": [
+                182,
+                22797,
+                41917,
+                58355,
+                72145,
+                91420,
+                104695,
+                115427,
+                132217,
+                143970,
+                159910,
+                174632
+              ]
+            },
+            {
+              "offset-count": 12,
+              "id": "WU1s6Q8gGevVArUfOJqsbbiOQCk-",
+              "offsets": [
+                150,
+                22733,
+                41850,
+                58280,
+                72068,
+                91340,
+                104618,
+                115343,
+                132135,
+                143898,
+                159835,
+                174563
+              ],
+              "sectors": 267200
+            },
+            {
+              "id": "XB1iaQGWlaYkJfcUX.SXtlEFSW8-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22735,
+                41860,
+                58352,
+                72072,
+                91347,
+                104625,
+                115422,
+                132215,
+                143982,
+                159845,
+                174572
+              ],
+              "sectors": 267257
+            },
+            {
+              "offsets": [
+                150,
+                22717,
+                41837,
+                58273,
+                72053,
+                91327,
+                104601,
+                115341,
+                132131,
+                143885,
+                159823,
+                174551
+              ],
+              "sectors": 267125,
+              "id": "bDCCdX8vZbnGiGD4tcN8aGNdkZc-",
+              "offset-count": 12
+            },
+            {
+              "offsets": [
+                150,
+                22732,
+                41852,
+                58282,
+                72067,
+                91340,
+                104617,
+                115345,
+                132137,
+                143897,
+                159835,
+                174562
+              ],
+              "sectors": 267192,
+              "id": "c3qPQsVWGsSqoLDfhpscbSUE1Rg-",
+              "offset-count": 12
+            },
+            {
+              "sectors": 267237,
+              "offsets": [
+                192,
+                22777,
+                41897,
+                58327,
+                72110,
+                91385,
+                104660,
+                115395,
+                132185,
+                143942,
+                159877,
+                174607
+              ],
+              "offset-count": 12,
+              "id": "eSYc6AlHqIoJuRcf47DZ9RQbxfQ-"
+            },
+            {
+              "id": "h0DTNiCRBpsde_8EHLrVRn7Ivjs-",
+              "offset-count": 12,
+              "offsets": [
+                150,
+                22678,
+                41790,
+                58261,
+                72057,
+                91328,
+                104422,
+                115286,
+                132146,
+                143989,
+                159895,
+                174456
+              ],
+              "sectors": 266866
+            },
+            {
+              "sectors": 267257,
+              "offsets": [
+                182,
+                22800,
+                41920,
+                58350,
+                72135,
+                91407,
+                104685,
+                115412,
+                132197,
+                143965,
+                159902,
+                174630
+              ],
+              "offset-count": 12,
+              "id": "i7egWcRUZEWeaRITy0Gw07JuZuc-"
+            },
+            {
+              "offset-count": 12,
+              "id": "kbg76ZV00VdU5VKJTObxBoiojpg-",
+              "offsets": [
+                150,
+                22732,
+                41850,
+                58297,
+                72067,
+                91340,
+                104617,
+                115360,
+                132152,
+                143902,
+                159835,
+                174562
+              ],
+              "sectors": 267225
+            },
+            {
+              "offset-count": 12,
+              "id": "nZ8Sp2EEJ6CGyQ.Tct1_cCl8Ig4-",
+              "offsets": [
+                150,
+                22764,
+                41875,
+                58322,
+                72063,
+                91317,
+                104405,
+                115154,
+                131943,
+                143667,
+                159563,
+                174172
+              ],
+              "sectors": 266904
+            },
+            {
+              "sectors": 267225,
+              "offsets": [
+                182,
+                22765,
+                41885,
+                58315,
+                72100,
+                91372,
+                104650,
+                115377,
+                132170,
+                143930,
+                159867,
+                174595
+              ],
+              "offset-count": 12,
+              "id": "x31oxKTjImYK3BJhX9SxxustXLY-"
+            }
+          ]
+        }
+      ],
+      "release-events": [
+        {
+          "date": "1991-09-24",
+          "area": {
+            "name": "United States",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "sort-name": "United States",
+            "type-id": null,
+            "type": null,
+            "disambiguation": ""
+          }
+        }
+      ],
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "id": "a146429a-cedc-3ab0-9e41-1aaf5f6cdc2d",
+      "quality": "normal",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "barcode": "720642442524",
+      "status": "Official",
+      "disambiguation": "",
+      "date": "1991-09-24"
+    }
+  ],
+  "id": "2y0jFMwYQP7gb9iSUKagmoT6DIw-",
+  "offset-count": 12
+}

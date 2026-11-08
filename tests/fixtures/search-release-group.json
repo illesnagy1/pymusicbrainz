@@ -1,0 +1,248 @@
+{
+  "created": "2026-11-08T19:48:14.164Z",
+  "count": 145,
+  "offset": 0,
+  "release-groups": [
+    {
+      "id": "12a6363a-213c-3d21-aa59-8b2f0e7227b6",
+      "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "score": 100,
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "artist-credit-id": "23ef6ae1-ab58-3598-95fd-b2ab18125c85",
+      "count": 1,
+      "title": "Nevermind",
+      "first-release-date": "2006",
+      "primary-type": "Album",
+      "artist-credit": [
+        {
+          "name": "Clockcleaner",
+          "artist": {
+            "id": "730288f5-74ea-44de-a8a0-334049a5d7aa",
+            "name": "Clockcleaner",
+            "sort-name": "Clockcleaner"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "id": "f94b19bf-e724-4d26-9235-e13de5fba1bd",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "title": "Nevermind",
+          "status": "Official"
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "rock"
+        },
+        {
+          "count": 1,
+          "name": "noise"
+        },
+        {
+          "count": 1,
+          "name": "punk"
+        }
+      ]
+    },
+    {
+      "id": "59af7c7e-fd87-33e1-8f5a-eece2b9e0425",
+      "type-id": "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1",
+      "score": 100,
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "artist-credit-id": "91997d53-9c82-3585-ac23-ce763b49389f",
+      "count": 1,
+      "title": "Nevermind",
+      "primary-type": "Album",
+      "secondary-types": [
+        "Compilation",
+        "Live"
+      ],
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1",
+        "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0"
+      ],
+      "artist-credit": [
+        {
+          "name": "Red Hot Chili Peppers",
+          "artist": {
+            "id": "8bfac288-ccc5-448d-9573-c33ea2aa5c30",
+            "name": "Red Hot Chili Peppers",
+            "sort-name": "Red Hot Chili Peppers",
+            "aliases": [
+              {
+                "sort-name": "Red Hot Chilli Peppers",
+                "name": "Red Hot Chilli Peppers",
+                "locale": null,
+                "type": null,
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              },
+              {
+                "sort-name": "Red Hot Chili Peppers, The",
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "The Red Hot Chili Peppers",
+                "locale": "en",
+                "type": "Artist name",
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              },
+              {
+                "sort-name": "RHCP",
+                "type-id": "894afba6-2816-3c24-8072-eadb66bd04bc",
+                "name": "RHCP",
+                "locale": null,
+                "type": "Artist name",
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              },
+              {
+                "sort-name": "Red Hot Chilly Peppers",
+                "name": "Red Hot Chilly Peppers",
+                "locale": null,
+                "type": null,
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              },
+              {
+                "sort-name": "The Red Hot Chilli Peppers",
+                "name": "The Red Hot Chilli Peppers",
+                "locale": null,
+                "type": null,
+                "primary": null,
+                "begin-date": null,
+                "end-date": null
+              }
+            ]
+          }
+        }
+      ],
+      "releases": [
+        {
+          "id": "63899143-ad33-468a-a3bc-50823465e621",
+          "status-id": "1156806e-d06a-38bd-83f0-cf2284a808b9",
+          "title": "Nevermind",
+          "status": "Bootleg"
+        }
+      ],
+      "tags": [
+        {
+          "count": 3,
+          "name": "rock"
+        },
+        {
+          "count": 1,
+          "name": "alternative rock"
+        },
+        {
+          "count": 1,
+          "name": "funk metal"
+        }
+      ]
+    },
+    {
+      "id": "93c8366a-9dc1-4b9a-84e9-2e75b255af8d",
+      "type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "score": 100,
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "artist-credit-id": "ab4825c2-af41-3ab9-b470-424627e12d16",
+      "count": 2,
+      "title": "Nevermind",
+      "first-release-date": "2011-09-24",
+      "primary-type": "Album",
+      "artist-credit": [
+        {
+          "name": "Kevin Devine",
+          "artist": {
+            "id": "6cb35b9f-1972-404a-8882-e915c39d33da",
+            "name": "Kevin Devine",
+            "sort-name": "Devine, Kevin",
+            "disambiguation": "US singer‐songwriter"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "id": "1a4fd92a-acd4-4359-882d-a48ff82bda82",
+          "title": "Nevermind"
+        },
+        {
+          "id": "1c4d0374-4e62-4d02-b957-fa2f1a316d33",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "title": "Nevermind",
+          "status": "Official"
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "rock"
+        }
+      ]
+    },
+    {
+      "id": "f3b37c83-a7a3-44f0-ab28-8113ba9a42dd",
+      "type-id": "d6038452-8ee0-3f68-affc-2de9a1ede0b9",
+      "score": 100,
+      "primary-type-id": "d6038452-8ee0-3f68-affc-2de9a1ede0b9",
+      "artist-credit-id": "c9704403-9a1c-3d2b-a5a3-51a234241de9",
+      "count": 1,
+      "title": "Nevermind",
+      "first-release-date": "2016-12-09",
+      "primary-type": "Single",
+      "artist-credit": [
+        {
+          "name": "Leoniden",
+          "artist": {
+            "id": "58e80cb1-6b99-43de-b3f8-0d24ab25688e",
+            "name": "Leoniden",
+            "sort-name": "Leoniden"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "id": "9ff01a2c-50e7-4864-a9a1-159962213ac8",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "title": "Nevermind",
+          "status": "Official"
+        }
+      ]
+    },
+    {
+      "id": "318cdd88-c06f-4d88-ac52-11c3ccc0d6f8",
+      "type-id": "d6038452-8ee0-3f68-affc-2de9a1ede0b9",
+      "score": 100,
+      "primary-type-id": "d6038452-8ee0-3f68-affc-2de9a1ede0b9",
+      "artist-credit-id": "4dc3b217-47c5-377d-a5c1-563c723a5217",
+      "count": 1,
+      "title": "Nevermind",
+      "first-release-date": "2018-07-02",
+      "primary-type": "Single",
+      "artist-credit": [
+        {
+          "name": "teddybear",
+          "artist": {
+            "id": "3a358686-7a68-4980-bc02-7fcc6c357aaf",
+            "name": "teddybear",
+            "sort-name": "teddybear",
+            "disambiguation": "Canadian rapper"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "id": "52651940-788a-45bc-a8c0-ad52bf5ee058",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "title": "Nevermind",
+          "status": "Official"
+        }
+      ]
+    }
+  ]
+}

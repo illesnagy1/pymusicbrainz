@@ -1,0 +1,134 @@
+{
+  "release-group-count": 437,
+  "release-groups": [
+    {
+      "disambiguation": "",
+      "primary-type": "Album",
+      "id": "01cf1391-141b-3c87-8650-45ade6e59070",
+      "title": "Incesticide",
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+      ],
+      "secondary-types": [
+        "Compilation"
+      ],
+      "first-release-date": "1992-12-14",
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+    },
+    {
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "first-release-date": "1991-09-24",
+      "title": "Nevermind",
+      "id": "1b022e01-4da6-387b-8658-8678046e4cef",
+      "primary-type": "Album",
+      "disambiguation": "",
+      "secondary-types": [],
+      "secondary-type-ids": []
+    },
+    {
+      "secondary-type-ids": [],
+      "secondary-types": [],
+      "primary-type": "Album",
+      "id": "2a0981fb-9593-3019-864b-ce934d97a16e",
+      "title": "In Utero",
+      "disambiguation": "",
+      "first-release-date": "1993-09-21",
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+    },
+    {
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "first-release-date": "2002-10-18",
+      "title": "Nirvana",
+      "id": "5ab32af4-c62e-3cbf-aa8c-c761581d3b94",
+      "primary-type": "Album",
+      "disambiguation": "",
+      "secondary-types": [
+        "Compilation"
+      ],
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+      ]
+    },
+    {
+      "secondary-types": [
+        "Compilation"
+      ],
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+      ],
+      "title": "Icon",
+      "id": "5cc5dc44-8860-462e-8aa5-2cf9b71af237",
+      "primary-type": "Album",
+      "disambiguation": "",
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "first-release-date": "2010-08-31"
+    },
+    {
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "first-release-date": "2009",
+      "secondary-types": [
+        "Compilation"
+      ],
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+      ],
+      "title": "In Bloom Collection",
+      "primary-type": "Album",
+      "id": "7a554237-a719-49a0-a755-7021cebf6875",
+      "disambiguation": ""
+    },
+    {
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "first-release-date": "2009",
+      "title": "Incesticide / In Utero",
+      "id": "95563c6a-92e5-456c-9f86-6fe2ff1d148e",
+      "primary-type": "Album",
+      "disambiguation": "",
+      "secondary-types": [
+        "Compilation"
+      ],
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+      ]
+    },
+    {
+      "disambiguation": "",
+      "title": "With the Lights Out",
+      "primary-type": "Album",
+      "id": "d4d28ec1-220a-327c-93c5-ae006be43598",
+      "secondary-types": [
+        "Compilation"
+      ],
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+      ],
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "first-release-date": "2004-11-23"
+    },
+    {
+      "secondary-types": [
+        "Compilation"
+      ],
+      "secondary-type-ids": [
+        "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+      ],
+      "title": "Sliver: The Best of the Box",
+      "id": "e9674d41-d94b-344a-89f5-734736853d5f",
+      "primary-type": "Album",
+      "disambiguation": "",
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+      "first-release-date": "2005-10-31"
+    },
+    {
+      "secondary-type-ids": [],
+      "secondary-types": [],
+      "disambiguation": "",
+      "id": "f1afec0b-26dd-3db5-9aa1-c91229a74a24",
+      "primary-type": "Album",
+      "title": "Bleach",
+      "first-release-date": "1989-08-08",
+      "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+    }
+  ],
+  "release-group-offset": 0
+}

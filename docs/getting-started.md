@@ -47,6 +47,7 @@ Each entity type has a namespace on the client:
 | `mb.works` | work | ✓ | ✓ | ✓ |
 | `mb.urls` | url | ✓ | ✓ | ✓ |
 | `mb.collections` | collection | ✓ | ✓ | |
+| `mb.cover_art` | [Cover Art Archive](guide/cover-art.md) images | | | |
 | `mb.annotations`, `mb.cdstubs`, `mb.tags` | | | | ✓ |
 
 Every namespace with lookup and browse has the same methods:

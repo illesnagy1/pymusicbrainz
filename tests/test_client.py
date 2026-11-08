@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 import xml.etree.ElementTree as ET
 from collections.abc import Callable

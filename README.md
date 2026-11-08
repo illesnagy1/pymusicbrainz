@@ -1,9 +1,9 @@
 # musicbrainz
 
 A typed Python client for the
-[MusicBrainz WS/2 API](https://musicbrainz.org/doc/MusicBrainz_API), with
-sync and async clients, rate limiting and retries built in, and a JSON
-command-line tool.
+[MusicBrainz WS/2 API](https://musicbrainz.org/doc/MusicBrainz_API) and the
+[Cover Art Archive](https://coverartarchive.org/), with sync and async clients,
+rate limiting and retries built in, and a JSON command-line tool.
 
 ```python
 from musicbrainz import MusicBrainz
@@ -21,7 +21,7 @@ musicbrainz search artist "Daft Punk" --limit 3
 
 ## Installation
 
-Requires Python 3.15 or later.
+Requires Python 3.12 or later.
 
 ```sh
 uv add musicbrainz

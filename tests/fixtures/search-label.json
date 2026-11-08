@@ -1,0 +1,156 @@
+{
+  "created": "2026-11-08T19:48:16.218Z",
+  "count": 3,
+  "offset": 0,
+  "labels": [
+    {
+      "id": "38dc88de-7720-4100-9d5b-3cdc41b0c474",
+      "type": "Original Production",
+      "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+      "score": 100,
+      "name": "Sub Pop Records",
+      "sort-name": "Sub Pop Records",
+      "label-code": 8323,
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "begin": "1979",
+        "ended": null
+      },
+      "aliases": [
+        {
+          "sort-name": "Sub Pop",
+          "name": "Sub Pop",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "SubPop",
+          "name": "SubPop",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Sub Pop Germany",
+          "name": "Sub Pop Germany",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Sub Pop Records (Germany)",
+          "name": "Sub Pop Records (Germany)",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Subterranean Pop",
+          "name": "Subterranean Pop",
+          "locale": null,
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "Sub Pop Records",
+          "name": "Sub Pop Records",
+          "locale": "en",
+          "type": null,
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        },
+        {
+          "sort-name": "S>U>B P<O<P",
+          "type-id": "3a1a0c48-d885-3b89-87b2-9e8a483c5675",
+          "name": "S>U>B P<O<P",
+          "locale": "en",
+          "type": "Label name",
+          "primary": null,
+          "begin-date": null,
+          "end-date": null
+        }
+      ],
+      "tags": [
+        {
+          "count": 1,
+          "name": "américain"
+        },
+        {
+          "count": 1,
+          "name": "indie folk"
+        },
+        {
+          "count": 1,
+          "name": "usa"
+        },
+        {
+          "count": 1,
+          "name": "american"
+        },
+        {
+          "count": 1,
+          "name": "folk"
+        }
+      ]
+    },
+    {
+      "id": "819d1971-7ed7-4dff-9dbb-1dbcc5d1a2ac",
+      "type": "Publisher",
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "score": 45,
+      "name": "Sub Pop Publishing",
+      "sort-name": "Sub Pop Publishing",
+      "ipis": [
+        "00196616827",
+        "00670170856"
+      ],
+      "life-span": {
+        "ended": null
+      }
+    },
+    {
+      "id": "8e3147ee-f2a2-4da5-a71b-8ba93730c839",
+      "type": "Publisher",
+      "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+      "score": 45,
+      "name": "Sub Pop Music",
+      "sort-name": "Sub Pop Music",
+      "country": "US",
+      "area": {
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "type": "Country",
+        "type-id": "06dd0ae4-8c74-30bb-b43d-95dcedf961de",
+        "name": "United States",
+        "sort-name": "United States",
+        "life-span": {
+          "ended": null
+        }
+      },
+      "life-span": {
+        "ended": null
+      }
+    }
+  ]
+}

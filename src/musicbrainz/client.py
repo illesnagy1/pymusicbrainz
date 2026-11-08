@@ -1,12 +1,22 @@
 """Synchronous and asynchronous MusicBrainz clients."""
 
+from __future__ import annotations
+
 import logging
 import time
-from collections.abc import AsyncIterator, Callable, Iterable, Iterator, Mapping
-from typing import Any, Literal, Self, TypedDict, Unpack
+from collections.abc import (
+    AsyncIterator,
+    Callable,
+    Generator,
+    Iterable,
+    Iterator,
+    Mapping,
+)
+from typing import Any, Literal, Self, Unpack
 
 import anyio
 import httpx2
+from typing_extensions import TypedDict  # closed=True (PEP 728) before 3.15
 
 from . import _constants as consts
 from . import models
@@ -14,6 +24,7 @@ from ._core import (
     JSON,
     Call,
     Core,
+    CoverArtSize,
     Filter,
     Includes,
     decode_body,
@@ -71,6 +82,7 @@ class _Config:
         oauth_token: str | None,
         auth: httpx2.Auth | None,
         base_url: str,
+        caa_url: str,
         max_retries: int,
         backoff_factor: float,
         validate: bool,
@@ -92,14 +104,21 @@ class _Config:
             if not username:
                 raise ValidationError("username is required with password")
             auth = httpx2.DigestAuth(username, password)
+        if oauth_token is not None:
+            auth = _BearerAuth(oauth_token)
+        # Auth is applied per request (MusicBrainz only), never as a default
+        # header, so credentials can't leak to the Cover Art Archive/archive.org.
         self.auth = auth
         self.headers = {"User-Agent": self.user_agent}
-        if oauth_token is not None:
-            self.headers["Authorization"] = f"Bearer {oauth_token}"
-        self.has_auth = auth is not None or oauth_token is not None
+        self.has_auth = auth is not None
         # The API wants "<app>-<version>" where version contains no hyphen.
         client_id = f"{app}-{version}" if "-" not in version else None
-        self.core = Core(client_id=client_id, has_auth=self.has_auth, validate=validate)
+        self.core = Core(
+            client_id=client_id,
+            has_auth=self.has_auth,
+            validate=validate,
+            caa_url=caa_url,
+        )
         self.base_url = base_url if base_url.endswith("/") else base_url + "/"
         self.max_retries = max_retries
         self.backoff_factor = backoff_factor
@@ -109,6 +128,19 @@ class _Config:
             raise AuthenticationRequiredError(
                 f"{call.method} {call.path} requires authentication"
             )
+
+
+class _BearerAuth(httpx2.Auth):
+    """OAuth2 bearer token authentication."""
+
+    def __init__(self, token: str) -> None:
+        self._header = f"Bearer {token}"
+
+    def auth_flow(
+        self, request: httpx2.Request
+    ) -> Generator[httpx2.Request, httpx2.Response]:
+        request.headers["Authorization"] = self._header
+        yield request
 
 
 def _retryable_exc(method: str, exc: Exception) -> bool:
@@ -186,7 +218,7 @@ class _Session:
         cfg = self.config
         cfg.check_auth(call)
         for attempt in range(cfg.max_retries + 1):
-            if self.limiter:
+            if self.limiter and not call.external:
                 self.limiter.acquire()
             started = time.perf_counter()
             try:
@@ -196,6 +228,7 @@ class _Session:
                     params=call.request_params(),
                     content=call.content,
                     headers=call.request_headers(),
+                    auth=None if call.external else httpx2.USE_CLIENT_DEFAULT,
                 )
             except httpx2.TransportError as exc:
                 if attempt < cfg.max_retries and _retryable_exc(call.method, exc):
@@ -220,7 +253,9 @@ class _Session:
             raise_for_response(
                 resp.status_code, resp.content, str(resp.url), resp.reason_phrase
             )
-            return call.parse(decode_body(call, resp.content))
+            content_type = resp.headers.get("Content-Type", "")
+            body = decode_body(call, resp.content, content_type, str(resp.url))
+            return call.parse(body)
         raise AssertionError("unreachable")
 
     def paginate[R](
@@ -255,6 +290,7 @@ class EntityResource[T]:
     """Lookup / browse / search for one entity type, e.g. ``mb.artists``."""
 
     def __init__(self, session: _Session, entity: str) -> None:
+        """Created by the client; not meant to be instantiated directly."""
         self._session = session
         self._core = session.core
         self.entity = entity
@@ -377,6 +413,7 @@ class SearchOnlyResource[T]:
     """Entities that can only be searched (annotation, cdstub, tag)."""
 
     def __init__(self, session: _Session, entity: str) -> None:
+        """Created by the client; not meant to be instantiated directly."""
         self._session = session
         self._core = session.core
         self.entity = entity
@@ -386,6 +423,8 @@ class SearchOnlyResource[T]:
 
 
 class UrlResource(EntityResource[models.Url]):
+    """``mb.urls``: URL entities, also looked up by the URL text itself."""
+
     def by_resource(self, url: str, *, inc: Includes = None) -> models.Url:
         """Look up a URL entity by its text.
 
@@ -409,6 +448,8 @@ class UrlResource(EntityResource[models.Url]):
 
 
 class GenreResource(EntityResource[models.Genre]):
+    """``mb.genres``: genres, plus the full alphabetical genre list."""
+
     def all(
         self, *, limit: int | None = None, offset: int | None = None
     ) -> models.Page[models.Genre]:
@@ -429,6 +470,8 @@ class GenreResource(EntityResource[models.Genre]):
 
 
 class CollectionResource(EntityResource[models.Collection]):
+    """``mb.collections``: read collections and change your own."""
+
     def of_editor(
         self,
         editor: str,
@@ -483,38 +526,93 @@ class CollectionResource(EntityResource[models.Collection]):
             )
 
 
+class CoverArtResource:
+    """``mb.cover_art``: images from the Cover Art Archive.
+
+    The Cover Art Archive has no rate limit of its own, so these requests don't
+    wait for the MusicBrainz rate limiter; credentials are never sent to it.
+    """
+
+    def __init__(self, session: _Session) -> None:
+        """Created by the client; not meant to be instantiated directly."""
+        self._session = session
+        self._core = session.core
+
+    def release(self, mbid: str) -> models.CoverArt:
+        """List a release's images.
+
+        Raises:
+            NotFoundError: If the release has no cover art (or doesn't exist).
+        """
+        return self._session.run(self._core.cover_art_list(mbid))
+
+    def release_group(self, mbid: str) -> models.CoverArt:
+        """List the images of the release chosen to represent a release group.
+
+        Raises:
+            NotFoundError: If the release group has no cover art.
+        """
+        return self._session.run(self._core.cover_art_list(mbid, release_group=True))
+
+    def image(
+        self,
+        mbid: str,
+        image: str | int = "front",
+        *,
+        size: CoverArtSize | None = None,
+        release_group: bool = False,
+    ) -> models.ImageData:
+        """Download an image.
+
+        Args:
+            mbid: Release MBID (or release group MBID with ``release_group``).
+            image: ``"front"``, ``"back"``, or an image ID from a listing.
+                Release groups only have ``"front"``.
+            size: A 250, 500 or 1200 px thumbnail instead of the original.
+            release_group: ``mbid`` is a release group.
+
+        Raises:
+            NotFoundError: If there is no such image or thumbnail.
+        """
+        return self._session.run(
+            self._core.cover_art_image(mbid, image, size, release_group=release_group)
+        )
+
+    def front(
+        self,
+        mbid: str,
+        *,
+        size: CoverArtSize | None = None,
+        release_group: bool = False,
+    ) -> models.ImageData:
+        """Download the main front cover.
+
+        See [`image`][musicbrainz.client.CoverArtResource.image].
+        """
+        return self.image(mbid, "front", size=size, release_group=release_group)
+
+    def back(self, mbid: str, *, size: CoverArtSize | None = None) -> models.ImageData:
+        """Download a release's main back cover."""
+        return self.image(mbid, "back", size=size)
+
+    def url(
+        self,
+        mbid: str,
+        image: str | int = "front",
+        *,
+        size: CoverArtSize | None = None,
+        release_group: bool = False,
+    ) -> str:
+        """The URL of an image, without downloading it (e.g. for an ``<img>``)."""
+        return self._core.cover_art_url(mbid, image, size, release_group=release_group)
+
+
 class MusicBrainz:
     """Synchronous MusicBrainz WS/2 client.
 
     Entity namespaces (`areas`, `artists`, `release_groups`, ...) are
     [`EntityResource`][musicbrainz.client.EntityResource] instances; see the
     [API overview](../guide/lookups.md) for what they can do.
-
-    Args:
-        app: Your application's name, used in the User-Agent and as the
-            submission client ID.
-        version: Your application's version. It must not contain a hyphen if
-            you want to submit data.
-        contact: URL or e-mail address where MusicBrainz admins can reach you.
-        username: Account name for digest authentication.
-        password: A token from your MusicBrainz *Applications* page (not your
-            account password), used with `username`.
-        oauth_token: OAuth2 bearer token, an alternative to digest auth.
-        auth: Any other `httpx2.Auth` implementation.
-        base_url: API root, e.g. a private mirror.
-        rate_limit: Maximum requests per second; `None` disables limiting.
-        rate_limiter: A [`RateLimiter`][musicbrainz.RateLimiter] shared with
-            other clients; overrides `rate_limit`.
-        max_retries: Retries on 429/502/503/504 responses and network errors.
-        backoff_factor: Base of the exponential back-off, in seconds.
-        timeout: Per-request timeout in seconds.
-        validate: Check includes and filter values client-side before sending.
-        transport: Custom `httpx2` transport, e.g. `httpx2.MockTransport` in
-            tests.
-
-    Raises:
-        ValidationError: If `app`/`version` are empty or the auth options
-            conflict.
 
     Example:
         ```python
@@ -536,6 +634,7 @@ class MusicBrainz:
         oauth_token: str | None = None,
         auth: httpx2.Auth | None = None,
         base_url: str = consts.DEFAULT_BASE_URL,
+        caa_url: str = consts.DEFAULT_CAA_URL,
         rate_limit: float | None = 1.0,
         rate_limiter: RateLimiter | None = None,
         max_retries: int = 3,
@@ -544,6 +643,38 @@ class MusicBrainz:
         validate: bool = True,
         transport: httpx2.BaseTransport | None = None,
     ) -> None:
+        """Create a client.
+
+        Args:
+            app: Your application's name, used in the User-Agent and as the
+                submission client ID.
+            version: Your application's version. It must not contain a hyphen
+                if you want to submit data.
+            contact: URL or e-mail address where MusicBrainz admins can reach
+                you.
+            username: Account name for digest authentication.
+            password: A token from your MusicBrainz *Applications* page (not
+                your account password), used with `username`.
+            oauth_token: OAuth2 bearer token, an alternative to digest auth.
+            auth: Any other `httpx2.Auth` implementation.
+            base_url: API root, e.g. a private mirror.
+            caa_url: Cover Art Archive root.
+            rate_limit: Maximum requests per second; `None` disables limiting.
+            rate_limiter: A [`RateLimiter`][musicbrainz.RateLimiter] shared with other
+                clients; overrides `rate_limit`.
+            max_retries: Retries on 429/502/503/504 responses and network
+                errors.
+            backoff_factor: Base of the exponential back-off, in seconds.
+            timeout: Per-request timeout in seconds.
+            validate: Check includes, filters and search fields client-side
+                before sending.
+            transport: Custom `httpx2` transport, e.g. `httpx2.MockTransport`
+                in tests.
+
+        Raises:
+            ValidationError: If `app`/`version` are empty or the auth options
+                conflict.
+        """
         config = _Config(
             app,
             version,
@@ -553,6 +684,7 @@ class MusicBrainz:
             oauth_token=oauth_token,
             auth=auth,
             base_url=base_url,
+            caa_url=caa_url,
             max_retries=max_retries,
             backoff_factor=backoff_factor,
             validate=validate,
@@ -584,6 +716,7 @@ class MusicBrainz:
         self.works = EntityResource[models.Work](s, "work")
         self.urls = UrlResource(s, "url")
         self.collections = CollectionResource(s, "collection")
+        self.cover_art = CoverArtResource(s)
         self.annotations = SearchOnlyResource[models.Annotation](s, "annotation")
         self.cdstubs = SearchOnlyResource[models.CDStub](s, "cdstub")
         self.tags = SearchOnlyResource[models.Tag](s, "tag")
@@ -591,6 +724,7 @@ class MusicBrainz:
     # ------------------------------------------------------------ lifecycle
 
     def close(self) -> None:
+        """Close the HTTP connections; the client can't be used afterwards."""
         self._session.http.close()
 
     def __enter__(self) -> Self:
@@ -707,7 +841,7 @@ class _AsyncSession:
         cfg = self.config
         cfg.check_auth(call)
         for attempt in range(cfg.max_retries + 1):
-            if self.limiter:
+            if self.limiter and not call.external:
                 await self.limiter.acquire()
             started = time.perf_counter()
             try:
@@ -717,6 +851,7 @@ class _AsyncSession:
                     params=call.request_params(),
                     content=call.content,
                     headers=call.request_headers(),
+                    auth=None if call.external else httpx2.USE_CLIENT_DEFAULT,
                 )
             except httpx2.TransportError as exc:
                 if attempt < cfg.max_retries and _retryable_exc(call.method, exc):
@@ -741,7 +876,9 @@ class _AsyncSession:
             raise_for_response(
                 resp.status_code, resp.content, str(resp.url), resp.reason_phrase
             )
-            return call.parse(decode_body(call, resp.content))
+            content_type = resp.headers.get("Content-Type", "")
+            body = decode_body(call, resp.content, content_type, str(resp.url))
+            return call.parse(body)
         raise AssertionError("unreachable")
 
     def paginate[R](
@@ -775,6 +912,7 @@ class AsyncEntityResource[T]:
     """Async counterpart of [`EntityResource`][musicbrainz.client.EntityResource]."""
 
     def __init__(self, session: _AsyncSession, entity: str) -> None:
+        """Created by the client; not meant to be instantiated directly."""
         self._session = session
         self._core = session.core
         self.entity = entity
@@ -894,6 +1032,7 @@ class AsyncSearchOnlyResource[T]:
     """Entities that can only be searched (annotation, cdstub, tag)."""
 
     def __init__(self, session: _AsyncSession, entity: str) -> None:
+        """Created by the client; not meant to be instantiated directly."""
         self._session = session
         self._core = session.core
         self.entity = entity
@@ -903,6 +1042,8 @@ class AsyncSearchOnlyResource[T]:
 
 
 class AsyncUrlResource(AsyncEntityResource[models.Url]):
+    """Async counterpart of [`UrlResource`][musicbrainz.client.UrlResource]."""
+
     async def by_resource(self, url: str, *, inc: Includes = None) -> models.Url:
         """Look up a URL entity by its text.
 
@@ -926,6 +1067,11 @@ class AsyncUrlResource(AsyncEntityResource[models.Url]):
 
 
 class AsyncGenreResource(AsyncEntityResource[models.Genre]):
+    """Async genres namespace.
+
+    See [`GenreResource`][musicbrainz.client.GenreResource].
+    """
+
     async def all(
         self, *, limit: int | None = None, offset: int | None = None
     ) -> models.Page[models.Genre]:
@@ -946,6 +1092,11 @@ class AsyncGenreResource(AsyncEntityResource[models.Genre]):
 
 
 class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
+    """Async collections namespace.
+
+    See [`CollectionResource`][musicbrainz.client.CollectionResource].
+    """
+
     async def of_editor(
         self,
         editor: str,
@@ -1002,12 +1153,76 @@ class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
             )
 
 
+class AsyncCoverArtResource:
+    """Async Cover Art Archive namespace.
+
+    See [`CoverArtResource`][musicbrainz.client.CoverArtResource].
+    """
+
+    def __init__(self, session: _AsyncSession) -> None:
+        """Created by the client; not meant to be instantiated directly."""
+        self._session = session
+        self._core = session.core
+
+    async def release(self, mbid: str) -> models.CoverArt:
+        """List a release's images."""
+        return await self._session.run(self._core.cover_art_list(mbid))
+
+    async def release_group(self, mbid: str) -> models.CoverArt:
+        """List the images of the release chosen to represent a release group."""
+        return await self._session.run(
+            self._core.cover_art_list(mbid, release_group=True)
+        )
+
+    async def image(
+        self,
+        mbid: str,
+        image: str | int = "front",
+        *,
+        size: CoverArtSize | None = None,
+        release_group: bool = False,
+    ) -> models.ImageData:
+        """Download an image.
+
+        See [`CoverArtResource.image`][musicbrainz.client.CoverArtResource.image].
+        """
+        return await self._session.run(
+            self._core.cover_art_image(mbid, image, size, release_group=release_group)
+        )
+
+    async def front(
+        self,
+        mbid: str,
+        *,
+        size: CoverArtSize | None = None,
+        release_group: bool = False,
+    ) -> models.ImageData:
+        """Download the main front cover."""
+        return await self.image(mbid, "front", size=size, release_group=release_group)
+
+    async def back(
+        self, mbid: str, *, size: CoverArtSize | None = None
+    ) -> models.ImageData:
+        """Download a release's main back cover."""
+        return await self.image(mbid, "back", size=size)
+
+    def url(
+        self,
+        mbid: str,
+        image: str | int = "front",
+        *,
+        size: CoverArtSize | None = None,
+        release_group: bool = False,
+    ) -> str:
+        """The URL of an image, without downloading it."""
+        return self._core.cover_art_url(mbid, image, size, release_group=release_group)
+
+
 class AsyncMusicBrainz:
     """Asynchronous MusicBrainz WS/2 client (asyncio or trio).
 
-    Same constructor arguments and API as
-    [`MusicBrainz`][musicbrainz.client.MusicBrainz]; every request method is
-    awaited and iterators are async iterators.
+    The same API as [`MusicBrainz`][musicbrainz.client.MusicBrainz]: every
+    request method is awaited, and iterators are async iterators.
 
     Example:
         ```python
@@ -1029,6 +1244,7 @@ class AsyncMusicBrainz:
         oauth_token: str | None = None,
         auth: httpx2.Auth | None = None,
         base_url: str = consts.DEFAULT_BASE_URL,
+        caa_url: str = consts.DEFAULT_CAA_URL,
         rate_limit: float | None = 1.0,
         rate_limiter: AsyncRateLimiter | None = None,
         max_retries: int = 3,
@@ -1037,6 +1253,39 @@ class AsyncMusicBrainz:
         validate: bool = True,
         transport: httpx2.AsyncBaseTransport | None = None,
     ) -> None:
+        """Create an async client.
+
+        Args:
+            app: Your application's name, used in the User-Agent and as the
+                submission client ID.
+            version: Your application's version. It must not contain a hyphen
+                if you want to submit data.
+            contact: URL or e-mail address where MusicBrainz admins can reach
+                you.
+            username: Account name for digest authentication.
+            password: A token from your MusicBrainz *Applications* page (not
+                your account password), used with `username`.
+            oauth_token: OAuth2 bearer token, an alternative to digest auth.
+            auth: Any other `httpx2.Auth` implementation.
+            base_url: API root, e.g. a private mirror.
+            caa_url: Cover Art Archive root.
+            rate_limit: Maximum requests per second; `None` disables limiting.
+            rate_limiter: An
+                [`AsyncRateLimiter`][musicbrainz.AsyncRateLimiter] shared with
+                other clients; overrides `rate_limit`.
+            max_retries: Retries on 429/502/503/504 responses and network
+                errors.
+            backoff_factor: Base of the exponential back-off, in seconds.
+            timeout: Per-request timeout in seconds.
+            validate: Check includes, filters and search fields client-side
+                before sending.
+            transport: Custom async `httpx2` transport, e.g.
+                `httpx2.MockTransport` in tests.
+
+        Raises:
+            ValidationError: If `app`/`version` are empty or the auth options
+                conflict.
+        """
         config = _Config(
             app,
             version,
@@ -1046,6 +1295,7 @@ class AsyncMusicBrainz:
             oauth_token=oauth_token,
             auth=auth,
             base_url=base_url,
+            caa_url=caa_url,
             max_retries=max_retries,
             backoff_factor=backoff_factor,
             validate=validate,
@@ -1079,11 +1329,13 @@ class AsyncMusicBrainz:
         self.works = AsyncEntityResource[models.Work](s, "work")
         self.urls = AsyncUrlResource(s, "url")
         self.collections = AsyncCollectionResource(s, "collection")
+        self.cover_art = AsyncCoverArtResource(s)
         self.annotations = AsyncSearchOnlyResource[models.Annotation](s, "annotation")
         self.cdstubs = AsyncSearchOnlyResource[models.CDStub](s, "cdstub")
         self.tags = AsyncSearchOnlyResource[models.Tag](s, "tag")
 
     async def aclose(self) -> None:
+        """Close the HTTP connections; the client can't be used afterwards."""
         await self._session.http.aclose()
 
     async def __aenter__(self) -> Self:

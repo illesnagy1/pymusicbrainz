@@ -1,0 +1,346 @@
+{
+  "area": {
+    "args": [
+      "area",
+      "10adc6b5-63bf-4b4e-993e-ed83b05c22fc"
+    ],
+    "kwargs": {
+      "inc": "aliases"
+    },
+    "method": "lookup"
+  },
+  "artist": {
+    "args": [
+      "artist",
+      "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+    ],
+    "kwargs": {
+      "inc": "aliases+tags+genres+ratings+url-rels+artist-rels+annotation"
+    },
+    "method": "lookup"
+  },
+  "browse-collections": {
+    "args": [
+      "collection",
+      {
+        "editor": "rob"
+      },
+      null,
+      5
+    ],
+    "kwargs": {},
+    "method": "browse"
+  },
+  "browse-release-groups": {
+    "args": [
+      "release-group",
+      {
+        "artist": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+      },
+      null,
+      10,
+      null,
+      "album"
+    ],
+    "kwargs": {},
+    "method": "browse"
+  },
+  "browse-releases": {
+    "args": [
+      "release",
+      {
+        "artist": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+      },
+      "media+labels+artist-credits",
+      5
+    ],
+    "kwargs": {},
+    "method": "browse"
+  },
+  "cover-art": {
+    "args": [
+      "0fb1bdd3-1443-4569-943f-fc69c6424f99"
+    ],
+    "kwargs": {},
+    "method": "cover_art_list"
+  },
+  "discid": {
+    "args": [
+      "2y0jFMwYQP7gb9iSUKagmoT6DIw-"
+    ],
+    "kwargs": {},
+    "method": "lookup_discid"
+  },
+  "event": {
+    "args": [
+      "event",
+      "bcf52ab4-2e10-4357-b088-941f5268b0c5"
+    ],
+    "kwargs": {
+      "inc": "aliases"
+    },
+    "method": "lookup"
+  },
+  "genres": {
+    "args": [
+      10
+    ],
+    "kwargs": {},
+    "method": "genres_all"
+  },
+  "instrument": {
+    "args": [
+      "instrument",
+      "63021302-86cd-4aee-80df-2270d54f4978"
+    ],
+    "kwargs": {
+      "inc": "aliases"
+    },
+    "method": "lookup"
+  },
+  "isrc": {
+    "args": [
+      "USGF19942501"
+    ],
+    "kwargs": {},
+    "method": "lookup_isrc"
+  },
+  "iswc": {
+    "args": [
+      "T-070.243.691-6"
+    ],
+    "kwargs": {},
+    "method": "lookup_iswc"
+  },
+  "label": {
+    "args": [
+      "label",
+      "38dc88de-7720-4100-9d5b-3cdc41b0c474"
+    ],
+    "kwargs": {
+      "inc": "aliases"
+    },
+    "method": "lookup"
+  },
+  "place": {
+    "args": [
+      "place",
+      "3ac9ae50-29b4-4dbb-a20c-aee3c55f6a68"
+    ],
+    "kwargs": {
+      "inc": "aliases"
+    },
+    "method": "lookup"
+  },
+  "recording": {
+    "args": [
+      "recording",
+      "5fb524f1-8cc8-4c04-a921-e34c0a911ea7"
+    ],
+    "kwargs": {
+      "inc": "isrcs+work-rels+artist-credits+releases+artist-rels"
+    },
+    "method": "lookup"
+  },
+  "release": {
+    "args": [
+      "release",
+      "0fb1bdd3-1443-4569-943f-fc69c6424f99"
+    ],
+    "kwargs": {
+      "inc": "recordings+artist-credits+labels+release-groups+media+discids+isrcs+url-rels+tags"
+    },
+    "method": "lookup"
+  },
+  "release-group": {
+    "args": [
+      "release-group",
+      "1b022e01-4da6-387b-8658-8678046e4cef"
+    ],
+    "kwargs": {
+      "inc": "releases+artist-credits+ratings+genres+aliases"
+    },
+    "method": "lookup"
+  },
+  "search-annotation": {
+    "args": [
+      "annotation",
+      "nirvana",
+      null,
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-area": {
+    "args": [
+      "area",
+      null,
+      {
+        "area": "Seattle"
+      },
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-artist": {
+    "args": [
+      "artist",
+      null,
+      {
+        "artist": "Nirvana"
+      },
+      5
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-cdstub": {
+    "args": [
+      "cdstub",
+      "nirvana",
+      null,
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-event": {
+    "args": [
+      "event",
+      "festival",
+      null,
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-instrument": {
+    "args": [
+      "instrument",
+      "guitar",
+      null,
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-label": {
+    "args": [
+      "label",
+      null,
+      {
+        "label": "Sub Pop"
+      },
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-place": {
+    "args": [
+      "place",
+      "studio",
+      null,
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-recording": {
+    "args": [
+      "recording",
+      "smells like teen spirit",
+      null,
+      5
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-release": {
+    "args": [
+      "release",
+      "nevermind",
+      {
+        "arid": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+      },
+      5
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-release-group": {
+    "args": [
+      "release-group",
+      null,
+      {
+        "releasegroup": "Nevermind"
+      },
+      5
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-series": {
+    "args": [
+      "series",
+      "award",
+      null,
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-tag": {
+    "args": [
+      "tag",
+      "grunge",
+      null,
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-url": {
+    "args": [
+      "url",
+      null,
+      {
+        "url": "nirvana"
+      },
+      3
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "search-work": {
+    "args": [
+      "work",
+      "smells like teen spirit",
+      null,
+      5
+    ],
+    "kwargs": {},
+    "method": "search"
+  },
+  "series": {
+    "args": [
+      "series",
+      "3bf78452-92c5-4867-97f5-81cc091aa7fb"
+    ],
+    "kwargs": {
+      "inc": "aliases"
+    },
+    "method": "lookup"
+  },
+  "url": {
+    "args": [
+      [
+        "https://www.discogs.com/artist/125246"
+      ]
+    ],
+    "kwargs": {},
+    "method": "lookup_urls"
+  }
+}

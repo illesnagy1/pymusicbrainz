@@ -37,6 +37,7 @@ select = [
   "B",  # flake8-bugbear
   "C4",  # flake8-comprehensions
   "C90",  # mccabe: cyclomatic complexity
+  "D",  # pydocstyle: docstring presence and Google style (see [lint.pydocstyle])
   "DTZ",  # flake8-datetimez: naive datetimes
   "E",  # pycodestyle errors
   "F",  # pyflakes
@@ -65,16 +66,26 @@ select = [
 ]
 # Deliberately NOT enabled:
 #   COM, Q, ISC001: conflict with the ruff formatter.
-#   FA, and isort required-imports = ["from __future__ import annotations"]:
-#     obsolete here, since PEP 649/749 make annotations lazy on Python 3.14.
+#   FA: superseded by the isort required import below.
 #   TC: breaks pydantic, which resolves annotations at runtime.
 #   FBT: false positives on typer's boolean CLI options.
-ignore = []
+ignore = [
+  "D105",  # magic methods (__repr__, __iter__, ...) are self-explanatory
+]
 fixable = ["ALL"]
 unfixable = []
 
+[lint.isort]
+# requires-python is 3.12: annotations are only lazy from 3.14 (PEP 649), so
+# forward references (pydantic models, the session/resource classes) need this.
+required-imports = ["from __future__ import annotations"]
+
+[lint.pydocstyle]
+convention = "google"
+
 [lint.per-file-ignores]
 "tests/**" = [
+  "D1",  # test names describe the test; docstrings optional (style still checked)
   "S101",  # assert is the point of a test
   "S106",  # dummy credentials for auth tests
   "S314",  # parsing XML the library itself just generated

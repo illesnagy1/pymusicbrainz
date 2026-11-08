@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import json
+from pathlib import Path
 from urllib.parse import parse_qs
 
 import httpx2
@@ -182,3 +185,41 @@ def test_quiet_by_default(server: FakeServer) -> None:
     result = runner.invoke(cli.app, ["lookup", "artist", ARTIST])
     assert result.exit_code == 0
     assert result.stderr == ""
+
+
+def test_cover_art_listing(server: FakeServer) -> None:
+    server.response = httpx2.Response(
+        codes.OK, json={"images": [{"id": 1, "image": "u", "front": True}]}
+    )
+    code, out = invoke("cover-art", ARTIST, "--release-group")
+    assert code == 0, out
+    assert json.loads(out)["images"][0]["id"] == "1"
+    assert "/release-group/" in str(server.requests[-1].url)
+    code, _ = invoke("cover-art", ARTIST)
+    assert code == 0
+    assert "/release/" in str(server.requests[-1].url)
+
+
+def test_cover_art_download(server: FakeServer, tmp_path: Path) -> None:
+    server.response = httpx2.Response(
+        codes.OK, content=b"\x89PNG", headers={"Content-Type": "image/png"}
+    )
+    target = tmp_path / "cover.png"
+    code, out = invoke(
+        "cover-art", ARTIST, "-o", str(target), "--image", "back", "--size", "500"
+    )
+    assert code == 0, out
+    assert target.read_bytes() == b"\x89PNG"
+    assert json.loads(out) == {
+        "path": str(target),
+        "bytes": 4,
+        "content_type": "image/png",
+        "url": f"https://coverartarchive.org/release/{ARTIST}/back-500",
+    }
+
+
+def test_cover_art_bad_size(server: FakeServer, tmp_path: Path) -> None:
+    code, out = invoke("cover-art", ARTIST, "-o", str(tmp_path / "x"), "--size", "300")
+    assert code == 1
+    assert "size must be one of" in out
+    assert server.requests == []

@@ -1,0 +1,16 @@
+{
+  "id": "bcf52ab4-2e10-4357-b088-941f5268b0c5",
+  "type-id": "b6ded574-b592-3f0e-b56e-5b5f06aa0678",
+  "type": "Festival",
+  "cancelled": false,
+  "setlist": "",
+  "life-span": {
+    "ended": true,
+    "begin": "2018-08-08",
+    "end": "2018-08-12"
+  },
+  "name": "Boomtown Fair",
+  "disambiguation": "",
+  "aliases": [],
+  "time": ""
+}

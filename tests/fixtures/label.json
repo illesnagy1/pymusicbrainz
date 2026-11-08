@@ -1,0 +1,107 @@
+{
+  "isnis": [],
+  "disambiguation": "",
+  "ipis": [],
+  "name": "Sub Pop Records",
+  "sort-name": "Sub Pop Records",
+  "aliases": [
+    {
+      "type-id": "3a1a0c48-d885-3b89-87b2-9e8a483c5675",
+      "locale": "en",
+      "primary": false,
+      "type": "Label name",
+      "sort-name": "S>U>B P<O<P",
+      "name": "S>U>B P<O<P",
+      "ended": false,
+      "end": null,
+      "begin": null
+    },
+    {
+      "ended": false,
+      "end": null,
+      "name": "Sub Pop",
+      "sort-name": "Sub Pop",
+      "begin": null,
+      "locale": null,
+      "type-id": null,
+      "type": null,
+      "primary": null
+    },
+    {
+      "locale": null,
+      "type-id": null,
+      "primary": null,
+      "type": null,
+      "ended": false,
+      "end": null,
+      "name": "Sub Pop Germany",
+      "sort-name": "Sub Pop Germany",
+      "begin": null
+    },
+    {
+      "type-id": null,
+      "locale": "en",
+      "type": null,
+      "primary": false,
+      "name": "Sub Pop Records",
+      "sort-name": "Sub Pop Records",
+      "ended": false,
+      "end": null,
+      "begin": null
+    },
+    {
+      "primary": null,
+      "type": null,
+      "type-id": null,
+      "locale": null,
+      "begin": null,
+      "name": "Sub Pop Records (Germany)",
+      "sort-name": "Sub Pop Records (Germany)",
+      "end": null,
+      "ended": false
+    },
+    {
+      "begin": null,
+      "ended": false,
+      "end": null,
+      "sort-name": "SubPop",
+      "name": "SubPop",
+      "primary": null,
+      "type": null,
+      "locale": null,
+      "type-id": null
+    },
+    {
+      "begin": null,
+      "ended": false,
+      "end": null,
+      "sort-name": "Subterranean Pop",
+      "name": "Subterranean Pop",
+      "type": null,
+      "primary": null,
+      "locale": null,
+      "type-id": null
+    }
+  ],
+  "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+  "label-code": 8323,
+  "country": "US",
+  "life-span": {
+    "begin": "1979",
+    "ended": false,
+    "end": null
+  },
+  "id": "38dc88de-7720-4100-9d5b-3cdc41b0c474",
+  "type": "Original Production",
+  "area": {
+    "name": "United States",
+    "sort-name": "United States",
+    "iso-3166-1-codes": [
+      "US"
+    ],
+    "type-id": null,
+    "disambiguation": "",
+    "type": null,
+    "id": "489ce91b-6658-3307-9877-795b68554c98"
+  }
+}

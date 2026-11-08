@@ -1,0 +1,56 @@
+{
+  "genres": [
+    {
+      "disambiguation": "",
+      "id": "18797864-41b0-4602-8241-adbee761774c",
+      "name": "2 tone"
+    },
+    {
+      "disambiguation": "",
+      "id": "db325bd7-ae64-40bd-966a-a3af3cef8bb9",
+      "name": "2-step"
+    },
+    {
+      "disambiguation": "",
+      "id": "99032cf7-a4e3-40ac-b943-293b44b9a65b",
+      "name": "3-step"
+    },
+    {
+      "name": "aak",
+      "id": "bdc421e1-0164-4c14-9927-4217bfb25667",
+      "disambiguation": ""
+    },
+    {
+      "disambiguation": "",
+      "id": "6e319459-3520-4079-8755-d8c9f35ce78e",
+      "name": "abhang"
+    },
+    {
+      "id": "62d54c07-87f0-428c-9d4a-62129ef6fc14",
+      "disambiguation": "",
+      "name": "aboio"
+    },
+    {
+      "name": "abstract hip hop",
+      "id": "e009a9c2-c20c-40d9-9bb6-4e098676ea9c",
+      "disambiguation": ""
+    },
+    {
+      "name": "acholitronix",
+      "disambiguation": "",
+      "id": "c9c58bd8-bf69-428e-8c71-9e34d5916eda"
+    },
+    {
+      "disambiguation": "",
+      "id": "c755b4da-de34-4d64-909a-9447833315ce",
+      "name": "acid breaks"
+    },
+    {
+      "name": "acid house",
+      "id": "54c01942-22fd-4184-9877-1db0089b18f1",
+      "disambiguation": ""
+    }
+  ],
+  "genre-count": 2221,
+  "genre-offset": 0
+}
