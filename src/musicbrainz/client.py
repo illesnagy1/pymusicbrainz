@@ -162,7 +162,7 @@ def _raw_call(method: str, path: str, params: Mapping[str, str] | None) -> Call[
 
 
 class _Session:
-    """Executes :class:`Call` objects: rate limiting, retries, error mapping."""
+    """Executes `Call` objects: rate limiting, retries, error mapping."""
 
     def __init__(
         self,
@@ -387,7 +387,11 @@ class SearchOnlyResource[T]:
 
 class UrlResource(EntityResource[models.Url]):
     def by_resource(self, url: str, *, inc: Includes = None) -> models.Url:
-        """Look up a URL entity by its text (:class:`NotFoundError` if unknown)."""
+        """Look up a URL entity by its text.
+
+        Raises:
+            NotFoundError: If MusicBrainz doesn't know the URL.
+        """
         return self._session.run(self._core.lookup_urls([url], inc))[0]
 
     def by_resources(
@@ -482,22 +486,43 @@ class CollectionResource(EntityResource[models.Collection]):
 class MusicBrainz:
     """Synchronous MusicBrainz WS/2 client.
 
-    >>> with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
-    ...     artist = mb.artists.get(
-    ...         "5b11f4ce-a62d-471e-81fc-a69a8278c7da", inc=["aliases"]
-    ...     )
+    Entity namespaces (`areas`, `artists`, `release_groups`, ...) are
+    [`EntityResource`][musicbrainz.client.EntityResource] instances; see the
+    [API overview](../guide/lookups.md) for what they can do.
 
-    :param app: your application's name (User-Agent and submission client ID)
-    :param version: your application's version (no hyphen if you submit data)
-    :param contact: URL or e-mail where MusicBrainz admins can reach you
-    :param username/password: digest auth; use a token from your MusicBrainz
-        *Applications* page as the password
-    :param oauth_token: OAuth2 bearer token (alternative to digest)
-    :param rate_limit: max requests per second (``None`` disables it, e.g. for a
-        private mirror)
-    :param rate_limiter: a shared :class:`RateLimiter` (overrides ``rate_limit``)
-    :param max_retries: retries on 429/502/503/504 and network errors
-    :param validate: client-side checking of includes and filter values
+    Args:
+        app: Your application's name, used in the User-Agent and as the
+            submission client ID.
+        version: Your application's version. It must not contain a hyphen if
+            you want to submit data.
+        contact: URL or e-mail address where MusicBrainz admins can reach you.
+        username: Account name for digest authentication.
+        password: A token from your MusicBrainz *Applications* page (not your
+            account password), used with `username`.
+        oauth_token: OAuth2 bearer token, an alternative to digest auth.
+        auth: Any other `httpx2.Auth` implementation.
+        base_url: API root, e.g. a private mirror.
+        rate_limit: Maximum requests per second; `None` disables limiting.
+        rate_limiter: A [`RateLimiter`][musicbrainz.RateLimiter] shared with
+            other clients; overrides `rate_limit`.
+        max_retries: Retries on 429/502/503/504 responses and network errors.
+        backoff_factor: Base of the exponential back-off, in seconds.
+        timeout: Per-request timeout in seconds.
+        validate: Check includes and filter values client-side before sending.
+        transport: Custom `httpx2` transport, e.g. `httpx2.MockTransport` in
+            tests.
+
+    Raises:
+        ValidationError: If `app`/`version` are empty or the auth options
+            conflict.
+
+    Example:
+        ```python
+        with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
+            artist = mb.artists.get(
+                "5b11f4ce-a62d-471e-81fc-a69a8278c7da", inc=["aliases"]
+            )
+        ```
     """
 
     def __init__(
@@ -594,8 +619,8 @@ class MusicBrainz:
         """Releases for a disc ID.
 
         Pass ``toc`` for fuzzy matching (use ``discid="-"`` for TOC-only).
-        Returns a :class:`Disc` (with ``releases``) or, if only a CD stub
-        matches, a :class:`CDStub`.
+        Returns a [`Disc`][musicbrainz.models.Disc] (with ``releases``) or,
+        if only a CD stub matches, a [`CDStub`][musicbrainz.models.CDStub].
         """
         return self._session.run(
             self._core.lookup_discid(
@@ -658,7 +683,7 @@ class MusicBrainz:
 
 
 class _AsyncSession:
-    """Async counterpart of :class:`_Session`."""
+    """Async counterpart of `_Session`."""
 
     def __init__(
         self,
@@ -747,7 +772,7 @@ class _AsyncSession:
 
 
 class AsyncEntityResource[T]:
-    """Async counterpart of :class:`EntityResource`."""
+    """Async counterpart of [`EntityResource`][musicbrainz.client.EntityResource]."""
 
     def __init__(self, session: _AsyncSession, entity: str) -> None:
         self._session = session
@@ -766,7 +791,10 @@ class AsyncEntityResource[T]:
         release_type: Filter = None,
         release_status: Filter = None,
     ) -> T:
-        """Look up one entity by MBID (see :meth:`EntityResource.get`)."""
+        """Look up one entity by MBID.
+
+        See [`EntityResource.get`][musicbrainz.client.EntityResource.get].
+        """
         return await self._session.run(
             self._core.lookup(self.entity, mbid, inc, release_type, release_status)
         )
@@ -782,7 +810,11 @@ class AsyncEntityResource[T]:
         release_group_status: str | None = None,
         **linked: str,
     ) -> models.Page[T]:
-        """Browse linked entities (see :meth:`EntityResource.browse`)."""
+        """Browse linked entities.
+
+        See
+        [`EntityResource.browse`][musicbrainz.client.EntityResource.browse].
+        """
         return await self._session.run(
             self._core.browse(
                 self.entity,
@@ -831,7 +863,11 @@ class AsyncEntityResource[T]:
         dismax: bool = False,
         **fields: object,
     ) -> models.Page[T]:
-        """Search (see :meth:`EntityResource.search`)."""
+        """Search an entity index.
+
+        See
+        [`EntityResource.search`][musicbrainz.client.EntityResource.search].
+        """
         return await self._session.run(
             self._core.search(self.entity, query, fields, limit, offset, dismax)
         )
@@ -868,7 +904,11 @@ class AsyncSearchOnlyResource[T]:
 
 class AsyncUrlResource(AsyncEntityResource[models.Url]):
     async def by_resource(self, url: str, *, inc: Includes = None) -> models.Url:
-        """Look up a URL entity by its text (:class:`NotFoundError` if unknown)."""
+        """Look up a URL entity by its text.
+
+        Raises:
+            NotFoundError: If MusicBrainz doesn't know the URL.
+        """
         return (await self._session.run(self._core.lookup_urls([url], inc)))[0]
 
     async def by_resources(
@@ -965,12 +1005,17 @@ class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
 class AsyncMusicBrainz:
     """Asynchronous MusicBrainz WS/2 client (asyncio or trio).
 
-    Same API as :class:`MusicBrainz`, awaited.
+    Same constructor arguments and API as
+    [`MusicBrainz`][musicbrainz.client.MusicBrainz]; every request method is
+    awaited and iterators are async iterators.
 
-    >>> async with AsyncMusicBrainz("MyApp", "1.0", "me@example.com") as mb:
-    ...     page = await mb.artists.search("Nirvana")
-    ...     async for rg in mb.release_groups.iter_browse(artist=page[0].id):
-    ...         print(rg.title)
+    Example:
+        ```python
+        async with AsyncMusicBrainz("MyApp", "1.0", "me@example.com") as mb:
+            page = await mb.artists.search("Nirvana")
+            async for rg in mb.release_groups.iter_browse(artist=page[0].id):
+                print(rg.title)
+        ```
     """
 
     def __init__(
@@ -1062,7 +1107,11 @@ class AsyncMusicBrainz:
         release_type: Filter = None,
         release_status: Filter = None,
     ) -> models.Disc | models.CDStub:
-        """Releases for a disc ID (see :meth:`MusicBrainz.lookup_discid`)."""
+        """Releases for a disc ID.
+
+        See
+        [`MusicBrainz.lookup_discid`][musicbrainz.client.MusicBrainz.lookup_discid].
+        """
         return await self._session.run(
             self._core.lookup_discid(
                 discid,
@@ -1094,7 +1143,10 @@ class AsyncMusicBrainz:
         *,
         vote: Vote | None = None,
     ) -> None:
-        """Tag entities (see :meth:`MusicBrainz.submit_tags`)."""
+        """Tag entities.
+
+        See [`MusicBrainz.submit_tags`][musicbrainz.client.MusicBrainz.submit_tags].
+        """
         await self._session.run(self._core.submit_tags(entity, tags, vote))
 
     async def submit_ratings(self, entity: str, ratings: Mapping[str, int]) -> None:

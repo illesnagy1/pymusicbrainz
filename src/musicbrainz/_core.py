@@ -1,7 +1,7 @@
 """Sans-IO core: builds request descriptions and parses responses.
 
-No networking happens here; the clients in :mod:`musicbrainz.client` execute the
-:class:`Call` objects built by :class:`Core`.
+No networking happens here; the clients in `musicbrainz.client` execute the
+`Call` objects built by `Core`.
 """
 
 import json
@@ -591,7 +591,12 @@ def xml_error_texts(text: str) -> list[str]:
 
 
 def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> None:
-    """Raise the appropriate :class:`ResponseError` if ``status`` is not 2xx."""
+    """Raise the matching error if ``status`` is not 2xx.
+
+    Raises:
+        ResponseError: A subclass chosen by status code; see
+            [`error_for_status`][musicbrainz.errors.error_for_status].
+    """
     if codes.is_success(status):
         return
     message, help_ = reason or "error", None

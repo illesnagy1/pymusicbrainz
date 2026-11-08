@@ -1,9 +1,12 @@
 """Helpers for building Lucene search queries.
 
+```pycon
 >>> escape("AC/DC")
 'AC\\\\/DC'
 >>> build_query(artist="Daft Punk", country="FR")
 'artist:"Daft Punk" AND country:"FR"'
+
+```
 """
 
 import re

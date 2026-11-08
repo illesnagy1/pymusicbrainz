@@ -18,6 +18,8 @@ def _kebab(name: str) -> str:
 
 
 class MBModel(BaseModel):
+    """Base for all models: kebab-case JSON keys, unknown fields kept."""
+
     model_config = ConfigDict(
         alias_generator=_kebab,
         validate_by_name=True,
@@ -31,12 +33,16 @@ class MBModel(BaseModel):
 
 
 class LifeSpan(MBModel):
+    """Begin/end dates (partial dates such as ``"1991"`` or ``"1991-09"``)."""
+
     begin: str | None = None
     end: str | None = None
     ended: bool | None = None
 
 
 class Alias(MBModel):
+    """An alternative name, e.g. a translation or a legal name."""
+
     name: str
     sort_name: str | None = None
     locale: str | None = None
@@ -49,12 +55,16 @@ class Alias(MBModel):
 
 
 class Tag(MBModel):
+    """A folksonomy tag with its vote count (or ``score`` in tag search results)."""
+
     name: str
     count: int | None = None
     score: int | None = None  # tag search results
 
 
 class Genre(MBModel):
+    """A genre: a tag from MusicBrainz's curated genre list."""
+
     id: str | None = None
     name: str
     count: int | None = None
@@ -62,21 +72,29 @@ class Genre(MBModel):
 
 
 class Rating(MBModel):
+    """Average rating (0-5) and the number of votes."""
+
     value: float | None = None
     votes_count: int | None = None
 
 
 class Coordinates(MBModel):
+    """Latitude and longitude of a place."""
+
     latitude: float | None = None
     longitude: float | None = None
 
 
 class TextRepresentation(MBModel):
+    """Language and script of a release's titles."""
+
     language: str | None = None
     script: str | None = None
 
 
 class CoverArtArchive(MBModel):
+    """What the Cover Art Archive holds for a release."""
+
     artwork: bool | None = None
     count: int | None = None
     front: bool | None = None
@@ -85,6 +103,8 @@ class CoverArtArchive(MBModel):
 
 
 class WorkAttribute(MBModel):
+    """A typed attribute of a work, e.g. a key or a catalogue number."""
+
     type: str | None = None
     type_id: str | None = None
     value: str | None = None
@@ -95,6 +115,8 @@ class WorkAttribute(MBModel):
 
 
 class Relation(MBModel):
+    """A relationship to another entity (from ``*-rels`` includes)."""
+
     type: str | None = None
     type_id: str | None = None
     direction: str | None = None
@@ -164,6 +186,8 @@ class Entity(MBModel):
 
 
 class Area(Entity):
+    """A geographic area: country, city, district, ..."""
+
     name: str | None = None
     sort_name: str | None = None
     type: str | None = None
@@ -175,6 +199,8 @@ class Area(Entity):
 
 
 class Artist(Entity):
+    """A person, group, orchestra, character, ..."""
+
     name: str | None = None
     sort_name: str | None = None
     type: str | None = None
@@ -195,6 +221,8 @@ class Artist(Entity):
 
 
 class ArtistCredit(MBModel):
+    """One name in an artist credit, with its join phrase."""
+
     name: str | None = None
     joinphrase: str = ""
     artist: Artist | None = None
@@ -208,6 +236,8 @@ def credit_string(credit: list[ArtistCredit]) -> str:
 
 
 class Event(Entity):
+    """A concert, festival or other organised event."""
+
     name: str | None = None
     type: str | None = None
     type_id: str | None = None
@@ -218,6 +248,8 @@ class Event(Entity):
 
 
 class Instrument(Entity):
+    """A musical instrument."""
+
     name: str | None = None
     type: str | None = None
     type_id: str | None = None
@@ -225,6 +257,8 @@ class Instrument(Entity):
 
 
 class Label(Entity):
+    """A record label or imprint."""
+
     name: str | None = None
     sort_name: str | None = None
     type: str | None = None
@@ -239,6 +273,8 @@ class Label(Entity):
 
 
 class Place(Entity):
+    """A venue, studio or other place."""
+
     name: str | None = None
     type: str | None = None
     type_id: str | None = None
@@ -249,6 +285,8 @@ class Place(Entity):
 
 
 class Recording(Entity):
+    """A distinct audio recording (one track's audio)."""
+
     title: str | None = None
     length: int | None = None  # milliseconds
     video: bool | None = None
@@ -264,6 +302,8 @@ class Recording(Entity):
 
 
 class Track(MBModel):
+    """A track on a medium, linking to its recording."""
+
     id: str | None = None
     number: str | None = None
     title: str | None = None
@@ -274,7 +314,11 @@ class Track(MBModel):
 
 
 class Disc(MBModel):
-    """A disc ID (also the result of :meth:`MusicBrainz.lookup_discid`)."""
+    """A disc ID and the releases it belongs to.
+
+    Returned by
+    [`MusicBrainz.lookup_discid`][musicbrainz.client.MusicBrainz.lookup_discid].
+    """
 
     id: str | None = None
     sectors: int | None = None
@@ -284,6 +328,8 @@ class Disc(MBModel):
 
 
 class Medium(MBModel):
+    """One disc, side or other medium of a release."""
+
     id: str | None = None
     title: str | None = None
     position: int | None = None
@@ -298,16 +344,22 @@ class Medium(MBModel):
 
 
 class LabelInfo(MBModel):
+    """A label and catalogue number of a release."""
+
     catalog_number: str | None = None
     label: Label | None = None
 
 
 class ReleaseEvent(MBModel):
+    """A release date in an area."""
+
     date: str | None = None
     area: Area | None = None
 
 
 class Release(Entity):
+    """A concrete product: an album edition, single, ..."""
+
     title: str | None = None
     status: str | None = None
     status_id: str | None = None
@@ -334,6 +386,8 @@ class Release(Entity):
 
 
 class ReleaseGroup(Entity):
+    """Groups releases of the same album, single, ..."""
+
     title: str | None = None
     primary_type: str | None = None
     primary_type_id: str | None = None
@@ -349,12 +403,16 @@ class ReleaseGroup(Entity):
 
 
 class Series(Entity):
+    """A sequence of works, releases, events, ..."""
+
     name: str | None = None
     type: str | None = None
     type_id: str | None = None
 
 
 class Work(Entity):
+    """A musical composition."""
+
     title: str | None = None
     type: str | None = None
     type_id: str | None = None
@@ -365,10 +423,14 @@ class Work(Entity):
 
 
 class Url(Entity):
+    """A URL entity."""
+
     resource: str | None = None
 
 
 class Collection(MBModel):
+    """A user's collection of entities."""
+
     id: str
     name: str | None = None
     editor: str | None = None
@@ -386,6 +448,8 @@ class Collection(MBModel):
 
 
 class Annotation(MBModel):
+    """A search result from the annotation index."""
+
     entity: str | None = None
     name: str | None = None
     text: str | None = None
@@ -394,6 +458,8 @@ class Annotation(MBModel):
 
 
 class CDStub(MBModel):
+    """An unreviewed CD stub (returned when no release matches a disc ID)."""
+
     id: str | None = None
     title: str | None = None
     artist: str | None = None
@@ -405,6 +471,8 @@ class CDStub(MBModel):
 
 
 class IsrcResult(MBModel):
+    """Result of an ISRC lookup: the code and its recordings."""
+
     isrc: str
     recordings: list[Recording] = []
 
