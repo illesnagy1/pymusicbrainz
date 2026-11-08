@@ -6,7 +6,9 @@ Quick start::
 
     with MusicBrainz("MyApp", "1.0", "me@example.com") as mb:
         nirvana = mb.artists.search(artist="Nirvana", limit=1)[0]
-        for rg in mb.release_groups.iter_browse(artist=nirvana.id, release_type="album"):
+        for rg in mb.release_groups.iter_browse(
+            artist=nirvana.id, release_type="album"
+        ):
             print(rg.first_release_date, rg.title)
 """
 
@@ -67,14 +69,60 @@ from .models import (
 from .query import build_query, escape
 
 __all__ = [
-    "AsyncMusicBrainz", "MusicBrainz", "RateLimiter", "AsyncRateLimiter",
-    "MusicBrainzError", "ValidationError", "AuthenticationRequiredError", "NetworkError", "ResponseError",
-    "BadRequestError", "AuthenticationError", "ForbiddenError", "NotFoundError", "RateLimitError", "ServerError",
-    "Alias", "Annotation", "Area", "Artist", "ArtistCredit", "CDStub", "Collection", "Disc", "Event", "Genre",
-    "Instrument", "IsrcResult", "Label", "LabelInfo", "Medium", "Page", "Place", "Rating", "Recording", "Relation",
-    "Release", "ReleaseGroup", "Series", "Tag", "Track", "Url", "Work",
-    "BROWSE_LINKS", "CORE_ENTITIES", "LOOKUP_INCLUDES", "RELEASE_STATUSES", "RELEASE_TYPES", "SEARCH_ENTITIES",
-    "build_query", "escape", "models", "query", "__version__", "main",
+    "BROWSE_LINKS",
+    "CORE_ENTITIES",
+    "LOOKUP_INCLUDES",
+    "RELEASE_STATUSES",
+    "RELEASE_TYPES",
+    "SEARCH_ENTITIES",
+    "Alias",
+    "Annotation",
+    "Area",
+    "Artist",
+    "ArtistCredit",
+    "AsyncMusicBrainz",
+    "AsyncRateLimiter",
+    "AuthenticationError",
+    "AuthenticationRequiredError",
+    "BadRequestError",
+    "CDStub",
+    "Collection",
+    "Disc",
+    "Event",
+    "ForbiddenError",
+    "Genre",
+    "Instrument",
+    "IsrcResult",
+    "Label",
+    "LabelInfo",
+    "Medium",
+    "MusicBrainz",
+    "MusicBrainzError",
+    "NetworkError",
+    "NotFoundError",
+    "Page",
+    "Place",
+    "RateLimitError",
+    "RateLimiter",
+    "Rating",
+    "Recording",
+    "Relation",
+    "Release",
+    "ReleaseGroup",
+    "ResponseError",
+    "Series",
+    "ServerError",
+    "Tag",
+    "Track",
+    "Url",
+    "ValidationError",
+    "Work",
+    "__version__",
+    "build_query",
+    "escape",
+    "main",
+    "models",
+    "query",
 ]
 
 

@@ -1,12 +1,10 @@
 """Helpers for building Lucene search queries.
 
->>> escape('AC/DC')
+>>> escape("AC/DC")
 'AC\\\\/DC'
 >>> build_query(artist="Daft Punk", country="FR")
 'artist:"Daft Punk" AND country:"FR"'
 """
-
-from __future__ import annotations
 
 import re
 from collections.abc import Iterable, Mapping
@@ -35,8 +33,14 @@ def _term(field: str, value: object) -> str:
     return f"{field}:{phrase(str(value))}"
 
 
-def build_query(query: str | None = None, fields: Mapping[str, object] | None = None, /, *,
-                operator: str = "AND", **kwargs: object) -> str:
+def build_query(
+    query: str | None = None,
+    fields: Mapping[str, object] | None = None,
+    /,
+    *,
+    operator: str = "AND",
+    **kwargs: object,
+) -> str:
     """Combine a free-text query and ``field=value`` terms into one Lucene query.
 
     * strings are matched as exact phrases (``field:"value"``)
@@ -44,7 +48,9 @@ def build_query(query: str | None = None, fields: Mapping[str, object] | None = 
     * ``None`` values are ignored
     * field names with ``_`` are kept as-is (MusicBrainz uses e.g. ``release_count``)
     """
-    terms = [_term(f, v) for f, v in {**(fields or {}), **kwargs}.items() if v is not None]
+    terms = [
+        _term(f, v) for f, v in {**(fields or {}), **kwargs}.items() if v is not None
+    ]
     parts: list[str] = []
     if query:
         parts.append(f"({query})" if terms else query)

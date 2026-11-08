@@ -1,6 +1,7 @@
-"""Static knowledge about the MusicBrainz WS/2 API (entities, includes, browse links, filters)."""
+"""Static knowledge about the MusicBrainz WS/2 API.
 
-from __future__ import annotations
+Entities, includes, browse links and filter values.
+"""
 
 DEFAULT_BASE_URL = "https://musicbrainz.org/ws/2/"
 MMD_NAMESPACE = "http://musicbrainz.org/ns/mmd-2.0#"
@@ -65,9 +66,22 @@ PLURALS: dict[str, str] = {
 #: For each browsable entity, the linked entities it can be browsed by.
 BROWSE_LINKS: dict[str, frozenset[str]] = {
     "area": frozenset({"collection"}),
-    "artist": frozenset({"area", "collection", "recording", "release", "release-group", "work"}),
+    "artist": frozenset(
+        {"area", "collection", "recording", "release", "release-group", "work"}
+    ),
     "collection": frozenset(
-        {"area", "artist", "editor", "event", "label", "place", "recording", "release", "release-group", "work"}
+        {
+            "area",
+            "artist",
+            "editor",
+            "event",
+            "label",
+            "place",
+            "recording",
+            "release",
+            "release-group",
+            "work",
+        }
     ),
     "event": frozenset({"area", "artist", "collection", "event", "place"}),
     "genre": frozenset({"collection"}),
@@ -76,7 +90,16 @@ BROWSE_LINKS: dict[str, frozenset[str]] = {
     "place": frozenset({"area", "collection"}),
     "recording": frozenset({"artist", "collection", "release", "work"}),
     "release": frozenset(
-        {"area", "artist", "collection", "label", "track", "track_artist", "recording", "release-group"}
+        {
+            "area",
+            "artist",
+            "collection",
+            "label",
+            "track",
+            "track_artist",
+            "recording",
+            "release-group",
+        }
     ),
     "release-group": frozenset({"artist", "collection", "release"}),
     "series": frozenset({"collection"}),
@@ -115,8 +138,17 @@ LOOKUP_INCLUDES: dict[str, frozenset[str]] = {
     "area": _COMMON,
     "artist": _COMMON
     | _RATINGS
-    | {"recordings", "releases", "release-groups", "works", "various-artists", "discids", "media", "isrcs",
-       "artist-credits"},
+    | {
+        "recordings",
+        "releases",
+        "release-groups",
+        "works",
+        "various-artists",
+        "discids",
+        "media",
+        "isrcs",
+        "artist-credits",
+    },
     "event": _COMMON | _RATINGS,
     "genre": _COMMON,
     "instrument": _COMMON | _RATINGS,
@@ -124,15 +156,37 @@ LOOKUP_INCLUDES: dict[str, frozenset[str]] = {
     "place": _COMMON,
     "recording": _COMMON
     | _RATINGS
-    | {"artists", "releases", "release-groups", "discids", "media", "artist-credits", "isrcs"},
+    | {
+        "artists",
+        "releases",
+        "release-groups",
+        "discids",
+        "media",
+        "artist-credits",
+        "isrcs",
+    },
     "release": _COMMON
-    | {"artists", "collections", "user-collections", "labels", "recordings", "release-groups", "media",
-       "artist-credits", "discids", "isrcs"},
-    "release-group": _COMMON | _RATINGS | {"artists", "releases", "discids", "media", "artist-credits"},
+    | {
+        "artists",
+        "collections",
+        "user-collections",
+        "labels",
+        "recordings",
+        "release-groups",
+        "media",
+        "artist-credits",
+        "discids",
+        "isrcs",
+    },
+    "release-group": _COMMON
+    | _RATINGS
+    | {"artists", "releases", "discids", "media", "artist-credits"},
     "series": _COMMON,
     "work": _COMMON | _RATINGS,
     "url": RELATION_INCLUDES,
-    "collection": frozenset({"user-collections", "tags", "user-tags", "genres", "user-genres"}),
+    "collection": frozenset(
+        {"user-collections", "tags", "user-tags", "genres", "user-genres"}
+    ),
 }
 LOOKUP_INCLUDES["discid"] = LOOKUP_INCLUDES["release"]
 LOOKUP_INCLUDES["isrc"] = LOOKUP_INCLUDES["recording"]
@@ -142,7 +196,9 @@ LOOKUP_INCLUDES["iswc"] = LOOKUP_INCLUDES["work"]
 BROWSE_INCLUDES: dict[str, frozenset[str]] = {
     "area": _COMMON,
     "artist": _COMMON | _RATINGS,
-    "collection": frozenset({"user-collections", "tags", "user-tags", "genres", "user-genres"}),
+    "collection": frozenset(
+        {"user-collections", "tags", "user-tags", "genres", "user-genres"}
+    ),
     "event": _COMMON | _RATINGS,
     "genre": _COMMON,
     "instrument": _COMMON | _RATINGS,
@@ -150,7 +206,15 @@ BROWSE_INCLUDES: dict[str, frozenset[str]] = {
     "place": _COMMON,
     "recording": _COMMON | _RATINGS | {"artist-credits", "isrcs"},
     "release": _COMMON
-    | {"artist-credits", "labels", "recordings", "release-groups", "media", "discids", "isrcs"},
+    | {
+        "artist-credits",
+        "labels",
+        "recordings",
+        "release-groups",
+        "media",
+        "discids",
+        "isrcs",
+    },
     "release-group": _COMMON | _RATINGS | {"artist-credits"},
     "series": _COMMON,
     "work": _COMMON | _RATINGS,
@@ -158,9 +222,13 @@ BROWSE_INCLUDES: dict[str, frozenset[str]] = {
 }
 
 #: Includes that only work with authentication.
-AUTH_INCLUDES: frozenset[str] = frozenset({"user-tags", "user-ratings", "user-genres", "user-collections"})
+AUTH_INCLUDES: frozenset[str] = frozenset(
+    {"user-tags", "user-ratings", "user-genres", "user-collections"}
+)
 
-RELEASE_GROUP_PRIMARY_TYPES: frozenset[str] = frozenset({"album", "single", "ep", "broadcast", "other"})
+RELEASE_GROUP_PRIMARY_TYPES: frozenset[str] = frozenset(
+    {"album", "single", "ep", "broadcast", "other"}
+)
 RELEASE_GROUP_SECONDARY_TYPES: frozenset[str] = frozenset(
     {
         "audio drama",
@@ -177,9 +245,19 @@ RELEASE_GROUP_SECONDARY_TYPES: frozenset[str] = frozenset(
         "spokenword",
     }
 )
-RELEASE_TYPES: frozenset[str] = RELEASE_GROUP_PRIMARY_TYPES | RELEASE_GROUP_SECONDARY_TYPES
+RELEASE_TYPES: frozenset[str] = (
+    RELEASE_GROUP_PRIMARY_TYPES | RELEASE_GROUP_SECONDARY_TYPES
+)
 RELEASE_STATUSES: frozenset[str] = frozenset(
-    {"official", "promotion", "bootleg", "pseudo-release", "withdrawn", "expunged", "cancelled"}
+    {
+        "official",
+        "promotion",
+        "bootleg",
+        "pseudo-release",
+        "withdrawn",
+        "expunged",
+        "cancelled",
+    }
 )
 RELEASE_GROUP_STATUSES: frozenset[str] = frozenset({"website-default", "all"})
 
@@ -202,7 +280,9 @@ COLLECTION_ENTITY_TYPES: dict[str, str] = {
 #: Entities that accept tag submissions.
 TAGGABLE_ENTITIES: frozenset[str] = frozenset(CORE_ENTITIES) - {"url", "genre"}
 #: Entities that accept rating submissions.
-RATABLE_ENTITIES: frozenset[str] = frozenset({"artist", "event", "label", "recording", "release-group", "work"})
+RATABLE_ENTITIES: frozenset[str] = frozenset(
+    {"artist", "event", "label", "recording", "release-group", "work"}
+)
 
 #: Max entities per collection add/remove request (per the API docs).
 COLLECTION_BATCH_SIZE = 400

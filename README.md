@@ -73,21 +73,26 @@ A list becomes an OR group. `musicbrainz.query.escape()` and `build_query()` are
 
 **Models** use snake_case attributes (`sort_name`, `life_span`, `artist_credit`).
 Fields the models don't cover are kept and can be read with `model.model_extra`.
-Useful helpers include `Entity.relations_of(target_type, type)`, `Relation.target`, `Release.artist_credit_phrase` and `Collection.item_count`.
+Useful helpers include `Entity.relations_of(target_type, relation_type)`, `Relation.target`, `Release.artist_credit_phrase` and `Collection.item_count`.
 
 ## Authentication and submissions
 
 ```python
-mb = MusicBrainz("MyApp", "1.0", "me@example.com",
-                 username="me", password="<token from musicbrainz.org/account/applications>")
+mb = MusicBrainz(
+    "MyApp",
+    "1.0",
+    "me@example.com",
+    username="me",
+    password="<token from musicbrainz.org/account/applications>",
+)
 # or: oauth_token="..."
 
 mb.submit_tags("artist", {artist_id: ["grunge", "rock"]}, vote="upvote")
-mb.submit_ratings("recording", {recording_id: 80})        # 0-100, 20 per star
-mb.submit_barcodes({release_id: "4006381333931"})          # checksum validated
+mb.submit_ratings("recording", {recording_id: 80})  # 0-100, 20 per star
+mb.submit_barcodes({release_id: "4006381333931"})  # checksum validated
 mb.submit_isrcs({recording_id: ["USGF19942501"]})
 
-mb.collections.add(collection_id, "release", release_ids)   # batched by 400
+mb.collections.add(collection_id, "release", release_ids)  # batched by 400
 mb.collections.remove(collection_id, "release", release_ids)
 mb.collections.of_editor("me", include_private=True)
 mb.collections.iter_items(collection_id, "release")

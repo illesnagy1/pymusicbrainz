@@ -1,15 +1,14 @@
 """Typed pydantic models for MusicBrainz JSON responses.
 
-Every model keeps unknown fields (``extra="allow"``), so nothing the server sends is lost,
-even if a field is not modelled here. Access them with ``model.model_extra`` or ``getattr``.
-JSON keys are kebab-case (``sort-name``); Python attributes are snake_case (``sort_name``).
+Every model keeps unknown fields (``extra="allow"``), so nothing the server sends
+is lost, even if a field is not modelled here. Access them with
+``model.model_extra`` or ``getattr``. JSON keys are kebab-case (``sort-name``);
+Python attributes are snake_case (``sort_name``).
 """
-
-from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass, field
-from typing import Any, Generic, TypeVar
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict
 
@@ -28,7 +27,7 @@ class MBModel(BaseModel):
     )
 
 
-# --------------------------------------------------------------------------- small value objects
+# ------------------------------------------------------------------ value objects
 
 
 class LifeSpan(MBModel):
@@ -92,7 +91,7 @@ class WorkAttribute(MBModel):
     value_id: str | None = None
 
 
-# --------------------------------------------------------------------------- relationships
+# ------------------------------------------------------------------ relationships
 
 
 class Relation(MBModel):
@@ -152,11 +151,15 @@ class Entity(MBModel):
     user_rating: Rating | None = None
     relations: list[Relation] = []
 
-    def relations_of(self, target_type: str, type: str | None = None) -> list[Relation]:
-        """Relationships filtered by target entity type and optionally by relationship type."""
+    def relations_of(
+        self, target_type: str, relation_type: str | None = None
+    ) -> list[Relation]:
+        """Relationships to ``target_type`` entities, optionally of one type."""
         return [
-            r for r in self.relations
-            if r.target_type == target_type and (type is None or r.type == type)
+            r
+            for r in self.relations
+            if r.target_type == target_type
+            and (relation_type is None or r.type == relation_type)
         ]
 
 
@@ -197,9 +200,11 @@ class ArtistCredit(MBModel):
     artist: Artist | None = None
 
 
-def credit_string(credits: list[ArtistCredit]) -> str:
-    """Render an artist credit as displayed on the site, e.g. ``"Simon & Garfunkel"``."""
-    return "".join(f"{c.name or (c.artist.name if c.artist else '')}{c.joinphrase}" for c in credits)
+def credit_string(credit: list[ArtistCredit]) -> str:
+    """Render an artist credit as shown on the site, e.g. ``"Simon & Garfunkel"``."""
+    return "".join(
+        f"{c.name or (c.artist.name if c.artist else '')}{c.joinphrase}" for c in credit
+    )
 
 
 class Event(Entity):
@@ -410,13 +415,11 @@ for _m in list(globals().values()):
 del _m
 
 
-# --------------------------------------------------------------------------- pagination
-
-T = TypeVar("T")
+# ------------------------------------------------------------------ pagination
 
 
 @dataclass(slots=True)
-class Page(Generic[T]):
+class Page[T]:
     """One page of a browse or search response."""
 
     items: list[T]

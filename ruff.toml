@@ -1,0 +1,89 @@
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".ipynb_checkpoints",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pyenv",
+  ".pytest_cache",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  ".vscode",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "site-packages",
+  "venv",
+]
+line-length = 88
+indent-width = 4
+
+[lint]
+select = [
+  "A",  # flake8-builtins: shadowing builtins
+  "ANN",  # flake8-annotations: missing type annotations
+  "ARG",  # flake8-unused-arguments
+  "B",  # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "C90",  # mccabe: cyclomatic complexity
+  "DTZ",  # flake8-datetimez: naive datetimes
+  "E",  # pycodestyle errors
+  "F",  # pyflakes
+  "FLY",  # flynt: static str.join -> f-string
+  "G",  # flake8-logging-format
+  "I",  # isort
+  "ICN",  # flake8-import-conventions
+  "LOG",  # flake8-logging
+  "N",  # pep8-naming
+  "PERF",  # perflint
+  "PGH",  # pygrep-hooks: blanket noqa / type: ignore
+  "PIE",  # flake8-pie
+  "PT",  # flake8-pytest-style
+  "PTH",  # flake8-use-pathlib
+  "RET",  # flake8-return
+  "RSE",  # flake8-raise
+  "RUF",  # ruff-specific: includes RUF100 (unused noqa)
+  "S",  # flake8-bandit: security
+  "SIM",  # flake8-simplify
+  "SLF",  # flake8-self: private member access
+  "T10",  # flake8-debugger: leftover breakpoint()
+  "TID",  # flake8-tidy-imports
+  "UP",  # pyupgrade
+  "W",  # pycodestyle warnings
+  "YTT",  # flake8-2020: sys.version misuse
+]
+# Deliberately NOT enabled:
+#   COM, Q, ISC001: conflict with the ruff formatter.
+#   FA, and isort required-imports = ["from __future__ import annotations"]:
+#     obsolete here, since PEP 649/749 make annotations lazy on Python 3.14.
+#   TC: breaks pydantic, which resolves annotations at runtime.
+#   FBT: false positives on typer's boolean CLI options.
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+
+[lint.per-file-ignores]
+"tests/**" = [
+  "S101",  # assert is the point of a test
+  "S106",  # dummy credentials for auth tests
+  "S314",  # parsing XML the library itself just generated
+]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"

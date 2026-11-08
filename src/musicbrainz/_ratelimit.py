@@ -1,6 +1,7 @@
-"""Rate limiters enforcing a minimum interval between requests (MusicBrainz allows ~1 req/s)."""
+"""Rate limiters enforcing a minimum interval between requests.
 
-from __future__ import annotations
+MusicBrainz allows about one request per second per client.
+"""
 
 import threading
 import time
@@ -9,9 +10,12 @@ import anyio
 
 
 class RateLimiter:
-    """Thread-safe limiter for the sync client. Share one instance between clients to share a budget."""
+    """Thread-safe limiter for the sync client.
 
-    def __init__(self, requests_per_second: float = 1.0):
+    Pass one instance to several clients to make them share a budget.
+    """
+
+    def __init__(self, requests_per_second: float = 1.0) -> None:
         if requests_per_second <= 0:
             raise ValueError("requests_per_second must be positive")
         self.interval = 1.0 / requests_per_second
@@ -30,7 +34,7 @@ class RateLimiter:
 class AsyncRateLimiter:
     """Task-safe limiter for the async client (works under asyncio and trio)."""
 
-    def __init__(self, requests_per_second: float = 1.0):
+    def __init__(self, requests_per_second: float = 1.0) -> None:
         if requests_per_second <= 0:
             raise ValueError("requests_per_second must be positive")
         self.interval = 1.0 / requests_per_second

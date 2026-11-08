@@ -1,34 +1,40 @@
-"""Sans-IO core: builds request descriptions and parses responses. No networking happens here."""
+"""Sans-IO core: builds request descriptions and parses responses.
 
-from __future__ import annotations
+No networking happens here; the clients in :mod:`musicbrainz.client` execute the
+:class:`Call` objects built by :class:`Core`.
+"""
 
+import html
 import json
 import re
 import xml.etree.ElementTree as ET
 from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass, field
-from typing import Any, Generic, Literal, TypeVar
+from typing import Any, Literal
 
-from . import _constants as C
-from . import models as M
+from . import _constants as consts
+from . import models
 from .errors import AuthenticationRequiredError, ValidationError, error_for_status
 from .query import build_query
 
-R = TypeVar("R")
+type JSON = dict[str, JSON] | list[JSON] | str | int | float | bool | None
 Includes = str | Iterable[str] | None
 Filter = str | Iterable[str] | None
 
-_MBID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.IGNORECASE)
+_MBID_RE = re.compile(
+    r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.IGNORECASE
+)
 _ISRC_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{3}\d{7}$")
 _ISWC_RE = re.compile(r"^T-?\d{3}\.?\d{3}\.?\d{3}-?\d$")
 _DISCID_RE = re.compile(r"^[A-Za-z0-9._-]{28}$|^-$")
+_XML_TEXT_RE = re.compile(r"<text>(.*?)</text>", re.DOTALL)
 
 RETRY_STATUSES = frozenset({429, 502, 503, 504})
 
 
 @dataclass(frozen=True, slots=True)
-class Call(Generic[R]):
-    """A description of one HTTP request plus how to turn the response into a result."""
+class Call[R]:
+    """One HTTP request, plus how to turn its response body into a result."""
 
     method: str
     path: str
@@ -39,16 +45,22 @@ class Call(Generic[R]):
     requires_auth: bool = False
     headers: dict[str, str] = field(default_factory=dict)
 
-    def request_params(self) -> list[tuple[str, str]]:
-        fmt = {"json": [("fmt", "json")], "text": [("fmt", "txt")], "xml": []}[self.accept]
-        return self.params + fmt
+    def request_params(self) -> tuple[tuple[str, str], ...]:
+        fmt = {"json": [("fmt", "json")], "text": [("fmt", "txt")], "xml": []}[
+            self.accept
+        ]
+        return (*self.params, *fmt)
 
     def request_headers(self) -> dict[str, str]:
-        accept = {"json": "application/json", "text": "text/plain", "xml": "application/xml"}[self.accept]
+        accept = {
+            "json": "application/json",
+            "text": "text/plain",
+            "xml": "application/xml",
+        }[self.accept]
         return {"Accept": accept, **self.headers}
 
 
-# --------------------------------------------------------------------------- validation helpers
+# ------------------------------------------------------------------ validation
 
 
 def _fail(msg: str) -> ValidationError:
@@ -77,9 +89,9 @@ def normalize_iswc(value: str) -> str:
 
 
 def check_gtin(barcode: str) -> str:
-    """Validate a GTIN-8/12/13/14 (EAN/UPC) checksum, as the API rejects invalid ones."""
+    """Validate a GTIN-8/12/13/14 (EAN/UPC) checksum; the API rejects bad ones."""
     if not barcode.isdigit() or len(barcode) not in (8, 12, 13, 14):
-        raise _fail(f"invalid barcode (must be GTIN-8/12/13/14 digits): {barcode!r}")
+        raise _fail(f"invalid barcode (must be 8/12/13/14 digits): {barcode!r}")
     digits = [int(d) for d in barcode]
     body, check = digits[:-1], digits[-1]
     total = sum(d * (3 if i % 2 == 0 else 1) for i, d in enumerate(reversed(body)))
@@ -104,21 +116,26 @@ class Core:
     has_auth: bool = False
     validate: bool = True
 
-    # ------------------------------------------------------------------ shared pieces
+    # ------------------------------------------------------------ shared pieces
 
-    def _includes(self, inc: Includes, allowed: frozenset[str] | None, entity: str) -> list[str]:
+    def _includes(
+        self, inc: Includes, allowed: frozenset[str] | None, entity: str
+    ) -> list[str]:
         values = _as_list(inc)
         if self.validate and allowed is not None:
             bad = [v for v in values if v not in allowed]
             if bad:
-                raise _fail(f"invalid include(s) for {entity}: {', '.join(bad)}. Allowed: {', '.join(sorted(allowed))}")
+                raise _fail(
+                    f"invalid include(s) for {entity}: {', '.join(bad)}. "
+                    f"Allowed: {', '.join(sorted(allowed))}"
+                )
         return values
 
     def _inc_params(self, values: list[str]) -> list[tuple[str, str]]:
         return [("inc", "+".join(values))] if values else []
 
     def _auth_needed(self, values: Iterable[str]) -> bool:
-        return any(v in C.AUTH_INCLUDES for v in values)
+        return any(v in consts.AUTH_INCLUDES for v in values)
 
     def _filters(
         self,
@@ -128,24 +145,15 @@ class Core:
         *,
         browse_entity: str | None = None,
     ) -> list[tuple[str, str]]:
-        params: list[tuple[str, str]] = []
         types = [t.lower() for t in _as_list(release_type)]
         statuses = [s.lower() for s in _as_list(release_status)]
         if self.validate:
-            if bad := [t for t in types if t not in C.RELEASE_TYPES]:
-                raise _fail(f"invalid release type(s): {bad}. Allowed: {sorted(C.RELEASE_TYPES)}")
-            if bad := [s for s in statuses if s not in C.RELEASE_STATUSES]:
-                raise _fail(f"invalid release status(es): {bad}. Allowed: {sorted(C.RELEASE_STATUSES)}")
-            if incs is not None:  # lookups: filters only apply to included releases / release groups
-                if types and not {"releases", "release-groups"} & set(incs):
-                    raise _fail("release_type requires inc 'releases' or 'release-groups'")
-                if statuses and "releases" not in incs:
-                    raise _fail("release_status requires inc 'releases'")
+            _check_filter_values(types, statuses)
+            if incs is not None:
+                _check_lookup_filters(incs, types, statuses)
             if browse_entity is not None:
-                if types and browse_entity not in ("release", "release-group"):
-                    raise _fail("release_type only applies when browsing releases or release groups")
-                if statuses and browse_entity != "release":
-                    raise _fail("release_status only applies when browsing releases")
+                _check_browse_filters(browse_entity, types, statuses)
+        params: list[tuple[str, str]] = []
         if types:
             params.append(("type", "|".join(types)))
         if statuses:
@@ -155,8 +163,8 @@ class Core:
     def _paging(self, limit: int | None, offset: int | None) -> list[tuple[str, str]]:
         params = []
         if limit is not None:
-            if not 1 <= limit <= C.MAX_LIMIT:
-                raise _fail(f"limit must be between 1 and {C.MAX_LIMIT}")
+            if not 1 <= limit <= consts.MAX_LIMIT:
+                raise _fail(f"limit must be between 1 and {consts.MAX_LIMIT}")
             params.append(("limit", str(limit)))
         if offset is not None:
             if offset < 0:
@@ -164,7 +172,7 @@ class Core:
             params.append(("offset", str(offset)))
         return params
 
-    # ------------------------------------------------------------------ lookups
+    # ------------------------------------------------------------ lookups
 
     def lookup(
         self,
@@ -175,10 +183,18 @@ class Core:
         release_status: Filter = None,
     ) -> Call[Any]:
         mbid = check_mbid(mbid)
-        incs = self._includes(inc, C.LOOKUP_INCLUDES.get(entity), entity)
-        params = self._inc_params(incs) + self._filters(incs, release_type, release_status)
-        model = M.ENTITY_MODELS[entity]
-        return Call("GET", f"{entity}/{mbid}", params, model.model_validate, requires_auth=self._auth_needed(incs))
+        incs = self._includes(inc, consts.LOOKUP_INCLUDES.get(entity), entity)
+        params = self._inc_params(incs) + self._filters(
+            incs, release_type, release_status
+        )
+        model = models.ENTITY_MODELS[entity]
+        return Call(
+            "GET",
+            f"{entity}/{mbid}",
+            params,
+            model.model_validate,
+            requires_auth=self._auth_needed(incs),
+        )
 
     def lookup_discid(
         self,
@@ -190,63 +206,91 @@ class Core:
         all_media_formats: bool = False,
         release_type: Filter = None,
         release_status: Filter = None,
-    ) -> Call[M.Disc | M.CDStub]:
+    ) -> Call[models.Disc | models.CDStub]:
         if self.validate and not _DISCID_RE.match(discid):
             raise _fail(f"invalid disc ID: {discid!r}")
-        incs = self._includes(inc, C.LOOKUP_INCLUDES["discid"], "discid")
-        params = self._inc_params(incs) + self._filters(incs or None, release_type, release_status)
+        incs = self._includes(inc, consts.LOOKUP_INCLUDES["discid"], "discid")
+        params = self._inc_params(incs) + self._filters(
+            incs or None, release_type, release_status
+        )
         if toc is not None:
-            params.append(("toc", toc if isinstance(toc, str) else "+".join(str(int(x)) for x in toc)))
+            params.append(
+                (
+                    "toc",
+                    toc if isinstance(toc, str) else "+".join(str(int(x)) for x in toc),
+                )
+            )
         if not cdstubs:
             params.append(("cdstubs", "no"))
         if all_media_formats:
             params.append(("media-format", "all"))
 
-        def parse(data: dict[str, Any]) -> M.Disc | M.CDStub:
+        def parse(data: dict[str, Any]) -> models.Disc | models.CDStub:
             if "releases" in data or "sectors" in data or "offsets" in data:
-                return M.Disc.model_validate(data)
-            return M.CDStub.model_validate(data)
+                return models.Disc.model_validate(data)
+            return models.CDStub.model_validate(data)
 
-        return Call("GET", f"discid/{discid}", params, parse, requires_auth=self._auth_needed(incs))
-
-    def lookup_isrc(self, isrc: str, inc: Includes = None) -> Call[M.IsrcResult]:
-        isrc = normalize_isrc(isrc)
-        incs = self._includes(inc, C.LOOKUP_INCLUDES["isrc"], "isrc")
         return Call(
-            "GET", f"isrc/{isrc}", self._inc_params(incs), M.IsrcResult.model_validate,
+            "GET",
+            f"discid/{discid}",
+            params,
+            parse,
             requires_auth=self._auth_needed(incs),
         )
 
-    def lookup_iswc(self, iswc: str, inc: Includes = None) -> Call[list[M.Work]]:
+    def lookup_isrc(self, isrc: str, inc: Includes = None) -> Call[models.IsrcResult]:
+        isrc = normalize_isrc(isrc)
+        incs = self._includes(inc, consts.LOOKUP_INCLUDES["isrc"], "isrc")
+        return Call(
+            "GET",
+            f"isrc/{isrc}",
+            self._inc_params(incs),
+            models.IsrcResult.model_validate,
+            requires_auth=self._auth_needed(incs),
+        )
+
+    def lookup_iswc(self, iswc: str, inc: Includes = None) -> Call[list[models.Work]]:
         iswc = normalize_iswc(iswc)
-        incs = self._includes(inc, C.LOOKUP_INCLUDES["iswc"], "iswc")
+        incs = self._includes(inc, consts.LOOKUP_INCLUDES["iswc"], "iswc")
 
-        def parse(data: dict[str, Any]) -> list[M.Work]:
-            return [M.Work.model_validate(w) for w in data.get("works", [])]
+        def parse(data: dict[str, Any]) -> list[models.Work]:
+            return [models.Work.model_validate(w) for w in data.get("works", [])]
 
-        return Call("GET", f"iswc/{iswc}", self._inc_params(incs), parse, requires_auth=self._auth_needed(incs))
+        return Call(
+            "GET",
+            f"iswc/{iswc}",
+            self._inc_params(incs),
+            parse,
+            requires_auth=self._auth_needed(incs),
+        )
 
-    def lookup_urls(self, resources: list[str], inc: Includes = None) -> Call[list[M.Url]]:
+    def lookup_urls(
+        self, resources: list[str], inc: Includes = None
+    ) -> Call[list[models.Url]]:
         if not resources:
             raise _fail("at least one URL is required")
-        if len(resources) > C.URL_BATCH_SIZE:
-            raise _fail(f"at most {C.URL_BATCH_SIZE} URLs per request")
-        incs = self._includes(inc, C.LOOKUP_INCLUDES["url"], "url")
+        if len(resources) > consts.URL_BATCH_SIZE:
+            raise _fail(f"at most {consts.URL_BATCH_SIZE} URLs per request")
+        incs = self._includes(inc, consts.LOOKUP_INCLUDES["url"], "url")
         params = [("resource", r) for r in resources] + self._inc_params(incs)
 
-        def parse(data: dict[str, Any]) -> list[M.Url]:
+        def parse(data: dict[str, Any]) -> list[models.Url]:
             if "urls" in data:
-                return [M.Url.model_validate(u) for u in data["urls"]]
-            return [M.Url.model_validate(data)]
+                return [models.Url.model_validate(u) for u in data["urls"]]
+            return [models.Url.model_validate(data)]
 
         return Call("GET", "url", params, parse)
 
-    def lookup_collection_contents(self, mbid: str, entity_type: str) -> Call[M.Collection]:
+    def lookup_collection_contents(
+        self, mbid: str, entity_type: str
+    ) -> Call[models.Collection]:
         mbid = check_mbid(mbid, "collection MBID")
         plural = self._collection_plural(entity_type)
-        return Call("GET", f"collection/{mbid}/{plural}", [], M.Collection.model_validate)
+        return Call(
+            "GET", f"collection/{mbid}/{plural}", [], models.Collection.model_validate
+        )
 
-    # ------------------------------------------------------------------ browse
+    # ------------------------------------------------------------ browse
 
     def browse(
         self,
@@ -258,34 +302,61 @@ class Core:
         release_type: Filter = None,
         release_status: Filter = None,
         release_group_status: str | None = None,
-    ) -> Call[M.Page[Any]]:
-        allowed = C.BROWSE_LINKS.get(entity)
+    ) -> Call[models.Page[Any]]:
+        allowed = consts.BROWSE_LINKS.get(entity)
         if allowed is None:
             raise _fail(f"{entity} cannot be browsed")
         given = {_link_name(k): v for k, v in links.items() if v is not None}
         if len(given) != 1:
-            raise _fail(f"browse needs exactly one linked entity, one of: {', '.join(sorted(allowed))}")
-        (link, value), = given.items()
+            raise _fail(
+                "browse needs exactly one linked entity, one of: "
+                + ", ".join(sorted(allowed))
+            )
+        ((link, value),) = given.items()
         if link not in allowed:
-            raise _fail(f"cannot browse {entity} by {link}. Allowed: {', '.join(sorted(allowed))}")
+            raise _fail(
+                f"cannot browse {entity} by {link}. "
+                f"Allowed: {', '.join(sorted(allowed))}"
+            )
         if link not in ("editor", "resource"):
             value = check_mbid(value, f"{link} MBID")
-        incs = self._includes(inc, C.BROWSE_INCLUDES.get(entity), entity)
-        params = [(link, value)] + self._inc_params(incs) + self._paging(limit, offset)
-        params += self._filters(None, release_type, release_status, browse_entity=entity)
+        incs = self._includes(inc, consts.BROWSE_INCLUDES.get(entity), entity)
+        params = [(link, value), *self._inc_params(incs), *self._paging(limit, offset)]
+        params += self._filters(
+            None, release_type, release_status, browse_entity=entity
+        )
         if release_group_status is not None:
-            if self.validate and release_group_status not in C.RELEASE_GROUP_STATUSES:
-                raise _fail(f"release_group_status must be one of {sorted(C.RELEASE_GROUP_STATUSES)}")
+            allowed_rgs = consts.RELEASE_GROUP_STATUSES
+            if self.validate and release_group_status not in allowed_rgs:
+                raise _fail(
+                    f"release_group_status must be one of {sorted(allowed_rgs)}"
+                )
             params.append(("release-group-status", release_group_status))
-        return Call("GET", entity, params, _page_parser(entity), requires_auth=self._auth_needed(incs))
+        return Call(
+            "GET",
+            entity,
+            params,
+            _page_parser(entity),
+            requires_auth=self._auth_needed(incs),
+        )
 
-    def genres_all(self, limit: int | None = None, offset: int | None = None) -> Call[M.Page[M.Genre]]:
-        return Call("GET", "genre/all", self._paging(limit, offset), _page_parser("genre"))
+    def genres_all(
+        self, limit: int | None = None, offset: int | None = None
+    ) -> Call[models.Page[models.Genre]]:
+        return Call(
+            "GET", "genre/all", self._paging(limit, offset), _page_parser("genre")
+        )
 
     def genre_names(self) -> Call[list[str]]:
-        return Call("GET", "genre/all", [], lambda text: [l for l in text.splitlines() if l.strip()], accept="text")
+        return Call(
+            "GET",
+            "genre/all",
+            [],
+            lambda text: [line for line in text.splitlines() if line.strip()],
+            accept="text",
+        )
 
-    # ------------------------------------------------------------------ search
+    # ------------------------------------------------------------ search
 
     def search(
         self,
@@ -295,54 +366,82 @@ class Core:
         limit: int | None = None,
         offset: int | None = None,
         dismax: bool = False,
-    ) -> Call[M.Page[Any]]:
-        if entity not in C.SEARCH_ENTITIES:
-            raise _fail(f"{entity} is not searchable. Searchable: {', '.join(C.SEARCH_ENTITIES)}")
+    ) -> Call[models.Page[Any]]:
+        if entity not in consts.SEARCH_ENTITIES:
+            raise _fail(
+                f"{entity} is not searchable. "
+                f"Searchable: {', '.join(consts.SEARCH_ENTITIES)}"
+            )
         q = build_query(query, dict(fields or {}))
-        params = [("query", q)] + self._paging(limit, offset)
+        params = [("query", q), *self._paging(limit, offset)]
         if dismax:
             params.append(("dismax", "true"))
         return Call("GET", entity, params, _page_parser(entity))
 
-    # ------------------------------------------------------------------ collections (write)
+    # ------------------------------------------------------------ collections
 
     def _collection_plural(self, entity_type: str) -> str:
-        if entity_type in C.COLLECTION_ENTITY_TYPES.values():
+        if entity_type in consts.COLLECTION_ENTITY_TYPES.values():
             return entity_type
         try:
-            return C.COLLECTION_ENTITY_TYPES[entity_type]
+            return consts.COLLECTION_ENTITY_TYPES[entity_type]
         except KeyError:
             raise _fail(f"invalid collection entity type: {entity_type!r}") from None
 
-    def collection_modify(self, method: Literal["PUT", "DELETE"], collection: str, entity_type: str,
-                          mbids: list[str]) -> Call[None]:
+    def collection_modify(
+        self,
+        method: Literal["PUT", "DELETE"],
+        collection: str,
+        entity_type: str,
+        mbids: list[str],
+    ) -> Call[None]:
         collection = check_mbid(collection, "collection MBID")
         plural = self._collection_plural(entity_type)
         if not mbids:
             raise _fail("no MBIDs given")
-        if len(mbids) > C.COLLECTION_BATCH_SIZE:
-            raise _fail(f"at most {C.COLLECTION_BATCH_SIZE} entities per request")
+        if len(mbids) > consts.COLLECTION_BATCH_SIZE:
+            raise _fail(f"at most {consts.COLLECTION_BATCH_SIZE} entities per request")
         ids = ";".join(check_mbid(m) for m in mbids)
-        return Call(method, f"collection/{collection}/{plural}/{ids}", self._client_param(), _ignore,
-                    accept="xml", requires_auth=True)
+        return Call(
+            method,
+            f"collection/{collection}/{plural}/{ids}",
+            self._client_param(),
+            _ignore,
+            accept="xml",
+            requires_auth=True,
+        )
 
-    # ------------------------------------------------------------------ submissions
+    # ------------------------------------------------------------ submissions
 
     def _client_param(self) -> list[tuple[str, str]]:
         if not self.client_id:
-            raise _fail("submissions need a client ID; construct the client with app and version")
+            raise _fail(
+                "submissions need a client ID: pass app and a version without '-'"
+            )
         return [("client", self.client_id)]
 
     def _submission(self, path: str, root: ET.Element) -> Call[None]:
         if not self.has_auth:
             raise AuthenticationRequiredError("submissions require authentication")
         body = ET.tostring(root, encoding="utf-8", xml_declaration=True)
-        return Call("POST", path, self._client_param(), _ignore, content=body, accept="xml", requires_auth=True,
-                    headers={"Content-Type": "application/xml; charset=utf-8"})
+        return Call(
+            "POST",
+            path,
+            self._client_param(),
+            _ignore,
+            content=body,
+            accept="xml",
+            requires_auth=True,
+            headers={"Content-Type": "application/xml; charset=utf-8"},
+        )
 
-    def submit_tags(self, entity: str, tags: Mapping[str, Iterable[str]],
-                    vote: Literal["upvote", "downvote", "withdraw"] | None = None) -> Call[None]:
-        if entity not in C.TAGGABLE_ENTITIES:
+    def submit_tags(
+        self,
+        entity: str,
+        tags: Mapping[str, Iterable[str]],
+        vote: Literal["upvote", "downvote", "withdraw"] | None = None,
+    ) -> Call[None]:
+        if entity not in consts.TAGGABLE_ENTITIES:
             raise _fail(f"cannot tag {entity}")
         if vote not in (None, "upvote", "downvote", "withdraw"):
             raise _fail("vote must be 'upvote', 'downvote' or 'withdraw'")
@@ -352,18 +451,19 @@ class Core:
             el = ET.SubElement(lst, entity, id=check_mbid(mbid))
             tag_list = ET.SubElement(el, "user-tag-list")
             for name in _as_tag_list(names):
-                tag = ET.SubElement(tag_list, "user-tag", **({"vote": vote} if vote else {}))
+                attrib: dict[str, str] = {"vote": vote} if vote else {}
+                tag = ET.SubElement(tag_list, "user-tag", attrib)
                 ET.SubElement(tag, "name").text = name
         return self._submission("tag", root)
 
     def submit_ratings(self, entity: str, ratings: Mapping[str, int]) -> Call[None]:
-        if entity not in C.RATABLE_ENTITIES:
+        if entity not in consts.RATABLE_ENTITIES:
             raise _fail(f"cannot rate {entity}")
         root = _metadata()
         lst = ET.SubElement(root, f"{entity}-list")
         for mbid, rating in ratings.items():
             if not 0 <= int(rating) <= 100:
-                raise _fail("ratings must be between 0 and 100 (0 removes the rating)")
+                raise _fail("ratings must be 0-100 (0 removes the rating)")
             el = ET.SubElement(lst, entity, id=check_mbid(mbid))
             ET.SubElement(el, "user-rating").text = str(int(rating))
         return self._submission("rating", root)
@@ -388,7 +488,36 @@ class Core:
         return self._submission("recording", root)
 
 
-# --------------------------------------------------------------------------- parsing
+# ------------------------------------------------------------------ helpers
+
+
+def _check_filter_values(types: list[str], statuses: list[str]) -> None:
+    if bad := [t for t in types if t not in consts.RELEASE_TYPES]:
+        raise _fail(
+            f"invalid release type(s): {bad}. Allowed: {sorted(consts.RELEASE_TYPES)}"
+        )
+    if bad := [s for s in statuses if s not in consts.RELEASE_STATUSES]:
+        raise _fail(
+            f"invalid release status(es): {bad}. "
+            f"Allowed: {sorted(consts.RELEASE_STATUSES)}"
+        )
+
+
+def _check_lookup_filters(
+    incs: list[str], types: list[str], statuses: list[str]
+) -> None:
+    # On lookups, filters only apply to included releases / release groups.
+    if types and not {"releases", "release-groups"} & set(incs):
+        raise _fail("release_type requires inc 'releases' or 'release-groups'")
+    if statuses and "releases" not in incs:
+        raise _fail("release_status requires inc 'releases'")
+
+
+def _check_browse_filters(entity: str, types: list[str], statuses: list[str]) -> None:
+    if types and entity not in ("release", "release-group"):
+        raise _fail("release_type only applies when browsing release (group)s")
+    if statuses and entity != "release":
+        raise _fail("release_status only applies when browsing releases")
 
 
 def _link_name(key: str) -> str:
@@ -400,27 +529,33 @@ def _as_tag_list(names: Iterable[str]) -> list[str]:
 
 
 def _metadata() -> ET.Element:
-    return ET.Element("metadata", xmlns=C.MMD_NAMESPACE)
+    return ET.Element("metadata", xmlns=consts.MMD_NAMESPACE)
 
 
-def _ignore(_: Any) -> None:
+def _ignore(_: object) -> None:
     return None
 
 
-def _page_parser(entity: str) -> Callable[[dict[str, Any]], M.Page[Any]]:
-    model = M.ENTITY_MODELS[entity]
-    list_key = C.PLURALS[entity]
+def _page_parser(entity: str) -> Callable[[dict[str, Any]], models.Page[Any]]:
+    model = models.ENTITY_MODELS[entity]
+    list_key = consts.PLURALS[entity]
 
-    def parse(data: dict[str, Any]) -> M.Page[Any]:
+    def parse(data: dict[str, Any]) -> models.Page[Any]:
         items = [model.model_validate(x) for x in data.get(list_key, [])]
         count = data.get("count", data.get(f"{entity}-count", len(items)))
         offset = data.get("offset", data.get(f"{entity}-offset", 0))
-        return M.Page(items=items, count=int(count), offset=int(offset), created=data.get("created"), raw=data)
+        return models.Page(
+            items=items,
+            count=int(count),
+            offset=int(offset),
+            created=data.get("created"),
+            raw=data,
+        )
 
     return parse
 
 
-def decode_body(call: Call[Any], body: bytes) -> Any:
+def decode_body(call: Call[Any], body: bytes) -> JSON:
     if call.accept == "json":
         return json.loads(body) if body else {}
     return body.decode("utf-8", errors="replace")
@@ -439,19 +574,20 @@ def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> 
         except ValueError:
             pass
     elif text.startswith("<"):
-        try:
-            texts = [t.text or "" for t in ET.fromstring(text).iter() if t.tag.endswith("text")]
-            if texts:
-                message, help_ = texts[0], (texts[1] if len(texts) > 1 else None)
-        except ET.ParseError:
-            pass
+        # Error bodies are tiny <error><text>..</text></error> documents; a regex
+        # avoids feeding server-controlled XML to a parser.
+        texts = [html.unescape(t).strip() for t in _XML_TEXT_RE.findall(text)]
+        if texts:
+            message, help_ = texts[0], (texts[1] if len(texts) > 1 else None)
     elif text and len(text) < 500:
         message = text
-    raise error_for_status(status, message, help=help_, url=url)
+    raise error_for_status(status, message, help_=help_, url=url)
 
 
-def retry_delay(status: int, retry_after: str | None, attempt: int, backoff: float) -> float | None:
-    """Seconds to wait before retrying, or ``None`` if the response should not be retried."""
+def retry_delay(
+    status: int, retry_after: str | None, attempt: int, backoff: float
+) -> float | None:
+    """Seconds to wait before retrying, or ``None`` if not retryable."""
     if status not in RETRY_STATUSES:
         return None
     if retry_after:
