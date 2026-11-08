@@ -149,6 +149,7 @@ class Core:
                     f"invalid include(s) for {entity}: {', '.join(bad)}. "
                     f"Allowed: {', '.join(sorted(allowed))}"
                 )
+            _check_include_dependencies(entity, values)
         return values
 
     def _inc_params(self, values: list[str]) -> list[tuple[str, str]]:
@@ -569,6 +570,28 @@ class Core:
 
 
 # ------------------------------------------------------------------ helpers
+
+
+def _check_include_dependencies(entity: str, values: list[str]) -> None:
+    """Reject includes that need another include that isn't there.
+
+    The server answers 400 for most of these, and silently ignores the
+    relationship-level switches; either way the caller didn't get what they
+    asked for.
+    """
+    given = set(values)
+    for inc, needs in consts.INCLUDE_DEPENDENCIES.get(entity, {}).items():
+        if inc in given and not given & needs:
+            options = " or ".join(repr(n) for n in sorted(needs))
+            raise _fail(f"include {inc!r} for {entity} also needs {options}")
+    levels = given & consts.LEVEL_RELATION_INCLUDES
+    if levels and not given & (
+        consts.RELATION_INCLUDES - consts.LEVEL_RELATION_INCLUDES
+    ):
+        raise _fail(
+            f"{', '.join(sorted(levels))} only modify relationship includes; "
+            "add one such as 'artist-rels' or 'work-rels'"
+        )
 
 
 def _check_filter_values(types: list[str], statuses: list[str]) -> None:

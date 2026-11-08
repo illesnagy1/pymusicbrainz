@@ -99,4 +99,11 @@ The package requires Python 3.12 or later.
     pip install musicbrainz
     ```
 
+Optional extras:
+
+| Extra | Adds |
+|---|---|
+| `musicbrainz[cli]` | The [`musicbrainz` command](cli.md) (Typer and Rich). |
+| `musicbrainz[socks]` | [SOCKS proxy](guide/reliability.md#proxies) support. |
+
 Next: [Getting started](getting-started.md).

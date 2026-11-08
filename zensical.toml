@@ -16,6 +16,7 @@ nav = [
     { "Rate limiting, errors & logging" = "guide/reliability.md" },
   ] },
   { "Command line" = "cli.md" },
+  { "Examples" = "examples.md" },
   { "API reference" = [
     { "Clients" = "reference/client.md" },
     { "Models" = "reference/models.md" },

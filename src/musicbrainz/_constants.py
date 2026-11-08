@@ -490,6 +490,60 @@ BROWSE_INCLUDES: dict[str, frozenset[str]] = {
     "url": RELATION_INCLUDES,
 }
 
+#: Relationship-level switches: they modify ``*-rels`` includes.
+LEVEL_RELATION_INCLUDES: frozenset[str] = frozenset(
+    {"recording-level-rels", "release-group-level-rels", "work-level-rels"}
+)
+
+_ARTIST_CREDIT_BASES = frozenset(
+    {
+        "releases",
+        "recordings",
+        "release-groups",
+        "works",
+        "release-rels",
+        "recording-rels",
+        "release-group-rels",
+    }
+)
+
+#: Includes that only make sense together with another include, per entity:
+#: ``{entity: {include: needs at least one of these}}``. Taken from the server's
+#: own error messages (it answers 400 for these); `discids` follows `media`.
+INCLUDE_DEPENDENCIES: dict[str, dict[str, frozenset[str]]] = {
+    "artist": {
+        "isrcs": frozenset({"recordings"}),
+        "media": frozenset({"releases"}),
+        "discids": frozenset({"releases"}),
+        "various-artists": frozenset({"releases"}),
+        "artist-credits": _ARTIST_CREDIT_BASES,
+    },
+    "label": {
+        "media": frozenset({"releases"}),
+        "discids": frozenset({"releases"}),
+        # The server's list also names works/recordings/release-groups, but
+        # those aren't valid label includes themselves.
+        "artist-credits": frozenset(
+            {"releases", "release-rels", "recording-rels", "release-group-rels"}
+        ),
+    },
+    "recording": {
+        "media": frozenset({"releases"}),
+        "discids": frozenset({"releases"}),
+    },
+    "release": {
+        "isrcs": frozenset({"recordings"}),
+        # Accepted without, but then silently returns nothing extra.
+        "recording-level-rels": frozenset({"recordings"}),
+    },
+    "release-group": {
+        "media": frozenset({"releases"}),
+        "discids": frozenset({"releases"}),
+    },
+}
+INCLUDE_DEPENDENCIES["discid"] = INCLUDE_DEPENDENCIES["release"]
+INCLUDE_DEPENDENCIES["isrc"] = INCLUDE_DEPENDENCIES["recording"]
+
 #: Includes that only work with authentication.
 AUTH_INCLUDES: frozenset[str] = frozenset(
     {"user-tags", "user-ratings", "user-genres", "user-collections"}

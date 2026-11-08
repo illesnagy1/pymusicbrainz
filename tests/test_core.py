@@ -231,3 +231,62 @@ def test_search_fields_cover_every_index() -> None:
     assert set(consts.SEARCH_FIELDS) == set(consts.SEARCH_ENTITIES)
     for entity, fields in consts.SEARCH_FIELDS.items():
         assert "tag" in fields or entity in {"annotation", "cdstub", "place", "url"}
+
+
+# ------------------------------------------------------------- include dependencies
+
+
+@pytest.mark.parametrize(
+    ("entity", "bad", "fixed"),
+    [
+        ("artist", "isrcs", "recordings+isrcs"),
+        ("artist", "media", "releases+media"),
+        ("artist", "discids", "releases+discids"),
+        ("artist", "various-artists", "releases+various-artists"),
+        ("artist", "artist-credits", "release-groups+artist-credits"),
+        ("label", "media", "releases+media"),
+        ("label", "artist-credits", "release-rels+artist-credits"),
+        ("recording", "discids", "releases+discids"),
+        ("release-group", "media", "releases+media"),
+        ("release", "isrcs", "recordings+isrcs"),
+        ("release", "artist-rels+recording-level-rels",
+         "recordings+artist-rels+recording-level-rels"),
+        ("recording", "work-level-rels", "work-rels+work-level-rels"),
+    ],
+)  # fmt: skip
+def test_dependent_includes(entity: str, bad: str, fixed: str) -> None:
+    with pytest.raises(ValidationError, match=r"also needs|only modify"):
+        core.lookup(entity, ARTIST, bad)
+    core.lookup(entity, ARTIST, fixed)
+
+
+def test_dependent_includes_message_names_the_fix() -> None:
+    with pytest.raises(ValidationError) as exc:
+        core.lookup("artist", ARTIST, "isrcs")
+    assert str(exc.value) == "include 'isrcs' for artist also needs 'recordings'"
+
+
+def test_includes_that_apply_directly_need_nothing() -> None:
+    core.lookup("release", ARTIST, "media+discids+artist-credits")
+    core.lookup("recording", ARTIST, "artist-credits+isrcs")
+
+
+def test_dependent_includes_in_browse_and_discid() -> None:
+    with pytest.raises(ValidationError, match="also needs 'recordings'"):
+        core.browse("release", {"artist": ARTIST}, "isrcs")
+    with pytest.raises(ValidationError, match="also needs 'recordings'"):
+        core.lookup_discid("x" * 28, "isrcs")
+    core.lookup_discid("x" * 28, "recordings+isrcs")
+
+
+def test_dependency_suggestions_are_valid_includes() -> None:
+    for entity, rules in consts.INCLUDE_DEPENDENCIES.items():
+        allowed = consts.LOOKUP_INCLUDES[entity]
+        for inc, needs in rules.items():
+            assert inc in allowed, (entity, inc)
+            assert needs <= allowed, (entity, inc, needs - allowed)
+
+
+def test_dependent_includes_skipped_without_validation() -> None:
+    call = Core(validate=False).lookup("artist", ARTIST, "isrcs")
+    assert ("inc", "isrcs") in call.params

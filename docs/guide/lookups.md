@@ -62,6 +62,30 @@ doesn't apply to the entity raises `ValidationError` and lists the allowed
 values. If MusicBrainz adds an include this library doesn't know about yet,
 create the client with `validate=False`.
 
+Some includes only work together with another one. The client checks these
+combinations before sending:
+
+| Entity | Include | Also needs one of |
+|---|---|---|
+| artist | `isrcs` | `recordings` |
+| artist, label, recording, release-group | `media`, `discids` | `releases` |
+| artist | `various-artists` | `releases` |
+| artist | `artist-credits` | `releases`, `recordings`, `release-groups`, `works`, or a `release-rels`/`recording-rels`/`release-group-rels` include |
+| label | `artist-credits` | `releases`, or a `release-rels`/`recording-rels`/`release-group-rels` include |
+| release | `isrcs` | `recordings` |
+| release | `recording-level-rels` | `recordings` |
+| any | `*-level-rels` | a relationship include such as `artist-rels` |
+
+```python
+mb.artists.get(mbid, inc="isrcs")
+# ValidationError: include 'isrcs' for artist also needs 'recordings'
+mb.artists.get(mbid, inc=["recordings", "isrcs"])  # fine
+```
+
+Most of these the server would reject with a 400 anyway; the check fails
+before a rate-limited request is spent. The `*-level-rels` cases matter more:
+the server accepts them but silently returns nothing extra.
+
 ## Filtering included releases
 
 When `releases` or `release-groups` are included, `release_type` and

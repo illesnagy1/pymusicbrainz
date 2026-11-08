@@ -1,7 +1,12 @@
 # Command line
 
-Installing the package adds a `musicbrainz` command. It prints results as
-JSON: pretty-printed in a terminal, plain when piped, for example into `jq`.
+The `musicbrainz` command comes with the `cli` extra:
+
+```sh
+pip install 'musicbrainz[cli]'      # or: uv tool install 'musicbrainz[cli]'
+```
+
+It prints results as JSON: pretty-printed in a terminal, plain when piped, for example into `jq`.
 
 ```sh
 musicbrainz search artist "Daft Punk" --limit 3

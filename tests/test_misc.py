@@ -5,16 +5,20 @@ from __future__ import annotations
 import logging
 import sys
 import time
+from importlib.util import find_spec
 
 import anyio
+import httpx2
 import pytest
 from _support import ARTIST
 from rich.logging import RichHandler
 
 import musicbrainz
 from musicbrainz import (
+    AsyncMusicBrainz,
     AsyncRateLimiter,
     Collection,
+    MusicBrainz,
     Page,
     RateLimiter,
     Recording,
@@ -23,6 +27,7 @@ from musicbrainz import (
     _ratelimit,
     cli,
 )
+from musicbrainz import client as client_module
 from musicbrainz.models import ArtistCredit, credit_string
 from musicbrainz.query import any_of, build_query
 
@@ -160,3 +165,50 @@ def test_tiny_rate_limit_waits_not_logged(caplog: pytest.LogCaptureFixture) -> N
         _ratelimit._log_wait(0.001)  # noqa: SLF001
         _ratelimit._log_wait(0.5)  # noqa: SLF001
     assert [r.getMessage() for r in caplog.records] == ["rate limit: waiting 0.50s"]
+
+
+# ------------------------------------------------------------------ proxy
+
+
+def test_proxy_passed_to_http_client(monkeypatch: pytest.MonkeyPatch) -> None:
+    seen: list[object] = []
+
+    def capture(real: type) -> object:
+        def factory(**kwargs: object) -> object:
+            seen.append(kwargs["proxy"])
+            return real(**kwargs)
+
+        return factory
+
+    monkeypatch.setattr(client_module.httpx2, "Client", capture(httpx2.Client))
+    monkeypatch.setattr(
+        client_module.httpx2, "AsyncClient", capture(httpx2.AsyncClient)
+    )
+    MusicBrainz("A", "1", proxy="http://proxy.example:3128").close()
+    AsyncMusicBrainz("A", "1", proxy="http://proxy.example:8080")
+    MusicBrainz("A", "1").close()
+    assert seen == ["http://proxy.example:3128", "http://proxy.example:8080", None]
+
+
+@pytest.mark.skipif(find_spec("socksio") is not None, reason="socks extra installed")
+def test_socks_without_extra_gives_our_hint() -> None:
+    with pytest.raises(ImportError, match=r"musicbrainz\[socks\]"):
+        MusicBrainz("A", "1", proxy="socks5://proxy.example:1080")
+
+
+def test_other_import_errors_propagate(monkeypatch: pytest.MonkeyPatch) -> None:
+    def broken(**_: object) -> None:
+        raise ImportError("something else")
+
+    monkeypatch.setattr(client_module.httpx2, "Client", broken)
+    with pytest.raises(ImportError, match="something else"):
+        MusicBrainz("A", "1")
+
+
+def test_console_script_without_cli_extra(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delitem(sys.modules, "musicbrainz.cli")  # force a fresh import
+    monkeypatch.setitem(sys.modules, "typer", None)  # as if typer weren't installed
+    with pytest.raises(SystemExit) as exc:
+        musicbrainz.main(["--version"])
+    assert "pip install 'musicbrainz[cli]'" in str(exc.value.code)
+    assert "typer is missing" in str(exc.value.code)

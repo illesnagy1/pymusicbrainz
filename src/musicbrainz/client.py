@@ -143,6 +143,17 @@ class _BearerAuth(httpx2.Auth):
         yield request
 
 
+def _http_client[C: (httpx2.Client, httpx2.AsyncClient)](factory: Callable[[], C]) -> C:
+    """Create the HTTP client, with a useful hint if SOCKS support is missing."""
+    try:
+        return factory()
+    except ImportError as exc:
+        if "socksio" not in str(exc):
+            raise
+        msg = "SOCKS proxies need the socks extra: pip install 'musicbrainz[socks]'"
+        raise ImportError(msg) from exc
+
+
 def _retryable_exc(method: str, exc: Exception) -> bool:
     # Never replay a submission whose request may already have reached the server.
     if method == "GET":
@@ -640,6 +651,7 @@ class MusicBrainz:
         max_retries: int = 3,
         backoff_factor: float = 1.0,
         timeout: float = 30.0,
+        proxy: str | httpx2.Proxy | None = None,
         validate: bool = True,
         transport: httpx2.BaseTransport | None = None,
     ) -> None:
@@ -666,6 +678,10 @@ class MusicBrainz:
                 errors.
             backoff_factor: Base of the exponential back-off, in seconds.
             timeout: Per-request timeout in seconds.
+            proxy: Proxy URL for all requests, e.g. ``"http://proxy:3128"`` or
+                ``"socks5://proxy:1080"`` (SOCKS needs the ``socks`` extra).
+                Without it, the ``HTTP_PROXY``/``HTTPS_PROXY``/``ALL_PROXY``
+                and ``NO_PROXY`` environment variables are used.
             validate: Check includes, filters and search fields client-side
                 before sending.
             transport: Custom `httpx2` transport, e.g. `httpx2.MockTransport`
@@ -689,13 +705,16 @@ class MusicBrainz:
             backoff_factor=backoff_factor,
             validate=validate,
         )
-        http = httpx2.Client(
-            base_url=config.base_url,
-            headers=config.headers,
-            auth=config.auth,
-            timeout=timeout,
-            transport=transport,
-            follow_redirects=True,
+        http = _http_client(
+            lambda: httpx2.Client(
+                base_url=config.base_url,
+                headers=config.headers,
+                auth=config.auth,
+                timeout=timeout,
+                proxy=proxy,
+                transport=transport,
+                follow_redirects=True,
+            )
         )
         limiter = rate_limiter or (RateLimiter(rate_limit) if rate_limit else None)
         self._session = s = _Session(config, limiter, http)
@@ -1250,6 +1269,7 @@ class AsyncMusicBrainz:
         max_retries: int = 3,
         backoff_factor: float = 1.0,
         timeout: float = 30.0,
+        proxy: str | httpx2.Proxy | None = None,
         validate: bool = True,
         transport: httpx2.AsyncBaseTransport | None = None,
     ) -> None:
@@ -1277,6 +1297,10 @@ class AsyncMusicBrainz:
                 errors.
             backoff_factor: Base of the exponential back-off, in seconds.
             timeout: Per-request timeout in seconds.
+            proxy: Proxy URL for all requests, e.g. ``"http://proxy:3128"`` or
+                ``"socks5://proxy:1080"`` (SOCKS needs the ``socks`` extra).
+                Without it, the ``HTTP_PROXY``/``HTTPS_PROXY``/``ALL_PROXY``
+                and ``NO_PROXY`` environment variables are used.
             validate: Check includes, filters and search fields client-side
                 before sending.
             transport: Custom async `httpx2` transport, e.g.
@@ -1300,13 +1324,16 @@ class AsyncMusicBrainz:
             backoff_factor=backoff_factor,
             validate=validate,
         )
-        http = httpx2.AsyncClient(
-            base_url=config.base_url,
-            headers=config.headers,
-            auth=config.auth,
-            timeout=timeout,
-            transport=transport,
-            follow_redirects=True,
+        http = _http_client(
+            lambda: httpx2.AsyncClient(
+                base_url=config.base_url,
+                headers=config.headers,
+                auth=config.auth,
+                timeout=timeout,
+                proxy=proxy,
+                transport=transport,
+                follow_redirects=True,
+            )
         )
         limiter = rate_limiter or (AsyncRateLimiter(rate_limit) if rate_limit else None)
         self._session = s = _AsyncSession(config, limiter, http)

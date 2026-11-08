@@ -80,6 +80,7 @@ lets most logic be tested without a client at all (`tests/test_core.py`).
 | `query.py` | Lucene query helpers. |
 | `_ratelimit.py` | Sync and async rate limiters. |
 | `cli.py` | The Typer command-line interface. |
+| `examples/` | Runnable example scripts; `tests/test_examples.py` checks they import and run `--help`. |
 | `scripts/record_fixtures.py` | Records the real responses used by the tests. |
 
 ## Documentation
@@ -101,3 +102,8 @@ constructor would be a `@classmethod` with its own `Args:`.
 ```sh
 uv run zensical build   # output in site/
 ```
+
+The docs tools are in their own `docs` dependency group (included in `dev`).
+`.github/workflows/docs.yml` builds the site with just that group and
+publishes it to GitHub Pages on every push to `main`. It needs a one-time
+repository setting: **Settings → Pages → Source: GitHub Actions**.

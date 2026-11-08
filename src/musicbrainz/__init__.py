@@ -15,6 +15,7 @@ Quick start::
 from __future__ import annotations
 
 import logging
+import sys
 
 from . import models, query
 from ._constants import (
@@ -142,7 +143,16 @@ logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 
 def main(argv: list[str] | None = None) -> None:
-    """Console-script entry point (imports the CLI lazily)."""
-    from .cli import main as _main
+    """Console-script entry point (imports the CLI lazily).
 
+    The CLI's dependencies (typer, rich) are the optional ``cli`` extra, so the
+    library itself stays light.
+    """
+    try:
+        from .cli import main as _main
+    except ImportError as exc:
+        sys.exit(
+            f"The musicbrainz command needs the cli extra ({exc.name} is missing):\n"
+            "    pip install 'musicbrainz[cli]'"
+        )
     _main(argv)

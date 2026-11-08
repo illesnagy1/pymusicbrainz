@@ -24,8 +24,13 @@ musicbrainz search artist "Daft Punk" --limit 3
 Requires Python 3.12 or later.
 
 ```sh
-uv add musicbrainz
+uv add musicbrainz            # the library
+uv add 'musicbrainz[cli]'     # plus the musicbrainz command
 ```
+
+Runnable scripts are in [`examples/`](examples/): an artist's discography,
+cover art download, identifying a CD, concurrent ISRC lookups, and collection
+export.
 
 ## Documentation
 

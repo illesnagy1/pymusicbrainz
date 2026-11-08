@@ -27,6 +27,22 @@ b = MusicBrainz("MyApp", "1.0", rate_limiter=limiter)
 `RateLimiter` is thread-safe. Use
 [`AsyncRateLimiter`][musicbrainz.AsyncRateLimiter] for async clients.
 
+## Proxies
+
+By default the client uses the `HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY` and
+`NO_PROXY` environment variables, like most HTTP tools. To set a proxy in code
+instead, pass `proxy=`:
+
+```python
+MusicBrainz("MyApp", "1.0", proxy="http://proxy.example.org:3128")
+MusicBrainz("MyApp", "1.0", proxy="socks5://localhost:1080")
+```
+
+SOCKS proxies need the `socks` extra: `pip install 'musicbrainz[socks]'`.
+The proxy is used for every request, including Cover Art Archive downloads.
+For anything more involved, such as different proxies per host, pass your own
+`httpx2` transport as `transport=`.
+
 ## Retries
 
 These are retried automatically, up to `max_retries` times (default 3):
