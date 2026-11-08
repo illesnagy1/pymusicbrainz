@@ -1,5 +1,7 @@
 """Exception hierarchy."""
 
+from httpx2 import codes
+
 
 class MusicBrainzError(Exception):
     """Base class for all errors raised by this library."""
@@ -66,17 +68,17 @@ def error_for_status(
 ) -> ResponseError:
     cls: type[ResponseError]
     match status_code:
-        case 400:
+        case codes.BAD_REQUEST:
             cls = BadRequestError
-        case 401:
+        case codes.UNAUTHORIZED:
             cls = AuthenticationError
-        case 403:
+        case codes.FORBIDDEN:
             cls = ForbiddenError
-        case 404:
+        case codes.NOT_FOUND:
             cls = NotFoundError
-        case 429 | 503:
+        case codes.TOO_MANY_REQUESTS | codes.SERVICE_UNAVAILABLE:
             cls = RateLimitError
-        case code if code >= 500:
+        case code if codes.is_server_error(code):
             cls = ServerError
         case _:
             cls = ResponseError

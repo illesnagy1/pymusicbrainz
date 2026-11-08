@@ -117,14 +117,22 @@ Submissions send `client=<app>-<version>`. The API forbids hyphens in the versio
 
 ```sh
 musicbrainz search artist "Daft Punk" --limit 3
-musicbrainz lookup release-group 1b022e01-4da6-387b-8658-8678046e4cef --inc releases --type album
+musicbrainz lookup artist 5b11f4ce-a62d-471e-81fc-a69a8278c7da -i aliases,url-rels
+musicbrainz lookup release-group 1b022e01-4da6-387b-8658-8678046e4cef -i releases --type album
 musicbrainz browse release --artist 5b11f4ce-a62d-471e-81fc-a69a8278c7da --status official --all
 musicbrainz isrc USGF19942501
+musicbrainz discid - --toc "<first> <last> <leadout> <offset1> <offset2> ..."
 musicbrainz url https://www.discogs.com/artist/125246
 musicbrainz genres
 ```
 
-Set `MUSICBRAINZ_APP`, `MUSICBRAINZ_CONTACT` and `MUSICBRAINZ_URL` to configure it.
+The CLI is built with Typer; run `musicbrainz --help` or `musicbrainz <command> --help` for every option.
+
+- **Includes:** repeat `-i`/`--inc`, or comma-separate them.
+- **Output:** JSON. It is pretty-printed and colored in a terminal, and plain when piped, for example into `jq`.
+- **Errors:** API and validation errors go to stderr and exit with status 1. Usage errors exit with 2.
+- **Configuration:** `--app`, `--contact` and `--base-url`, or the `MUSICBRAINZ_APP`, `MUSICBRAINZ_CONTACT` and `MUSICBRAINZ_URL` environment variables.
+- **Shell completion:** `musicbrainz --install-completion`.
 
 ## Development
 

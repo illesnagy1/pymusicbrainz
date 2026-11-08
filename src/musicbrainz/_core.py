@@ -4,13 +4,14 @@ No networking happens here; the clients in :mod:`musicbrainz.client` execute the
 :class:`Call` objects built by :class:`Core`.
 """
 
-import html
 import json
 import re
 import xml.etree.ElementTree as ET
 from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass, field
 from typing import Any, Literal
+
+from httpx2 import codes
 
 from . import _constants as consts
 from . import models
@@ -27,9 +28,17 @@ _MBID_RE = re.compile(
 _ISRC_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{3}\d{7}$")
 _ISWC_RE = re.compile(r"^T-?\d{3}\.?\d{3}\.?\d{3}-?\d$")
 _DISCID_RE = re.compile(r"^[A-Za-z0-9._-]{28}$|^-$")
-_XML_TEXT_RE = re.compile(r"<text>(.*?)</text>", re.DOTALL)
+_LIST_SEP_RE = re.compile(r"[+\s,|]+")
+_DTD_RE = re.compile(r"<!(DOCTYPE|ENTITY)", re.IGNORECASE)
 
-RETRY_STATUSES = frozenset({429, 502, 503, 504})
+RETRY_STATUSES = frozenset(
+    {
+        codes.TOO_MANY_REQUESTS,
+        codes.BAD_GATEWAY,
+        codes.SERVICE_UNAVAILABLE,
+        codes.GATEWAY_TIMEOUT,
+    }
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -101,11 +110,11 @@ def check_gtin(barcode: str) -> str:
 
 
 def _as_list(value: str | Iterable[str] | None) -> list[str]:
+    """Split ``"a+b"``, ``"a b"``, ``"a,b"``, ``"a|b"`` or ``["a", "b,c"]``."""
     if value is None:
         return []
-    if isinstance(value, str):
-        return [p for p in re.split(r"[+\s,|]+", value) if p]
-    return [str(v) for v in value]
+    items = [value] if isinstance(value, str) else [str(v) for v in value]
+    return [p for item in items for p in _LIST_SEP_RE.split(item) if p]
 
 
 @dataclass(slots=True)
@@ -479,8 +488,8 @@ class Core:
     def submit_isrcs(self, isrcs: Mapping[str, Iterable[str]]) -> Call[None]:
         root = _metadata()
         lst = ET.SubElement(root, "recording-list")
-        for mbid, codes in isrcs.items():
-            normalized = [normalize_isrc(c) for c in _as_list(codes)]
+        for mbid, isrc_codes in isrcs.items():
+            normalized = [normalize_isrc(c) for c in _as_list(isrc_codes)]
             el = ET.SubElement(lst, "recording", id=check_mbid(mbid))
             isrc_list = ET.SubElement(el, "isrc-list", count=str(len(normalized)))
             for code in normalized:
@@ -561,9 +570,29 @@ def decode_body(call: Call[Any], body: bytes) -> JSON:
     return body.decode("utf-8", errors="replace")
 
 
+def xml_error_texts(text: str) -> list[str]:
+    """The ``<text>`` messages of an ``<error><text>..</text></error>`` body.
+
+    Error bodies never contain a DTD. Refusing any document that declares one
+    rules out entity expansion ("billion laughs") and external entities (XXE)
+    regardless of the expat version Python was built with.
+    """
+    if _DTD_RE.search(text):
+        return []
+    try:
+        root = ET.fromstring(text)  # noqa: S314 - DTDs are rejected above
+    except ET.ParseError:
+        return []
+    return [
+        (el.text or "").strip()
+        for el in root.iter()
+        if el.tag.rpartition("}")[2] == "text"  # ignore any namespace
+    ]
+
+
 def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> None:
     """Raise the appropriate :class:`ResponseError` if ``status`` is not 2xx."""
-    if 200 <= status < 300:
+    if codes.is_success(status):
         return
     message, help_ = reason or "error", None
     text = body.decode("utf-8", errors="replace").strip()
@@ -574,9 +603,7 @@ def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> 
         except ValueError:
             pass
     elif text.startswith("<"):
-        # Error bodies are tiny <error><text>..</text></error> documents; a regex
-        # avoids feeding server-controlled XML to a parser.
-        texts = [html.unescape(t).strip() for t in _XML_TEXT_RE.findall(text)]
+        texts = xml_error_texts(text)
         if texts:
             message, help_ = texts[0], (texts[1] if len(texts) > 1 else None)
     elif text and len(text) < 500:

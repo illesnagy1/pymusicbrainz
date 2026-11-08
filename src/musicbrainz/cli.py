@@ -1,23 +1,25 @@
-"""Small command-line interface printing JSON.
+"""Command-line interface (Typer) printing JSON.
 
 Examples::
 
     musicbrainz search artist "Daft Punk" --limit 3
-    musicbrainz lookup artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56 --inc aliases
+    musicbrainz lookup artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56 -i aliases
     musicbrainz browse release-group --type album --all \\
         --artist 056e4f3e-d505-4dad-8ec1-d04f521cbb56
     musicbrainz isrc GBAYE0601498
     musicbrainz url https://www.discogs.com/artist/1289
 """
 
-import argparse
 import json
-import os
 import sys
 from collections.abc import Callable
-from typing import Any
+from dataclasses import dataclass
+from typing import Annotated, Any, Literal
 
+import typer
 from pydantic import BaseModel
+from rich.console import Console
+from typer.models import OptionInfo
 
 from . import _constants as consts
 from ._core import JSON
@@ -25,6 +27,76 @@ from ._version import __version__
 from .client import MusicBrainz
 from .errors import MusicBrainzError
 from .models import Page
+
+# Literal types give typed choices in --help; tests/test_cli.py keeps them in
+# sync with _constants.
+LookupEntity = Literal[
+    "area",
+    "artist",
+    "collection",
+    "event",
+    "genre",
+    "instrument",
+    "label",
+    "place",
+    "recording",
+    "release",
+    "release-group",
+    "series",
+    "url",
+    "work",
+]
+SearchEntity = Literal[
+    "annotation",
+    "area",
+    "artist",
+    "cdstub",
+    "event",
+    "instrument",
+    "label",
+    "place",
+    "recording",
+    "release",
+    "release-group",
+    "series",
+    "tag",
+    "url",
+    "work",
+]
+BrowseEntity = Literal[
+    "area",
+    "artist",
+    "collection",
+    "event",
+    "genre",
+    "instrument",
+    "label",
+    "place",
+    "recording",
+    "release",
+    "release-group",
+    "series",
+    "url",
+    "work",
+]
+
+app = typer.Typer(
+    name="musicbrainz",
+    help="Query the MusicBrainz API. Results are printed as JSON.",
+    no_args_is_help=True,
+    rich_markup_mode="rich",
+)
+_stderr = Console(stderr=True)
+
+
+@dataclass(slots=True)
+class _Settings:
+    app: str = "musicbrainz-cli"
+    contact: str | None = None
+    base_url: str = consts.DEFAULT_BASE_URL
+
+
+# ------------------------------------------------------------------ helpers
 
 
 def _dump(obj: object) -> JSON:
@@ -43,126 +115,274 @@ def _dump(obj: object) -> JSON:
     return str(obj)
 
 
-def _parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(
-        prog="musicbrainz", description="Query the MusicBrainz API (JSON output)."
-    )
-    p.add_argument("--version", action="version", version=__version__)
-    p.add_argument(
-        "--app", default=os.environ.get("MUSICBRAINZ_APP", "musicbrainz-cli")
-    )
-    p.add_argument("--contact", default=os.environ.get("MUSICBRAINZ_CONTACT"))
-    p.add_argument(
-        "--base-url", default=os.environ.get("MUSICBRAINZ_URL", consts.DEFAULT_BASE_URL)
-    )
-    sub = p.add_subparsers(dest="command", required=True)
-
-    lk = sub.add_parser("lookup", help="look up an entity by MBID")
-    lk.add_argument("entity", choices=[*consts.CORE_ENTITIES, "collection"])
-    lk.add_argument("mbid")
-    lk.add_argument("--inc", nargs="*")
-    lk.add_argument("--type", dest="release_type")
-    lk.add_argument("--status", dest="release_status")
-
-    se = sub.add_parser("search", help="search an entity index (Lucene syntax)")
-    se.add_argument("entity", choices=consts.SEARCH_ENTITIES)
-    se.add_argument("query")
-    se.add_argument("--limit", type=int, default=10)
-    se.add_argument("--offset", type=int)
-    se.add_argument("--dismax", action="store_true")
-
-    br = sub.add_parser("browse", help="browse entities linked to another entity")
-    br.add_argument("entity", choices=sorted(consts.BROWSE_LINKS))
-    for link in sorted(set().union(*consts.BROWSE_LINKS.values())):
-        br.add_argument(
-            f"--{link}", dest=f"link_{link.replace('-', '_')}", metavar="ID"
-        )
-    br.add_argument("--inc", nargs="*")
-    br.add_argument("--type", dest="release_type")
-    br.add_argument("--status", dest="release_status")
-    br.add_argument("--limit", type=int)
-    br.add_argument("--offset", type=int)
-    br.add_argument("--all", action="store_true", help="fetch every page")
-
-    for name, helptext in (("isrc", "recordings by ISRC"), ("iswc", "works by ISWC")):
-        sp = sub.add_parser(name, help=helptext)
-        sp.add_argument("code")
-        sp.add_argument("--inc", nargs="*")
-
-    dc = sub.add_parser("discid", help="releases by disc ID")
-    dc.add_argument("discid")
-    dc.add_argument("--toc")
-    dc.add_argument("--inc", nargs="*")
-
-    ur = sub.add_parser("url", help="look up URL entities by URL text")
-    ur.add_argument("urls", nargs="+")
-    ur.add_argument("--inc", nargs="*")
-
-    sub.add_parser("genres", help="list all genre names")
-    return p
+def _emit(result: object) -> None:
+    data = _dump(result)
+    if sys.stdout.isatty():
+        Console().print_json(data=data, ensure_ascii=False)
+    else:  # plain, unwrapped JSON for pipes (jq etc.)
+        json.dump(data, sys.stdout, indent=2, ensure_ascii=False)
+        sys.stdout.write("\n")
 
 
-def _lookup(mb: MusicBrainz, args: argparse.Namespace) -> object:
-    return mb.resource(args.entity).get(
-        args.mbid,
-        inc=args.inc,
-        release_type=args.release_type,
-        release_status=args.release_status,
-    )
+def _run(ctx: typer.Context, action: Callable[[MusicBrainz], object]) -> None:
+    """Run ``action`` with a client and print its result as JSON.
 
-
-def _search(mb: MusicBrainz, args: argparse.Namespace) -> object:
-    resource = getattr(mb, consts.PLURALS[args.entity].replace("-", "_"))
-    return resource.search(
-        args.query, limit=args.limit, offset=args.offset, dismax=args.dismax
-    )
-
-
-def _browse(mb: MusicBrainz, args: argparse.Namespace) -> object:
-    # The linked entity is a dynamic keyword (artist=..., label=...), so the
-    # arguments are assembled as a plain dict.
-    kwargs: dict[str, Any] = {
-        k.removeprefix("link_"): v
-        for k, v in vars(args).items()
-        if k.startswith("link_") and v
-    }
-    kwargs |= {
-        "inc": args.inc,
-        "release_type": args.release_type,
-        "release_status": args.release_status,
-    }
-    resource = mb.resource(args.entity)
-    if args.all:
-        return list(resource.iter_browse(**kwargs))
-    return resource.browse(limit=args.limit, offset=args.offset, **kwargs)
-
-
-COMMANDS: dict[str, Callable[[MusicBrainz, argparse.Namespace], object]] = {
-    "lookup": _lookup,
-    "search": _search,
-    "browse": _browse,
-    "isrc": lambda mb, a: mb.lookup_isrc(a.code, inc=a.inc),
-    "iswc": lambda mb, a: mb.lookup_iswc(a.code, inc=a.inc),
-    "discid": lambda mb, a: mb.lookup_discid(a.discid, toc=a.toc, inc=a.inc),
-    "url": lambda mb, a: mb.urls.by_resources(a.urls, inc=a.inc),
-    "genres": lambda mb, _: mb.genres.names(),
-}
-
-
-def main(argv: list[str] | None = None) -> int:
-    args = _parser().parse_args(argv)
+    API errors are printed to stderr and exit with status 1.
+    """
+    settings = ctx.ensure_object(_Settings)
     try:
         with MusicBrainz(
-            args.app, __version__, args.contact, base_url=args.base_url
+            settings.app, __version__, settings.contact, base_url=settings.base_url
         ) as mb:
-            result = COMMANDS[args.command](mb, args)
+            result = action(mb)
     except MusicBrainzError as exc:
-        print(f"error: {exc}", file=sys.stderr)
-        return 1
-    json.dump(_dump(result), sys.stdout, indent=2, ensure_ascii=False)
-    print()
-    return 0
+        _stderr.print(f"[bold red]error:[/] {exc}", highlight=False)
+        raise typer.Exit(1) from exc
+    _emit(result)
+
+
+def _show_version(value: bool) -> None:
+    if value:
+        typer.echo(__version__)
+        raise typer.Exit
+
+
+# ------------------------------------------------------------------ options
+
+Inc = Annotated[
+    list[str] | None,
+    typer.Option(
+        "--inc",
+        "-i",
+        help="Include; repeat or comma-separate: [cyan]-i aliases,url-rels[/]",
+    ),
+]
+ReleaseType = Annotated[
+    str | None,
+    typer.Option("--type", help="Release (group) type filter, e.g. album or album|ep"),
+]
+ReleaseStatus = Annotated[
+    str | None,
+    typer.Option("--status", help="Release status filter, e.g. official"),
+]
+Limit = Annotated[int | None, typer.Option(min=1, max=consts.MAX_LIMIT)]
+Offset = Annotated[int | None, typer.Option(min=0)]
+
+
+def _link(name: str) -> OptionInfo:
+    metavars = {"editor": "NAME", "resource": "URL"}
+    return typer.Option(
+        f"--{name}",
+        metavar=metavars.get(name, "MBID"),
+        help=f"Browse by {name}",
+        rich_help_panel="Linked entity (exactly one)",
+    )
+
+
+# ------------------------------------------------------------------ commands
+
+
+@app.callback()
+def _main(
+    ctx: typer.Context,
+    app_name: Annotated[
+        str,
+        typer.Option(
+            "--app", envvar="MUSICBRAINZ_APP", help="Application name for User-Agent"
+        ),
+    ] = "musicbrainz-cli",
+    contact: Annotated[
+        str | None,
+        typer.Option(
+            envvar="MUSICBRAINZ_CONTACT", help="Contact URL/e-mail for User-Agent"
+        ),
+    ] = None,
+    base_url: Annotated[
+        str, typer.Option(envvar="MUSICBRAINZ_URL", help="API root, e.g. a mirror")
+    ] = consts.DEFAULT_BASE_URL,
+    _version: Annotated[
+        bool,
+        typer.Option(
+            "--version",
+            callback=_show_version,
+            is_eager=True,
+            help="Show the version and exit.",
+        ),
+    ] = False,
+) -> None:
+    ctx.obj = _Settings(app=app_name, contact=contact, base_url=base_url)
+
+
+@app.command()
+def lookup(
+    ctx: typer.Context,
+    entity: Annotated[LookupEntity, typer.Argument(help="Entity type")],
+    mbid: Annotated[str, typer.Argument(help="MBID of the entity")],
+    inc: Inc = None,
+    release_type: ReleaseType = None,
+    release_status: ReleaseStatus = None,
+) -> None:
+    """Look up an entity by MBID."""
+    _run(
+        ctx,
+        lambda mb: mb.resource(entity).get(
+            mbid, inc=inc, release_type=release_type, release_status=release_status
+        ),
+    )
+
+
+@app.command()
+def search(
+    ctx: typer.Context,
+    entity: Annotated[SearchEntity, typer.Argument(help="Index to search")],
+    query: Annotated[str, typer.Argument(help="Lucene query")],
+    limit: Annotated[int, typer.Option(min=1, max=consts.MAX_LIMIT)] = 10,
+    offset: Offset = None,
+    dismax: Annotated[
+        bool, typer.Option(help="Use the dismax parser (escapes special chars)")
+    ] = False,
+) -> None:
+    """Search an entity index (Lucene syntax)."""
+    attr = consts.PLURALS[entity].replace("-", "_")
+    _run(
+        ctx,
+        lambda mb: getattr(mb, attr).search(
+            query, limit=limit, offset=offset, dismax=dismax
+        ),
+    )
+
+
+@app.command()
+def browse(
+    ctx: typer.Context,
+    entity: Annotated[BrowseEntity, typer.Argument(help="Entity type to list")],
+    area: Annotated[str | None, _link("area")] = None,
+    artist: Annotated[str | None, _link("artist")] = None,
+    collection: Annotated[str | None, _link("collection")] = None,
+    editor: Annotated[str | None, _link("editor")] = None,
+    event: Annotated[str | None, _link("event")] = None,
+    label: Annotated[str | None, _link("label")] = None,
+    place: Annotated[str | None, _link("place")] = None,
+    recording: Annotated[str | None, _link("recording")] = None,
+    release: Annotated[str | None, _link("release")] = None,
+    release_group: Annotated[str | None, _link("release-group")] = None,
+    resource: Annotated[str | None, _link("resource")] = None,
+    track: Annotated[str | None, _link("track")] = None,
+    track_artist: Annotated[str | None, _link("track_artist")] = None,
+    work: Annotated[str | None, _link("work")] = None,
+    inc: Inc = None,
+    release_type: ReleaseType = None,
+    release_status: ReleaseStatus = None,
+    limit: Limit = None,
+    offset: Offset = None,
+    fetch_all: Annotated[
+        bool, typer.Option("--all", help="Fetch every page (ignores --limit/--offset)")
+    ] = False,
+) -> None:
+    """Browse entities linked to another entity."""
+    links = {
+        "area": area,
+        "artist": artist,
+        "collection": collection,
+        "editor": editor,
+        "event": event,
+        "label": label,
+        "place": place,
+        "recording": recording,
+        "release": release,
+        "release_group": release_group,
+        "resource": resource,
+        "track": track,
+        "track_artist": track_artist,
+        "work": work,
+    }
+    # The linked entity is a dynamic keyword (artist=..., label=...), so the
+    # arguments are assembled as a plain dict.
+    kwargs: dict[str, Any] = {k: v for k, v in links.items() if v is not None}
+    kwargs |= {
+        "inc": inc,
+        "release_type": release_type,
+        "release_status": release_status,
+    }
+
+    def action(mb: MusicBrainz) -> object:
+        res = mb.resource(entity)
+        if fetch_all:
+            return list(res.iter_browse(**kwargs))
+        return res.browse(limit=limit, offset=offset, **kwargs)
+
+    _run(ctx, action)
+
+
+@app.command()
+def isrc(
+    ctx: typer.Context,
+    code: Annotated[str, typer.Argument(help="ISRC, e.g. USGF19942501")],
+    inc: Inc = None,
+) -> None:
+    """Recordings with an ISRC."""
+    _run(ctx, lambda mb: mb.lookup_isrc(code, inc=inc))
+
+
+@app.command()
+def iswc(
+    ctx: typer.Context,
+    code: Annotated[str, typer.Argument(help="ISWC, e.g. T-070.243.691-6")],
+    inc: Inc = None,
+) -> None:
+    """Works with an ISWC."""
+    _run(ctx, lambda mb: mb.lookup_iswc(code, inc=inc))
+
+
+@app.command()
+def discid(
+    ctx: typer.Context,
+    disc_id: Annotated[
+        str, typer.Argument(metavar="DISCID", help="Disc ID, or - with --toc")
+    ],
+    toc: Annotated[
+        str | None,
+        typer.Option(help="TOC for fuzzy matching, e.g. '1 12 267257 150 ...'"),
+    ] = None,
+    inc: Inc = None,
+    cdstubs: Annotated[bool, typer.Option(help="Return CD stubs")] = True,
+    all_formats: Annotated[
+        bool, typer.Option("--all-formats", help="Fuzzy-match all media formats")
+    ] = False,
+) -> None:
+    """Releases (or a CD stub) for a disc ID."""
+    _run(
+        ctx,
+        lambda mb: mb.lookup_discid(
+            disc_id,
+            toc=toc,
+            inc=inc,
+            cdstubs=cdstubs,
+            all_media_formats=all_formats,
+        ),
+    )
+
+
+@app.command()
+def url(
+    ctx: typer.Context,
+    urls: Annotated[list[str], typer.Argument(help="One or more URLs")],
+    inc: Inc = None,
+) -> None:
+    """Look up URL entities by URL text (unknown URLs are skipped)."""
+    _run(ctx, lambda mb: mb.urls.by_resources(urls, inc=inc))
+
+
+@app.command()
+def genres(ctx: typer.Context) -> None:
+    """List all genre names."""
+    _run(ctx, lambda mb: mb.genres.names())
+
+
+def main(argv: list[str] | None = None) -> None:
+    """Console-script entry point."""
+    app(args=argv, prog_name="musicbrainz")
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

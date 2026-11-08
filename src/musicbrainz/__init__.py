@@ -126,7 +126,8 @@ __all__ = [
 ]
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None) -> None:
+    """Console-script entry point (imports the CLI lazily)."""
     from .cli import main as _main
 
-    return _main(argv)
+    _main(argv)

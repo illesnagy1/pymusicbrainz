@@ -4,6 +4,7 @@ from urllib.parse import parse_qs, unquote
 import anyio
 import httpx2
 import pytest
+from httpx2 import codes
 
 from musicbrainz import (
     AsyncMusicBrainz,
@@ -19,7 +20,12 @@ from musicbrainz import (
     build_query,
     escape,
 )
-from musicbrainz._core import check_gtin, normalize_isrc, normalize_iswc
+from musicbrainz._core import (
+    check_gtin,
+    normalize_isrc,
+    normalize_iswc,
+    xml_error_texts,
+)
 
 ARTIST = "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
 RELEASE = "a4864e94-6d75-4ade-bc93-0dabf3521453"
@@ -83,7 +89,7 @@ def make(
 
 
 def ok(data: object) -> httpx2.Response:
-    return httpx2.Response(200, json=data)
+    return httpx2.Response(codes.OK, json=data)
 
 
 # ------------------------------------------------------------------ lookups
@@ -459,7 +465,7 @@ def test_url_by_resources() -> None:
         ok(
             {"url-count": 1, "url-offset": 0, "urls": [{"id": ARTIST, "resource": url}]}
         ),
-        httpx2.Response(404, json={"error": "Not Found"}),
+        httpx2.Response(codes.NOT_FOUND, json={"error": "Not Found"}),
     )
     with make(rec) as mb:
         assert mb.urls.by_resource(url, inc="artist-rels").resource == url
@@ -479,7 +485,7 @@ def test_genres() -> None:
                 "genres": [{"id": "g", "name": "rock"}],
             }
         ),
-        httpx2.Response(200, text="rock\npop\n"),
+        httpx2.Response(codes.OK, text="rock\npop\n"),
     )
     with make(rec) as mb:
         assert mb.genres.all(limit=1).count == 2
@@ -493,9 +499,11 @@ def test_genres() -> None:
 
 def test_error_mapping() -> None:
     rec = Recorder(
-        httpx2.Response(404, json={"error": "Not Found", "help": "see docs"}),
         httpx2.Response(
-            400,
+            codes.NOT_FOUND, json={"error": "Not Found", "help": "see docs"}
+        ),
+        httpx2.Response(
+            codes.BAD_REQUEST,
             text="<?xml version='1.0'?>"
             "<error><text>Invalid inc</text><text>help!</text></error>",
         ),
@@ -503,7 +511,7 @@ def test_error_mapping() -> None:
     with make(rec) as mb:
         with pytest.raises(NotFoundError) as e:
             mb.artists.get(ARTIST)
-        assert e.value.status_code == 404
+        assert e.value.status_code == codes.NOT_FOUND
         assert e.value.help == "see docs"
         with pytest.raises(BadRequestError, match="Invalid inc"):
             mb.artists.get(ARTIST)
@@ -511,7 +519,7 @@ def test_error_mapping() -> None:
 
 def test_retries_on_503_then_succeeds() -> None:
     rec = Recorder(
-        httpx2.Response(503, headers={"Retry-After": "0"}),
+        httpx2.Response(codes.SERVICE_UNAVAILABLE, headers={"Retry-After": "0"}),
         ok({"id": ARTIST, "name": "x"}),
     )
     with make(rec) as mb:
@@ -520,7 +528,7 @@ def test_retries_on_503_then_succeeds() -> None:
 
 
 def test_retries_exhausted() -> None:
-    rec = Recorder(httpx2.Response(503))
+    rec = Recorder(httpx2.Response(codes.SERVICE_UNAVAILABLE))
     with make(rec, max_retries=2) as mb, pytest.raises(RateLimitError):
         mb.artists.get(ARTIST)
     assert len(rec.requests) == 3
@@ -536,7 +544,9 @@ def test_network_errors() -> None:
 
 
 def test_post_not_retried_after_read_error() -> None:
-    rec = Recorder(httpx2.ReadTimeout("slow"), httpx2.Response(200, text="<metadata/>"))
+    rec = Recorder(
+        httpx2.ReadTimeout("slow"), httpx2.Response(codes.OK, text="<metadata/>")
+    )
     with make(rec, oauth_token="tok") as mb, pytest.raises(NetworkError):
         mb.submit_ratings("artist", {ARTIST: 80})
     assert len(rec.requests) == 1
@@ -575,7 +585,7 @@ def test_submissions_require_auth() -> None:
 def test_submit_tags_xml() -> None:
     rec = Recorder(
         httpx2.Response(
-            200, text="<metadata><message><text>OK</text></message></metadata>"
+            codes.OK, text="<metadata><message><text>OK</text></message></metadata>"
         )
     )
     with make(rec, username="me", password="token") as mb:
@@ -595,7 +605,7 @@ def test_submit_tags_xml() -> None:
 
 
 def test_submit_ratings_barcodes_isrcs() -> None:
-    rec = Recorder(httpx2.Response(200, text="<metadata/>"))
+    rec = Recorder(httpx2.Response(codes.OK, text="<metadata/>"))
     with make(rec, oauth_token="tok") as mb:
         mb.submit_ratings("recording", {ARTIST: 60})
         mb.submit_barcodes({RELEASE: "4006381333931"})
@@ -625,7 +635,7 @@ def test_submission_needs_hyphenless_version() -> None:
 
 
 def test_collection_add_batches() -> None:
-    rec = Recorder(httpx2.Response(200, text="<metadata/>"))
+    rec = Recorder(httpx2.Response(codes.OK, text="<metadata/>"))
     ids = [f"00000000-0000-0000-0000-{i:012d}" for i in range(401)]
     with make(rec, oauth_token="t") as mb:
         mb.collections.add(COLL, "release", ids)
@@ -696,3 +706,52 @@ def test_async_client() -> None:
                 await mb.artists.get("bad")
 
     anyio.run(main)
+
+
+def test_includes_split_inside_lists() -> None:
+    rec = Recorder(ok({"id": ARTIST}))
+    with make(rec) as mb:
+        mb.artists.get(ARTIST, inc=["aliases", "url-rels,tags"])
+        mb.artists.get(ARTIST, inc="aliases+url-rels tags")
+    assert rec.params(0)["inc"] == rec.params(1)["inc"] == ["aliases+url-rels+tags"]
+
+
+BILLION_LAUGHS = (
+    '<?xml version="1.0"?><!DOCTYPE error [<!ENTITY a "aaaaaaaaaa">'
+    + "".join(f'<!ENTITY {chr(98 + i)} "{f"&{chr(97 + i)};" * 10}">' for i in range(8))
+    + "]><error><text>&i;</text></error>"
+)
+XXE = (
+    '<?xml version="1.0"?><!DOCTYPE error [<!ENTITY x SYSTEM "file:///etc/passwd">]>'
+    "<error><text>&x;</text></error>"
+)
+
+
+@pytest.mark.parametrize(
+    ("body", "expected"),
+    [
+        ("<error><text>Invalid inc</text><text>help</text></error>",
+         ["Invalid inc", "help"]),
+        ('<?xml version="1.0" encoding="UTF-8"?>'
+         "<error><text> a &amp; b </text></error>",
+         ["a & b"]),
+        ('<error xmlns="http://musicbrainz.org/ns/mmd-2.0#"><text lang="en">ns</text>'
+         "<context>not a message</context></error>",
+         ["ns"]),
+        ("<error><text><![CDATA[<raw>]]></text></error>", ["<raw>"]),
+        ("<error><text>unclosed</error>", []),
+        (BILLION_LAUGHS, []),
+        (XXE, []),
+        ("<!doctype error><error><text>x</text></error>", []),
+    ],
+)  # fmt: skip
+def test_xml_error_texts(body: str, expected: list[str]) -> None:
+    assert xml_error_texts(body) == expected
+
+
+@pytest.mark.parametrize("body", [BILLION_LAUGHS, XXE])
+def test_hostile_xml_error_body_falls_back_to_reason(body: str) -> None:
+    rec = Recorder(httpx2.Response(codes.BAD_REQUEST, text=body))
+    with make(rec) as mb, pytest.raises(BadRequestError) as e:
+        mb.artists.get(ARTIST)
+    assert e.value.message == "Bad Request"
