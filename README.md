@@ -1,5 +1,16 @@
 # pymusicbrainz
 
+[![PyPI](https://img.shields.io/pypi/v/pymusicbrainz)](https://pypi.org/project/pymusicbrainz/)
+[![Python](https://img.shields.io/pypi/pyversions/pymusicbrainz?logo=python&logoColor=white)](https://pypi.org/project/pymusicbrainz/)
+[![License](https://img.shields.io/github/license/illesnagy1/pymusicbrainz)](https://github.com/illesnagy1/pymusicbrainz/blob/main/LICENSE)
+[![Tests](https://img.shields.io/github/actions/workflow/status/illesnagy1/pymusicbrainz/release.yml?branch=main&label=tests)](https://github.com/illesnagy1/pymusicbrainz/actions/workflows/release.yml)
+[![MusicBrainz API](https://img.shields.io/github/actions/workflow/status/illesnagy1/pymusicbrainz/api-check.yml?branch=main&label=MusicBrainz%20API)](https://github.com/illesnagy1/pymusicbrainz/actions/workflows/api-check.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/illesnagy1/pymusicbrainz/docs.yml?branch=main&label=docs)](https://illesnagy1.github.io/pymusicbrainz/)
+
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+
 A typed Python client for the
 [MusicBrainz WS/2 API](https://musicbrainz.org/doc/MusicBrainz_API) and the
 [Cover Art Archive](https://coverartarchive.org/), with sync and async clients,
