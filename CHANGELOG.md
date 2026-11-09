@@ -4,6 +4,13 @@ All notable changes, generated from the commit history. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0](https://github.com/illesnagy1/pymusicbrainz/releases/tag/v0.2.0) - 2026-11-09
+
+### Added
+
+- Simple and more roboust ruff config ([bb251b6](https://github.com/illesnagy1/pymusicbrainz/commit/bb251b6830c68607ba85eb7d18862a2507f486f7))
+- Weekly api live test workflow ([a05ab59](https://github.com/illesnagy1/pymusicbrainz/commit/a05ab5925eed2c7126d62f52de77c3a9e32b8613))
+- Readme badges ([e718da7](https://github.com/illesnagy1/pymusicbrainz/commit/e718da7260f9d3ddef318da9a2cf6bc68d64406a))
 ## [0.1.0](https://github.com/illesnagy1/pymusicbrainz/releases/tag/v0.1.0) - 2026-11-09
 
 ### Added
