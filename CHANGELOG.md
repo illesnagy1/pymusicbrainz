@@ -4,7 +4,7 @@ All notable changes, generated from the commit history. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.0](https://github.com/illesnagy1/pymusicbrainz/releases/tag/v0.1.0) - 2026-11-09
 
 ### Added
 
@@ -15,6 +15,7 @@ All notable changes, generated from the commit history. The format follows
 - Documentation ([141097e](https://github.com/illesnagy1/pymusicbrainz/commit/141097e62c10c1f7b738eb74c976796efacc68ff))
 - Cover art archive functionality ([eebc8ba](https://github.com/illesnagy1/pymusicbrainz/commit/eebc8baf50852dac9e41efbe8e3f13f9855ec95c))
 - Examples, license, socks proxy support ([87639cf](https://github.com/illesnagy1/pymusicbrainz/commit/87639cfc5fe1b6e0ad87f205f9093d4429c98163))
+- Simple cliff config ([2c97ff3](https://github.com/illesnagy1/pymusicbrainz/commit/2c97ff3d1d2b0ee5739486fb22c699b24fb0c186))
 
 ### Changed
 
@@ -23,3 +24,4 @@ All notable changes, generated from the commit history. The format follows
 ### Fixed
 
 - Docs action ([4a6364b](https://github.com/illesnagy1/pymusicbrainz/commit/4a6364be774a8fea13e3bb59bae665bc90f0c438))
+- **cli:** Detach the -v log handler when the command ends ([0140269](https://github.com/illesnagy1/pymusicbrainz/commit/014026903def3893f765ddffd7cf0ffa5071cfc8))
