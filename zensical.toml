@@ -29,6 +29,7 @@ nav = [
     { "Constants" = "reference/constants.md" },
   ] },
   { "Development" = "development.md" },
+  { "Changelog" = "changelog.md" },
 ]
 
 [project.theme]
@@ -87,6 +88,9 @@ pymdownx.inlinehilite = {}
 pymdownx.keys = {}
 pymdownx.magiclink = {}
 pymdownx.smartsymbols = {}
+# `--8<-- "CHANGELOG.md"`: embed root files instead of duplicating them.
+pymdownx.snippets.base_path = ["."]
+pymdownx.snippets.check_paths = true
 pymdownx.superfences.custom_fences = [
   { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
 ]

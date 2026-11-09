@@ -1,0 +1,143 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  GIT_CLIFF: git-cliff@2.14.2
+jobs:
+  validate:
+    uses: ./.github/workflows/tests.yml
+    permissions:
+      contents: read
+  plan:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      action: ${{ steps.decide.outputs.action }}
+      version: ${{ steps.decide.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      - name: Decide between tagging and the release pull request
+        id: decide
+        run: |
+          next=$(uvx "$GIT_CLIFF" --bumped-version)
+          version="v$(sed -n 's/^version = "\(.*\)"$/\1/p' pyproject.toml | head -n 1)"
+          current=$(git describe --tags --abbrev=0 --match 'v[0-9]*' 2>/dev/null || true)
+          subject=$(git log -1 --format=%s)
+          if [[ "$subject" == "chore(release): ${version}"* ]] &&
+            ! git rev-parse -q --verify "refs/tags/${version}" >/dev/null; then
+            echo "action=tag" >> "$GITHUB_OUTPUT"
+            echo "version=${version}" >> "$GITHUB_OUTPUT"
+          elif [[ "$next" != "$current" ]]; then
+            echo "action=pr" >> "$GITHUB_OUTPUT"
+            echo "version=${next}" >> "$GITHUB_OUTPUT"
+          else
+            echo "action=none" >> "$GITHUB_OUTPUT"
+            echo "::notice::No commits since ${current} warrant a release."
+          fi
+  tag:
+    needs: plan
+    if: needs.plan.outputs.action == 'tag'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write # push the tag
+      actions: write # dispatch publish.yml
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Create and push the release tag
+        env:
+          VERSION: ${{ needs.plan.outputs.version }}
+          TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git tag -a "${VERSION}" -m "Release ${VERSION}"
+          git push "https://x-access-token:${TOKEN}@github.com/${REPOSITORY}.git" "refs/tags/${VERSION}"
+      - name: Start publishing the tag
+        env:
+          VERSION: ${{ needs.plan.outputs.version }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run publish.yml --ref "${VERSION}" -f index=pypi
+  release-pr:
+    needs: plan
+    if: needs.plan.outputs.action == 'pr' || needs.plan.outputs.action == 'none'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # push release/next
+      pull-requests: write # open, edit or close the release pull request
+      actions: write # dispatch tests.yml for it
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+      - name: Install uv
+        if: needs.plan.outputs.action == 'pr'
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      - name: Update the release branch and pull request
+        if: needs.plan.outputs.action == 'pr'
+        env:
+          VERSION: ${{ needs.plan.outputs.version }}
+          TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git switch -C release/next
+          # The version in the tagged tree: the wheel and sdist built from the
+          # tag carry it, and uv.lock records it too.
+          uv version --no-sync "${VERSION#v}"
+          uvx "$GIT_CLIFF" --bump --output CHANGELOG.md
+          uvx "$GIT_CLIFF" --bump --unreleased --strip all --output "$RUNNER_TEMP/notes.md"
+          git add pyproject.toml uv.lock CHANGELOG.md
+          git commit -m "chore(release): ${VERSION}"
+          git push --force "https://x-access-token:${TOKEN}@github.com/${REPOSITORY}.git" HEAD:refs/heads/release/next
+          title="chore(release): ${VERSION}"
+          pr=$(gh pr list --repo "$REPOSITORY" --head release/next --base main --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$pr" ]]; then
+            gh pr edit "$pr" --repo "$REPOSITORY" --title "$title" --body-file "$RUNNER_TEMP/notes.md"
+          else
+            gh pr create --repo "$REPOSITORY" --base main --head release/next --title "$title" --body-file "$RUNNER_TEMP/notes.md"
+          fi
+          # Its checks: a push with GITHUB_TOKEN starts no pull_request run.
+          gh workflow run tests.yml --repo "$REPOSITORY" --ref release/next
+      - name: Close the release pull request
+        if: needs.plan.outputs.action == 'none'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          pr=$(gh pr list --repo "$REPOSITORY" --head release/next --base main --state open --json number --jq '.[0].number // empty')
+          if [[ -n "$pr" ]]; then
+            gh pr close "$pr" --repo "$REPOSITORY" --delete-branch --comment "Nothing left to release."
+          fi

@@ -1,0 +1,32 @@
+name: PR title
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+defaults:
+  run:
+    shell: bash
+permissions:
+  contents: read
+concurrency:
+  group: pr-title-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  pr-title:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check the title is a conventional commit
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          types='feat|fix|security|perf|refactor|deps|build|revert|docs|test|ci|chore|style'
+          if [[ ! "$PR_TITLE" =~ ^(${types})(\([a-z0-9._/-]+\))?!?:\ [^[:space:]] ]]; then
+            echo "::error::The pull request title becomes the squash commit on main, so it must be a conventional commit, e.g. 'feat: add a cover art CLI' or 'fix(search)!: drop the query argument'. Allowed types: ${types//|/, }."
+            exit 1
+          fi

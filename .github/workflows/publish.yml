@@ -1,0 +1,141 @@
+name: Publish
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      index:
+        description: Where to upload
+        type: choice
+        options:
+          - testpypi
+          - pypi
+        default: testpypi
+defaults:
+  run:
+    shell: bash
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  # A tag push always means PyPI; a manual run says where.
+  INDEX: ${{ github.event_name == 'push' && 'pypi' || inputs.index }}
+  GIT_CLIFF: git-cliff@2.14.2
+jobs:
+  validate:
+    uses: ./.github/workflows/tests.yml
+    permissions:
+      contents: read
+  build:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    outputs:
+      index: ${{ env.INDEX }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      # The release pull request wrote the version into the tagged tree; a tag
+      # on the wrong commit would publish a mislabelled build.
+      - name: Check the tag matches the project version
+        if: env.INDEX == 'pypi'
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if [[ "$REF_TYPE" != tag ]]; then
+            echo "::error::PyPI releases come from a vX.Y.Z tag, not from ${TAG}."
+            exit 1
+          fi
+          version="v$(uv version --short)"
+          if [[ "$version" != "$TAG" ]]; then
+            echo "::error::Tag ${TAG} does not match the project version ${version}."
+            exit 1
+          fi
+      - name: Build the wheel and sdist
+        run: uv build
+      - name: Upload the distributions
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+  github-release:
+    needs: build
+    if: needs.build.outputs.index == 'pypi'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # create the release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+      - name: Install uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      - name: Generate the release notes
+        run: uvx "$GIT_CLIFF" --latest --strip all --output release-notes.md
+      - name: Download the distributions
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "${TAG}" --verify-tag --title "${TAG}" --notes-file release-notes.md dist/*
+  pypi:
+    needs: build
+    if: needs.build.outputs.index == 'pypi'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pymusicbrainz
+    permissions:
+      id-token: write # trusted publishing
+    steps:
+      - name: Download the distributions
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+  testpypi:
+    needs: build
+    if: needs.build.outputs.index == 'testpypi'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/pymusicbrainz
+    permissions:
+      id-token: write # trusted publishing
+    steps:
+      - name: Download the distributions
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          # TestPyPI never accepts the same version twice; re-runs of an
+          # unchanged version skip instead of failing.
+          skip-existing: true

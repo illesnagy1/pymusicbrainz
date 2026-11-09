@@ -107,3 +107,59 @@ The docs tools are in their own `docs` dependency group (included in `dev`).
 `.github/workflows/docs.yml` builds the site with just that group and
 publishes it to GitHub Pages on every push to `main`. It needs a one-time
 repository setting: **Settings → Pages → Source: GitHub Actions**.
+
+## Contributing
+
+Changes land on `main` through pull requests, which are **squash-merged**: the
+pull request title becomes the commit message on `main`, and from there the
+changelog entry and the version bump. So the title must be a [conventional
+commit](https://www.conventionalcommits.org/), which `pr-title.yml` checks:
+
+| Title | Changelog section | Version bump |
+|---|---|---|
+| `feat: add a cover art CLI` | Added | minor |
+| `fix(search): handle empty pages` | Fixed | patch |
+| `perf: …`, `refactor: …`, `security: …`, `deps: …`, `build: …`, `revert: …` | Performance, Changed, … | patch |
+| `feat!: …` or a `BREAKING CHANGE:` footer | marked **Breaking** | major |
+| `docs: …`, `test: …`, `ci: …`, `chore: …`, `style: …` | not listed | none |
+
+Every pull request runs `tests.yml`: ruff, ty and the docs build, then the
+test suite on Python 3.12–3.15.
+
+## Releasing
+
+Releases go through a pull request, so the version bump and the changelog are
+reviewed like any other change:
+
+1. **Every push to `main`** runs `release.yml`. It runs the tests, then asks
+   [git-cliff](https://git-cliff.org/) for the next version. If anything since
+   the last tag warrants a release, it rebuilds the branch `release/next` from
+   `main` with a single commit, `chore(release): vX.Y.Z`, which writes the
+   version into `pyproject.toml` and `uv.lock` (`uv version`) and regenerates
+   `CHANGELOG.md`. It then opens or updates the release pull request, whose
+   description is that version's release notes. If nothing warrants a
+   release, it closes the release pull request.
+2. **Merging the release pull request** is the release. Its squash commit on
+   `main` (`chore(release): vX.Y.Z (#N)`) makes `release.yml` push the tag
+   `vX.Y.Z` instead, and start `publish.yml` for it.
+3. **`publish.yml`** runs the tests again, checks that the tag matches the
+   project version, builds the wheel and sdist, creates the GitHub release with
+   the notes and the files, and uploads to PyPI with trusted publishing.
+
+To try the publishing path without releasing, run **Actions → Publish → Run
+workflow** with `testpypi`: it builds the current branch and uploads it to
+TestPyPI (a version TestPyPI already has is skipped).
+
+Preview locally what the release pull request would contain:
+
+```sh
+uvx git-cliff@2.14.2 --bumped-version                 # its version
+uvx git-cliff@2.14.2 --bump --unreleased --output -   # its changelog section
+```
+
+Never edit `CHANGELOG.md` or the version by hand: to fix a changelog line, fix
+the pull request title (or, after merging, the commit) it came from.
+
+The workflows push with their own `GITHUB_TOKEN`. Pushes made with it start no
+other workflows, so `release.yml` explicitly dispatches `tests.yml` for the
+release pull request and `publish.yml` for the tag.

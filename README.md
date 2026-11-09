@@ -50,5 +50,8 @@ uv run ruff check .  # lint
 uv run ty check      # type check
 ```
 
-See the [development guide](https://illesnagy1.github.io/pymusicbrainz/development/) for the architecture and
+Pull request titles must be [conventional
+commits](https://www.conventionalcommits.org/) (`feat: …`, `fix: …`): they become
+the changelog. Releases are made by merging the bot's `chore(release): vX.Y.Z`
+pull request. See the [development guide](https://illesnagy1.github.io/pymusicbrainz/development/) for the architecture and
 conventions.
