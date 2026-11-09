@@ -81,7 +81,9 @@ def _emit(result: object) -> None:
 def _run(ctx: typer.Context, action: Callable[[MusicBrainz], object]) -> None:
     """Run ``action`` with a client and print its result as JSON.
 
-    API errors are printed to stderr and exit with status 1.
+    Raises:
+        typer.Exit: With status 1 after printing an API or validation error
+            to stderr.
     """
     settings = ctx.ensure_object(_Settings)
     try:
@@ -215,6 +217,7 @@ def lookup(
     ctx: typer.Context,
     entity: Annotated[Entity, typer.Argument(help="Entity type")],
     mbid: Annotated[str, typer.Argument(help="MBID of the entity")],
+    *,
     inc: Inc = None,
     release_type: ReleaseType = None,
     release_status: ReleaseStatus = None,
@@ -233,6 +236,7 @@ def search(
     ctx: typer.Context,
     entity: Annotated[SearchEntity, typer.Argument(help="Index to search")],
     query: Annotated[str, typer.Argument(help="Lucene query")],
+    *,
     limit: Annotated[int, typer.Option(min=1, max=consts.MAX_LIMIT)] = 10,
     offset: Offset = None,
     dismax: Annotated[
@@ -253,6 +257,7 @@ def search(
 def browse(
     ctx: typer.Context,
     entity: Annotated[Entity, typer.Argument(help="Entity type to list")],
+    *,
     area: Annotated[str | None, _link("area")] = None,
     artist: Annotated[str | None, _link("artist")] = None,
     collection: Annotated[str | None, _link("collection")] = None,
@@ -337,6 +342,7 @@ def discid(
     disc_id: Annotated[
         str, typer.Argument(metavar="DISCID", help="Disc ID, or - with --toc")
     ],
+    *,
     toc: Annotated[
         str | None,
         typer.Option(help="TOC for fuzzy matching, e.g. '1 12 267257 150 ...'"),
@@ -374,6 +380,7 @@ def url(
 def cover_art(
     ctx: typer.Context,
     mbid: Annotated[str, typer.Argument(help="Release MBID (or release group)")],
+    *,
     release_group: Annotated[
         bool, typer.Option("--release-group", help="MBID is a release group")
     ] = False,

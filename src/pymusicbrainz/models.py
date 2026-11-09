@@ -178,7 +178,11 @@ class Entity(MBModel):
     def relations_of(
         self, target_type: str, relation_type: str | None = None
     ) -> list[Relation]:
-        """Relationships to ``target_type`` entities, optionally of one type."""
+        """Relationships to ``target_type`` entities, optionally of one type.
+
+        Returns:
+            The matching relationships.
+        """
         return [
             r
             for r in self.relations
@@ -231,7 +235,11 @@ class ArtistCredit(MBModel):
 
 
 def credit_string(credit: list[ArtistCredit]) -> str:
-    """Render an artist credit as shown on the site, e.g. ``"Simon & Garfunkel"``."""
+    """Render an artist credit as shown on the site, e.g. ``"Simon & Garfunkel"``.
+
+    Returns:
+        The credited names joined by their join phrases.
+    """
     return "".join(
         f"{c.name or (c.artist.name if c.artist else '')}{c.joinphrase}" for c in credit
     )
@@ -505,7 +513,11 @@ class CoverArtImage(MBModel):
         return str(value) if isinstance(value, int) else value
 
     def thumbnail(self, size: int) -> str | None:
-        """URL of the ``size`` px (250, 500 or 1200) thumbnail, if there is one."""
+        """URL of the ``size`` px (250, 500 or 1200) thumbnail, if there is one.
+
+        Returns:
+            The thumbnail URL, or ``None`` if that size isn't available.
+        """
         return self.thumbnails.get(str(size))
 
 

@@ -40,7 +40,11 @@ class Recorder:
 
 
 def present[T](value: T | None) -> T:
-    """Narrow an Optional for the type checker, failing the test if it is None."""
+    """Narrow an Optional for the type checker, failing the test if it is None.
+
+    Returns:
+        ``value``, now known not to be ``None``.
+    """
     assert value is not None
     return value
 

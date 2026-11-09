@@ -17,9 +17,14 @@ from pymusicbrainz import CDStub, MusicBrainz
 
 
 def read_drive(device: str | None) -> tuple[str, str | None]:
-    """Read the disc ID and table of contents from a CD drive."""
+    """Read the disc ID and table of contents from a CD drive.
+
+    Returns:
+        The disc ID and the table of contents (``None`` if the drive
+        reports none).
+    """
     try:
-        import discid
+        import discid  # noqa: PLC0415 - optional, needs a native library
     except (ImportError, OSError) as exc:
         sys.exit(f"Reading a CD needs the discid package and libdiscid: {exc}")
     disc = discid.read(device)
@@ -27,7 +32,11 @@ def read_drive(device: str | None) -> tuple[str, str | None]:
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run the example."""
+    """Run the example.
+
+    Returns:
+        The process exit status: 0 on success, 1 on failure.
+    """
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--disc-id", help="look up this disc ID instead of a CD")
     parser.add_argument("--device", help="CD drive, e.g. /dev/cdrom")

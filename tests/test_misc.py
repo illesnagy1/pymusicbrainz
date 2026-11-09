@@ -198,7 +198,8 @@ def test_socks_without_extra_gives_our_hint() -> None:
 
 def test_other_import_errors_propagate(monkeypatch: pytest.MonkeyPatch) -> None:
     def broken(**_: object) -> None:
-        raise ImportError("something else")
+        msg = "something else"
+        raise ImportError(msg)
 
     monkeypatch.setattr(client_module.httpx2, "Client", broken)
     with pytest.raises(ImportError, match="something else"):

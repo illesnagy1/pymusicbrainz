@@ -18,12 +18,20 @@ _SPECIAL = re.compile(r'([+\-&|!(){}\[\]^"~*?:\\/])')
 
 
 def escape(value: str) -> str:
-    """Escape Lucene special characters in ``value``."""
+    """Escape Lucene special characters in ``value``.
+
+    Returns:
+        The escaped text.
+    """
     return _SPECIAL.sub(r"\\\1", value)
 
 
 def phrase(value: str) -> str:
-    """Quote ``value`` as an exact phrase."""
+    """Quote ``value`` as an exact phrase.
+
+    Returns:
+        The quoted phrase.
+    """
     return '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
@@ -52,6 +60,12 @@ def build_query(
     * lists/tuples/sets become ``(field:a OR field:b)``
     * ``None`` values are ignored
     * field names with ``_`` are kept as-is (MusicBrainz uses e.g. ``release_count``)
+
+    Returns:
+        The combined Lucene query.
+
+    Raises:
+        ValueError: If both the query and every field are empty.
     """
     terms = [
         _term(f, v) for f, v in {**(fields or {}), **kwargs}.items() if v is not None
@@ -61,10 +75,15 @@ def build_query(
         parts.append(f"({query})" if terms else query)
     parts += terms
     if not parts:
-        raise ValueError("an empty search query is not allowed")
+        msg = "an empty search query is not allowed"
+        raise ValueError(msg)
     return f" {operator} ".join(parts)
 
 
 def any_of(values: Iterable[str]) -> str:
-    """``(a OR b OR c)`` from phrases."""
+    """``(a OR b OR c)`` from phrases.
+
+    Returns:
+        The OR group.
+    """
     return "(" + " OR ".join(phrase(v) for v in values) + ")"

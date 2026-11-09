@@ -33,7 +33,11 @@ class FakeServer:
 
 @pytest.fixture
 def server(monkeypatch: pytest.MonkeyPatch) -> FakeServer:
-    """Route every client the CLI builds to an in-memory MockTransport."""
+    """Route every client the CLI builds to an in-memory MockTransport.
+
+    Returns:
+        The fake server every client the CLI creates talks to.
+    """
     fake = FakeServer(httpx2.Response(codes.OK, json={}))
 
     def factory(

@@ -90,7 +90,11 @@ the API reference is generated from docstrings by mkdocstrings. Docstrings
 use the Google style (`Args:`, `Returns:`, `Raises:`), and cross-references
 are written as `` [`Name`][pymusicbrainz.module.Name] ``. Ruff enforces both
 docstring presence and Google style (the `D` rules with
-`convention = "google"`); tests are exempt from needing docstrings.
+`convention = "google"`), and the `DOC` rules check the sections against the
+code: every value returned needs `Returns:`, and `Raises:` must list exactly
+what the function itself raises. Exceptions that only propagate from a call
+(such as `NotFoundError` from a request) are mentioned in the description
+instead. Tests are exempt from needing docstrings.
 
 Constructor arguments are documented in the `__init__` docstring (PEP 257),
 not on the class: the class docstring describes what the class is, and

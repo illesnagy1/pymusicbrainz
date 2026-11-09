@@ -14,7 +14,11 @@ from pymusicbrainz import MusicBrainz
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run the example."""
+    """Run the example.
+
+    Returns:
+        The process exit status: 0 on success, 1 on failure.
+    """
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("artist", help="artist name to search for")
     parser.add_argument("--type", default="album", help="album, ep, single, ...")

@@ -24,7 +24,11 @@ core = Core()
 
 
 def _dump(value: object) -> object:
-    """Serialise a parse result back to API-shaped JSON."""
+    """Serialise a parse result back to API-shaped JSON.
+
+    Returns:
+        API-shaped JSON.
+    """
     if isinstance(value, BaseModel):
         return value.model_dump(mode="json", by_alias=True, exclude_unset=True)
     if isinstance(value, Page):
@@ -35,9 +39,13 @@ def _dump(value: object) -> object:
 
 
 def _expected(name: str, raw: Any) -> object:  # noqa: ANN401
-    """The part of the raw JSON that the parse result corresponds to."""
+    """The part of the raw JSON that the parse result corresponds to.
+
+    Returns:
+        The matching part of ``raw``.
+    """
     if isinstance(_parse(name, raw), Page):
-        return next(v for k, v in raw.items() if isinstance(v, list))
+        return next(v for v in raw.values() if isinstance(v, list))
     if MANIFEST[name]["method"] == "lookup_iswc":
         return raw["works"]
     if MANIFEST[name]["method"] == "lookup_urls":
@@ -58,6 +66,9 @@ def _known_coercions(data: object) -> object:
 
     * Cover Art Archive image ``id``: a number in practice, text in the docs.
     * Place ``coordinates``: numbers in lookups, strings in search results.
+
+    Returns:
+        ``data`` with those normalisations applied.
     """
     if isinstance(data, dict):
         out: dict[str, object] = {}

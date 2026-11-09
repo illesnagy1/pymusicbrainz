@@ -38,11 +38,11 @@
         "artist": "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
       },
       null,
-      10,
-      null,
-      "album"
+      10
     ],
-    "kwargs": {},
+    "kwargs": {
+      "release_type": "album"
+    },
     "method": "browse"
   },
   "browse-releases": {

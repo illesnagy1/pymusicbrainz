@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import time
 import xml.etree.ElementTree as ET
 from collections.abc import Callable
 from urllib.parse import unquote
@@ -494,8 +495,6 @@ def test_post_not_retried_after_read_error() -> None:
 
 
 def test_rate_limiter_spacing() -> None:
-    import time
-
     rec = Recorder(ok({"id": ARTIST}))
     with make(rec, rate_limit=20) as mb:
         start = time.monotonic()
@@ -673,11 +672,12 @@ XXE = (
     [
         ("<error><text>Invalid inc</text><text>help</text></error>",
          ["Invalid inc", "help"]),
-        ('<?xml version="1.0" encoding="UTF-8"?>'
-         "<error><text> a &amp; b </text></error>",
+        (('<?xml version="1.0" encoding="UTF-8"?>'
+          "<error><text> a &amp; b </text></error>"),
          ["a & b"]),
-        ('<error xmlns="http://musicbrainz.org/ns/mmd-2.0#"><text lang="en">ns</text>'
-         "<context>not a message</context></error>",
+        (('<error xmlns="http://musicbrainz.org/ns/mmd-2.0#"><text lang="en">ns</text>'
+          "<context>not a message</context>"
+          "</error>"),
          ["ns"]),
         ("<error><text><![CDATA[<raw>]]></text></error>", ["<raw>"]),
         ("<error><text>unclosed</error>", []),

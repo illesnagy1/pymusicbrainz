@@ -149,7 +149,7 @@ def main(argv: list[str] | None = None) -> None:
     library itself stays light.
     """
     try:
-        from .cli import main as _main
+        from .cli import main as _main  # noqa: PLC0415 - typer is optional
     except ImportError as exc:
         sys.exit(
             f"The pymusicbrainz command needs the cli extra ({exc.name} is missing):\n"

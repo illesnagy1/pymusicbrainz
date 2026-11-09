@@ -612,3 +612,5 @@ COLLECTION_BATCH_SIZE = 400
 #: Max `resource=` parameters per URL lookup.
 URL_BATCH_SIZE = 100
 MAX_LIMIT = 100
+#: Ratings run from 0 (remove the rating) to 100 (five stars).
+MAX_RATING = 100

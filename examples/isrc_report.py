@@ -44,7 +44,11 @@ async def run(isrcs: list[str]) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run the example."""
+    """Run the example.
+
+    Returns:
+        The process exit status, 0.
+    """
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("isrcs", nargs="+", metavar="ISRC")
     args = parser.parse_args(argv)

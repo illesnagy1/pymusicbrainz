@@ -73,6 +73,6 @@ source = ["pymusicbrainz"]
 show_missing = true
 skip_covered = true
 exclude_also = [
-    'raise AssertionError\("unreachable"\)',
+    'raise AssertionError  # unreachable',
     'if __name__ == "__main__":',
 ]

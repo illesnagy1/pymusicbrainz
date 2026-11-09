@@ -39,7 +39,8 @@ class RateLimiter:
             ValueError: If the rate is zero or negative.
         """
         if requests_per_second <= 0:
-            raise ValueError("requests_per_second must be positive")
+            msg = "requests_per_second must be positive"
+            raise ValueError(msg)
         self.interval = 1.0 / requests_per_second
         self._lock = threading.Lock()
         self._next = 0.0
@@ -68,7 +69,8 @@ class AsyncRateLimiter:
             ValueError: If the rate is zero or negative.
         """
         if requests_per_second <= 0:
-            raise ValueError("requests_per_second must be positive")
+            msg = "requests_per_second must be positive"
+            raise ValueError(msg)
         self.interval = 1.0 / requests_per_second
         self._lock: anyio.Lock | None = None
         self._next = 0.0

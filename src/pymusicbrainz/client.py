@@ -88,21 +88,20 @@ class _Config:
         validate: bool,
     ) -> None:
         if not app or not version:
-            raise ValidationError(
-                "app and version are required to build a meaningful User-Agent"
-            )
+            msg = "app and version are required to build a meaningful User-Agent"
+            raise ValidationError(msg)
         self.user_agent = (
             f"{app}/{version}"
             + (f" ( {contact} )" if contact else "")
             + f" pymusicbrainz/{__version__}"
         )
         if sum(x is not None for x in (password, oauth_token, auth)) > 1:
-            raise ValidationError(
-                "pass only one of username/password, oauth_token or auth"
-            )
+            msg = "pass only one of username/password, oauth_token or auth"
+            raise ValidationError(msg)
         if password is not None:
             if not username:
-                raise ValidationError("username is required with password")
+                msg = "username is required with password"
+                raise ValidationError(msg)
             auth = httpx2.DigestAuth(username, password)
         if oauth_token is not None:
             auth = _BearerAuth(oauth_token)
@@ -125,9 +124,8 @@ class _Config:
 
     def check_auth(self, call: Call[Any]) -> None:
         if call.requires_auth and not self.has_auth:
-            raise AuthenticationRequiredError(
-                f"{call.method} {call.path} requires authentication"
-            )
+            msg = f"{call.method} {call.path} requires authentication"
+            raise AuthenticationRequiredError(msg)
 
 
 class _BearerAuth(httpx2.Auth):
@@ -144,7 +142,15 @@ class _BearerAuth(httpx2.Auth):
 
 
 def _http_client[C: (httpx2.Client, httpx2.AsyncClient)](factory: Callable[[], C]) -> C:
-    """Create the HTTP client, with a useful hint if SOCKS support is missing."""
+    """Create the HTTP client, with a useful hint if SOCKS support is missing.
+
+    Returns:
+        The client ``factory`` created.
+
+    Raises:
+        ImportError: If a SOCKS proxy is set but ``socksio`` isn't installed,
+            with an install hint; other import errors propagate unchanged.
+    """
     try:
         return factory()
     except ImportError as exc:
@@ -192,7 +198,11 @@ def _chunks(items: list[str], size: int) -> Iterator[list[str]]:
 
 
 def _resource_key(entity: str) -> str:
-    """Normalize ``"releases"`` etc. to the singular entity name."""
+    """Normalize ``"releases"`` etc. to the singular entity name.
+
+    Returns:
+        The singular entity name.
+    """
     plural_to_singular = {v: k for k, v in consts.COLLECTION_ENTITY_TYPES.items()}
     return plural_to_singular.get(entity, entity)
 
@@ -223,7 +233,8 @@ class _Session:
         try:
             return self.resources[_resource_key(entity)]
         except KeyError:
-            raise ValidationError(f"unknown entity type: {entity!r}") from None
+            msg = f"unknown entity type: {entity!r}"
+            raise ValidationError(msg) from None
 
     def run[R](self, call: Call[R]) -> R:
         cfg = self.config
@@ -267,7 +278,7 @@ class _Session:
             content_type = resp.headers.get("Content-Type", "")
             body = decode_body(call, resp.content, content_type, str(resp.url))
             return call.parse(body)
-        raise AssertionError("unreachable")
+        raise AssertionError  # unreachable: every attempt returns or raises
 
     def paginate[R](
         self,
@@ -324,6 +335,10 @@ class EntityResource[T]:
         ``["aliases", "url-rels"]``. ``release_type``/``release_status`` filter
         included releases / release groups (``"album"``, ``["album", "ep"]``,
         ``"official"``...).
+
+        Returns:
+            The entity, e.g. an [`Artist`][pymusicbrainz.models.Artist] for
+            ``mb.artists``.
         """
         return self._session.run(
             self._core.lookup(self.entity, mbid, inc, release_type, release_status)
@@ -344,6 +359,9 @@ class EntityResource[T]:
 
         For example ``mb.releases.browse(artist=mbid)``. Use ``release_group=...``
         for ``release-group``; ``track_artist=...`` is passed as-is.
+
+        Returns:
+            One page of linked entities.
         """
         return self._session.run(
             self._core.browse(
@@ -352,9 +370,9 @@ class EntityResource[T]:
                 inc,
                 limit,
                 offset,
-                release_type,
-                release_status,
-                release_group_status,
+                release_type=release_type,
+                release_status=release_status,
+                release_group_status=release_group_status,
             )
         )
 
@@ -369,7 +387,11 @@ class EntityResource[T]:
         release_group_status: str | None = None,
         **linked: str,
     ) -> Iterator[T]:
-        """Iterate over all browse results, fetching pages as needed."""
+        """Iterate over all browse results, fetching pages as needed.
+
+        Returns:
+            An iterator over every linked entity.
+        """
         return self._session.paginate(
             lambda off: self._core.browse(
                 self.entity,
@@ -377,9 +399,9 @@ class EntityResource[T]:
                 inc,
                 page_size,
                 off,
-                release_type,
-                release_status,
-                release_group_status,
+                release_type=release_type,
+                release_status=release_status,
+                release_group_status=release_group_status,
             ),
             max_items,
         )
@@ -397,9 +419,12 @@ class EntityResource[T]:
 
         ``query`` is raw Lucene syntax; ``fields`` are added as ``field:"value"``
         terms joined by AND. Each result has a ``score`` (0-100).
+
+        Returns:
+            One page of results, best match first; each has a ``score``.
         """
         return self._session.run(
-            self._core.search(self.entity, query, fields, limit, offset, dismax)
+            self._core.search(self.entity, query, fields, limit, offset, dismax=dismax)
         )
 
     def iter_search(
@@ -411,10 +436,14 @@ class EntityResource[T]:
         dismax: bool = False,
         **fields: object,
     ) -> Iterator[T]:
-        """Iterate over search results. Use ``max_items`` to stop early."""
+        """Iterate over search results. Use ``max_items`` to stop early.
+
+        Returns:
+            An iterator over every result.
+        """
         return self._session.paginate(
             lambda off: self._core.search(
-                self.entity, query, fields, page_size, off, dismax
+                self.entity, query, fields, page_size, off, dismax=dismax
             ),
             max_items,
         )
@@ -439,15 +468,25 @@ class UrlResource(EntityResource[models.Url]):
     def by_resource(self, url: str, *, inc: Includes = None) -> models.Url:
         """Look up a URL entity by its text.
 
-        Raises:
-            NotFoundError: If MusicBrainz doesn't know the URL.
+        A URL MusicBrainz doesn't know raises
+        [`NotFoundError`][pymusicbrainz.errors.NotFoundError].
+
+        Returns:
+            The URL entity.
         """
         return self._session.run(self._core.lookup_urls([url], inc))[0]
 
     def by_resources(
         self, urls: Iterable[str], *, inc: Includes = None
     ) -> list[models.Url]:
-        """Look up many URLs (batched by 100). Unknown URLs are silently skipped."""
+        """Look up many URLs (batched by 100). Unknown URLs are silently skipped.
+
+        Returns:
+            The URL entities MusicBrainz knows, in no particular order.
+
+        Raises:
+            NotFoundError: If MusicBrainz rejects a whole batch of several URLs.
+        """
         result: list[models.Url] = []
         for chunk in _chunks(list(urls), consts.URL_BATCH_SIZE):
             try:
@@ -464,19 +503,31 @@ class GenreResource(EntityResource[models.Genre]):
     def all(
         self, *, limit: int | None = None, offset: int | None = None
     ) -> models.Page[models.Genre]:
-        """One page of the alphabetical list of all genres."""
+        """One page of the alphabetical list of all genres.
+
+        Returns:
+            One page of genres, alphabetically.
+        """
         return self._session.run(self._core.genres_all(limit, offset))
 
     def iter_all(
         self, *, page_size: int = consts.MAX_LIMIT, max_items: int | None = None
     ) -> Iterator[models.Genre]:
-        """Iterate over all genres."""
+        """Iterate over all genres.
+
+        Returns:
+            An iterator over every genre.
+        """
         return self._session.paginate(
             lambda off: self._core.genres_all(page_size, off), max_items
         )
 
     def names(self) -> list[str]:
-        """All genre names (single plain-text request)."""
+        """All genre names (single plain-text request).
+
+        Returns:
+            Every genre name, alphabetically.
+        """
         return self._session.run(self._core.genre_names())
 
 
@@ -494,6 +545,9 @@ class CollectionResource(EntityResource[models.Collection]):
         """Collections of an editor.
 
         ``include_private`` requires authenticating as that editor.
+
+        Returns:
+            One page of the editor's collections.
         """
         return self.browse(
             editor=editor,
@@ -503,7 +557,11 @@ class CollectionResource(EntityResource[models.Collection]):
         )
 
     def summary(self, mbid: str, entity_type: str) -> models.Collection:
-        """Collection description with a summary of its ``entity_type`` contents."""
+        """Collection description with a summary of its ``entity_type`` contents.
+
+        Returns:
+            The collection, with its item count.
+        """
         return self._session.run(
             self._core.lookup_collection_contents(mbid, entity_type)
         )
@@ -511,13 +569,21 @@ class CollectionResource(EntityResource[models.Collection]):
     def items(
         self, mbid: str, entity_type: str, **options: Unpack[BrowseOptions]
     ) -> models.Page[Any]:
-        """One page of collection contents, e.g. ``items(mbid, "release")``."""
+        """One page of collection contents, e.g. ``items(mbid, "release")``.
+
+        Returns:
+            One page of the entities in the collection.
+        """
         return self._session.resource(entity_type).browse(collection=mbid, **options)
 
     def iter_items(
         self, mbid: str, entity_type: str, **options: Unpack[IterBrowseOptions]
     ) -> Iterator[Any]:
-        """Iterate over all collection contents."""
+        """Iterate over all collection contents.
+
+        Returns:
+            An iterator over every entity in the collection.
+        """
         return self._session.resource(entity_type).iter_browse(
             collection=mbid, **options
         )
@@ -552,16 +618,22 @@ class CoverArtResource:
     def release(self, mbid: str) -> models.CoverArt:
         """List a release's images.
 
-        Raises:
-            NotFoundError: If the release has no cover art (or doesn't exist).
+        A release without cover art (or an unknown one) raises
+        [`NotFoundError`][pymusicbrainz.errors.NotFoundError].
+
+        Returns:
+            The release's images.
         """
         return self._session.run(self._core.cover_art_list(mbid))
 
     def release_group(self, mbid: str) -> models.CoverArt:
         """List the images of the release chosen to represent a release group.
 
-        Raises:
-            NotFoundError: If the release group has no cover art.
+        A release group without cover art raises
+        [`NotFoundError`][pymusicbrainz.errors.NotFoundError].
+
+        Returns:
+            The images of the release chosen to represent the group.
         """
         return self._session.run(self._core.cover_art_list(mbid, release_group=True))
 
@@ -575,6 +647,9 @@ class CoverArtResource:
     ) -> models.ImageData:
         """Download an image.
 
+        A missing image or thumbnail raises
+        [`NotFoundError`][pymusicbrainz.errors.NotFoundError].
+
         Args:
             mbid: Release MBID (or release group MBID with ``release_group``).
             image: ``"front"``, ``"back"``, or an image ID from a listing.
@@ -582,8 +657,8 @@ class CoverArtResource:
             size: A 250, 500 or 1200 px thumbnail instead of the original.
             release_group: ``mbid`` is a release group.
 
-        Raises:
-            NotFoundError: If there is no such image or thumbnail.
+        Returns:
+            The image's bytes, content type and final URL.
         """
         return self._session.run(
             self._core.cover_art_image(mbid, image, size, release_group=release_group)
@@ -599,11 +674,18 @@ class CoverArtResource:
         """Download the main front cover.
 
         See [`image`][pymusicbrainz.client.CoverArtResource.image].
+
+        Returns:
+            The image's bytes, content type and final URL.
         """
         return self.image(mbid, "front", size=size, release_group=release_group)
 
     def back(self, mbid: str, *, size: CoverArtSize | None = None) -> models.ImageData:
-        """Download a release's main back cover."""
+        """Download a release's main back cover.
+
+        Returns:
+            The image's bytes, content type and final URL.
+        """
         return self.image(mbid, "back", size=size)
 
     def url(
@@ -614,7 +696,11 @@ class CoverArtResource:
         size: CoverArtSize | None = None,
         release_group: bool = False,
     ) -> str:
-        """The URL of an image, without downloading it (e.g. for an ``<img>``)."""
+        """The URL of an image, without downloading it (e.g. for an ``<img>``).
+
+        Returns:
+            The image URL.
+        """
         return self._core.cover_art_url(mbid, image, size, release_group=release_group)
 
 
@@ -657,6 +743,9 @@ class MusicBrainz:
     ) -> None:
         """Create a client.
 
+        Empty ``app``/``version`` or conflicting auth options raise
+        [`ValidationError`][pymusicbrainz.errors.ValidationError].
+
         Args:
             app: Your application's name, used in the User-Agent and as the
                 submission client ID.
@@ -687,9 +776,6 @@ class MusicBrainz:
             transport: Custom `httpx2` transport, e.g. `httpx2.MockTransport`
                 in tests.
 
-        Raises:
-            ValidationError: If `app`/`version` are empty or the auth options
-                conflict.
         """
         config = _Config(
             app,
@@ -753,7 +839,11 @@ class MusicBrainz:
         self.close()
 
     def resource(self, entity: str) -> EntityResource[Any]:
-        """The resource for an entity name, e.g. ``"release-group"``."""
+        """The resource for an entity name, e.g. ``"release-group"``.
+
+        Returns:
+            The namespace, e.g. ``mb.release_groups`` for ``"release-group"``.
+        """
         return self._session.resource(entity)
 
     # ------------------------------------------------------------ non-MBID lookups
@@ -774,6 +864,9 @@ class MusicBrainz:
         Pass ``toc`` for fuzzy matching (use ``discid="-"`` for TOC-only).
         Returns a [`Disc`][pymusicbrainz.models.Disc] (with ``releases``) or,
         if only a CD stub matches, a [`CDStub`][pymusicbrainz.models.CDStub].
+
+        Returns:
+            The disc with its releases, or a CD stub.
         """
         return self._session.run(
             self._core.lookup_discid(
@@ -788,11 +881,19 @@ class MusicBrainz:
         )
 
     def lookup_isrc(self, isrc: str, *, inc: Includes = None) -> models.IsrcResult:
-        """Recordings with the given ISRC."""
+        """Recordings with the given ISRC.
+
+        Returns:
+            The ISRC with its recordings.
+        """
         return self._session.run(self._core.lookup_isrc(isrc, inc))
 
     def lookup_iswc(self, iswc: str, *, inc: Includes = None) -> list[models.Work]:
-        """Works with the given ISWC."""
+        """Works with the given ISWC.
+
+        Returns:
+            The works with this ISWC.
+        """
         return self._session.run(self._core.lookup_iswc(iswc, inc))
 
     # ------------------------------------------------------------ submissions
@@ -828,7 +929,11 @@ class MusicBrainz:
     def request(
         self, method: str, path: str, params: Mapping[str, str] | None = None
     ) -> JSON:
-        """Escape hatch: perform a raw JSON request and return the decoded body."""
+        """Escape hatch: perform a raw JSON request and return the decoded body.
+
+        Returns:
+            The decoded JSON response.
+        """
         return self._session.run(_raw_call(method, path, params))
 
 
@@ -854,7 +959,8 @@ class _AsyncSession:
         try:
             return self.resources[_resource_key(entity)]
         except KeyError:
-            raise ValidationError(f"unknown entity type: {entity!r}") from None
+            msg = f"unknown entity type: {entity!r}"
+            raise ValidationError(msg) from None
 
     async def run[R](self, call: Call[R]) -> R:
         cfg = self.config
@@ -898,7 +1004,7 @@ class _AsyncSession:
             content_type = resp.headers.get("Content-Type", "")
             body = decode_body(call, resp.content, content_type, str(resp.url))
             return call.parse(body)
-        raise AssertionError("unreachable")
+        raise AssertionError  # unreachable: every attempt returns or raises
 
     def paginate[R](
         self,
@@ -951,6 +1057,10 @@ class AsyncEntityResource[T]:
         """Look up one entity by MBID.
 
         See [`EntityResource.get`][pymusicbrainz.client.EntityResource.get].
+
+        Returns:
+            The entity, e.g. an [`Artist`][pymusicbrainz.models.Artist] for
+            ``mb.artists``.
         """
         return await self._session.run(
             self._core.lookup(self.entity, mbid, inc, release_type, release_status)
@@ -971,6 +1081,9 @@ class AsyncEntityResource[T]:
 
         See
         [`EntityResource.browse`][pymusicbrainz.client.EntityResource.browse].
+
+        Returns:
+            One page of linked entities.
         """
         return await self._session.run(
             self._core.browse(
@@ -979,9 +1092,9 @@ class AsyncEntityResource[T]:
                 inc,
                 limit,
                 offset,
-                release_type,
-                release_status,
-                release_group_status,
+                release_type=release_type,
+                release_status=release_status,
+                release_group_status=release_group_status,
             )
         )
 
@@ -996,7 +1109,11 @@ class AsyncEntityResource[T]:
         release_group_status: str | None = None,
         **linked: str,
     ) -> AsyncIterator[T]:
-        """Iterate over all browse results, fetching pages as needed."""
+        """Iterate over all browse results, fetching pages as needed.
+
+        Returns:
+            An iterator over every linked entity.
+        """
         return self._session.paginate(
             lambda off: self._core.browse(
                 self.entity,
@@ -1004,9 +1121,9 @@ class AsyncEntityResource[T]:
                 inc,
                 page_size,
                 off,
-                release_type,
-                release_status,
-                release_group_status,
+                release_type=release_type,
+                release_status=release_status,
+                release_group_status=release_group_status,
             ),
             max_items,
         )
@@ -1024,9 +1141,12 @@ class AsyncEntityResource[T]:
 
         See
         [`EntityResource.search`][pymusicbrainz.client.EntityResource.search].
+
+        Returns:
+            One page of results, best match first; each has a ``score``.
         """
         return await self._session.run(
-            self._core.search(self.entity, query, fields, limit, offset, dismax)
+            self._core.search(self.entity, query, fields, limit, offset, dismax=dismax)
         )
 
     def iter_search(
@@ -1038,10 +1158,14 @@ class AsyncEntityResource[T]:
         dismax: bool = False,
         **fields: object,
     ) -> AsyncIterator[T]:
-        """Iterate over search results. Use ``max_items`` to stop early."""
+        """Iterate over search results. Use ``max_items`` to stop early.
+
+        Returns:
+            An iterator over every result.
+        """
         return self._session.paginate(
             lambda off: self._core.search(
-                self.entity, query, fields, page_size, off, dismax
+                self.entity, query, fields, page_size, off, dismax=dismax
             ),
             max_items,
         )
@@ -1066,15 +1190,25 @@ class AsyncUrlResource(AsyncEntityResource[models.Url]):
     async def by_resource(self, url: str, *, inc: Includes = None) -> models.Url:
         """Look up a URL entity by its text.
 
-        Raises:
-            NotFoundError: If MusicBrainz doesn't know the URL.
+        A URL MusicBrainz doesn't know raises
+        [`NotFoundError`][pymusicbrainz.errors.NotFoundError].
+
+        Returns:
+            The URL entity.
         """
         return (await self._session.run(self._core.lookup_urls([url], inc)))[0]
 
     async def by_resources(
         self, urls: Iterable[str], *, inc: Includes = None
     ) -> list[models.Url]:
-        """Look up many URLs (batched by 100). Unknown URLs are silently skipped."""
+        """Look up many URLs (batched by 100). Unknown URLs are silently skipped.
+
+        Returns:
+            The URL entities MusicBrainz knows, in no particular order.
+
+        Raises:
+            NotFoundError: If MusicBrainz rejects a whole batch of several URLs.
+        """
         result: list[models.Url] = []
         for chunk in _chunks(list(urls), consts.URL_BATCH_SIZE):
             try:
@@ -1094,19 +1228,31 @@ class AsyncGenreResource(AsyncEntityResource[models.Genre]):
     async def all(
         self, *, limit: int | None = None, offset: int | None = None
     ) -> models.Page[models.Genre]:
-        """One page of the alphabetical list of all genres."""
+        """One page of the alphabetical list of all genres.
+
+        Returns:
+            One page of genres, alphabetically.
+        """
         return await self._session.run(self._core.genres_all(limit, offset))
 
     def iter_all(
         self, *, page_size: int = consts.MAX_LIMIT, max_items: int | None = None
     ) -> AsyncIterator[models.Genre]:
-        """Iterate over all genres."""
+        """Iterate over all genres.
+
+        Returns:
+            An iterator over every genre.
+        """
         return self._session.paginate(
             lambda off: self._core.genres_all(page_size, off), max_items
         )
 
     async def names(self) -> list[str]:
-        """All genre names (single plain-text request)."""
+        """All genre names (single plain-text request).
+
+        Returns:
+            Every genre name, alphabetically.
+        """
         return await self._session.run(self._core.genre_names())
 
 
@@ -1127,6 +1273,9 @@ class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
         """Collections of an editor.
 
         ``include_private`` requires authenticating as that editor.
+
+        Returns:
+            One page of the editor's collections.
         """
         return await self.browse(
             editor=editor,
@@ -1136,7 +1285,11 @@ class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
         )
 
     async def summary(self, mbid: str, entity_type: str) -> models.Collection:
-        """Collection description with a summary of its ``entity_type`` contents."""
+        """Collection description with a summary of its ``entity_type`` contents.
+
+        Returns:
+            The collection, with its item count.
+        """
         return await self._session.run(
             self._core.lookup_collection_contents(mbid, entity_type)
         )
@@ -1144,7 +1297,11 @@ class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
     async def items(
         self, mbid: str, entity_type: str, **options: Unpack[BrowseOptions]
     ) -> models.Page[Any]:
-        """One page of collection contents, e.g. ``items(mbid, "release")``."""
+        """One page of collection contents, e.g. ``items(mbid, "release")``.
+
+        Returns:
+            One page of the entities in the collection.
+        """
         return await self._session.resource(entity_type).browse(
             collection=mbid, **options
         )
@@ -1152,7 +1309,11 @@ class AsyncCollectionResource(AsyncEntityResource[models.Collection]):
     def iter_items(
         self, mbid: str, entity_type: str, **options: Unpack[IterBrowseOptions]
     ) -> AsyncIterator[Any]:
-        """Iterate over all collection contents."""
+        """Iterate over all collection contents.
+
+        Returns:
+            An iterator over every entity in the collection.
+        """
         return self._session.resource(entity_type).iter_browse(
             collection=mbid, **options
         )
@@ -1184,11 +1345,19 @@ class AsyncCoverArtResource:
         self._core = session.core
 
     async def release(self, mbid: str) -> models.CoverArt:
-        """List a release's images."""
+        """List a release's images.
+
+        Returns:
+            The release's images.
+        """
         return await self._session.run(self._core.cover_art_list(mbid))
 
     async def release_group(self, mbid: str) -> models.CoverArt:
-        """List the images of the release chosen to represent a release group."""
+        """List the images of the release chosen to represent a release group.
+
+        Returns:
+            The images of the release chosen to represent the group.
+        """
         return await self._session.run(
             self._core.cover_art_list(mbid, release_group=True)
         )
@@ -1204,6 +1373,9 @@ class AsyncCoverArtResource:
         """Download an image.
 
         See [`CoverArtResource.image`][pymusicbrainz.client.CoverArtResource.image].
+
+        Returns:
+            The image's bytes, content type and final URL.
         """
         return await self._session.run(
             self._core.cover_art_image(mbid, image, size, release_group=release_group)
@@ -1216,13 +1388,21 @@ class AsyncCoverArtResource:
         size: CoverArtSize | None = None,
         release_group: bool = False,
     ) -> models.ImageData:
-        """Download the main front cover."""
+        """Download the main front cover.
+
+        Returns:
+            The image's bytes, content type and final URL.
+        """
         return await self.image(mbid, "front", size=size, release_group=release_group)
 
     async def back(
         self, mbid: str, *, size: CoverArtSize | None = None
     ) -> models.ImageData:
-        """Download a release's main back cover."""
+        """Download a release's main back cover.
+
+        Returns:
+            The image's bytes, content type and final URL.
+        """
         return await self.image(mbid, "back", size=size)
 
     def url(
@@ -1233,7 +1413,11 @@ class AsyncCoverArtResource:
         size: CoverArtSize | None = None,
         release_group: bool = False,
     ) -> str:
-        """The URL of an image, without downloading it."""
+        """The URL of an image, without downloading it.
+
+        Returns:
+            The image URL.
+        """
         return self._core.cover_art_url(mbid, image, size, release_group=release_group)
 
 
@@ -1275,6 +1459,9 @@ class AsyncMusicBrainz:
     ) -> None:
         """Create an async client.
 
+        Empty ``app``/``version`` or conflicting auth options raise
+        [`ValidationError`][pymusicbrainz.errors.ValidationError].
+
         Args:
             app: Your application's name, used in the User-Agent and as the
                 submission client ID.
@@ -1306,9 +1493,6 @@ class AsyncMusicBrainz:
             transport: Custom async `httpx2` transport, e.g.
                 `httpx2.MockTransport` in tests.
 
-        Raises:
-            ValidationError: If `app`/`version` are empty or the auth options
-                conflict.
         """
         config = _Config(
             app,
@@ -1372,7 +1556,11 @@ class AsyncMusicBrainz:
         await self.aclose()
 
     def resource(self, entity: str) -> AsyncEntityResource[Any]:
-        """The resource for an entity name, e.g. ``"release-group"``."""
+        """The resource for an entity name, e.g. ``"release-group"``.
+
+        Returns:
+            The namespace, e.g. ``mb.release_groups`` for ``"release-group"``.
+        """
         return self._session.resource(entity)
 
     async def lookup_discid(
@@ -1390,6 +1578,9 @@ class AsyncMusicBrainz:
 
         See
         [`MusicBrainz.lookup_discid`][pymusicbrainz.client.MusicBrainz.lookup_discid].
+
+        Returns:
+            The disc with its releases, or a CD stub.
         """
         return await self._session.run(
             self._core.lookup_discid(
@@ -1406,13 +1597,21 @@ class AsyncMusicBrainz:
     async def lookup_isrc(
         self, isrc: str, *, inc: Includes = None
     ) -> models.IsrcResult:
-        """Recordings with the given ISRC."""
+        """Recordings with the given ISRC.
+
+        Returns:
+            The ISRC with its recordings.
+        """
         return await self._session.run(self._core.lookup_isrc(isrc, inc))
 
     async def lookup_iswc(
         self, iswc: str, *, inc: Includes = None
     ) -> list[models.Work]:
-        """Works with the given ISWC."""
+        """Works with the given ISWC.
+
+        Returns:
+            The works with this ISWC.
+        """
         return await self._session.run(self._core.lookup_iswc(iswc, inc))
 
     async def submit_tags(
@@ -1443,5 +1642,9 @@ class AsyncMusicBrainz:
     async def request(
         self, method: str, path: str, params: Mapping[str, str] | None = None
     ) -> JSON:
-        """Escape hatch: perform a raw JSON request and return the decoded body."""
+        """Escape hatch: perform a raw JSON request and return the decoded body.
+
+        Returns:
+            The decoded JSON response.
+        """
         return await self._session.run(_raw_call(method, path, params))

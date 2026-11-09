@@ -85,8 +85,8 @@ FIXED: dict[str, tuple[str, list[Any], dict[str, Any]]] = {
     ),
     "browse-release-groups": (
         "browse",
-        ["release-group", {"artist": NIRVANA}, None, 10, None, "album"],
-        {},
+        ["release-group", {"artist": NIRVANA}, None, 10],
+        {"release_type": "album"},
     ),
     "browse-collections": ("browse", ["collection", {"editor": "rob"}, None, 5], {}),
     "genres": ("genres_all", [10], {}),
@@ -102,7 +102,11 @@ FROM_SEARCH = ["label", "area", "event", "place", "instrument", "series"]
 
 
 def main() -> int:
-    """Record every fixture and write the manifest."""
+    """Record every fixture and write the manifest.
+
+    Returns:
+        The process exit status, 0.
+    """
     core = Core()
     FIXTURES.mkdir(parents=True, exist_ok=True)
     manifest: dict[str, dict[str, Any]] = {}

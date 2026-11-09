@@ -32,6 +32,8 @@ _ISRC_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{3}\d{7}$")
 _ISWC_RE = re.compile(r"^T-?\d{3}\.?\d{3}\.?\d{3}-?\d$")
 _DISCID_RE = re.compile(r"^[A-Za-z0-9._-]{28}$|^-$")
 _LIST_SEP_RE = re.compile(r"[+\s,|]+")
+#: Plain-text error bodies longer than this are pages, not messages.
+_MAX_PLAIN_ERROR_LENGTH = 500
 _DTD_RE = re.compile(r"<!(DOCTYPE|ENTITY)", re.IGNORECASE)
 _HTML_P_RE = re.compile(r"<p>(.*?)</p>", re.IGNORECASE | re.DOTALL)
 _IMAGE_ID_RE = re.compile(r"^\d+(\.\w+)?$")
@@ -82,45 +84,58 @@ class Call[R]:
 # ------------------------------------------------------------------ validation
 
 
-def _fail(msg: str) -> ValidationError:
-    return ValidationError(msg)
-
-
 def check_mbid(value: str, what: str = "MBID") -> str:
     if not isinstance(value, str) or not _MBID_RE.match(value):
-        raise _fail(f"invalid {what}: {value!r}")
+        msg = f"invalid {what}: {value!r}"
+        raise ValidationError(msg)
     return value.lower()
 
 
 def normalize_isrc(value: str) -> str:
     isrc = value.replace("-", "").replace(" ", "").upper()
     if not _ISRC_RE.match(isrc):
-        raise _fail(f"invalid ISRC: {value!r}")
+        msg = f"invalid ISRC: {value!r}"
+        raise ValidationError(msg)
     return isrc
 
 
 def normalize_iswc(value: str) -> str:
     v = value.strip().upper()
     if not _ISWC_RE.match(v):
-        raise _fail(f"invalid ISWC: {value!r}")
+        msg = f"invalid ISWC: {value!r}"
+        raise ValidationError(msg)
     digits = re.sub(r"\D", "", v)
     return f"T-{digits[0:3]}.{digits[3:6]}.{digits[6:9]}-{digits[9]}"
 
 
 def check_gtin(barcode: str) -> str:
-    """Validate a GTIN-8/12/13/14 (EAN/UPC) checksum; the API rejects bad ones."""
+    """Validate a GTIN-8/12/13/14 (EAN/UPC) checksum; the API rejects bad ones.
+
+    Returns:
+        The barcode, unchanged.
+
+    Raises:
+        ValidationError: If it isn't 8, 12, 13 or 14 digits, or the checksum
+            is wrong.
+    """
     if not barcode.isdigit() or len(barcode) not in (8, 12, 13, 14):
-        raise _fail(f"invalid barcode (must be 8/12/13/14 digits): {barcode!r}")
+        msg = f"invalid barcode (must be 8/12/13/14 digits): {barcode!r}"
+        raise ValidationError(msg)
     digits = [int(d) for d in barcode]
     body, check = digits[:-1], digits[-1]
     total = sum(d * (3 if i % 2 == 0 else 1) for i, d in enumerate(reversed(body)))
     if (10 - total % 10) % 10 != check:
-        raise _fail(f"invalid barcode checksum: {barcode!r}")
+        msg = f"invalid barcode checksum: {barcode!r}"
+        raise ValidationError(msg)
     return barcode
 
 
 def _as_list(value: str | Iterable[str] | None) -> list[str]:
-    """Split ``"a+b"``, ``"a b"``, ``"a,b"``, ``"a|b"`` or ``["a", "b,c"]``."""
+    """Split ``"a+b"``, ``"a b"``, ``"a,b"``, ``"a|b"`` or ``["a", "b,c"]``.
+
+    Returns:
+        The individual values, in order.
+    """
     if value is None:
         return []
     items = [value] if isinstance(value, str) else [str(v) for v in value]
@@ -145,10 +160,11 @@ class Core:
         if self.validate and allowed is not None:
             bad = [v for v in values if v not in allowed]
             if bad:
-                raise _fail(
+                msg = (
                     f"invalid include(s) for {entity}: {', '.join(bad)}. "
                     f"Allowed: {', '.join(sorted(allowed))}"
                 )
+                raise ValidationError(msg)
             _check_include_dependencies(entity, values)
         return values
 
@@ -185,11 +201,13 @@ class Core:
         params = []
         if limit is not None:
             if not 1 <= limit <= consts.MAX_LIMIT:
-                raise _fail(f"limit must be between 1 and {consts.MAX_LIMIT}")
+                msg = f"limit must be between 1 and {consts.MAX_LIMIT}"
+                raise ValidationError(msg)
             params.append(("limit", str(limit)))
         if offset is not None:
             if offset < 0:
-                raise _fail("offset must be >= 0")
+                msg = "offset must be >= 0"
+                raise ValidationError(msg)
             params.append(("offset", str(offset)))
         return params
 
@@ -229,7 +247,8 @@ class Core:
         release_status: Filter = None,
     ) -> Call[models.Disc | models.CDStub]:
         if self.validate and not _DISCID_RE.match(discid):
-            raise _fail(f"invalid disc ID: {discid!r}")
+            msg = f"invalid disc ID: {discid!r}"
+            raise ValidationError(msg)
         incs = self._includes(inc, consts.LOOKUP_INCLUDES["discid"], "discid")
         params = self._inc_params(incs) + self._filters(
             incs or None, release_type, release_status
@@ -289,9 +308,11 @@ class Core:
         self, resources: list[str], inc: Includes = None
     ) -> Call[list[models.Url]]:
         if not resources:
-            raise _fail("at least one URL is required")
+            msg = "at least one URL is required"
+            raise ValidationError(msg)
         if len(resources) > consts.URL_BATCH_SIZE:
-            raise _fail(f"at most {consts.URL_BATCH_SIZE} URLs per request")
+            msg = f"at most {consts.URL_BATCH_SIZE} URLs per request"
+            raise ValidationError(msg)
         incs = self._includes(inc, consts.LOOKUP_INCLUDES["url"], "url")
         params = [("resource", r) for r in resources] + self._inc_params(incs)
 
@@ -320,25 +341,28 @@ class Core:
         inc: Includes = None,
         limit: int | None = None,
         offset: int | None = None,
+        *,
         release_type: Filter = None,
         release_status: Filter = None,
         release_group_status: str | None = None,
     ) -> Call[models.Page[Any]]:
         allowed = consts.BROWSE_LINKS.get(entity)
         if allowed is None:
-            raise _fail(f"{entity} cannot be browsed")
+            msg = f"{entity} cannot be browsed"
+            raise ValidationError(msg)
         given = {_link_name(k): v for k, v in links.items() if v is not None}
         if len(given) != 1:
-            raise _fail(
+            raise ValidationError(
                 "browse needs exactly one linked entity, one of: "
                 + ", ".join(sorted(allowed))
             )
         ((link, value),) = given.items()
         if link not in allowed:
-            raise _fail(
+            msg = (
                 f"cannot browse {entity} by {link}. "
                 f"Allowed: {', '.join(sorted(allowed))}"
             )
+            raise ValidationError(msg)
         if link not in ("editor", "resource"):
             value = check_mbid(value, f"{link} MBID")
         incs = self._includes(inc, consts.BROWSE_INCLUDES.get(entity), entity)
@@ -349,9 +373,8 @@ class Core:
         if release_group_status is not None:
             allowed_rgs = consts.RELEASE_GROUP_STATUSES
             if self.validate and release_group_status not in allowed_rgs:
-                raise _fail(
-                    f"release_group_status must be one of {sorted(allowed_rgs)}"
-                )
+                msg = f"release_group_status must be one of {sorted(allowed_rgs)}"
+                raise ValidationError(msg)
             params.append(("release-group-status", release_group_status))
         return Call(
             "GET",
@@ -386,21 +409,24 @@ class Core:
         fields: Mapping[str, object] | None = None,
         limit: int | None = None,
         offset: int | None = None,
+        *,
         dismax: bool = False,
     ) -> Call[models.Page[Any]]:
         if entity not in consts.SEARCH_ENTITIES:
-            raise _fail(
+            msg = (
                 f"{entity} is not searchable. "
                 f"Searchable: {', '.join(consts.SEARCH_ENTITIES)}"
             )
+            raise ValidationError(msg)
         fields = dict(fields or {})
         if self.validate and (
             bad := sorted(set(fields) - consts.SEARCH_FIELDS[entity])
         ):
-            raise _fail(
+            msg = (
                 f"invalid search field(s) for {entity}: {', '.join(bad)}. "
                 f"Allowed: {', '.join(sorted(consts.SEARCH_FIELDS[entity]))}"
             )
+            raise ValidationError(msg)
         q = build_query(query, fields)
         params = [("query", q), *self._paging(limit, offset)]
         if dismax:
@@ -417,7 +443,12 @@ class Core:
     def cover_art_list(
         self, mbid: str, *, release_group: bool = False
     ) -> Call[models.CoverArt]:
-        """Listing of the cover art of a release (or release group)."""
+        """Listing of the cover art of a release (or release group).
+
+        Returns:
+            The request; it parses into a
+            [`CoverArt`][pymusicbrainz.models.CoverArt] listing.
+        """
         return Call(
             "GET",
             self._caa_base(mbid, release_group),
@@ -434,15 +465,26 @@ class Core:
         *,
         release_group: bool = False,
     ) -> str:
-        """URL of a cover art image (or thumbnail); no request is made."""
+        """URL of a cover art image (or thumbnail); no request is made.
+
+        Returns:
+            The image URL.
+
+        Raises:
+            ValidationError: If the MBID, image or size is invalid, or a
+                release group is asked for anything but its front image.
+        """
         name = str(image)
         if release_group and name != "front":
-            raise _fail("release groups only have a 'front' image")
+            msg = "release groups only have a 'front' image"
+            raise ValidationError(msg)
         if name not in ("front", "back") and not _IMAGE_ID_RE.match(name):
-            raise _fail(f"image must be 'front', 'back' or an image ID: {image!r}")
+            msg = f"image must be 'front', 'back' or an image ID: {image!r}"
+            raise ValidationError(msg)
         if size is not None:
             if size not in consts.COVER_ART_SIZES:
-                raise _fail(f"size must be one of {consts.COVER_ART_SIZES}: {size!r}")
+                msg = f"size must be one of {consts.COVER_ART_SIZES}: {size!r}"
+                raise ValidationError(msg)
             stem, dot, ext = name.partition(".")
             name = f"{stem}-{size}{dot}{ext}"
         return f"{self._caa_base(mbid, release_group)}/{name}"
@@ -455,7 +497,12 @@ class Core:
         *,
         release_group: bool = False,
     ) -> Call[models.ImageData]:
-        """Download a cover art image (or thumbnail)."""
+        """Download a cover art image (or thumbnail).
+
+        Returns:
+            The request; it parses into
+            [`ImageData`][pymusicbrainz.models.ImageData].
+        """
         url = self.cover_art_url(mbid, image, size, release_group=release_group)
         return Call("GET", url, [], _image_data, accept="bytes", external=True)
 
@@ -467,7 +514,8 @@ class Core:
         try:
             return consts.COLLECTION_ENTITY_TYPES[entity_type]
         except KeyError:
-            raise _fail(f"invalid collection entity type: {entity_type!r}") from None
+            msg = f"invalid collection entity type: {entity_type!r}"
+            raise ValidationError(msg) from None
 
     def collection_modify(
         self,
@@ -479,9 +527,11 @@ class Core:
         collection = check_mbid(collection, "collection MBID")
         plural = self._collection_plural(entity_type)
         if not mbids:
-            raise _fail("no MBIDs given")
+            msg = "no MBIDs given"
+            raise ValidationError(msg)
         if len(mbids) > consts.COLLECTION_BATCH_SIZE:
-            raise _fail(f"at most {consts.COLLECTION_BATCH_SIZE} entities per request")
+            msg = f"at most {consts.COLLECTION_BATCH_SIZE} entities per request"
+            raise ValidationError(msg)
         ids = ";".join(check_mbid(m) for m in mbids)
         return Call(
             method,
@@ -496,14 +546,14 @@ class Core:
 
     def _client_param(self) -> list[tuple[str, str]]:
         if not self.client_id:
-            raise _fail(
-                "submissions need a client ID: pass app and a version without '-'"
-            )
+            msg = "submissions need a client ID: pass app and a version without '-'"
+            raise ValidationError(msg)
         return [("client", self.client_id)]
 
     def _submission(self, path: str, root: ET.Element) -> Call[None]:
         if not self.has_auth:
-            raise AuthenticationRequiredError("submissions require authentication")
+            msg = "submissions require authentication"
+            raise AuthenticationRequiredError(msg)
         body = ET.tostring(root, encoding="utf-8", xml_declaration=True)
         return Call(
             "POST",
@@ -523,9 +573,11 @@ class Core:
         vote: Literal["upvote", "downvote", "withdraw"] | None = None,
     ) -> Call[None]:
         if entity not in consts.TAGGABLE_ENTITIES:
-            raise _fail(f"cannot tag {entity}")
+            msg = f"cannot tag {entity}"
+            raise ValidationError(msg)
         if vote not in (None, "upvote", "downvote", "withdraw"):
-            raise _fail("vote must be 'upvote', 'downvote' or 'withdraw'")
+            msg = "vote must be 'upvote', 'downvote' or 'withdraw'"
+            raise ValidationError(msg)
         root = _metadata()
         lst = ET.SubElement(root, f"{entity}-list")
         for mbid, names in tags.items():
@@ -539,12 +591,14 @@ class Core:
 
     def submit_ratings(self, entity: str, ratings: Mapping[str, int]) -> Call[None]:
         if entity not in consts.RATABLE_ENTITIES:
-            raise _fail(f"cannot rate {entity}")
+            msg = f"cannot rate {entity}"
+            raise ValidationError(msg)
         root = _metadata()
         lst = ET.SubElement(root, f"{entity}-list")
         for mbid, rating in ratings.items():
-            if not 0 <= int(rating) <= 100:
-                raise _fail("ratings must be 0-100 (0 removes the rating)")
+            if not 0 <= int(rating) <= consts.MAX_RATING:
+                msg = "ratings must be 0-100 (0 removes the rating)"
+                raise ValidationError(msg)
             el = ET.SubElement(lst, entity, id=check_mbid(mbid))
             ET.SubElement(el, "user-rating").text = str(int(rating))
         return self._submission("rating", root)
@@ -578,32 +632,37 @@ def _check_include_dependencies(entity: str, values: list[str]) -> None:
     The server answers 400 for most of these, and silently ignores the
     relationship-level switches; either way the caller didn't get what they
     asked for.
+
+    Raises:
+        ValidationError: Naming the include that is missing.
     """
     given = set(values)
     for inc, needs in consts.INCLUDE_DEPENDENCIES.get(entity, {}).items():
         if inc in given and not given & needs:
             options = " or ".join(repr(n) for n in sorted(needs))
-            raise _fail(f"include {inc!r} for {entity} also needs {options}")
+            msg = f"include {inc!r} for {entity} also needs {options}"
+            raise ValidationError(msg)
     levels = given & consts.LEVEL_RELATION_INCLUDES
     if levels and not given & (
         consts.RELATION_INCLUDES - consts.LEVEL_RELATION_INCLUDES
     ):
-        raise _fail(
+        msg = (
             f"{', '.join(sorted(levels))} only modify relationship includes; "
             "add one such as 'artist-rels' or 'work-rels'"
         )
+        raise ValidationError(msg)
 
 
 def _check_filter_values(types: list[str], statuses: list[str]) -> None:
     if bad := [t for t in types if t not in consts.RELEASE_TYPES]:
-        raise _fail(
-            f"invalid release type(s): {bad}. Allowed: {sorted(consts.RELEASE_TYPES)}"
-        )
+        msg = f"invalid release type(s): {bad}. Allowed: {sorted(consts.RELEASE_TYPES)}"
+        raise ValidationError(msg)
     if bad := [s for s in statuses if s not in consts.RELEASE_STATUSES]:
-        raise _fail(
+        msg = (
             f"invalid release status(es): {bad}. "
             f"Allowed: {sorted(consts.RELEASE_STATUSES)}"
         )
+        raise ValidationError(msg)
 
 
 def _check_lookup_filters(
@@ -611,16 +670,20 @@ def _check_lookup_filters(
 ) -> None:
     # On lookups, filters only apply to included releases / release groups.
     if types and not {"releases", "release-groups"} & set(incs):
-        raise _fail("release_type requires inc 'releases' or 'release-groups'")
+        msg = "release_type requires inc 'releases' or 'release-groups'"
+        raise ValidationError(msg)
     if statuses and "releases" not in incs:
-        raise _fail("release_status requires inc 'releases'")
+        msg = "release_status requires inc 'releases'"
+        raise ValidationError(msg)
 
 
 def _check_browse_filters(entity: str, types: list[str], statuses: list[str]) -> None:
     if types and entity not in ("release", "release-group"):
-        raise _fail("release_type only applies when browsing release (group)s")
+        msg = "release_type only applies when browsing release (group)s"
+        raise ValidationError(msg)
     if statuses and entity != "release":
-        raise _fail("release_status only applies when browsing releases")
+        msg = "release_status only applies when browsing releases"
+        raise ValidationError(msg)
 
 
 def _link_name(key: str) -> str:
@@ -676,7 +739,12 @@ def _image_data(body: Binary) -> models.ImageData:
 def decode_body(
     call: Call[Any], body: bytes, content_type: str = "", url: str = ""
 ) -> JSON | Binary:
-    """Decode a successful response body according to ``call.accept``."""
+    """Decode a successful response body according to ``call.accept``.
+
+    Returns:
+        The decoded JSON or text, or, for images, the bytes with their
+        content type and final URL.
+    """
     if call.accept == "json":
         return json.loads(body) if body else {}
     if call.accept == "bytes":
@@ -690,6 +758,10 @@ def xml_error_texts(text: str) -> list[str]:
     Error bodies never contain a DTD. Refusing any document that declares one
     rules out entity expansion ("billion laughs") and external entities (XXE)
     regardless of the expat version Python was built with.
+
+    Returns:
+        The text of each ``<text>`` element; empty when the body is
+        unusable or declares a DTD.
     """
     if _DTD_RE.search(text):
         return []
@@ -710,7 +782,7 @@ def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> 
     Raises:
         ResponseError: A subclass chosen by status code; see
             [`error_for_status`][pymusicbrainz.errors.error_for_status].
-    """
+    """  # noqa: DOC502 - raised through error_for_status(), which ruff can't follow
     if codes.is_success(status):
         return
     message, help_ = reason or "error", None
@@ -729,15 +801,21 @@ def raise_for_response(status: int, body: bytes, url: str, reason: str = "") -> 
         texts = xml_error_texts(text)
         if texts:
             message, help_ = texts[0], (texts[1] if len(texts) > 1 else None)
-    elif text and len(text) < 500:
+    elif text and len(text) < _MAX_PLAIN_ERROR_LENGTH:
         message = text
-    raise error_for_status(status, message, help_=help_, url=url)
+    error = error_for_status(status, message, help_=help_, url=url)
+    raise error
 
 
 def retry_delay(
     status: int, retry_after: str | None, attempt: int, backoff: float
 ) -> float | None:
-    """Seconds to wait before retrying, or ``None`` if not retryable."""
+    """Seconds to wait before retrying, or ``None`` if not retryable.
+
+    Returns:
+        The delay in seconds, or ``None`` if the response should not be
+        retried.
+    """
     if status not in RETRY_STATUSES:
         return None
     if retry_after:
