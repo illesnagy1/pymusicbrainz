@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from urllib.parse import parse_qs
 
@@ -223,3 +224,14 @@ def test_cover_art_bad_size(server: FakeServer, tmp_path: Path) -> None:
     assert code == 1
     assert "size must be one of" in out
     assert server.requests == []
+
+
+def test_verbose_logging_detached_after_the_command(server: FakeServer) -> None:
+    server.response = httpx2.Response(codes.OK, json={"id": ARTIST})
+    log = logging.getLogger("pymusicbrainz")
+    before = list(log.handlers)
+    runner.invoke(cli.app, ["-vv", "lookup", "artist", ARTIST])
+    # The CliRunner's stderr is closed now; a handler left on it would make
+    # every later log record fail with "I/O operation on closed file".
+    assert log.handlers == before
+    assert log.level == logging.NOTSET

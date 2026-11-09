@@ -203,6 +203,10 @@ def _main(
     ] = False,
 ) -> None:
     _setup_logging(verbose)
+    # Detach the handler when the command ends: it holds on to this run's
+    # stderr, which a caller running the app in-process (tests, CliRunner)
+    # closes afterwards.
+    ctx.call_on_close(lambda: _setup_logging(0))
     ctx.obj = _Settings(app=app_name, contact=contact, base_url=base_url)
 
 
