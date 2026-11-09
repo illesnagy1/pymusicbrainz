@@ -2,6 +2,8 @@
 
 Each fixture is parsed exactly as the client would parse it, and the result must
 round-trip back to the original JSON: a field the models mistype or drop fails.
+The comparison lives in ``scripts/roundtrip.py``, shared with the weekly live
+check (``record_fixtures.py --check``).
 """
 
 from __future__ import annotations
@@ -11,10 +13,10 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-from pydantic import BaseModel
+import roundtrip
 
-from pymusicbrainz import CoverArt, Disc, Page
-from pymusicbrainz._core import Core
+from pymusicbrainz import CoverArt, Disc
+from pymusicbrainz._core import Call, Core
 
 FIXTURES = Path(__file__).parent / "fixtures"
 MANIFEST: dict[str, dict[str, Any]] = json.loads(
@@ -23,66 +25,13 @@ MANIFEST: dict[str, dict[str, Any]] = json.loads(
 core = Core()
 
 
-def _dump(value: object) -> object:
-    """Serialise a parse result back to API-shaped JSON.
-
-    Returns:
-        API-shaped JSON.
-    """
-    if isinstance(value, BaseModel):
-        return value.model_dump(mode="json", by_alias=True, exclude_unset=True)
-    if isinstance(value, Page):
-        return [_dump(item) for item in value.items]
-    if isinstance(value, list):
-        return [_dump(item) for item in value]
-    return value
-
-
-def _expected(name: str, raw: Any) -> object:  # noqa: ANN401
-    """The part of the raw JSON that the parse result corresponds to.
-
-    Returns:
-        The matching part of ``raw``.
-    """
-    if isinstance(_parse(name, raw), Page):
-        return next(v for v in raw.values() if isinstance(v, list))
-    if MANIFEST[name]["method"] == "lookup_iswc":
-        return raw["works"]
-    if MANIFEST[name]["method"] == "lookup_urls":
-        return raw.get("urls", [raw])
-    return raw
+def _call(name: str) -> Call[Any]:
+    spec = MANIFEST[name]
+    return getattr(core, spec["method"])(*spec["args"], **spec["kwargs"])
 
 
 def _parse(name: str, raw: object) -> object:
-    spec = MANIFEST[name]
-    call = getattr(core, spec["method"])(*spec["args"], **spec["kwargs"])
-    return call.parse(raw)
-
-
-def _known_coercions(data: object) -> object:
-    """Apply the deliberate type normalisations the models make to raw JSON.
-
-    The API is inconsistent in two places, and the models pick one type:
-
-    * Cover Art Archive image ``id``: a number in practice, text in the docs.
-    * Place ``coordinates``: numbers in lookups, strings in search results.
-
-    Returns:
-        ``data`` with those normalisations applied.
-    """
-    if isinstance(data, dict):
-        out: dict[str, object] = {}
-        for key, value in data.items():
-            if key == "id" and isinstance(value, int):
-                out[key] = str(value)
-            elif key in ("latitude", "longitude") and isinstance(value, str):
-                out[key] = float(value)
-            else:
-                out[key] = _known_coercions(value)
-        return out
-    if isinstance(data, list):
-        return [_known_coercions(v) for v in data]
-    return data
+    return roundtrip.parse(_call(name), raw)
 
 
 def test_manifest_matches_files() -> None:
@@ -93,8 +42,10 @@ def test_manifest_matches_files() -> None:
 @pytest.mark.parametrize("name", sorted(MANIFEST))
 def test_fixture_round_trips(name: str) -> None:
     raw = json.loads((FIXTURES / f"{name}.json").read_text())
-    expected = _known_coercions(_expected(name, raw))
-    assert _dump(_parse(name, raw)) == expected
+    parsed = _parse(name, raw)
+    want = roundtrip.expected(MANIFEST[name]["method"], parsed, raw)
+    assert roundtrip.differences(want, roundtrip.dump(parsed)) == []
+    assert roundtrip.dump(parsed) == want
 
 
 def test_typed_access_on_real_data() -> None:

@@ -1,28 +1,43 @@
-"""Record real API responses into ``tests/fixtures`` for the test suite.
+"""Record real API responses for the tests, or check the live API against them.
 
-Every request is built with the library's own sans-IO ``Core``, so the recorded
-requests are exactly what the client sends. ``tests/test_fixtures.py`` replays
-them through the client's parsers and checks that nothing is lost.
+Every request is built with the library's own sans-IO ``Core``, so it is
+exactly what the client sends.
 
-Run it occasionally to catch API changes (it takes about half a minute because
-of the rate limit)::
+Record (refresh ``tests/fixtures``, replayed by ``tests/test_fixtures.py``)::
 
     uv run python scripts/record_fixtures.py
+
+Check the live API for compatibility (weekly in CI, ``api-check.yml``)::
+
+    uv run python scripts/record_fixtures.py --check --report report.md
+
+The check fetches the same responses fresh and fails when one no longer
+survives the client's models (see ``roundtrip.py``) or a request is rejected.
+New fields the models don't define yet are reported, but are not failures.
+Both modes take about 40 seconds because of the rate limit.
 """
 
 from __future__ import annotations
 
+import argparse
+import datetime as dt
 import json
 import sys
+from collections.abc import Callable, Iterator
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
 import httpx2
+import roundtrip
+from httpx2 import codes
+from pydantic import ValidationError as ModelError
 
-from pymusicbrainz import MusicBrainz
-from pymusicbrainz._core import JSON, Core
+from pymusicbrainz import MusicBrainz, NetworkError, ResponseError
+from pymusicbrainz._core import JSON, Call, Core, raise_for_response
 
 FIXTURES = Path(__file__).resolve().parent.parent / "tests" / "fixtures"
+CONTACT = "https://github.com/illesnagy1/pymusicbrainz"
 
 NIRVANA = "5b11f4ce-a62d-471e-81fc-a69a8278c7da"
 NEVERMIND_RG = "1b022e01-4da6-387b-8658-8678046e4cef"
@@ -100,52 +115,242 @@ FIXED: dict[str, tuple[str, list[Any], dict[str, Any]]] = {
 #: Entities looked up by the first result of the matching search above.
 FROM_SEARCH = ["label", "area", "event", "place", "instrument", "series"]
 
+Fetch = Callable[[Call[Any]], JSON]
+Spec = tuple[str, list[Any], dict[str, Any]]
 
-def main() -> int:
-    """Record every fixture and write the manifest.
+
+def build(spec: Spec) -> Call[Any]:
+    """Build the request for a spec with the library's own ``Core``.
 
     Returns:
-        The process exit status, 0.
+        The request description.
     """
-    core = Core()
-    FIXTURES.mkdir(parents=True, exist_ok=True)
-    manifest: dict[str, dict[str, Any]] = {}
-    with (
-        MusicBrainz(
-            "pymusicbrainz-fixtures", "1", "https://github.com/", rate_limit=1
-        ) as mb,
-        httpx2.Client(follow_redirects=True, timeout=30) as caa,
-    ):
+    method, args, kwargs = spec
+    return getattr(Core(), method)(*args, **kwargs)
 
-        def record(
-            name: str, method: str, args: list[Any], kwargs: dict[str, Any]
-        ) -> JSON:
-            call = getattr(core, method)(*args, **kwargs)
-            if call.external:  # Cover Art Archive: not a WS/2 request
-                data = caa.get(call.path, headers={"User-Agent": mb.user_agent})
-                data.raise_for_status()
-                body = data.json()
-            else:
-                body = mb.request(call.method, call.path, dict(call.params))
-            (FIXTURES / f"{name}.json").write_text(
-                json.dumps(body, indent=2, ensure_ascii=False) + "\n"
-            )
-            manifest[name] = {"method": method, "args": args, "kwargs": kwargs}
-            print(f"recorded {name}")
-            return body
 
-        for name, (method, args, kwargs) in FIXED.items():
-            record(name, method, args, kwargs)
-        for entity in FROM_SEARCH:
-            found = json.loads((FIXTURES / f"search-{entity}.json").read_text())
+def specs(fetched: dict[str, JSON]) -> Iterator[tuple[str, Spec]]:
+    """Every request, in order; the follow-up lookups use earlier searches.
+
+    Yields:
+        ``(fixture name, spec)``; a follow-up is skipped when its search
+        wasn't fetched.
+    """
+    yield from FIXED.items()
+    for entity in FROM_SEARCH:
+        found = fetched.get(f"search-{entity}")
+        if isinstance(found, dict):
             plural = "series" if entity == "series" else f"{entity}s"
-            mbid = found[plural][0]["id"]
-            record(entity, "lookup", [entity, mbid], {"inc": "aliases"})
+            hits = found.get(plural)
+            if isinstance(hits, list) and hits and isinstance(hits[0], dict):
+                spec: Spec = ("lookup", [entity, hits[0]["id"]], {"inc": "aliases"})
+                yield entity, spec
 
+
+class Fetcher:
+    """Fetch raw JSON the way the client does (rate-limited, with retries)."""
+
+    def __init__(self) -> None:
+        """Open the MusicBrainz client and a Cover Art Archive HTTP client."""
+        self.mb = MusicBrainz("pymusicbrainz-fixtures", "1", CONTACT, rate_limit=1)
+        self.caa = httpx2.Client(
+            follow_redirects=True,
+            timeout=30,
+            transport=httpx2.HTTPTransport(retries=3),
+            headers={"User-Agent": self.mb.user_agent},
+        )
+
+    def __call__(self, call: Call[Any]) -> JSON:
+        """Fetch one request.
+
+        Returns:
+            The decoded JSON body.
+
+        Raises:
+            NetworkError: If the Cover Art Archive can't be reached.
+        """
+        if not call.external:
+            return self.mb.request(call.method, call.path, dict(call.params))
+        try:  # Cover Art Archive: not a WS/2 request
+            resp = self.caa.get(call.path)
+        except httpx2.TransportError as exc:
+            raise NetworkError(str(exc)) from exc
+        raise_for_response(
+            resp.status_code, resp.content, str(resp.url), resp.reason_phrase
+        )
+        return resp.json()
+
+    def close(self) -> None:
+        """Close both HTTP clients."""
+        self.mb.close()
+        self.caa.close()
+
+
+# ------------------------------------------------------------------ record
+
+
+def record(fetch: Fetch) -> None:
+    """Fetch every response and write the fixtures and their manifest."""
+    FIXTURES.mkdir(parents=True, exist_ok=True)
+    fetched: dict[str, JSON] = {}
+    manifest: dict[str, dict[str, Any]] = {}
+    for name, spec in specs(fetched):
+        fetched[name] = body = fetch(build(spec))
+        (FIXTURES / f"{name}.json").write_text(
+            json.dumps(body, indent=2, ensure_ascii=False) + "\n"
+        )
+        method, args, kwargs = spec
+        manifest[name] = {"method": method, "args": args, "kwargs": kwargs}
+        print(f"recorded {name}")
     (FIXTURES / "manifest.json").write_text(
         json.dumps(manifest, indent=2, sort_keys=True) + "\n"
     )
-    return 0
+
+
+# ------------------------------------------------------------------ check
+
+
+@dataclass
+class Result:
+    """What a compatibility check found."""
+
+    checked: int = 0
+    problems: list[str] = field(default_factory=list)
+    unreachable: list[str] = field(default_factory=list)
+    new_fields: set[tuple[str, str, str]] = field(default_factory=set)
+
+    @property
+    def exit_code(self) -> int:
+        """0 compatible, 1 incompatible, 2 the API couldn't be reached."""
+        if self.problems:
+            return 1
+        return 2 if self.unreachable else 0
+
+
+def recorded_extra_fields() -> set[tuple[str, str]]:
+    """Fields the recorded fixtures already carry that the models don't define.
+
+    Returns:
+        ``(model name, JSON key)`` pairs.
+    """
+    manifest = json.loads((FIXTURES / "manifest.json").read_text())
+    known: set[tuple[str, str]] = set()
+    for name, spec in manifest.items():
+        call = build((spec["method"], spec["args"], spec["kwargs"]))
+        raw = json.loads((FIXTURES / f"{name}.json").read_text())
+        known |= roundtrip.extra_fields(roundtrip.parse(call, raw))
+    return known
+
+
+def check(fetch: Fetch, known_extras: set[tuple[str, str]]) -> Result:
+    """Fetch every response fresh and compare it with the client's models.
+
+    Returns:
+        The problems, unreachable requests and new fields found.
+    """
+    result = Result()
+    fetched: dict[str, JSON] = {}
+    for name, spec in specs(fetched):
+        call = build(spec)
+        try:
+            fetched[name] = raw = fetch(call)
+        except ResponseError as exc:
+            # A 4xx on a request the client builds means the API changed what
+            # it accepts; 5xx and rate limiting are the service, not us.
+            client_error = codes.is_client_error(exc.status_code)
+            if client_error and exc.status_code != codes.TOO_MANY_REQUESTS:
+                result.problems.append(f"`{name}`: rejected with {exc}")
+            else:
+                result.unreachable.append(f"`{name}`: {exc}")
+            continue
+        except NetworkError as exc:
+            result.unreachable.append(f"`{name}`: {exc}")
+            continue
+        result.checked += 1
+        try:
+            parsed = roundtrip.parse(call, raw)
+        except ModelError as exc:
+            first = str(exc).splitlines()[:3]
+            result.problems.append(f"`{name}`: no longer parses: {' / '.join(first)}")
+            continue
+        want = roundtrip.expected(spec[0], parsed, raw)
+        result.problems += [
+            f"`{name}`: {diff}"
+            for diff in roundtrip.differences(want, roundtrip.dump(parsed))
+        ]
+        result.new_fields |= {
+            (model, key, name)
+            for model, key in roundtrip.extra_fields(parsed) - known_extras
+        }
+    return result
+
+
+def report(result: Result) -> str:
+    """Render a check result as Markdown (issue body and job summary).
+
+    Returns:
+        The report.
+    """
+    today = dt.datetime.now(dt.UTC).date().isoformat()
+    lines = [f"## MusicBrainz API compatibility check, {today}", ""]
+    if result.problems:
+        lines += [
+            (
+                f"**{len(result.problems)} incompatibilities** in "
+                f"{result.checked} responses checked. The client's models or "
+                "request rules need updating."
+            ),
+            "",
+            "### Problems",
+            "",
+            *[f"- {p}" for p in result.problems],
+        ]
+    elif result.unreachable:
+        lines += ["**Inconclusive:** some requests couldn't be completed."]
+    else:
+        lines += [f"**Compatible:** all {result.checked} responses round-trip."]
+    if result.unreachable:
+        lines += ["", "### Not reached", "", *[f"- {u}" for u in result.unreachable]]
+    if result.new_fields:
+        lines += [
+            "",
+            "### New fields (not failures)",
+            "",
+            "Kept in `model_extra`; worth modelling if useful:",
+            "",
+            *[
+                f"- `{model}`: `{key}` (in `{name}`)"
+                for model, key, name in sorted(result.new_fields)
+            ],
+        ]
+    return "\n".join(lines) + "\n"
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Record the fixtures, or check the live API with ``--check``.
+
+    Returns:
+        The process exit status: in check mode 0 compatible, 1 incompatible,
+        2 the API couldn't be reached.
+    """
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--check", action="store_true", help="check, don't record")
+    parser.add_argument("--report", type=Path, help="write the check report here")
+    args = parser.parse_args(argv)
+
+    fetcher = Fetcher()
+    try:
+        if not args.check:
+            record(fetcher)
+            return 0
+        result = check(fetcher, recorded_extra_fields())
+    finally:
+        fetcher.close()
+    text = report(result)
+    print(text)
+    if args.report:
+        args.report.write_text(text)
+    return result.exit_code
 
 
 if __name__ == "__main__":

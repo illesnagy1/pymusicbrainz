@@ -65,6 +65,13 @@ docs = [
     "zensical>=0.1.0",
 ]
 
+[tool.pytest.ini_options]
+# scripts/roundtrip.py and record_fixtures.py are shared with the tests.
+pythonpath = ["scripts"]
+
+[tool.ty.environment]
+extra-paths = ["scripts"]
+
 [tool.coverage.run]
 branch = true
 source = ["pymusicbrainz"]

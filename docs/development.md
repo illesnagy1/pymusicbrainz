@@ -50,6 +50,35 @@ The script builds every request with the library's own `Core`, and
 `tests/fixtures/manifest.json` records how, so the tests replay the same
 requests.
 
+### Weekly API compatibility check
+
+The recorded responses only prove the models match the API as it was when they
+were recorded. `.github/workflows/api-check.yml` checks the live services every
+Monday (and on demand from the Actions tab):
+
+```sh
+uv run python scripts/record_fixtures.py --check --report report.md
+```
+
+It fetches the same requests fresh and runs them through the same round-trip
+comparison as the tests (`scripts/roundtrip.py`), without touching
+`tests/fixtures/`. It checks compatibility, not data: new releases, ratings or
+counts never fail it.
+
+| Outcome | Exit | What the workflow does |
+|---|---|---|
+| Every response round-trips | 0 | Closes the open `api-compatibility` issue, if any. |
+| A response no longer parses, loses or changes data, or a request is rejected (4xx) | 1 | Opens the `api-compatibility` issue with the report, or updates it, and fails the run. |
+| The service is down, overloaded or rate-limiting (5xx, 429, network) | 2 | Fails the run without touching issues. |
+
+Fields the API sends that the models don't define yet are listed in the report
+as *new fields*, but aren't failures: the models keep them in `model_extra`.
+When the check reports something worth keeping, update the models and re-record
+the fixtures.
+
+GitHub disables scheduled workflows in public repositories after 60 days
+without activity; re-enable it from the Actions tab if that happens.
+
 ## Architecture
 
 ```mermaid
